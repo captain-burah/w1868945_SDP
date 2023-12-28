@@ -269,6 +269,10 @@ class UnitController extends Controller
 
             'unit_name' => ['required'],
 
+            'dld_fees' => ['required'],
+            
+            'admin_fees' => ['required'],
+
             'unit_size' => ['required'],
 
             'price' => ['required'],
@@ -306,8 +310,10 @@ class UnitController extends Controller
 
             $inputs = $request->all();
 
+            if(!$inputs['group_a'])  return redirect()->back()->with('error', 'No Payment Plan');;
+
             foreach($inputs['group_a'] as $data){
-                if($data['milestone'] != null){
+                if($data['amount'] != null && $data['milestone'] != null && $data['perentage'] != null){
                     $payment_milestone = new UnitPaymentplanFile();
                     $payment_milestone->unit_paymentplan_id = $payment->id;
                     $payment_milestone->name = $data['milestone'];

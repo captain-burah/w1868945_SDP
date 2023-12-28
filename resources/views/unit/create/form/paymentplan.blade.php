@@ -375,6 +375,8 @@
             var outstandingBalance = parseFloat($(outstandingBalanceIndex).val());
             console.log('initial balance value ' + outstandingBalance);
 
+            if(outstandingBalance <= 0) return;
+
             // GET ENTERED PERCENTAGE
             var percentageValue = parseFloat($(percentage).val());
 
@@ -382,13 +384,11 @@
             if (isNaN(percentageValue)) return;
 
             // CALCULATE FINAL AMOUNT
-            var finalAmount = (percentageValue * outstandingBalance) / 100;
+            var finalAmount = (percentageValue * price) / 100;
+            console.log(finalAmount);
 
             // GET THE NEW OUTSTANDING BALANCE
             var newOutstandingBalance = outstandingBalance - finalAmount;
-
-            // ASIGN THE AMOUNT TO 02 DECIMALS
-            $(amount).val(finalAmount.toFixed(2));
 
             // INCREMENT THE INDEX BY ONE
             var newIndex = parseInt(index)+1;
@@ -399,6 +399,11 @@
             
             var nextOutstandingBalance = '#hiddenOutstandingBalance_' + newIndex;
             console.log('ID OF THE NEXT HIDDEN BALANCE ' + nextOutstandingBalance);
+
+            if (newOutstandingBalance < 0) return;
+
+            // ASIGN THE AMOUNT TO 02 DECIMALS
+            $(amount).val(finalAmount.toFixed(2));
 
             // Update the hidden outstanding balance field
             $(nextOutstandingBalance).val(newOutstandingBalance.toFixed(2)); // Fixed to 2 decimal places

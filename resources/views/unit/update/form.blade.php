@@ -33,9 +33,6 @@
                     <button style="width: auto" class="nav-link" id="paymentplan-tab" data-toggle="tab" data-target="#paymentplan" type="button" role="tab" aria-controls="contact" aria-selected="false">Payment Milestones</button>
                 </li>
 
-                <li class="nav-item" role="presentation">
-                    <button style="width: auto" class="nav-link" id="fees-tab" data-toggle="tab" data-target="#fees" type="button" role="tab" aria-controls="contact" aria-selected="false">Additional Fees</button>
-                </li>
             </ul>
 
             <div class="tab-content" id="myTabContent">
@@ -51,9 +48,6 @@
                     @include('unit.update.form.paymentplan')
                 </div>
 
-                <div class="tab-pane fade p-4" id="fees" role="tabpanel" aria-labelledby="seo-tab">
-                    @include('unit.update.form.fees')
-                </div>
             </div>
         </form>
 
