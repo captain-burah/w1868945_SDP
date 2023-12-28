@@ -14,6 +14,7 @@ use App\Models\Unit_image;
 use App\Models\UnitPaymentPlanController;
 use App\Models\UnitFloorPlanController;
 use App\Models\Language;
+use Carbon\Carbon;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Log; // send notifications via slack or any other means
@@ -268,36 +269,17 @@ class UnitController extends Controller
 
             'unit_name' => ['required'],
 
-            'description' => ['required'],
-
             'unit_size' => ['required'],
 
             'price' => ['required'],
 
-            'oqood' => ['required'],
-
-            'dld_fees' => ['required'],
-
             'bathrooms' => ['required'],
 
             'bedrooms' => ['required'],
-
-            'area_range' => ['required'],
-
-            'floor' => ['required'],
-
-            'outdoor_area_range' => ['required'],
-
-            'terrace_area_range' => ['required'],
-
-            'meta_title' => ['required'],
-
-            'meta_description' => ['required'],
-
-            'meta_keywords' => ['required']
         ]);
 
         $bool=0;
+
 
 
 		if($bool==0)
@@ -305,21 +287,14 @@ class UnitController extends Controller
             $unit = new Unit();
             $unit->project_id = $request->project;
             $unit->name = $request->unit_name;
-            $unit->building_name = $request->building_name;
-            $unit->description = $request->description;
             $unit->unit_price = $request->price;
-            $unit->land_reg_fee = $request->land_reg_fee;
-            $unit->oqood_amount = $request->oqood;
+            $unit->oqood_amount = $request->admin_fees;
             $unit->dld_fees = $request->dld_fees;
             $unit->bedroom = $request->bedrooms;
             $unit->bathroom = $request->bathrooms;
             $unit->floor = $request->floor;
             $unit->unit_size_range = $request->area_range;
             $unit->outdoor_area = $request->outdoor_area_range;
-            $unit->terrace_area = $request->terrace_area_range;
-            $unit->meta_title = $request->meta_title;
-            $unit->meta_description = $request->meta_description;
-            $unit->meta_keywords = $request->meta_keywords;
             $unit->slug_link = '0';
             $unit->status = '2';
             $unit->save();
@@ -331,15 +306,17 @@ class UnitController extends Controller
 
             $inputs = $request->all();
 
-            foreach($inputs['group-a'] as $data){
-                $payment_milestone = new UnitPaymentplanFile();
-                $payment_milestone->unit_paymentplan_id = $payment->id;
-                $payment_milestone->name = $data['milestone'];
-                $payment_milestone->percentage = $data['percentage'];
-                $payment_milestone->amount = $data['amount'];
-                $payment_milestone->save();
+            foreach($inputs['group_a'] as $data){
+                if($data['milestone'] != null){
+                    $payment_milestone = new UnitPaymentplanFile();
+                    $payment_milestone->unit_paymentplan_id = $payment->id;
+                    $payment_milestone->name = $data['milestone'];
+                    $payment_milestone->percentage = $data['percentage'];
+                    $payment_milestone->amount = $data['amount'];
+                    $payment_milestone->date = Carbon::now();
+                    $payment_milestone->save();
+                }
             }
-
 
             $this->data['property_id'] = $unit->id;
 

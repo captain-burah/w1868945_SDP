@@ -26,29 +26,6 @@
 
     <div class="col-md-12">
         <div class="mb-3">
-            <label for="basicpill-title-input">Building Name </label>
-            <input
-                type="text"
-                name="building_name"
-                placeholder="ex: RY SUNRIDGE-B01"
-                id="building_name"
-
-                class="form-control
-                @error('building_name') border border-solid border-danger  @enderror"
-                value="{{ old('building_name') }}"
-            >
-        </div>
-    </div>
-
-</div>
-
-
-
-
-<div class="row mt-4">
-
-    <div class="col-md-12">
-        <div class="mb-3">
             <label for="basicpill-title-input">Unit Size <span class="text-muted">&#40;use number formatting&#41;</span></label>
             <input
                 type="text"

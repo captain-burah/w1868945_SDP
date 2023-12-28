@@ -20,8 +20,8 @@ class CreateAdminUserSeeder extends Seeder
     {
         //Admin Seeder
         $user = User::create([
-            'name' => 'Developer',
-            'email' => 'web@edgerealty.ae',
+            'name' => 'Master Admin',
+            'email' => 'webmaster@esnaad.com',
             'password' => bcrypt('edge@1315')
         ]);
 

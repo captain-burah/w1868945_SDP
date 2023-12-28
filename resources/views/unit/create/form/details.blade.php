@@ -60,7 +60,7 @@
 
     <div class="col-md-6">
         <div class="mb-3">
-            <label for="area_range">Unit Area (Sq.Ft)<span></span></label>
+            <label for="area_range">Interior Area (Sq.Ft)<span></span></label>
             <input
                 type="text"
                 name="area_range"
@@ -81,7 +81,7 @@
 <div class="row mt-4">
     <div class="col-md-6">
         <div class="mb-3">
-            <label for="outdoor_area_range">Outdoor Area (Sq.Ft)<span></span></label>
+            <label for="outdoor_area_range">Balcony Area (Sq.Ft)<span></span></label>
             <input
                 type="text"
                 name="outdoor_area_range"
@@ -92,24 +92,6 @@
                 value="{{ old('outdoor_area_range') }}"
             >
             @error('outdoor_area_range')
-                <div class="text-danger text-xs">{{ $message }}</div>
-            @enderror
-        </div>
-    </div>
-
-    <div class="col-md-6">
-        <div class="mb-3">
-            <label for="terrace_area_range">Terrace Area (Sq.Ft)<span></span></label>
-            <input
-                type="text"
-                name="terrace_area_range"
-                class="form-control
-                @error('terrace_area_range') border border-solid border-danger  @enderror"
-                id="terrace_area_range"
-                placeholder="ex: 743 SQ.FT / 69.03 SQ.M"
-                value="{{ old('terrace_area_range') }}"
-            >
-            @error('terrace_area_range')
                 <div class="text-danger text-xs">{{ $message }}</div>
             @enderror
         </div>
