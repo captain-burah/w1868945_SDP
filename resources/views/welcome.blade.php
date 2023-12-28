@@ -38,7 +38,7 @@
                 <div class="flex justify-center">
 
                     <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-                    width="250.000000pt" height="100.000000pt" viewBox="0 0 1000.000000 269.000000"
+                    width="250.000000pt" height="100.000000pt" viewBox="0 0 1000.000000 50.000000"
                     preserveAspectRatio="xMidYMid meet">
                     <g transform="translate(0.000000,269.000000) scale(0.100000,-0.100000)"
                     fill="#000000" stroke="none">
@@ -80,6 +80,9 @@
                     </g>
                     </svg>
 
+                </div>
+                <div class="flex justify-center">
+                    <h1 style="font-size: 28px">Management Information System</h1>
                 </div>
 
                 <div class="mt-16">

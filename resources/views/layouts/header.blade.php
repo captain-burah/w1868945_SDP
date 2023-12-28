@@ -6,13 +6,13 @@
                 <div class="d-flex flex-row ">
                 <a href="{{ asset('/')}}" class="logo logo-dark">
                     <span class="logo-lg">
-                        <img src="{{ asset('logo-dark.png')}}" alt="" height="22">
+                        <img src="{{ asset('2.png')}}" alt="" height="22">
                     </span>
                 </a>
 
-                <a href="{{ asset('/')}}" class="logo logo-light">
-                    <span class="logo-lg">
-                        <img src="{{ asset('logo-light.png')}}" alt="" height="40">
+                <a href="{{ asset('/')}}" class="logo logo-light ">
+                    <span class="logo-lg border p-3">
+                        <img src="{{ asset('2.png')}}" alt="" height="30">
                     </span>
                 </a>
                 {{-- <p class="text-white my-auto">Property Management System</p> --}}
