@@ -32,7 +32,7 @@
         @yield('appIn_css')
 
     </head>
-    <body data-topbar="dark" data-layout="horizontal">
+    <body data-topbar="dark" style="background-color: #eaeaea" data-layout="horizontal">
 
         <!-- Begin page -->
         <div id="layout-wrapper">

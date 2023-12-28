@@ -95,22 +95,22 @@
 
         <div class="row">
             <div class="mb-3 col-lg-3">
-                <label for="milestone">Remaining Balance</label>
+                {{-- <label for="milestone">Remaining Balance</label> --}}
                 <input type="text" id="hiddenOutstandingBalance_1" name="hiddenOutstandingBalance_1" class="form-control form-control-sm" value="0" style="opacity: 0.6; pointer-events: none; ">
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="milestone">Description</label>
-                <input type="text" id="milestone_1" name="group_a[1][milestone]" class="form-control form-control-sm" value="" disabled>
+                {{-- <label for="milestone">Description</label> --}}
+                <input type="text" id="milestone_1" name="group_a[1][milestone]" class="form-control form-control-sm" value="After 02 Months" disabled>
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="percentage">Percentage (%)</label>
+                {{-- <label for="percentage">Percentage (%)</label> --}}
                 <input type="number" id="percentage_1" name="group_a[1][percentage]" class="form-control form-control-sm"  min=0 disabled step="0.01">
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="amount" id="amnt">Amount</label>
+                {{-- <label for="amount" id="amnt">Amount</label> --}}
                 <input type="number" id="amount_1" name="group_a[1][amount]" value="" class="form-control form-control-sm"  min=0 disabled step="0.01">
             </div>
         </div>
@@ -118,154 +118,154 @@
 
         <div class="row">
             <div class="mb-3 col-lg-3">
-                <label for="milestone">Remaining Balance</label>
+                {{-- <label for="milestone">Remaining Balance</label> --}}
                 <input type="text" id="hiddenOutstandingBalance_2" name="hiddenOutstandingBalance_2" class="form-control form-control-sm" value="0" style="opacity: 0.6; pointer-events: none; ">
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="milestone">Description</label>
-                <input type="text" id="milestone_2" name="group_a[2][milestone]" class="form-control form-control-sm" value="" disabled>
+                {{-- <label for="milestone">Description</label> --}}
+                <input type="text" id="milestone_2" name="group_a[2][milestone]" class="form-control form-control-sm" value="After 06 Months" disabled>
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="percentage">Percentage (%)</label>
+                {{-- <label for="percentage">Percentage (%)</label> --}}
                 <input type="number" id="percentage_2" name="group_a[2][percentage]" class="form-control form-control-sm"  min=0 disabled step="0.01">
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="amount" id="amnt">Amount</label>
+                {{-- <label for="amount" id="amnt">Amount</label> --}}
                 <input type="number" id="amount_2" name="group_a[2][amount]" value="" class="form-control form-control-sm"  min=0 disabled step="0.01">
             </div>
         </div>
 
         <div class="row">
             <div class="mb-3 col-lg-3">
-                <label for="milestone">Remaining Balance</label>
+                {{-- <label for="milestone">Remaining Balance</label> --}}
                 <input type="text" id="hiddenOutstandingBalance_3" name="hiddenOutstandingBalance_3" class="form-control form-control-sm" value="0" style="opacity: 0.6; pointer-events: none; ">
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="milestone">Description</label>
-                <input type="text" id="milestone_3" name="group_a[3][milestone]" class="form-control form-control-sm" value="" disabled>
+                {{-- <label for="milestone">Description</label> --}}
+                <input type="text" id="milestone_3" name="group_a[3][milestone]" class="form-control form-control-sm" value="After 08 Months" disabled>
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="percentage">Percentage (%)</label>
+                {{-- <label for="percentage">Percentage (%)</label> --}}
                 <input type="number" id="percentage_3" name="group_a[3][percentage]" class="form-control form-control-sm"  min=0 disabled step="0.01">
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="amount" id="amnt">Amount</label>
+                {{-- <label for="amount" id="amnt">Amount</label> --}}
                 <input type="number" id="amount_3" name="group_a[3][amount]" value="" class="form-control form-control-sm"  min=0 disabled step="0.01">
             </div>
         </div>
 
         <div class="row">
             <div class="mb-3 col-lg-3">
-                <label for="milestone">Remaining Balance</label>
+                {{-- <label for="milestone">Remaining Balance</label> --}}
                 <input type="text" id="hiddenOutstandingBalance_4" name="hiddenOutstandingBalance_4" class="form-control form-control-sm" value="0" style="opacity: 0.6; pointer-events: none; ">
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="milestone">Description</label>
-                <input type="text" id="milestone_4" name="group_a[4][milestone]" class="form-control form-control-sm" value="" disabled>
+                {{-- <label for="milestone">Description</label> --}}
+                <input type="text" id="milestone_4" name="group_a[4][milestone]" class="form-control form-control-sm" value="After 12 months" disabled>
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="percentage">Percentage (%)</label>
+                {{-- <label for="percentage">Percentage (%)</label> --}}
                 <input type="number" id="percentage_4" name="group_a[4][percentage]" class="form-control form-control-sm"  min=0 disabled step="0.01">
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="amount" id="amnt">Amount</label>
+                {{-- <label for="amount" id="amnt">Amount</label> --}}
                 <input type="number" id="amount_4" name="group_a[4][amount]" value="" class="form-control form-control-sm"  min=0 disabled step="0.01">
             </div>
         </div>
 
         <div class="row">
             <div class="mb-3 col-lg-3">
-                <label for="milestone">Remaining Balance</label>
+                {{-- <label for="milestone">Remaining Balance</label> --}}
                 <input type="text" id="hiddenOutstandingBalance_5" name="hiddenOutstandingBalance_5" class="form-control form-control-sm" value="0" style="opacity: 0.6; pointer-events: none; ">
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="milestone">Description</label>
-                <input type="text" id="milestone_5" name="group_a[5][milestone]" class="form-control form-control-sm" value="" disabled>
+                {{-- <label for="milestone">Description</label> --}}
+                <input type="text" id="milestone_5" name="group_a[5][milestone]" class="form-control form-control-sm" value="After 16 Months" disabled>
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="percentage">Percentage (%)</label>
+                {{-- <label for="percentage">Percentage (%)</label> --}}
                 <input type="number" id="percentage_5" name="group_a[5][percentage]" class="form-control form-control-sm"  min=0 disabled step="0.01">
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="amount" id="amnt">Amount</label>
+                {{-- <label for="amount" id="amnt">Amount</label> --}}
                 <input type="number" id="amount_5" name="group_a[5][amount]" value="" class="form-control form-control-sm"  min=0 disabled step="0.01">
             </div>
         </div>
 
         <div class="row">
             <div class="mb-3 col-lg-3">
-                <label for="milestone">Remaining Balance</label>
+                {{-- <label for="milestone">Remaining Balance</label> --}}
                 <input type="text" id="hiddenOutstandingBalance_6" name="hiddenOutstandingBalance_6" class="form-control form-control-sm" value="0" style="opacity: 0.6; pointer-events: none; ">
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="milestone">Description</label>
-                <input type="text" id="milestone_6" name="group_a[6][milestone]" class="form-control form-control-sm" value="" disabled>
+                {{-- <label for="milestone">Description</label> --}}
+                <input type="text" id="milestone_6" name="group_a[6][milestone]" class="form-control form-control-sm" value="After 24 Months" disabled>
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="percentage">Percentage (%)</label>
+                {{-- <label for="percentage">Percentage (%)</label> --}}
                 <input type="number" id="percentage_6" name="group_a[6][percentage]" class="form-control form-control-sm"  min=0 disabled step="0.01">
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="amount" id="amnt">Amount</label>
+                {{-- <label for="amount" id="amnt">Amount</label> --}}
                 <input type="number" id="amount_6" name="group_a[6][amount]" value="" class="form-control form-control-sm"  min=0 disabled step="0.01">
             </div>
         </div>
 
         <div class="row">
             <div class="mb-3 col-lg-3">
-                <label for="milestone">Remaining Balance</label>
+                {{-- <label for="milestone">Remaining Balance</label> --}}
                 <input type="text" id="hiddenOutstandingBalance_7" name="hiddenOutstandingBalance_7" class="form-control form-control-sm" value="0" style="opacity: 0.6; pointer-events: none; ">
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="milestone">Description</label>
-                <input type="text" id="milestone_7" name="group_a[7][milestone]" class="form-control form-control-sm" value="" disabled>
+                {{-- <label for="milestone">Description</label> --}}
+                <input type="text" id="milestone_7" name="group_a[7][milestone]" class="form-control form-control-sm" value="On Handover" disabled>
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="percentage">Percentage (%)</label>
+                {{-- <label for="percentage">Percentage (%)</label> --}}
                 <input type="number" id="percentage_7" name="group_a[7][percentage]" class="form-control form-control-sm"  min=0 disabled step="0.01">
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="amount" id="amnt">Amount</label>
+                {{-- <label for="amount" id="amnt">Amount</label> --}}
                 <input type="number" id="amount_7" name="group_a[7][amount]" value="" class="form-control form-control-sm"  min=0 disabled step="0.01">
             </div>
         </div>
 
         <div class="row">
             <div class="mb-3 col-lg-3">
-                <label for="milestone">Remaining Balance</label>
+                {{-- <label for="milestone">Remaining Balance</label> --}}
                 <input type="text" id="hiddenOutstandingBalance_8" name="hiddenOutstandingBalance_8" class="form-control form-control-sm" value="0" style="opacity: 0.6; pointer-events: none; ">
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="milestone">Description</label>
+                {{-- <label for="milestone">Description</label> --}}
                 <input type="text" id="milestone_8" name="group_a[8][milestone]" class="form-control form-control-sm" value="" disabled>
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="percentage">Percentage (%)</label>
+                {{-- <label for="percentage">Percentage (%)</label> --}}
                 <input type="number" id="percentage_8" name="group_a[8][percentage]" class="form-control form-control-sm" min=0 disabled step="0.01">
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="amount" id="amnt">Amount</label>
+                {{-- <label for="amount" id="amnt">Amount</label> --}}
                 <input type="number" id="amount_8" name="group_a[8][amount]" value="" class="form-control form-control-sm" min=0 disabled step="0.01">
             </div>
         </div>
@@ -273,45 +273,85 @@
 
         <div class="row">
             <div class="mb-3 col-lg-3">
-                <label for="milestone">Remaining Balance</label>
+                {{-- <label for="milestone">Remaining Balance</label> --}}
                 <input type="text" id="hiddenOutstandingBalance_9" name="hiddenOutstandingBalance_9" class="form-control form-control-sm" value="0" style="opacity: 0.6; pointer-events: none; ">
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="milestone">Description</label>
+                {{-- <label for="milestone">Description</label> --}}
                 <input type="text" id="milestone_9" name="group_a[9][milestone]" class="form-control form-control-sm" value="" disabled>
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="percentage">Percentage (%)</label>
+                {{-- <label for="percentage">Percentage (%)</label> --}}
                 <input type="number" id="percentage_9" name="group_a[9][percentage]" class="form-control form-control-sm"  min=0 disabled step="0.01">
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="amount" id="amnt">Amount</label>
+                {{-- <label for="amount" id="amnt">Amount</label> --}}
                 <input type="number" id="amount_9" name="group_a[9][amount]" value="" class="form-control form-control-sm"  min=0 disabled step="0.01">
             </div>
         </div>
 
         <div class="row">
             <div class="mb-3 col-lg-3">
-                <label for="milestone">Remaining Balance</label>
+                {{-- <label for="milestone">Remaining Balance</label> --}}
                 <input type="text" id="hiddenOutstandingBalance_10" name="hiddenOutstandingBalance_10" class="form-control form-control-sm" value="0" style="opacity: 0.6; pointer-events: none; ">
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="milestone">Description</label>
+                {{-- <label for="milestone">Description</label> --}}
                 <input type="text" id="milestone_10" name="group_a[10][milestone]" class="form-control form-control-sm" value="" disabled>
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="percentage">Percentage (%)</label>
+                {{-- <label for="percentage">Percentage (%)</label> --}}
                 <input type="number" id="percentage_10" name="group_a[10][percentage]" class="form-control form-control-sm" min=0 disabled step="0.01">
             </div>
 
             <div class="mb-3 col-lg-3">
-                <label for="amount" id="amnt">Amount</label>
+                {{-- <label for="amount" id="amnt">Amount</label> --}}
                 <input type="number" id="amount_10" name="group_a[10][amount]" value="" class="form-control form-control-sm"  min=0 disabled step="0.01">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="mb-3 col-lg-3">
+                {{-- <label for="milestone">Remaining Balance</label> --}}
+                <input type="text" id="hiddenOutstandingBalance_11" name="hiddenOutstandingBalance_11" class="form-control form-control-sm" value="0" style="opacity: 0.6; pointer-events: none; ">
+            </div>
+
+            <div class="mb-3 col-lg-3">
+                {{-- <label for="milestone">Description</label> --}}
+                <input type="text" id="milestone_11" name="group_a[11][milestone]" class="form-control form-control-sm" value="" disabled>
+            </div>
+
+            <div class="mb-3 col-lg-3">
+                {{-- <label for="percentage">Percentage (%)</label> --}}
+                <input type="number" id="percentage_11" name="group_a[11][percentage]" class="form-control form-control-sm" min=0 disabled step="0.01">
+            </div>
+
+            <div class="mb-3 col-lg-3">
+                {{-- <label for="amount" id="amnt">Amount</label> --}}
+                <input type="number" id="amount_11" name="group_a[11][amount]" value="" class="form-control form-control-sm"  min=0 disabled step="0.01">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="mb-3 col-lg-3">
+
+            </div>
+
+            <div class="mb-3 col-lg-3">
+                
+            </div>
+
+            <div class="mb-3 col-lg-3">
+                <label for="percentage">Total Percentage: <span id="total_percentage"></span>%</label>
+            </div>
+
+            <div class="mb-3 col-lg-3">
+                <label for="amount" id="amnt">Total Amount: <span id="total_amount"></span></label>
             </div>
         </div>
         
@@ -365,16 +405,24 @@
             var percentage = '#percentage_' + index;
             var amount = '#amount_' + index;
             var outstandingBalanceIndex = '#hiddenOutstandingBalance_' + index;
+            var price = parseFloat($('#price').val());
+            var total_amount_text = $('#total_amount').text().trim();
+            var total_percentage_text = $('#total_percentage').text().trim();
 
-            console.log('initial balance index ' + outstandingBalanceIndex);
+            var total_amount = parseFloat(total_amount_text) || 0;
+            var total_percentage = parseFloat(total_percentage_text) || 0;
+
+            if(total_amount == price) return;
+            if(total_percentage == 100) return;
+            
 
             // GET PRICE
-            var price = parseFloat($('#price').val());
 
             // GET OUTSTANDING BALANCE
             var outstandingBalance = parseFloat($(outstandingBalanceIndex).val());
             console.log('initial balance value ' + outstandingBalance);
 
+            // RETURN NOTHING IF OUTSTANDING IS ZERO
             if(outstandingBalance <= 0) return;
 
             // GET ENTERED PERCENTAGE
@@ -392,15 +440,20 @@
 
             // INCREMENT THE INDEX BY ONE
             var newIndex = parseInt(index)+1;
-            console.log('INDEX INCREMENT ' + newIndex);
-
             var newIndexString = newIndex.toString();
-            console.log('INCREMENTED INDEX TO STRING ' + newIndexString);
-            
             var nextOutstandingBalance = '#hiddenOutstandingBalance_' + newIndex;
-            console.log('ID OF THE NEXT HIDDEN BALANCE ' + nextOutstandingBalance);
 
+            // RETURN NOTHING IF NEW OUTSTANDING IS ZERO
             if (newOutstandingBalance < 0) return;
+
+            
+            console.log(total_amount, total_percentage);
+
+            var new_total_amount = parseFloat(total_amount) + finalAmount;
+            var new_total_percentage = parseFloat(total_percentage) + percentageValue;
+            console.log(new_total_amount,new_total_percentage);
+            $('#total_amount').text(new_total_amount.toFixed(2));
+            $('#total_percentage').text(new_total_percentage.toFixed(2));
 
             // ASIGN THE AMOUNT TO 02 DECIMALS
             $(amount).val(finalAmount.toFixed(2));
