@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Unit_floorplan;
 use App\Models\UnitFloorplanFile;
 use Illuminate\Support\Facades\Storage;
-
+use File;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Unit;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -24,7 +24,7 @@ class UnitFloorplanController extends Controller
         $brochures = Unit_floorplan::with('unit_floorplan_files')->get();
 
         $this->data['results'] = $brochures;
-        $this->data['units'] = Unit::select(['id', 'name', 'status'])->where('status', '2')->get();
+        $this->data['units'] = Unit::select(['id', 'name', 'status'])->where('status', '1')->get();
         $this->data['count_status'] = Unit_floorplan::count();
 
         // dd($brochures[0]->unit_floorplan_files);
@@ -56,7 +56,7 @@ class UnitFloorplanController extends Controller
         $request->validate([
             'segment_name' => 'required',
             'files' => 'required | max: 5 | min: 1',
-            'files.*' => 'max: 51200|mimes:pdf'
+            'files.*' => 'max: 51200'
         ]);
 
 
@@ -74,6 +74,9 @@ class UnitFloorplanController extends Controller
                 foreach($request->file('files') as $key => $image)
                 {
                     $image_name = $image->hashName();
+                    /**
+                     * STORAGE PATH  = uploads/units/floorplans/FLOORPLAN_ID/IMAGE_NAME
+                     */
                     $path = $this->uploadPath;
                     $image->move($path."$project_brochure_id/", $image_name);
 
@@ -186,21 +189,22 @@ class UnitFloorplanController extends Controller
 
         $brochure_file = UnitFloorplanFile::with('unit_floorplan')->find($id);
 
+        // File::deleteDirectory(public_path('path/to/folder'));
 
-        if(Storage::exists('units/floorplans/'.$brochure_file->unit_floorplan->id.'/'.$brochure_file->name)){
+        if(File::deleteDirectory(public_path('uploads/units/floorplans/'.$brochure_file->unit_floorplan->id.'/'.$brochure_file->name))){
             UnitFloorplanFile::destroy($id); //DELETE THE DATABASE RECORD
             try {
-                Storage::delete('units/floorplans/'.$brochure_file->unit_floorplan->id.'/'.$brochure_file->name);  //DELETE THE ACTUAL FILE FROM STORAGE
+                File::deleteDirectory(public_path('uploads/units/floorplans/'.$brochure_file->unit_floorplan->id.'/'.$brochure_file->name));
+                // Storage::delete('units/floorplans/'.$brochure_file->unit_floorplan->id.'/'.$brochure_file->name);  //DELETE THE ACTUAL FILE FROM STORAGE
             }
             catch (\Exception $e)
             {
-                dd($e->getMessage());
+                dd($e-> getMessage());
                 return Redirect::back()->withErrors(['message', $e->getMessage() ]);
             }
         }else{
             dd('File does not exist.');
         }
-
         return Redirect::back()->with(['msg' => 'Successfully deleted']);
     }
 
@@ -230,13 +234,15 @@ class UnitFloorplanController extends Controller
 
     public function destroy_segment($id) {
 
-        $brochure = Unit_brochure::with('unit_brochure_files')->find($id);
+        $brochure = Unit_floorplan::with('unit_floorplan_files')->find($id);
 
-        if($brochure->unit_brochure_files->count() > 0) {
+        if($brochure->unit_floorplan_files->count() > 0) {
             try {
-                foreach ($brochure->unit_brochure_files as $child)
+                foreach ($brochure->unit_floorplan_files as $child)
                 {
-                    Storage::deleteDirectory('units/brochures/'.$brochure->id);
+                    File::deleteDirectory(public_path('units/floorplans/'.$brochure->id));
+
+                    // Storage::deleteDirectory('units/floorplans/'.$brochure->id);
                     $child->delete();
                 }
             } catch (\Exception $e) {
@@ -245,8 +251,8 @@ class UnitFloorplanController extends Controller
             }
         }
 
-        Project_brochure::destroy($id);
+        Unit_floorplan::destroy($id);
 
-        return redirect()->route('units-brochures.index')->with(['msg' => 'Successfully connected']);
+        return redirect()->route('unit-floor-plan.index')->with(['msg' => 'Successfully connected']);
     }
 }

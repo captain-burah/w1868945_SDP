@@ -85,7 +85,7 @@
                                     <label class="form-label">
                                         Multiple File Uploader
                                     </label>
-                                    <input type="file" name="files[]" id="inputFile" multiple class="form-control p-1 @error('files') border border-solid border-danger  @enderror" accept="application/pdf">
+                                    <input type="file" name="files[]" id="inputFile" multiple class="form-control p-1 @error('files') border border-solid border-danger  @enderror" accept="image/png, image/jpeg, image/jpg, image/webp, image/avif">
                                     <span class="text-muted font-size-10">You may choose multiple files if you wish to upload.</span>
                                     @error('files')
                                         <div class="text-danger font-size-10">{{ $message }}</div>

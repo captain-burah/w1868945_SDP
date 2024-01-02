@@ -107,7 +107,7 @@
                         </form>
                     </div>
                     <div class="">
-                        <iframe src="{{ url('storage/units/floorplans/'.$data->unit_floorplan->id.'/'.$data->name) }}" width="" height="400">
+                        <iframe src="{{ asset('uploads/units/floorplans/'.$data->unit_floorplan->id.'/'.$data->name) }}" width="" height="400">
                         </iframe>
                     </div>
                 </div>

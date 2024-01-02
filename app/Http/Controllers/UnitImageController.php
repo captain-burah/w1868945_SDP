@@ -56,7 +56,7 @@ class UnitImageController extends Controller
         $request->validate([
             'segment_name' => 'required',
             'files' => 'required | max: 10 | min: 1',
-            'files.*' => 'max: 400'
+            'files.*' => 'max: 2500'
         ]);
 
         try {
@@ -240,8 +240,8 @@ class UnitImageController extends Controller
             }
         }
 
-        Project_brochure::destroy($id);
+        Unit_image::destroy($id);
 
-        return redirect()->route('units-images.index')->with(['msg' => 'Successfully connected']);
+        return redirect()->route('unit-images.index')->with(['msg' => 'Successfully connected']);
     }
 }

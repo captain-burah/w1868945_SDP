@@ -241,8 +241,8 @@ class UnitBrochureController extends Controller
             }
         }
 
-        Project_brochure::destroy($id);
+        Unit_brochure::destroy($id);
 
-        return redirect()->route('units-brochures.index')->with(['msg' => 'Successfully connected']);
+        return redirect()->route('unit-brochures.index')->with(['msg' => 'Successfully connected']);
     }
 }

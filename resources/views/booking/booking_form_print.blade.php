@@ -1263,9 +1263,29 @@
                     {{-- </form> --}}
 
 
-                    <img src="{{ asset('images/1.jpg')}}" style="width: 100%; margin-bottom: 10px">
 
-                    <img src="{{ asset('images/3.jpg')}}" style="width: 100%;">
+                    <div class="row mt-0 mb-5 mx-2 d-flex justify-content-between w-full">
+                        <div class="float-left my-auto">
+                            <h4 class=" m-0 font-weight-bold">07 - Floor Plan</h4>
+                        </div>
+                        <div class  ="">
+                            <h4 class=" m-0 font-weight-bold">07 - مخطط الطابق</h4>
+                        </div>
+                    </div> 
+
+
+
+                    {{-- {{$unit_floorplan[0]->unit_floorplan_files}} --}}
+
+                    @if(isset($unit_floorplan))
+                        @if($unit_floorplan[0]->unit_floorplan_files->count() > 0)
+                            @foreach($unit_floorplan[0]->unit_floorplan_files as $file)
+                            <div style="width: 100%; text-align: center;" class="border">
+                                <img src="{{ asset('uploads/units/floorplans/'.$unit_floorplan[0]->id.'/'.$file->name)}}" class="mx-auto text-center" style="width: 80%; padding: 35px; margin-bottom: 10px">
+                            </div>
+                            @endforeach
+                        @endif
+                    @endif
 
 
                     

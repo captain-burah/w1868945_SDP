@@ -11,6 +11,7 @@ use App\Models\BookingReservationForm;
 use App\Models\Clientele;
 use App\Models\Clientele_document;
 use App\Models\Project;
+use App\Models\Unit_floorplan;
 use App\Models\Unit;
 use App\Models\Project_brochure;
 use App\Models\Project_image;
@@ -43,7 +44,10 @@ class BookingController extends Controller
 
     public function index()
     {
-        $this->data['result'] = $result = Booking::all();
+        $this->data['result'] = $result = Booking::with('bookingclients', 'bookingbrokers', 'unit')->get();
+        if($result->isEmpty()) {
+            $this->data['count_status'] = 'No projects found. You can launch a new project above to start-off';
+        }
         $this->data['count_active'] = $result = Booking::all();
         return view('booking', $this->data);
     }
@@ -173,7 +177,6 @@ class BookingController extends Controller
             }
 
             
-
             $contact1 = $request->country_code1 . $request->contact1;
             $contact2 = $request->country_code2 . $request->contact2;
             $contact3 = $request->country_code3 . $request->contact3;
@@ -444,8 +447,6 @@ class BookingController extends Controller
             } else {
                 dd($clientele_store);
             }
-
-
         }
 
         public function booking_payment_failed(Request $request){
@@ -459,7 +460,9 @@ class BookingController extends Controller
             $unit_id = $booking->unit_id;
 
             $this->data['unit'] = $unit = Unit::with('clienteles')->find($unit_id);
+            $this->data['unit_floorplan'] = $unit_floorplan = Unit_floorplan::with('unit_floorplan_files', 'unit')->where('unit_id', $unit_id)->get();
             $this->data['form_type'] = 'form2';
+            // dd($unit_floorplan);
 
             // $pdf = PDF::loadView('booking.reservationAgreement', $this->data);
             return view('booking.booking_form_print', $this->data);
