@@ -15,4 +15,14 @@ class Broker extends Model
     {
         return $this->hasMany(BrokerFile::class);
     }
+
+    public function unit_broker(): HasOne
+    {
+        return $this->HasOne(UnitBroker::class);
+    }
+
+    public function bookingbrokers(): HasMany
+    {
+        return $this->hasMany(BookingBroker::class);
+    }
 }

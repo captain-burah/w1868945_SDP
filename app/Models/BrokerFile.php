@@ -14,4 +14,9 @@ class BrokerFile extends Model
     {
         return $this->belongsTo(Broker::class);
     }
+
+    public function unit(): BelongsTo
+    {
+        return $this->belongsTo(Unit::class);
+    }
 }

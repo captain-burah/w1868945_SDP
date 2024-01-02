@@ -57,4 +57,9 @@ class Unit extends Model
     {
         return $this->belongsTo(Project::class);
     }
+
+    public function unit_broker(): HasOne
+    {
+        return $this->HasOne(UnitBroker::class);
+    }
 }

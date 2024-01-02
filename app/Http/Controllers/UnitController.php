@@ -313,7 +313,7 @@ class UnitController extends Controller
             if(!$inputs['group_a'])  return redirect()->back()->with('error', 'No Payment Plan');;
 
             foreach($inputs['group_a'] as $data){
-                if($data['amount'] != null && $data['milestone'] != null && $data['perentage'] != null){
+                if($data['amount'] != null && $data['milestone'] != null && $data['percentage'] != null){
                     $payment_milestone = new UnitPaymentplanFile();
                     $payment_milestone->unit_paymentplan_id = $payment->id;
                     $payment_milestone->name = $data['milestone'];

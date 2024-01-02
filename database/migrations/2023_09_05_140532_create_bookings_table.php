@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedBigInteger('unit_id')->nullable(true);
-
+            $table->string('salesperson_name')->nullable(true);
+            $table->string('salesperson_rera')->nullable(true);
             $table->string('payment_status')->nullable(true);   // online or cheque or bank deposit
             $table->string('payment_price')->nullable(true);
             $table->string('description')->nullable(true);

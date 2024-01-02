@@ -20,7 +20,6 @@ class BrokerSeeder extends Seeder
         //     'company_type' => 'LLC',
         //     'company_name' => 'Edge Realty Real Estate',
         //     'state' => 'Dubai',
-            
         // ]);
 
         Broker::create([

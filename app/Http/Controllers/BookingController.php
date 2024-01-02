@@ -18,6 +18,8 @@ use App\Models\Project_factsheet;
 use App\Models\Honorific;
 use App\Models\CountryCode;
 use App\Models\Language;
+use App\Models\Broker;
+use App\Models\BookingBroker;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Log; // send notifications via slack or any other means
 use Illuminate\Support\Str;
@@ -26,6 +28,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Response;
+use Carbon\Carbon;
 
 class BookingController extends Controller
 {
@@ -105,7 +108,6 @@ class BookingController extends Controller
             $this->data['request'] = $request;
             return view('booking.create.index', $this->data );
         }
-
 
 
         public function store_form0_units(Request $request) {
@@ -356,30 +358,48 @@ class BookingController extends Controller
 
         public function store_form3_clients(Request $request) {
             $booking_id = $request->booking_id;
-            $this->data['booking'] = $booking = Booking::with('unit')->find($booking_id);
+            $this->data['booking'] = $booking = Booking::with('unit', 'bookingclients')->find($booking_id);
             $unit_id = $booking->unit_id;
 
+            // CREATE BOOKING-CLIENT RELATIONSHIP
             foreach($request->clients as $client) {
-                $cliente_record = Clientele::find($client);
-                $cliente_record->unit_id = $unit_id;
-                $cliente_record->save();
+                $booking_client = new BookingClient();
+                $booking_client->client_id = $client;
+                $booking_client->booking_id = $booking->id;
+                $booking_client->save();
             }
+
             $this->data['unit'] = $unit = Unit::with('clienteles')->find($unit_id);
             $this->data['form_type'] = 'form2';
             $this->data['request'] = $request;
-
+            $this->data['agency'] = Broker::where('status', '1')->get();
             return view('booking.create.index', $this->data );            
         }
 
-        public function store_form4_agency(Request $request) {
+        public function store_form3_agency(Request $request) {
             $booking_id = $request->booking_id;
-            $this->data['booking'] = $booking = Booking::with('unit')->find($booking_id);
+            $this->data['booking'] = $booking = Booking::with('unit', 'bookingclients', 'bookingbrokers')->find($booking_id);
+            $booking->salesperson_name = $request->salesperson_name;
+            $booking->save();
             $unit_id = $booking->unit_id;
 
+            $twoMinutesAgo = Carbon::now()->subMinutes(10);
+            $owners = BookingClient::with('booking', 'client')->where('created_at', '<=', $twoMinutesAgo)->get();
+
+            if($owners->isNotEmpty()) {
+                $this->data['sellers'] = $owners;
+            }
+
+            // CREATE BROKER AND BOOKING RELATIONSHIP RECORD
+            foreach($request->brokers as $data) {   
+                $unit_broker = new BookingBroker();
+                $unit_broker->booking_id = $booking->id;
+                $unit_broker->broker_id = $data;
+                $unit_broker->save();
+            }
             
-                        
             $this->data['unit'] = $unit = Unit::with('clienteles')->find($unit_id);
-            $this->data['form_type'] = 'form2';
+            $this->data['form_type'] = 'form3';
             $this->data['request'] = $request;
 
             return view('booking.create.index', $this->data );            

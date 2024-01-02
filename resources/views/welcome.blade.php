@@ -82,7 +82,7 @@
 
                 </div>
                 <div class="flex justify-center">
-                    <h1 style="font-size: 28px">Management Information System</h1>
+                    <h1 style="font-size: 28px">Property Management Information System</h1>
                 </div>
 
                 <div class="mt-16">

@@ -82,6 +82,10 @@ class PermissionTableSeeder extends Seeder
             'webcontent-create',
             'webcontent-edit',
             'webcontent-delete',
+            'agent-list',
+            'agent-create',
+            'agent-edit',
+            'agent-delete',
         ];
 
         foreach ($permissions as $permission) {

@@ -10,12 +10,15 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
     <style>
+        span {
+            font-weight: 200 !important;
+        }
         p{
             line-height: 1.6 !important;
         }
       body {
         background-color: #000;
-        font-family: 'Circular Std Medium';
+        font-family: 'Times New Roman';
         }
 
         .padding {
@@ -44,7 +47,7 @@
             line-height: 26px;
             color: #3d405c;
             margin: 0px 0px 15px 0px;
-            font-family: 'Circular Std Medium'
+            font-family: 'Times New Roman'
         }
 
         .text-dark {
@@ -81,10 +84,11 @@
                 @page { size: auto;  margin: 0mm; }
                 
                 .offer-headings {
-                    font-weight: ;
+                    font-weight: 0;
                     padding: 0;
                     margin: 0;
                 }
+                
 
                 .booking-form-para {
                     text-align: justify;
@@ -114,8 +118,6 @@
                             <img src="{{ asset('logo-dark.png')}}" alt="" height="62">
                         </div>
                     </div>
-
-
 
 
                         <div class="row my-4 mx-2 d-flex justify-content-between w-full">
@@ -1258,9 +1260,14 @@
                                 </div>
                             </div>
                         </div>
-
-
                     {{-- </form> --}}
+
+
+                    <img src="{{ asset('images/1.jpg')}}" style="width: 100%; margin-bottom: 10px">
+
+                    <img src="{{ asset('images/3.jpg')}}" style="width: 100%;">
+
+
                     
 
                 </div>

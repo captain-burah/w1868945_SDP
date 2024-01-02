@@ -266,6 +266,7 @@ Route::middleware('auth')->group(function () {
     Route::post('booking-form-two', [BookingController::class, 'store_form1'])->name('bookings.store.form1');
     Route::get('booking-form-three/{client_id}', [BookingController::class, 'show_form3'])->name('bookings.show.form3');
     Route::post('booking-form-three-clients', [BookingController::class, 'store_form3_clients'])->name('bookings.store.form3.clients');
+    Route::post('booking-form-three-agency', [BookingController::class, 'store_form3_agency'])->name('bookings.store.form3.agency');
     Route::post('booking-form-three', [BookingController::class, 'store_form2'])->name('bookings.store.form2');
     Route::post('booking-form-four', [BookingController::class, 'store_form3'])->name('bookings.store.form3');
     Route::get('remove_client/{client_id}/{booking_id}', [ClienteleController::class, 'remove_client'])->name('bookings.remove.client');

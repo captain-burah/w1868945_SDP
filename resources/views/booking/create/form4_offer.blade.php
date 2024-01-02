@@ -64,102 +64,147 @@
             </div>
         </div>
 
+        
 
+            @if(isset($sellers))
+                @foreach($sellers as $seller)
 
+                    <div class="row my-4 mx-2 d-flex justify-content-between w-full">
+                        <div class="float-left my-auto">
+                            <h4 class=" m-0 font-weight-bold">01 - Seller Details</h4>
+                        </div>
+                        <div class  ="">
+                            <h4 class=" m-0 font-weight-bold">01 - بيانات البائع </h4>
+                        </div>
+                    </div>
 
-            <div class="row my-4 mx-2 d-flex justify-content-between w-full">
-                <div class="float-left my-auto">
-                    <h4 class=" m-0 font-weight-bold">01 - Seller Details</h4>
-                </div>
-                <div class  ="">
-                    <h4 class=" m-0 font-weight-bold">01 - بيانات البائع </h4>
-                </div>
-            </div>
+                    <div class="row my-2 mx-2 d-flex justify-content-between w-full">
+                        <div class="text-center mx-auto my-auto">
+                            <h5 class=" m-0 font-weight-bold">Seller Details - 01</h5>
+                        </div>
+                        <div class  ="">
+                            <h5 class=" m-0 font-weight-bold">{{$loop->iteration}}معلومات البائع</h5>
+                        </div>
+                    </div>
 
-            <div class="row">
-                <div class="col-6 p-3 border">
-                    <div class="d-flex">
-                        <p class="offer-headings">Seller Entity Name: &nbsp; &nbsp;</p> <span>fdsa</span>
+                    
+                    <div class="row">
+                        <div class="col-6 p-3 border">
+                            <div class="d-flex">
+                                <p class="offer-headings">Seller Entity Name: &nbsp; &nbsp;</p> <span> {{$seller->client->name}} </span>
+                            </div>
+                        </div>
+                        <div class="col-6 p-3 border">
+                            <div class="d-flex" dir="rtl">
+                                <p class="offer-headings-ar">
+                                    إسم البائع
+                                </p> 
+                                &nbsp;:&nbsp; <span>{{$seller->client->name}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6 p-3 border">
+                            <div class="d-flex">
+                                <p class="offer-headings">Address: &nbsp; &nbsp;</p> <span>{{$seller->client->address1}}, {{$seller->client->address2}}, {{$seller->client->country_of_residence}}</span>
+                            </div>
+                        </div>
+                        <div class="col-6 p-3 border">
+                            <div class="d-flex" dir="rtl">
+                                <p class="offer-headings-ar">
+                                    العنوان
+                                </p> 
+                                &nbsp;:&nbsp; <span>{{$seller->client->address1}}, {{$seller->client->address2}}, {{$seller->client->country_of_residence}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6 p-3 border">
+                            <div class="d-flex">
+                                <p class="offer-headings">Contact No: &nbsp; &nbsp;</p> <span>{{$seller->client->contact1}} | {{$seller->client->contact2}} | {{$seller->client->contact3}}</span></span></span>
+                            </div>
+                        </div>
+                        <div class="col-6 p-3 border">
+                            <div class="d-flex" dir="rtl">
+                                <p class="offer-headings-ar">
+                                    رقم الهاتف       
+                                </p> 
+                                &nbsp;:&nbsp; <span>{{$seller->client->contact1}} | {{$seller->client->contact2}} | {{$seller->client->contact3}}</span></span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                @endforeach
+            @else
+                <div class="row my-4 mx-2 d-flex justify-content-between w-full">
+                    <div class="float-left my-auto">
+                        <h4 class=" m-0 font-weight-bold">01 - Seller Details</h4>
+                    </div>
+                    <div class  ="">
+                        <h4 class=" m-0 font-weight-bold">01 - بيانات البائع </h4>
                     </div>
                 </div>
-                <div class="col-6 p-3 border">
-                    <div class="d-flex" dir="rtl">
-                        <p class="offer-headings-ar">
-                            إسم البائع
-                        </p> 
-                        &nbsp;:&nbsp; <span>fdsa</span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-6 p-3 border">
-                    <div class="d-flex">
-                        <p class="offer-headings">Developer Name: &nbsp; &nbsp;</p> <span>fdsa</span>
+                <div class="row my-2 mx-2 d-flex justify-content-between w-full">
+                    <div class="text-center mx-auto my-auto">
+                        <h5 class=" m-0 font-weight-bold">Seller Details - 01</h5>
+                    </div>
+                    <div class  ="">
+                        <h5 class=" m-0 font-weight-bold">{{$loop->iteration}}معلومات البائع</h5>
                     </div>
                 </div>
-                <div class="col-6 p-3 border">
-                    <div class="d-flex" dir="rtl">
-                        <p class="offer-headings-ar">
-                            اسم المطور
-                        </p> 
-                        &nbsp;:&nbsp; <span>fdsa</span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-6 p-3 border">
-                    <div class="d-flex">
-                        <p class="offer-headings">Address: &nbsp; &nbsp;</p> <span>fdsa</span>
+                
+                <div class="row">
+                    <div class="col-6 p-3 border">
+                        <div class="d-flex">
+                            <p class="offer-headings">Seller Entity Name: &nbsp; &nbsp;</p> <span>  -  </span>
+                        </div>
+                    </div>
+                    <div class="col-6 p-3 border">
+                        <div class="d-flex" dir="rtl">
+                            <p class="offer-headings-ar">
+                                إسم البائع
+                            </p> 
+                            &nbsp;:&nbsp; <span> - </span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-6 p-3 border">
-                    <div class="d-flex" dir="rtl">
-                        <p class="offer-headings-ar">
-                            العنوان
-                        </p> 
-                        &nbsp;:&nbsp; <span>fdsa</span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-6 p-3 border">
-                    <div class="d-flex">
-                        <p class="offer-headings">Registration No: &nbsp; &nbsp;</p> <span>fdsa</span>
+                <div class="row">
+                    <div class="col-6 p-3 border">
+                        <div class="d-flex">
+                            <p class="offer-headings">Address: &nbsp; &nbsp;</p> <span>Unit G07, City Walk Building #1, Al Wasl, Dubai.</span>
+                        </div>
+                    </div>
+                    <div class="col-6 p-3 border">
+                        <div class="d-flex" dir="rtl">
+                            <p class="offer-headings-ar">
+                                العنوان
+                            </p> 
+                            &nbsp;:&nbsp; <span>Unit G07, City Walk Building #1, Al Wasl, Dubai.</span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-6 p-3 border">
-                    <div class="d-flex" dir="rtl">
-                        <p class="offer-headings-ar">
-                            رقم التسجيل                        
-                        </p> 
-                        &nbsp;:&nbsp; <span>fdsa</span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-6 p-3 border">
-                    <div class="d-flex">
-                        <p class="offer-headings">License No: &nbsp; &nbsp;</p> <span>fdsa</span>
+                <div class="row">
+                    <div class="col-6 p-3 border">
+                        <div class="d-flex">
+                            <p class="offer-headings">Contact No: &nbsp; &nbsp;</p> <span>+971 4 287 9506</span>
+                        </div>
+                    </div>
+                    <div class="col-6 p-3 border">
+                        <div class="d-flex" dir="rtl">
+                            <p class="offer-headings-ar">
+                                رقم الهاتف       
+                            </p> 
+                            &nbsp;:&nbsp; <span>+971 4 287 9506</span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-6 p-3 border">
-                    <div class="d-flex" dir="rtl">
-                        <p class="offer-headings-ar">
-                            رقم الرخصة                        
-                        </p> 
-                        &nbsp;:&nbsp; <span>fdsa</span>
-                    </div>
-                </div>
-            </div>
-
-
-            
-            
-            
+            @endif
             
             <div class="row my-4 mx-2 d-flex justify-content-between w-full">
                 <div class="float-left my-auto">
@@ -189,7 +234,7 @@
             <div class="row">
                 <div class="col-6 p-3 border">
                     <div class="d-flex">
-                        <p class="offer-headings">Project: &nbsp; &nbsp;</p> <span>fdsd</span>
+                        <p class="offer-headings">Project: &nbsp; &nbsp;</p> <span>{{$unit->project->name}}</span>
                     </div>
                 </div>
                 <div class="col-6 p-3 border">
@@ -197,12 +242,12 @@
                         <p class="offer-headings-ar">
                             المشروع
                         </p> 
-                        &nbsp;:&nbsp; <span>fdsa</span>
+                        &nbsp;:&nbsp; <span>{{$unit->project->name}}</span>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-6 p-3 border">
                     <div class="d-flex">
                         <p class="offer-headings">Property: &nbsp; &nbsp;</p> <span>fdsdf</span>
@@ -216,12 +261,12 @@
                         &nbsp;:&nbsp; <span>fdsa</span>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="row">
                 <div class="col-6 p-3 border">
                     <div class="d-flex">
-                        <p class="offer-headings">Unit: &nbsp; &nbsp;</p> <span>fdsdf</span>
+                        <p class="offer-headings">Unit: &nbsp; &nbsp;</p> <span>{{$unit->name}}</span>
                     </div>
                 </div>
                 <div class="col-6 p-3 border">
@@ -229,7 +274,7 @@
                         <p class="offer-headings-ar">
                             الوحدة
                         </p> 
-                        &nbsp;:&nbsp; <span>fdsa</span>
+                        &nbsp;:&nbsp; <span>{{$unit->name}}</span>
                     </div>
                 </div>
             </div>
@@ -237,7 +282,7 @@
             <div class="row">
                 <div class="col-6 p-3 border">
                     <div class="d-flex">
-                        <p class="offer-headings">No. of Bedrooms: &nbsp; &nbsp;</p> <span>fdsdf</span>
+                        <p class="offer-headings">No. of Bedrooms: &nbsp; &nbsp;</p> <span>{{$unit->bedroom}}</span>
                     </div>
                 </div>
                 <div class="col-6 p-3 border">
@@ -245,7 +290,7 @@
                         <p class="offer-headings-ar">
                             عدد الغرف
                         </p> 
-                        &nbsp;:&nbsp; <span>fdsa</span>
+                        &nbsp;:&nbsp; <span>{{$unit->bedroom}}</span>
                     </div>
                 </div>
             </div>
@@ -253,7 +298,7 @@
             <div class="row">
                 <div class="col-6 p-3 border">
                     <div class="d-flex">
-                        <p class="offer-headings">Total Area: &nbsp; &nbsp;</p> <span>fdsdf</span>
+                        <p class="offer-headings">Total Area: &nbsp; &nbsp;</p> <span>{{$unit->unit_size_range}}</span>
                     </div>
                 </div>
                 <div class="col-6 p-3 border">
@@ -261,7 +306,7 @@
                         <p class="offer-headings-ar">
                         اجمالي المساحة
                         </p> 
-                        &nbsp;:&nbsp; <span>fdsa</span>
+                        &nbsp;:&nbsp; <span>{{$unit->unit_size_range}}</span>
                     </div>
                 </div>
             </div>
@@ -269,7 +314,7 @@
             <div class="row">
                 <div class="col-6 p-3 border">
                     <div class="d-flex">
-                        <p class="offer-headings">No. of Car Parking Spaces: &nbsp; &nbsp;</p> <span>fdsdf</span>
+                        <p class="offer-headings">No. of Car Parking Spaces: &nbsp; &nbsp;</p> <span>{{$unit->carpark}}</span>
                     </div>
                 </div>
                 <div class="col-6 p-3 border">
@@ -277,12 +322,12 @@
                         <p class="offer-headings-ar">
                             عدد مواقف السيارات
                         </p> 
-                        &nbsp;:&nbsp; <span>fdsa</span>
+                        &nbsp;:&nbsp; <span>{{$unit->carpark}}</span>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-6 p-3 border">
                     <div class="d-flex">
                         <p class="offer-headings">Plot Number: &nbsp; &nbsp;</p> <span>fdsdf</span>
@@ -296,12 +341,12 @@
                         &nbsp;:&nbsp; <span>fdsa</span>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="row">
                 <div class="col-6 p-3 border">
                     <div class="d-flex">
-                        <p class="offer-headings">Project Number: &nbsp; &nbsp;</p> <span>fdsdf</span>
+                        <p class="offer-headings">Project Number: &nbsp; &nbsp;</p> <span>{{$unit->project->id}}</span>
                     </div>
                 </div>
                 <div class="col-6 p-3 border">
@@ -309,7 +354,7 @@
                         <p class="offer-headings-ar">
                             رقم المشروع
                         </p> 
-                        &nbsp;:&nbsp; <span>fdsa</span>
+                        &nbsp;:&nbsp; <span>{{$unit->project->id}}</span>
                     </div>
                 </div>
             </div>
@@ -317,7 +362,7 @@
             <div class="row">
                 <div class="col-6 p-3 border">
                     <div class="d-flex">
-                        <p class="offer-headings">Purchase Price: &nbsp; &nbsp;</p> <span>fdsdf</span>
+                        <p class="offer-headings">Purchase Price: &nbsp; &nbsp;</p> <span>AED {{number_format($unit->unit_price, 2)}}</span>
                     </div>
                 </div>
                 <div class="col-6 p-3 border">
@@ -325,7 +370,7 @@
                         <p class="offer-headings-ar">
                             سعر الشراء
                         </p> 
-                        &nbsp;:&nbsp; <span>fdsa</span>
+                        &nbsp;:&nbsp; <span>AED {{number_format($unit->unit_price, 2)}}</span>
                     </div>
                 </div>
             </div>
@@ -333,7 +378,7 @@
             <div class="row">
                 <div class="col-6 p-3 border">
                     <div class="d-flex">
-                        <p class="offer-headings">Registration Fees: &nbsp; &nbsp;</p> <span>fdsdf</span>
+                        <p class="offer-headings">Registration Fees: &nbsp; &nbsp;</p> <span>{{number_format($unit->oqood_amount, 2)}}</span>
                     </div>
                 </div>
                 <div class="col-6 p-3 border">
@@ -341,7 +386,7 @@
                         <p class="offer-headings-ar">
                             مصاريف التسجيل
                         </p> 
-                        &nbsp;:&nbsp; <span>fdsa</span>
+                        &nbsp;:&nbsp; <span>{{number_format($unit->oqood_amount, 2)}}</span>
                     </div>
                 </div>
             </div>
@@ -349,7 +394,7 @@
             <div class="row mb-4">
                 <div class="col-6 p-3 border">
                     <div class="d-flex">
-                        <p class="offer-headings">First Payment (Deposit): &nbsp; &nbsp;</p> <span>fdsdf</span>
+                        <p class="offer-headings">First Payment (Deposit): &nbsp; &nbsp;</p> <span>AED {{ number_format($unit->unit_paymentplan->unit_paymentplan_files[0]->amount, 2)}}</span>
                     </div>
                 </div>
                 <div class="col-6 p-3 border">
@@ -357,7 +402,7 @@
                         <p class="offer-headings-ar">
                             الدفعة الأولى العربون  
                         </p> 
-                        &nbsp;:&nbsp; <span>fdsa</span>
+                        &nbsp;:&nbsp; <span>AED {{ number_format($unit->unit_paymentplan->unit_paymentplan_files[0]->amount, 2)}}</span>
                     </div>
                 </div>
             </div>
@@ -379,8 +424,7 @@
             </div> 
 
 
-
-            @foreach($unit->clienteles as $clients)
+            @foreach($booking->bookingclients as $clients)
 
                 <div class="row mt-5 mb-2 mx-2 d-flex justify-content-between w-full">
                     <div class="float-left my-auto">
@@ -397,7 +441,7 @@
                 <div class="row border">
                     <div class="col-6 p-3 ">
                         <div class="d-flex">
-                            <p class="offer-headings">Name: &nbsp; &nbsp;</p> <span>{{$clients->name}}</span>
+                            <p class="offer-headings">Name: &nbsp; &nbsp;</p> <span>{{$clients->client->name}}</span>
                         </div>
                     </div>
                     <div class="col-6 p-3">
@@ -406,34 +450,18 @@
                                 الاسم
                             </p> 
                             &nbsp;:&nbsp; <span>
-                                @if($clients->name_ar)
-                                    {{$clients->name_ar}}
+                                @if($clients->client->name_ar)
+                                    {{$clients->client->name_ar}}
                                 @else
-                                    {{$clients->name}}
+                                    {{$clients->client->name}}
                                 @endif
-                            </span>
-                        </div>
-                    </div>
-                
-                    <div class="col-6 p-3 ">
-                        <div class="d-flex">
-                            <p class="offer-headings">License No. (For Legal Entities): &nbsp; &nbsp;</p><span>fdsdf</span>
-                        </div>
-                    </div>
-                    <div class="col-6 p-3">
-                        <div class="d-flex" dir="rtl">
-                            <p class="offer-headings-ar">
-                                رقم الرخصة ان وجد
-                            </p> 
-                            &nbsp;:&nbsp; <span>
-                                
                             </span>
                         </div>
                     </div>
 
                     <div class="col-6 p-3 ">
                         <div class="d-flex">
-                            <p class="offer-headings">Country of Incorporation: &nbsp; &nbsp;</p> <span>{{$clients->country_of_residence}}</span>
+                            <p class="offer-headings">Country of Residence: &nbsp; &nbsp;</p> <span>{{$clients->client->country_of_residence}}</span>
                         </div>
                     </div>
                     <div class="col-6 p-3">
@@ -442,10 +470,10 @@
                                 بلد التأسيس
                             </p> 
                             &nbsp;:&nbsp; <span>
-                                @if($clients->country_of_residence_ar)
-                                    {{$clients->country_of_residence_ar}}
+                                @if($clients->client->country_of_residence_ar)
+                                    {{$clients->client->country_of_residence_ar}}
                                 @else
-                                    {{$clients->country_of_residence}}
+                                    {{$clients->client->country_of_residence}}
                                 @endif
                             </span>
                         </div>
@@ -453,7 +481,7 @@
 
                     <div class="col-6 p-3 ">
                         <div class="d-flex">
-                            <p class="offer-headings">Nationality: &nbsp; &nbsp;</p> <span>{{$clients->nationality}}</span>
+                            <p class="offer-headings">Nationality: &nbsp; &nbsp;</p> <span>{{$clients->client->nationality}}</span>
                         </div>
                     </div>
                     <div class="col-6 p-3">
@@ -462,10 +490,10 @@
                                 الجنسية
                             </p> 
                             &nbsp;:&nbsp; <span>
-                                @if($clients->nationality_ar)
-                                    {{$clients->nationality_ar}}
+                                @if($clients->client->nationality_ar)
+                                    {{$clients->client->nationality_ar}}
                                 @else
-                                    {{$clients->nationality}}
+                                    {{$clients->client->nationality}}
                                 @endif
                             </span>
                         </div>
@@ -473,7 +501,7 @@
 
                     <div class="col-6 p-3 ">
                         <div class="d-flex">
-                            <p class="offer-headings">Passport No.: &nbsp; &nbsp;</p> <span>{{$clients->passport}}</span>
+                            <p class="offer-headings">Passport No.: &nbsp; &nbsp;</p> <span>{{$clients->client->passport}}</span>
                         </div>
                     </div>
                     <div class="col-6 p-3">
@@ -482,10 +510,10 @@
                                 رقم الجواز
                             </p> 
                             &nbsp;:&nbsp; <span>
-                                @if($clients->passport)
-                                    {{$clients->passport}}
+                                @if($clients->client->passport)
+                                    {{$clients->client->passport}}
                                 @else
-                                    {{$clients->passport}}
+                                    {{$clients->client->passport}}
                                 @endif
                             </span>
                         </div>
@@ -493,7 +521,7 @@
 
                     <div class="col-6 p-3 ">
                         <div class="d-flex">
-                            <p class="offer-headings">Address: &nbsp; &nbsp;</p> <span>{{$clients->address1}}</span>
+                            <p class="offer-headings">Address: &nbsp; &nbsp;</p> <span>{{$clients->client->address1}}</span>
                         </div>
                     </div>
                     <div class="col-6 p-3">
@@ -502,10 +530,10 @@
                                 رقم صندوق البريد  
                             </p> 
                             &nbsp;:&nbsp; <span>
-                                @if($clients->address1)
-                                    {{$clients->address1}}
+                                @if($clients->client->address1)
+                                    {{$clients->client->address1}}
                                 @else
-                                    {{$clients->address1}}
+                                    {{$clients->client->address1}}
                                 @endif
                             </span>
                         </div>
@@ -513,7 +541,7 @@
 
                     <div class="col-6 p-3 ">
                         <div class="d-flex">
-                            <p class="offer-headings">Address: &nbsp; &nbsp;</p> <span>{{$clients->address2}}</span>
+                            <p class="offer-headings">Address: &nbsp; &nbsp;</p> <span>{{$clients->client->address2}}</span>
                         </div>
                     </div>
                     <div class="col-6 p-3">
@@ -522,10 +550,10 @@
                                 رقم صندوق البريد
                             </p> 
                             &nbsp;:&nbsp; <span>
-                                @if($clients->address2)
-                                    {{$clients->address2}}
+                                @if($clients->client->address2)
+                                    {{$clients->client->address2}}
                                 @else
-                                    {{$clients->address2}}
+                                    {{$clients->client->address2}}
                                 @endif
                             </span>
                         </div>
@@ -533,7 +561,7 @@
 
                     <div class="col-6 p-3 ">
                         <div class="d-flex">
-                            <p class="offer-headings">Contact 01: &nbsp; &nbsp;</p> <span>{{$clients->contact1}}</span>
+                            <p class="offer-headings">Contact 01: &nbsp; &nbsp;</p> <span>{{$clients->client->contact1}}</span>
                         </div>
                     </div>
                     <div class="col-6 p-3">
@@ -542,10 +570,10 @@
                                 اتصل بالرقم 01
                             </p> 
                             &nbsp;:&nbsp; <span>
-                                @if($clients->contact1)
-                                    {{$clients->contact1}}
+                                @if($clients->client->contact1)
+                                    {{$clients->client->contact1}}
                                 @else
-                                    {{$clients->contact1}}
+                                    {{$clients->client->contact1}}
                                 @endif
                             </span>
                         </div>
@@ -553,7 +581,7 @@
 
                     <div class="col-6 p-3 ">
                         <div class="d-flex">
-                            <p class="offer-headings">Contact 02: &nbsp; &nbsp;</p> <span>{{$clients->contact2}}</span>
+                            <p class="offer-headings">Contact 02: &nbsp; &nbsp;</p> <span>{{$clients->client->contact2}}</span>
                         </div>
                     </div>
                     <div class="col-6 p-3">
@@ -562,10 +590,10 @@
                                 اتصل بالرقم 02
                             </p> 
                             &nbsp;:&nbsp; <span>
-                                @if($clients->contact2)
-                                    {{$clients->contact2}}
+                                @if($clients->client->contact2)
+                                    {{$clients->client->contact2}}
                                 @else
-                                    {{$clients->contact2}}
+                                    {{$clients->client->contact2}}
                                 @endif
                             </span>
                         </div>
@@ -573,7 +601,7 @@
 
                     <div class="col-6 p-3 ">
                         <div class="d-flex">
-                            <p class="offer-headings">Contact 03: &nbsp; &nbsp;</p> <span>{{$clients->contact3}}</span>
+                            <p class="offer-headings">Contact 03: &nbsp; &nbsp;</p> <span>{{$clients->client->contact3}}</span>
                         </div>
                     </div>
                     <div class="col-6 p-3">
@@ -582,10 +610,10 @@
                                 اتصل بالرقم 03
                             </p> 
                             &nbsp;:&nbsp; <span>
-                                @if($clients->contact3)
-                                    {{$clients->contact3}}
+                                @if($clients->client->contact3)
+                                    {{$clients->client->contact3}}
                                 @else
-                                    {{$clients->contact3}}
+                                    {{$clients->client->contact3}}
                                 @endif
                             </span>
                         </div>
@@ -593,7 +621,7 @@
 
                     <div class="col-6 p-3 ">
                         <div class="d-flex">
-                            <p class="offer-headings">Email: &nbsp; &nbsp;</p> <span>{{$clients->email}}</span>
+                            <p class="offer-headings">Email: &nbsp; &nbsp;</p> <span>{{$clients->client->email}}</span>
                         </div>
                     </div>
                     <div class="col-6 p-3">
@@ -602,35 +630,15 @@
                                 الايميل
                             </p> 
                             &nbsp;:&nbsp; <span>
-                                @if($clients->email)
-                                    {{$clients->email}}
+                                @if($clients->client->email)
+                                    {{$clients->client->email}}
                                 @else
-                                    {{$clients->email}}
+                                    {{$clients->client->email}}
                                 @endif
                             </span>
                         </div>
                     </div>
 
-
-                    <div class="col-6 p-3 ">
-                        <div class="d-flex">
-                            <p class="offer-headings">Agency Name: &nbsp; &nbsp;</p> <span>fdsdf</span>
-                        </div>
-                    </div>
-                    <div class="col-6 p-3">
-                        <div class="d-flex" dir="rtl">
-                            <p class="offer-headings-ar">
-                                الوكالة العقارية
-                            </p> 
-                            &nbsp;:&nbsp; <span>
-                                @if($clients->agency)
-                                    {{$clients->agency}}
-                                @else
-                                    {{$clients->agency}}
-                                @endif
-                            </span>
-                        </div>
-                    </div>
                 </div>
             @endforeach
 
@@ -647,8 +655,9 @@
                     </div>
                 </div>
                 <div class="col-6 p-3 ">
-                    <div class="d-flex">
-                        <p class="booking-form-para">
+                    <div class="d-flex" dir="rtl">
+                        <p class="booking-form-para-ar">
+                            3.1 يوافق المشتري ويقر بأن العنوان وتفاصيل الاتصال الموضحة أعلاه تعتبر عنوان المشتري الرئيسي ومحل إقامته ويجب تضمينها في اتفاقية البيع والشراء الخاصة بالمشتري واستخدامها في جميع الاتصالات/المراسلات مع المشتري.
                         </p>
                     </div>
                 </div>
@@ -696,7 +705,6 @@
                 <table class="table table-bordered">
                     <tr>
                         <th>Serial No.<br>رقم القسط</th>
-                        <th>Installment Date <br>تاريخ القسط </th>
                         <th>Milestone<br>مرحلة الدفع</th>
                         <th>Payment Percentage<br>نسبة الدفع </th>
                         <th>Amount<br>المبلغ</th>
@@ -704,7 +712,6 @@
                     @foreach($unit->unit_paymentplan->unit_paymentplan_files as $payment_plan)
                         <tr>
                             <td>{{$loop->iteration}}</td>
-                            <td>{{ \Carbon\Carbon::parse($payment_plan->date)->format('j F, Y')  }}</td>
                             <td>{{$payment_plan->name}}</td>
                             <td>{{$payment_plan->percentage}} %</td>
                             <td>AED {{ number_format($payment_plan->amount) }}</td>
@@ -715,7 +722,6 @@
 
 
             <div class="row  my-4">
-
                 <div class="col-6 p-3 border">
                     <div class="d-flex">
                         <p class="booking-form-para">
@@ -1125,7 +1131,6 @@
 
 
 
-
             <div class="row mt-0 mx-2 d-flex justify-content-between w-full">
                 <div class="float-left my-auto">
                     <h4 class=" m-0 font-weight-bold">06 - The Agency Information</h4>
@@ -1134,19 +1139,19 @@
                     <h4 class=" m-0 font-weight-bold">06 - معلومات الوكيل العقاري</h4>
                 </div>
             </div> 
-            
+
             <div class="row my-4">
                 <div class="col-6 p-3 border">
                     <div class="d-flex my-4">
-                        <p class="booking-form-para">Are you being assisted by any of Vendor's registered agents: </p>
+                        <p class="booking-form-para">Are you being assisted by any of Vendor's registered agents: Yes </p>
 
                     </div>
                     <div class="d-flex my-4">
-                        <p class="booking-form-para">Agency Name: </p>
+                        <p class="booking-form-para">Agency Name: {{$booking->bookingbrokers[0]->broker->company_name}}</p>
 
                     </div>
                     <div class="d-flex my-4">
-                        <p class="booking-form-para">Agency Representative's Name: </p>
+                        <p class="booking-form-para">Agency Representative's Name: {{$booking->bookingbrokers[0]->broker->authorized_p_name}}</p>
 
                     </div>
                     <div class="d-flex my-4">
@@ -1194,7 +1199,6 @@
                     </div>
                 </div>
             </div>
-
 
             <div class="row my-5">
                 <div class="col-6 p-3 ">
