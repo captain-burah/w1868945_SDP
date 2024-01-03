@@ -16,6 +16,11 @@ class Broker extends Model
         return $this->hasMany(BrokerFile::class);
     }
 
+    public function broker_agents(): HasMany
+    {
+        return $this->hasMany(BrokerAgent::class);
+    }
+
     public function unit_broker(): HasOne
     {
         return $this->HasOne(UnitBroker::class);

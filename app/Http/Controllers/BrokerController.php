@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log; // send notifications via slack or any other
 use Illuminate\Support\Str;
 
 use App\Models\Broker;
+use App\Models\BrokerAgent;
 use Mail;
 use App\Mail\DemoEmail;
 use App\Mail\BrokerDenial;
@@ -106,5 +107,22 @@ class BrokerController extends Controller
 
     public function create() {
         return view('broker.create.index');
+    }
+
+
+    public function agent_create() {
+        $this->data['brokers'] = $brokers = Broker::all();
+        return view('broker.agent.create.index', $this->data);
+    }
+
+    public function agent_store(Request $request) {
+        $newSegment = new BrokerAgent();
+        $newSegment->name = $request->name;
+        $newSegment->contact1 = $request->contact1;
+        $newSegment->contact2 = $request->contact2;
+        $newSegment->email = $request->email;
+        $newSegment->broker_id = $request->broker_id;
+        $newSegment->save();
+        return $this->index();
     }
 }

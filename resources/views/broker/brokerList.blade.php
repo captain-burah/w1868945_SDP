@@ -30,6 +30,8 @@
 <div class="card w-100" style="min-height: 100vh">
     <div class="card-body">
         <h4 class="card-title">Brokers Table</h4>
+        <a class="btn btn-dark" href="{{ route('brokers.agent.create') }}">Add Agent</a>
+        <a class="btn btn-dark" href="{{ route('roles.index') }}">New Broker</a>
         <div class="table-responsive">
             <table class="table table-bordered border-dark mb-0">
 

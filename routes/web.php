@@ -286,6 +286,8 @@ Route::middleware('auth')->group(function () {
     Route::get('brokers-view/{id}', [BrokerController::class, 'show'])->name('brokers.show');
     Route::post('brokers/verification-denied', [BrokerController::class, 'verification_denied'])->name('brokers.verification.deny');
     Route::post('brokers/verification-accepted', [BrokerController::class, 'verification_accepted'])->name('brokers.verification.accept');
+    Route::get('brokers/agent-create', [BrokerController::class, 'agent_create'])->name('brokers.agent.create');
+    Route::post('brokers/agent-create', [BrokerController::class, 'agent_store'])->name('brokers.agent.store');
 /**BROKER */
 
 
