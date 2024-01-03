@@ -47,6 +47,7 @@
                         <th style="width: 150px;">Brochures</th>
                         <th style="width: 150px;">Floor Plans</th>
                         <th style="width: 150px;">Images</th>
+                        <th style="width: 150px;">Sales Offer</th>
                         {{-- <th>Action</th> --}}
                     </tr>
                 </thead>
@@ -379,17 +380,14 @@
                                 </td>
 
                                 {{-- ACTION --}}
-                                {{-- <td>
+                                <td>
                                     <div class="dropdown">
-                                        <button class="btn btn-sm btn-outline-light rounded dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="mdi mdi-dots-horizontal font-size-18"></i>
+                                        <button class="btn btn-sm btn-outline-light rounded" type="button">
+                                            <a class="dropdown-item" href="{{ route('units.sales.offer', ['id' => $value->id]) }}"><i class="bx bx-spreadsheet text-dark"></i> &nbsp; Print</a>
                                         </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="{{ route('units.show', ['unit' => $value->id]) }}"><i class="bx bx-spreadsheet text-dark"></i> &nbsp;View</a>
-                                            <a class="dropdown-item" href="{{ route('units.edit', ['unit' => $value->id]) }}"><i class="bx bx-edit text-dark"></i> &nbsp;Update</a>
-                                        </div>
+                                        
                                     </div>
-                                </td> --}}
+                                </td>
 
 
                             </tr>

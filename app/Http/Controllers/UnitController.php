@@ -803,4 +803,17 @@ class UnitController extends Controller
         return Redirect::back()->with(['msg' => 'Successfully connected']);
     }
 
+
+
+    public function sales_offer($id) {
+        $this->data['unit'] = $unit = Unit::with('unit_brochure', 'unit_image', 'unit_paymentplan', 'unit_floorplan', 'unit_status', 'unit_state', 'booking', 'project' )->find($id);
+        $this->data['unit_floorplan'] = $unit_floorplan = Unit_floorplan::with('unit_floorplan_files', 'unit')->where('unit_id', $unit->id)->get();
+        $this->data['unit_paymentplan'] = $unit_paymentplan = Unit_paymentplan::with('unit_paymentplan_files', 'unit')->where('unit_id', $unit->id)->get();
+        
+
+        // $pdf = PDF::loadView('booking.reservationAgreement', $this->data);
+        return view('unit.salesOffer.index', $this->data);
+        // return $pdf->setPaper('a4', 'portrait')->download('reservation-agreement.pdf');
+    }
+
 }
