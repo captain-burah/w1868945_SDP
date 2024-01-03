@@ -283,6 +283,9 @@ Route::middleware('auth')->group(function () {
 
 /**BROKER */
     Route::get('brokers', [BrokerController::class, 'index'])->name('brokers.index');
+    Route::get('agents', [BrokerController::class, 'agent_list'])->name('brokers.agent.list');
+    Route::get('brokers/agent-update/{id}', [BrokerController::class, 'agent_edit'])->name('brokers.agent.edit');
+    Route::post('brokers/agent-update', [BrokerController::class, 'agent_update'])->name('brokers.agent.update');
     Route::get('brokers-view/{id}', [BrokerController::class, 'show'])->name('brokers.show');
     Route::post('brokers/verification-denied', [BrokerController::class, 'verification_denied'])->name('brokers.verification.deny');
     Route::post('brokers/verification-accepted', [BrokerController::class, 'verification_accepted'])->name('brokers.verification.accept');

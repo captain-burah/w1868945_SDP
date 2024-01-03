@@ -90,7 +90,7 @@
                 @endcan
 
                 {{-- @can('agent-list') --}}
-                <a href="{{ route('brokers.index') }}" class="mr-5 my-auto">
+                <a href="{{ route('brokers.agent.list') }}" class="mr-5 my-auto">
                     <span class="text-white font-weight-bold  my-auto ">AGENTS</span>
                 </a>
                 {{-- @endcan --}}

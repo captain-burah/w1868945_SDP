@@ -75,13 +75,13 @@
                                     </label>
                                     <input
                                         type="text"
-                                        id="rera_license_number"
-                                        name="rera_license_number"
-                                        class="form-control @error('rera_license_number') border border-solid border-danger  @enderror"
+                                        id="rera_number"
+                                        name="rera_number"
+                                        class="form-control @error('rera_number') border border-solid border-danger  @enderror"
                                         placeholder="XXXXX"
-                                        value="{{ old('rera_license_number')}}"
+                                        value="{{ old('rera_number')}}"
                                     >
-                                    @error('rera_license_number')
+                                    @error('rera_number')
                                         <div class="text-danger font-size-10">{{ $message }}</div>
                                     @enderror
                                 </div>

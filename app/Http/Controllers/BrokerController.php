@@ -118,11 +118,35 @@ class BrokerController extends Controller
     public function agent_store(Request $request) {
         $newSegment = new BrokerAgent();
         $newSegment->name = $request->name;
+        $newSegment->rera_number = $request->rera_number;
         $newSegment->contact1 = $request->contact1;
         $newSegment->contact2 = $request->contact2;
         $newSegment->email = $request->email;
         $newSegment->broker_id = $request->broker_id;
         $newSegment->save();
         return $this->index();
+    }
+
+    public function agent_list() {
+        $this->data['resource'] = $resource = BrokerAgent::with('broker')->get();
+        return view('broker.agent.index', $this->data);   
+    }
+
+    public function agent_edit($id) {
+        $this->data['brokers'] = $brokers = Broker::all();
+        $this->data['agent'] = $agent = BrokerAgent::find($id);
+        return view('broker.agent.update.index', $this->data);
+    }
+
+    public function agent_update(Request $request) {
+        $oldSegment = BrokerAgent::find($request->agent_id);
+        $oldSegment->name = $request->name;
+        $oldSegment->rera_number = $request->rera_number;
+        $oldSegment->contact1 = $request->contact1;
+        $oldSegment->contact2 = $request->contact2;
+        $oldSegment->email = $request->email;
+        $oldSegment->broker_id = $request->broker_id;
+        $oldSegment->save();
+        return $this->agent_list();
     }
 }
