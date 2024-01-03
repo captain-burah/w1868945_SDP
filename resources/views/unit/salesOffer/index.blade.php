@@ -161,7 +161,7 @@
                     <div class="mt-4">
                         <p class="heading-p m-0 mt-3">Dear Customer,</p>
                         <p class="heading-p m-0 mt-1">
-                            Based on our recent discussions and understanding of your specific needs, the below listed projects have been catered.
+                            Thank you for your interest in Esnaad Properties. We are sending here our offer based on our discussion.
                         </p>
                     </div>
                 </div>
