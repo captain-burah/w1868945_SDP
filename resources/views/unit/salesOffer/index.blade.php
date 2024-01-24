@@ -214,7 +214,7 @@
                                 </td>
 
                                 <td style="width: 150px; border: 1.5px #000 solid !important;" class="text-center">
-                                    <span class="body-table-p">{{ number_format($unit->unit_size_range) }}</span>
+                                    <span class="body-table-p">{{$unit->unit_size_range }}</span>
                                 </td>
                                 <td style="width: 150px; border: 1.5px #000 solid !important;" class="text-center">
                                     <span class="body-table-p">{{ number_format($unit->unit_price) }}</span>
