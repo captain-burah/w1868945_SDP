@@ -22,7 +22,7 @@ class CreateAdminUserSeeder extends Seeder
         $user = User::create([
             'name' => 'Master Admin',
             'email' => 'webmaster@esnaad.com',
-            'password' => bcrypt('edge@1315')
+            'password' => bcrypt('edge@@2024/1315')
         ]);
 
         $user = User::create([
