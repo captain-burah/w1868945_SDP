@@ -416,12 +416,13 @@ class UnitController extends Controller
             $unit->save();
             
             $inputs = $request->all();
+            // dd($request);
             $unit_id = $unit->id;
             $unit_paymentplan = Unit_paymentplan::where('unit_id', $unit_id)->get();
-
-            if($unit_paymentplan == null){
+            if((!$request->group_a) && $unit_paymentplan == null){
+                dd('fdsa');
                 return redirect()->back()->with('error', 'No Payment Plan');
-            } else{
+            } elseif( ($request->group_a)){
                 $unit_paymentplan = Unit_paymentplan::where('unit_id', $unit_id)->get();
 
                 if(!$unit_paymentplan->isEmpty()){
@@ -448,12 +449,13 @@ class UnitController extends Controller
                         $payment_milestone->unit_paymentplan_id = $payment_id;
                         $payment_milestone->name = $data['milestone'];
                         $payment_milestone->percentage = $data['percentage'];
-                        $payment_milestone->amount = $data['amount'];
+                        $payment_milestone->amount `= $data['amount'];
                         $payment_milestone->date = Carbon::now();
                         $payment_milestone->save();
                     }
                 }
-            }
+            } 
+            // dd($request);
             
             $this->data['property_id'] = $unit->id;
 
