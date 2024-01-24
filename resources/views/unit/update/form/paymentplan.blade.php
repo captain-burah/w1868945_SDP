@@ -106,7 +106,6 @@
 </div>
 
 
-{{-- <input type="number" id="hiddenOutstandingBalance" value="0"> --}}
 
 <div class="row mt-4">
     <div class="card-body">

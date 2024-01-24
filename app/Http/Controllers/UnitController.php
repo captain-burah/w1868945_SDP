@@ -419,7 +419,7 @@ class UnitController extends Controller
             $unit_id = $unit->id;
             $unit_paymentplan = Unit_paymentplan::where('unit_id', $unit_id)->get();
 
-            if((!$inputs['group_a']) && $unit_paymentplan == null){
+            if($unit_paymentplan == null){
                 return redirect()->back()->with('error', 'No Payment Plan');
             } else{
                 $unit_paymentplan = Unit_paymentplan::where('unit_id', $unit_id)->get();

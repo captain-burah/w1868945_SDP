@@ -27,7 +27,7 @@ return new class extends Migration
             $table->integer('land_reg_fee')->nullable(true);
             $table->integer('oqood_amount')->nullable(true);
             $table->integer('dld_fees')->nullable(true);
-            $table->integer('bedroom')->nullable(true);
+            $table->string('bedroom')->nullable(true);
             $table->integer('bathroom')->nullable(true);
             $table->integer('floor')->nullable(true);
             $table->string('unit_price')->nullable(true);
