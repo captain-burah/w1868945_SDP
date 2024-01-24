@@ -449,7 +449,7 @@ class UnitController extends Controller
                         $payment_milestone->unit_paymentplan_id = $payment_id;
                         $payment_milestone->name = $data['milestone'];
                         $payment_milestone->percentage = $data['percentage'];
-                        $payment_milestone->amount `= $data['amount'];
+                        $payment_milestone->amount = $data['amount'];
                         $payment_milestone->date = Carbon::now();
                         $payment_milestone->save();
                     }
