@@ -11,11 +11,11 @@
                         </a>
                     </li>
 
-                    <li class="nav-item dropdown">
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link " href="{{ route('unit-brochures.index') }}" id="topnav-dashboard" aria-label="admin-dashboard" role="button">
                             <i class="bx bx-folder-open mr-2"></i>Brochures
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li class="nav-item dropdown">
                         <a class="nav-link " href="{{ route('unit-images.index') }}" id="topnav-dashboard" aria-label="admin-dashboard" role="button">

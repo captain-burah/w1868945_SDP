@@ -44,7 +44,6 @@
                         <th style="width: 150px;">Bedrooms</th>
                         <th style="width: 150px;">Bathrooms</th>
                         <th style="width: 150px;">Project Name</th>
-                        <th style="width: 150px;">Brochures</th>
                         <th style="width: 150px;">Floor Plans</th>
                         <th style="width: 150px;">Images</th>
                         <th style="width: 150px;">Sales Offer</th>
@@ -187,7 +186,7 @@
                                 {{-- PROJECT --}}
                                 <td class="text-left">
                                     <div class="dropdown">
-                                        <a class="dropdown-toggle my-auto @if($status != '2') disabled @endif" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"                                        >
+                                        <a class="dropdown-toggle my-auto" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"                                        >
                                             {{-- {{$value->project_id}} --}}
                                             @if($value->project != null)
                                                 @if($value->project->id == $value->project_id)
@@ -236,12 +235,6 @@
                                     </div>
                                 </td>
 
-                                {{-- BROCHURE --}}
-                                <td>
-                                    <div class="dropdown">
-                                        
-                                    </div>
-                                </td>
 
                                 {{-- FLOOR PLANS --}}
                                 <td>
@@ -300,7 +293,7 @@
                                 {{-- IMAGES --}}
                                 <td>
                                     <div class="dropdown">
-                                        <a class="dropdown-toggle my-auto @if($status != '2') disabled @endif" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <a class="dropdown-toggle my-auto " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             @if($value->unit_image != null)
                                                 @if($value->unit_image->unit_id == $value->id)
                                                     <i class="bx bx-check-circle text-success   " style="font-size: 18px"></i> {{ $value->unit_image->name }}
