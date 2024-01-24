@@ -346,7 +346,7 @@ class UnitController extends Controller
      */
     public function show(string $id)
     {
-        $this->data['results'] = $results = Unit::with('project', 'unit_brochure', 'unit_image', 'unit_paymentplan', 'unit_floorplan', 'unit_state', 'unit_status')->find($id);
+        $this->data['results'] = $results = Unit::with('project', 'unit_image', 'unit_paymentplan', 'unit_floorplan', 'unit_state', 'unit_status')->find($id);
         // $results = Unit::with("unit_state")->first();
 
         // dd($results);
@@ -770,8 +770,8 @@ class UnitController extends Controller
 
 
     public function sales_offer($id) {
-        $this->data['unit'] = $unit = Unit::with('unit_brochure', 'unit_image', 'unit_paymentplan', 'unit_floorplan', 'unit_status', 'unit_state', 'booking', 'project' )->find($id);
-        $this->data['unit_floorplan'] = $unit_floorplan = Unit_floorplan::with('unit_floorplan_files', 'unit')->where('unit_id', $unit->id)->get();
+        $this->data['unit'] = $unit = Unit::with('unit_floorplan', 'unit_image', 'unit_paymentplan', 'unit_floorplan', 'unit_status', 'unit_state', 'booking', 'project' )->find($id);
+        // dd($unit);
         $this->data['unit_paymentplan'] = $unit_paymentplan = Unit_paymentplan::with('unit_paymentplan_files', 'unit')->where('unit_id', $unit->id)->get();
         
 

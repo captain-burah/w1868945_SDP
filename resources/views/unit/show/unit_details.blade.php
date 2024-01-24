@@ -122,10 +122,9 @@
                     <td colspan="4">
                         <div class="row">
                                 @if($results->unit_floorplan != null)
-                                    @foreach($results->unit_floorplan->unit_floorplan_files as $data)  
-                                        <div class="col-3 p-2">
-                                            <iframe src="{{ url('storage/units/floorplans/'.$data->unit_floorplan->id.'/'.$data->name) }}" width="" height="400">
-                                            </iframe>
+                                    @foreach($results->unit_floorplan->unit_floorplan_files as $floorplan)
+                                        <div style="width: 100%; text-align: center;">
+                                            <img src="{{ asset('uploads/units/floorplans/'.$results->unit_floorplan->id.'/'.$floorplan->name)}}" class="mx-auto text-center" style="width: 80%; padding: 35px; margin-bottom: 10px; height: 100%; z-index: -19;">
                                         </div>
                                     @endforeach
                                 @endif

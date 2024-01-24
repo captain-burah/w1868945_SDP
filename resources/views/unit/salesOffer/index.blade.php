@@ -279,16 +279,15 @@
                     <div class="page-break-before pt-5 pb-4 ">
                         <p class="body-heading m-0">Floor Plans</p>
                     </div>
-
-                    @if(isset($unit_floorplan))
-                        @if($unit_floorplan[0]->unit_floorplan_files->count() > 0)
-                            @foreach($unit_floorplan[0]->unit_floorplan_files as $file)
+                    @if($unit->unit_floorplan != null)
+                        @foreach($unit->unit_floorplan->unit_floorplan_files as $floorplan)
                             <div style="width: 100%; text-align: center;">
-                                <img src="{{ asset('uploads/units/floorplans/'.$unit_floorplan[0]->id.'/'.$file->name)}}" class="mx-auto text-center" style="width: 80%; padding: 35px; margin-bottom: 10px; height: 100%; z-index: -19;">
+                                <img src="{{ asset('uploads/units/floorplans/'.$unit->unit_floorplan->id.'/'.$floorplan->name)}}" class="mx-auto text-center" style="width: 80%; padding: 35px; margin-bottom: 10px; height: 100%; z-index: -19;">
                             </div>
-                            @endforeach
-                        @endif
+                        @endforeach
                     @endif
+                    
+                    
 
                     
                 </div>
