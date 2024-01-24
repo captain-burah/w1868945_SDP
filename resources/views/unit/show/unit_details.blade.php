@@ -55,11 +55,8 @@
                 </tr>
 
                 <tr>
-                    <th>Outdoor Area</th>
-                    <td> {{ number_format($results->outdoor_area, 0)}} <b>sq.ft.</b></td>
-                    <td></td>
-                    <th>Terrace Area</th>
-                    <td> {{ number_format($results->terrace_area, 0)}} <b>sq.ft.</b></td>
+                    <th>Building Height</th>
+                    <td> {{ $results->building_height}} </td>
                 </tr>
 
                 <tr>

@@ -379,22 +379,22 @@ class UnitController extends Controller
     public function update(Request $request, string $id)
     {
         // dd($request);
-        $validatedData = $request->validate([
+        // $validatedData = $request->validate([
 
-            'unit_name' => ['required'],
+        //     'unit_name' => ['required'],
 
-            'dld_fees' => ['required'],
+        //     'dld_fees' => ['required'],
             
-            'admin_fees' => ['required'],
+        //     'admin_fees' => ['required'],
 
-            'unit_size' => ['required'],
+        //     'unit_size' => ['required'],
 
-            'price' => ['required'],
+        //     'price' => ['required'],
 
-            'bathrooms' => ['required'],
+        //     'bathrooms' => ['required'],
 
-            'bedrooms' => ['required'],
-        ]);
+        //     'bedrooms' => ['required'],
+        // ]);
 
         $bool=0;
 
@@ -414,6 +414,7 @@ class UnitController extends Controller
             $unit->slug_link = '0';
             $unit->status = '2';
             $unit->save();
+            
             $inputs = $request->all();
             $unit_id = $unit->id;
             $unit_paymentplan = Unit_paymentplan::where('unit_id', $unit_id)->get();
