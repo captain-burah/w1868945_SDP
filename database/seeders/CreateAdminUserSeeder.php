@@ -25,6 +25,12 @@ class CreateAdminUserSeeder extends Seeder
             'password' => bcrypt('edge@1315')
         ]);
 
+        $user = User::create([
+            'name' => 'Hasna A.',
+            'email' => 'hasna@esnaad.com',
+            'password' => bcrypt('hasna@2024/1315')
+        ]);
+
         $role = Role::create(['name' => 'Developer']);
 
         $permissions = Permission::pluck('id','id')->all();
