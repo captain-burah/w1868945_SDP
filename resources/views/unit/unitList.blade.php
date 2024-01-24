@@ -177,7 +177,7 @@
 
                                 <td>{{ number_format($value->unit_price, 1) }}</td>
 
-                                <td>{{ number_format($value->unit_size_range, 0) }}</td>
+                                <td>{{ $value->unit_size_range }}</td>
 
                                 <td>{{ $value->bedroom }}</td>
                                 
