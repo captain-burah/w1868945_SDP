@@ -140,54 +140,54 @@ class ProjectController extends Controller
         public function store(Request $request)
         {
 
-            $validatedData = $request->validate([
+            // $validatedData = $request->validate([
 
-                // 'property_release' => ['required'],
+            //     // 'property_release' => ['required'],
 
-                // 'community' => ['required'],
+            //     // 'community' => ['required'],
 
-                // 'category' => ['required'],
+            //     // 'category' => ['required'],
 
-                // 'emirates' => ['required'],
+            //     // 'emirates' => ['required'],
 
-                // 'location' => ['required'],
+            //     // 'location' => ['required'],
 
-                'longitude' => ['required'],
+            //     'longitude' => ['required'],
 
-                'latitude' => ['required'],
+            //     'latitude' => ['required'],
 
-                'title_en' => ['required'],
+            //     'title_en' => ['required'],
 
-                'ownership' => ['required'],
+            //     'ownership' => ['required'],
 
-                'handover' => ['required'],
+            //     'handover' => ['required'],
 
-                'price' => ['required'],
+            //     'price' => ['required'],
 
-                'units' => ['required'],
+            //     'units' => ['required'],
 
-                'bedrooms' => ['required'],
+            //     'bedrooms' => ['required'],
 
-                'bathrooms' => ['required'],
+            //     'bathrooms' => ['required'],
 
-                'floors' => ['required'],
+            //     'floors' => ['required'],
 
-                'area_range' => ['required'],
+            //     'area_range' => ['required'],
 
-                'outdoor_area_range' => ['required'],
+            //     'outdoor_area_range' => ['required'],
 
-                'terrace_area_range' => ['required'],
+            //     'terrace_area_range' => ['required'],
 
-                'meta_title' => ['required'],
+            //     'meta_title' => ['required'],
 
-                'meta_description' => ['required'],
+            //     'meta_description' => ['required'],
 
-                'meta_keywords' => ['required']
-            ]);
+            //     'meta_keywords' => ['required']
+            // ]);
 
             $bool=0;
 
-            // dd($request);
+            dd($request);
 
 
             if($bool==0)
@@ -195,6 +195,7 @@ class ProjectController extends Controller
                 $project = new Project();
                 $project->property_release_id = $request->property_release_id;
                 $project->community = $request->community;
+                $project->community_ar = $request->community_ar;
                 $project->category_id = $request->category;
                 $project->emirate_id = $request->emirates;
                 // $project->location_id = $request->location;
@@ -202,20 +203,35 @@ class ProjectController extends Controller
                 $project->latitude = $request->latitude;
 
                 $project->name = $request->title_en;
+                $project->name_ar = $request->title_ar;
+
                 $project->description = $request->description;
+                $project->description_ar = $request->description_ar;
 
                 $project->secOne_title = $request->secOne_title;
+                $project->secOne_title_ar = $request->secOne_title_ar;
+
                 $project->secOne_description = $request->secOne_description;
+                $project->secOne_description_ar = $request->secOne_description_ar;
 
                 $project->secTwo_title = $request->secTwo_title;
+                $project->secTwo_title_ar = $request->secTwo_title_ar;
+
                 $project->secTwo_description = $request->secTwo_description;
+                $project->secTwo_description_ar = $request->secTwo_description_ar;
+
                 $project->secTwo_amenities = $request->secTwo_amenities;
+                $project->secTwo_amenities_ar = $request->secTwo_amenities_ar;
 
                 $project->secThree_title = $request->secThree_title;
-                $project->secThree_description = $request->secThree_description;              
+                $project->secThree_title_ar = $request->secThree_title;
 
+                $project->secThree_description = $request->secThree_description;
+                $project->secThree_description_ar = $request->secThree_description_ar;
 
                 $project->ownership = $request->ownership;
+                $project->ownership_ar = $request->ownership_ar;
+
                 $project->handover = $request->handover;
                 $project->starting_price = $request->price;
                 $project->no_of_units = $request->units;
@@ -227,9 +243,14 @@ class ProjectController extends Controller
                 $project->terrace_area = $request->terrace_area_range;
 
 
-                $project->meta_title = $request->meta_title;
-                $project->meta_description = $request->meta_description;
-                $project->meta_keywords = $request->meta_keywords;
+                $project->meta_title = $request->meta_title_en;
+                $project->meta_description = $request->meta_description_en;
+                $project->meta_keywords = $request->meta_keywords_en;
+
+                $project->meta_title_ar = $request->meta_title_ar;
+                $project->meta_description_ar = $request->meta_description_ar;
+                $project->meta_keywords_ar = $request->meta_keywords_ar;
+
                 $project->slug_link = '0';
                 $project->status = '2';
                 $project->save();
@@ -315,53 +336,55 @@ class ProjectController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $validatedData = $request->validate([
+        // $validatedData = $request->validate([
 
-            // 'property_release' => ['required'],
+        //     // 'property_release' => ['required'],
 
-            // 'community' => ['required'],
+        //     // 'community' => ['required'],
 
-            // 'category' => ['required'],
+        //     // 'category' => ['required'],
 
-            // 'emirates' => ['required'],
+        //     // 'emirates' => ['required'],
 
-            // 'location' => ['required'],
+        //     // 'location' => ['required'],
 
-            'longitude' => ['required'],
+        //     'longitude' => ['required'],
 
-            'latitude' => ['required'],
+        //     'latitude' => ['required'],
 
-            'title_en' => ['required'],
+        //     'title_en' => ['required'],
 
 
-            'ownership' => ['required'],
+        //     'ownership' => ['required'],
 
-            'handover' => ['required'],
+        //     'handover' => ['required'],
 
-            'price' => ['required'],
+        //     'price' => ['required'],
 
-            'units' => ['required'],
+        //     'units' => ['required'],
 
-            'bedrooms' => ['required'],
+        //     'bedrooms' => ['required'],
 
-            'bathrooms' => ['required'],
+        //     'bathrooms' => ['required'],
 
-            'floors' => ['required'],
+        //     'floors' => ['required'],
 
-            'area_range' => ['required'],
+        //     'area_range' => ['required'],
 
-            'outdoor_area_range' => ['required'],
+        //     'outdoor_area_range' => ['required'],
 
-            'terrace_area_range' => ['required'],
+        //     'terrace_area_range' => ['required'],
 
-            'meta_title' => ['required'],
+        //     'meta_title' => ['required'],
 
-            'meta_description' => ['required'],
+        //     'meta_description' => ['required'],
 
-            'meta_keywords' => ['required']
-        ]);
+        //     'meta_keywords' => ['required']
+        // ]);
 
         $bool=0;
+
+        // dd($request);
 
 
 		if($bool==0)
@@ -371,6 +394,7 @@ class ProjectController extends Controller
                 $project = Project::find($id);
                 $project->property_release_id = $request->property_release;
                 $project->community = $request->community;
+                $project->community_ar = $request->community_ar;
                 $project->category_id = $request->category;
                 $project->emirate_id = $request->emirates;
                 $project->location_id = $request->location;
@@ -378,19 +402,35 @@ class ProjectController extends Controller
                 $project->latitude = $request->latitude;
                 
                 $project->name = $request->title_en;
+                $project->name_ar = $request->title_ar;
+
                 $project->description = $request->description;
+                $project->description_ar = $request->description_ar;
 
                 $project->secOne_title = $request->secOne_title;
-                $project->secOne_description = $request->secOne_description;
+                $project->secOne_title_ar = $request->secOne_title_ar;
+
+                $project->SecOne_description = $request->secOne_description;
+                $project->SecOne_description_ar = $request->secOne_description_ar;
 
                 $project->secTwo_title = $request->secTwo_title;
-                $project->secTwo_description = $request->secTwo_description;
-                $project->secTwo_amenities = $request->secTwo_amenities;
+                $project->secTwo_title_ar = $request->secTwo_title_ar;
+
+                $project->SecTwo_description = $request->secTwo_description;
+                $project->SecTwo_description_ar = $request->secTwo_description_ar;
+
+                $project->SecTwo_amenities = $request->secTwo_amenities;
+                $project->SecTwo_amenities_ar = $request->secTwo_amenities_ar;
 
                 $project->secThree_title = $request->secThree_title;
-                $project->secThree_description = $request->secThree_description;
+                $project->secThree_title_ar = $request->secThree_title_ar;
+
+                $project->SecThree_description = $request->secThree_description;
+                $project->SecThree_description_ar = $request->secThree_description_ar;
 
                 $project->ownership = $request->ownership;
+                $project->ownership_ar = $request->ownership_ar;
+
                 $project->handover = $request->handover;
                 $project->starting_price = $request->price;
                 $project->no_of_units = $request->units;
@@ -400,9 +440,16 @@ class ProjectController extends Controller
                 $project->unit_size_range = $request->area_range;
                 $project->outdoor_area = $request->outdoor_area_range;
                 $project->terrace_area = $request->terrace_area_range;
-                $project->meta_title = $request->meta_title;
-                $project->meta_description = $request->meta_description;
-                $project->meta_keywords = $request->meta_keywords;
+
+
+                $project->meta_title = $request->meta_title_en;
+                $project->meta_description = $request->meta_description_en;
+                $project->meta_keywords = $request->meta_keywords_en;
+
+                $project->meta_title_ar = $request->meta_title_ar;
+                $project->meta_description_ar = $request->meta_description_ar;
+                $project->meta_keywords_ar = $request->meta_keywords_ar;
+
                 $project->slug_link = '0';
                 $project->status = '2';
                 $project->save();

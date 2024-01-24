@@ -23,20 +23,39 @@ return new class extends Migration
             $table->unsignedBigInteger('property_release_id')->nullable(true);
 
             $table->string('slug_link')->nullable(true);
+
             $table->string('name')->nullable(true);
+            $table->string('name_ar')->nullable(true);
+
             $table->string('description')->nullable(true);
+            $table->string('description_ar')->nullable(true);
 
             $table->longText('secOne_title')->nullable(true);
+            $table->longText('secOne_title_ar')->nullable(true);
+
             $table->longText('secTwo_title')->nullable(true);
+            $table->longText('secTwo_title_ar')->nullable(true);
+
             $table->longText('secThree_title')->nullable(true);
+            $table->longText('secThree_title_ar')->nullable(true);
 
             $table->longText('SecOne_description')->nullable(true);
+            $table->longText('SecOne_description_ar')->nullable(true);
+
             $table->longText('SecTwo_description')->nullable(true);
+            $table->longText('SecTwo_description_ar')->nullable(true);
+
             $table->longText('SecTwo_amenities')->nullable(true);
+            $table->longText('SecTwo_amenities_ar')->nullable(true);
+
             $table->longText('SecThree_description')->nullable(true);
+            $table->longText('SecThree_description_ar')->nullable(true);
+
 
             $table->string('community')->nullable(true);
+            $table->string('community_ar')->nullable(true);
             $table->string('ownership')->nullable(true);
+            $table->string('ownership_ar')->nullable(true);
             $table->string('handover')->nullable(true);
             $table->string('starting_price')->nullable(true);
 
@@ -44,10 +63,15 @@ return new class extends Migration
             $table->string('meta_description')->nullable(true);
             $table->string('meta_keywords')->nullable(true);
 
+            $table->string('meta_title_ar')->nullable(true);
+            $table->string('meta_description_ar')->nullable(true);
+            $table->string('meta_keywords_ar')->nullable(true);
+
             $table->string('latitude')->nullable(true);
             $table->string('longitude')->nullable(true);
 
             $table->integer('no_of_units')->nullable(true);
+            $table->string('building_height')->nullable(true);
             $table->string('bedrooms')->nullable(true);
             $table->string('bathrooms')->nullable(true);
             $table->string('floors')->nullable(true);

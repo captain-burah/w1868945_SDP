@@ -51,7 +51,7 @@
                 <thead>
                     <tr class="bg-dark text-white">
                         <th>#</th>
-                        <th>Unit Connected</th>
+                        <th>Units Connected</th>
                         <th>Segment Name</th>
                         <th>Number of Files</th>
                         <th>Action</th>
@@ -64,20 +64,11 @@
                                 <td scope="row">{{ $data->id }}</td>
                                 <td>
                                     <div class="dropdown">
-                                        <a class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            @if($data->unit_id == null)
-                                                <i class="bx bx-no-entry text-danger" style="font-size: 20px"></i>
-                                            @else
-                                                <i class="bx bx-check-shield text-success" style="font-size: 20px"></i>
+                                        @foreach($units as $unit)
+                                            @if($unit->unit_floorplan_id == $data->id)
+                                                <span>{{$unit->name}}, </span>
                                             @endif
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            @if($data->unit_id != null)
-                                                <a class="dropdown-item" style="cursor: pointer;" href="{{ url('unit-floorplan/disconnect/'.$data->id)  }}"><i class="bx bx-cloud-download"></i> &nbsp; Disconnect from Unit</a>
-                                            @else
-                                                <a class="dropdown-item" style="cursor: pointer;" data-toggle="modal" data-target="#project-connect-{{$data->id}}"><i class="bx bx-check-shield "></i> &nbsp; Connect To Unit</a>
-                                            @endif
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </td>
 

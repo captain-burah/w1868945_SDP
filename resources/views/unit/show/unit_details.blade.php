@@ -20,7 +20,7 @@
             <table class="table table-bordered">
                 <tr>
                     <th>Unit Status</th>
-                    <td colspan="4">{{ $results->unit_state->name }}</td>
+                    <td colspan="4">{{ $results->unit_status->name }}</td>
                 </tr>
                 <tr>
                     <th>Unit Ref</th>

@@ -55,7 +55,7 @@
                     @error('secOne_description')
                         <div class="text-danger text-xs" >{{ $message }}</div>
                     @enderror
-                    <textarea name="secOne_description" id="secOne_description" class="form-control w-100" rows="5">{{ $project->secOne_description }}</textarea>
+                    <textarea name="secOne_description" id="secOne_description" class="form-control w-100" rows="5">{{ $project->SecOne_description }}</textarea>
                 </div>
             </div>
         </div>
@@ -97,7 +97,7 @@
                     @error('secTwo_description')
                         <div class="text-danger text-xs" >{{ $message }}</div>
                     @enderror
-                    <textarea name="secTwo_description" id="secTwo_description" class="form-control w-100" rows="5">{{ $project->secTwo_description  }}</textarea>
+                    <textarea name="secTwo_description" id="secTwo_description" class="form-control w-100" rows="5">{{ $project->SecTwo_description  }}</textarea>
                 </div>
             </div>
         </div>
@@ -113,7 +113,7 @@
                     @error('secTwo_amenities')
                         <div class="text-danger text-xs" >{{ $message }}</div>
                     @enderror
-                    <textarea name="secTwo_amenities" id="secTwo_amenities" class="form-control w-100 textareablock" rows="5">{{ $project->secTwo_amenities  }}</textarea>
+                    <textarea name="secTwo_amenities" id="secTwo_amenities" class="form-control w-100 textareablock" rows="5">{{ $project->SecTwo_amenities  }}</textarea>
                 </div>
             </div>
         </div>
@@ -157,7 +157,7 @@
                     @error('secThree_description')
                         <div class="text-danger text-xs" >{{ $message }}</div>
                     @enderror
-                    <textarea name="secThree_description" id="secThree_description" class="form-control w-100" rows="5">{{ $project->secThree_description  }}</textarea>
+                    <textarea name="secThree_description" id="secThree_description" class="form-control w-100" rows="5">{{ $project->SecThree_description  }}</textarea>
                 </div>
             </div>
         </div>

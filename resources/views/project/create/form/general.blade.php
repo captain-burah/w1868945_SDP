@@ -54,12 +54,23 @@
 </div>
 
 {{-- <hr class="my-5 "> --}}
-
 <div class="row mt-5">
     <div class="col-md-6">
         <div data-select2-id="15">
             <label class="form-label">Community Name</label>
-            <select
+            <input
+                type="text"
+                name="community"
+                class="form-control
+                @error('community') border border-solid border-danger  @enderror"
+                id="community"
+                placeholder="eg: Al Barari"
+                value="{{ old('community') }}"
+            >
+            @error('community')
+                <div class="text-danger text-xs">{{ $message }}</div>
+            @enderror
+            {{-- <select
                 class="form-control select2-search-disable select2-hidden-accessible
                 @error('community') border border-solid border-danger  @enderror"
                 data-select2-id="basicpill-status-input"
@@ -76,12 +87,33 @@
             </select>
             @error('community')
                 <div class="text-danger text-xs">{{ $message }}</div>
-            @enderror
+            @enderror --}}
 
         </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6" dir="rtl">
+        <div data-select2-id="15">
+            <label class="form-label">Community Name Ar</label>
+            <input
+                type="text"
+                name="community_ar"
+                class="form-control
+                @error('community_ar') border border-solid border-danger  @enderror"
+                id="community_ar"
+                placeholder="eg: Al Barari"
+                value="{{ old('community_ar') }}"
+            >
+            @error('community_ar')
+                <div class="text-danger text-xs">{{ $message }}</div>
+            @enderror
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+
+    <div class="col-md-12">
         <div data-select2-id="15">
             <label class="form-label">Category</label>
 
@@ -168,6 +200,26 @@
 
 
 <div class="row mt-5">
+    
+    <div class="col-md-6">
+        <div data-select2-id="15">
+            <label class="form-label">Latitude</label>
+            <input
+                type="text"
+                name="latitude"
+                class="form-control
+                @error('latitude') border border-solid border-danger  @enderror"
+                id="latitude"
+                placeholder="eg: 24.**"
+                value="{{ old('latitude') }}"
+            >
+            @error('latitude')
+                <div class="text-danger text-xs">{{ $message }}</div>
+            @enderror
+
+        </div>
+    </div>
+
     <div class="col-md-6">
         <div data-select2-id="15">
             <label class="form-label">Longitude</label>
@@ -187,22 +239,4 @@
         </div>
     </div>
 
-    <div class="col-md-6">
-        <div data-select2-id="15">
-            <label class="form-label">Latitude</label>
-            <input
-                type="text"
-                name="latitude"
-                class="form-control
-                @error('latitude') border border-solid border-danger  @enderror"
-                id="latitude"
-                placeholder="eg: 24.**"
-                value="{{ old('latitude') }}"
-            >
-            @error('latitude')
-                <div class="text-danger text-xs">{{ $message }}</div>
-            @enderror
-
-        </div>
-    </div>
 </div>

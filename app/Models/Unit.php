@@ -28,9 +28,9 @@ class Unit extends Model
         return $this->hasOne(Unit_paymentplan::class);
     }
         
-    public function unit_floorplan(): HasOne
+    public function unit_floorplan(): BelongsTo
     {
-        return $this->hasOne(Unit_floorplan::class);
+        return $this->BelongsTo(Unit_floorplan::class, 'unit_floorplan_id', 'id');
     }
 
     public function unit_status(): BelongsTo

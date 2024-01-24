@@ -1,10 +1,8 @@
-
-
 <div class="row">
 
-    <div class="col-md-12">
+    <div class="col-md-6">
         <div class="mb-3">
-            <label for="basicpill-title-input">Title &#40;<span id="property_title_chars">60</span> characters remaining &#41;</label>
+            <label for="basicpill-title-input">Title EN &#40;<span id="property_title_chars">60</span> characters remaining &#41;</label>
             <input
                 type="text"
                 name="title_en"
@@ -14,7 +12,24 @@
 
                 class="form-control
                 @error('title_en') border border-solid border-danger  @enderror"
-                value="{{ $project->name }}"
+                value="{{ $project->name}}"
+            >
+        </div>
+    </div>
+
+    <div class="col-md-6" dir="rtl">
+        <div class="mb-3">
+            <label class="w-100 text-right" for="basicpill-title-input">Title AR &#40;<span id="property_title_chars">60</span> characters remaining &#41;</label>
+            <input
+                type="text"
+                name="title_ar"
+                placeholder="Trillionair Residence"
+                id="property_title"
+                maxlength="60"
+
+                class="form-control
+                @error('title_ar') border border-solid border-danger  @enderror"
+                value="{{ $project->name_ar }}"
             >
         </div>
     </div>
@@ -22,18 +37,19 @@
 </div>
 
 
+
 <div class="row mt-5">
 
-    <div class="col-md-12">
+    <div class="col-md-6">
         <div class="mb-3">
-            <label for="ownership">Project Ownership</label>
+            <label for="ownership">Project Ownership EN</label>
             <input
                 type="text"
                 name="ownership"
                 class="form-control
                 @error('ownership') border border-solid border-danger  @enderror"
                 id="basicpill-ownership-input"
-                placeholder="Freehold / Leasehold / Fractional"
+                placeholder="Freehold / Leasehold "
                 value="{{ $project->ownership }}"
             >
             @error('ownership')
@@ -42,9 +58,27 @@
         </div>
     </div>
 
+    <div class="col-md-6" dir="rtl">
+        <div class="mb-3">
+            <label class="w-100 text-rig" for="ownership_ar">Project Ownership AR</label>
+            <input
+                type="text"
+                name="ownership_ar"
+                class="form-control
+                @error('ownership_ar') border border-solid border-danger  @enderror"
+                id="basicpill-ownership-input"
+                placeholder="التملك الحر / الإيجار"
+                value="{{ $project->ownership_ar }}"
+            >
+            @error('ownership_ar')
+                <div class="text-danger text-xs">{{ $message }}</div>
+            @enderror
+        </div>
+    </div>
+
 </div>
 
-{{-- <hr class="my-5 "> --}}
+
 
 <div class="row mt-5">
     <div class="col-md-12">
@@ -67,7 +101,6 @@
     </div>
 
 </div>
-
 
 
 <div class="row mt-5">
@@ -142,26 +175,7 @@
 
     <div class="col-md-3">
         <div class="mb-3">
-            <label for="floors">Floors <span></span></label>
-            <input
-                type="number"
-                name="floors"
-                class="form-control
-                @error('floors') border border-solid border-danger  @enderror"
-                id="floors"
-                placeholder="50"
-                value="{{$project->floors}}"
-            >
-            <span class="text-muted font-size-10"><strike>Sq.Ft.</strike> &nbsp; Do not enter any units, whitespaces or number formats</span>
-            @error('floors')
-                <div class="text-danger text-xs">{{ $message }}</div>
-            @enderror
-        </div>
-    </div>
-
-    <div class="col-md-3">
-        <div class="mb-3">
-            <label for="bedrooms">Bedroom <span></span></label>
+            <label for="bedrooms">Type of Units <span></span></label>
             <input
                 type="text"
                 name="bedrooms"
@@ -180,22 +194,43 @@
 
     <div class="col-md-3">
         <div class="mb-3">
-            <label for="bathrooms">Bathroom <span></span></label>
+            <label for="building_height">Building Height <span></span></label>
             <input
                 type="text"
-                name="bathrooms"
+                name="building_height"
                 class="form-control
-                @error('bathrooms') border border-solid border-danger  @enderror"
-                id="bathrooms"
-                placeholder="1, 2, 3, 4"
-                value="{{$project->bathrooms}}"
+                @error('building_height') border border-solid border-danger  @enderror"
+                id="building_height"
+                placeholder="eg: 500 ft"
+                value="{{ $project->building_height }}"
             >
-            <span class="text-muted font-size-10">You can enter any units, whitespaces or number formats</span>
-            @error('bathrooms')
+            @error('building_height')
                 <div class="text-danger text-xs">{{ $message }}</div>
             @enderror
         </div>
     </div>
+
+    <div class="col-md-3">
+        <div class="mb-3">
+            <label for="floors">Floors <span></span></label>
+            <input
+                type="number"
+                name="floors"
+                class="form-control
+                @error('floors') border border-solid border-danger  @enderror"
+                id="floors"
+                placeholder="50"
+                value="{{$project->floors}}"
+            >
+            <span class="text-muted font-size-10"><strike>Sq.Ft.</strike> &nbsp; Do not enter any units, whitespaces or number formats</span>
+            @error('floors')
+                <div class="text-danger text-xs">{{ $message }}</div>
+            @enderror
+        </div>
+    </div>
+
+    
+
 
 
 
@@ -207,64 +242,3 @@
 {{-- <hr class="my-5 "> --}}
 
 
-
-<div class="row mt-5    ">
-
-    <div class="col-md-3">
-        <div class="mb-3">
-            <label for="area_range">Unit Area Range (Sq.Ft)<span></span></label>
-            <input
-                type="text"
-                name="area_range"
-                class="form-control
-                @error('area_range') border border-solid border-danger  @enderror"
-                id="area_range"
-                placeholder="1,200 - 1,500"
-                value="{{$project->unit_size_range}}"
-            >
-            <span class="text-muted font-size-10"> Do not enter UNITS</span>
-            @error('area_range')
-                <div class="text-danger text-xs">{{ $message }}</div>
-            @enderror
-        </div>
-    </div>
-
-    <div class="col-md-3">
-        <div class="mb-3">
-            <label for="outdoor_area_range">Outdoor Area (Sq.Ft)<span></span></label>
-            <input
-                type="text"
-                name="outdoor_area_range"
-                class="form-control
-                @error('outdoor_area_range') border border-solid border-danger  @enderror"
-                id="outdoor_area_range"
-                placeholder="5,200 - 7,500"
-                value="{{$project->outdoor_area}}"
-            >
-            <span class="text-muted font-size-10"> Do not enter UNITS</span>
-            @error('outdoor_area_range')
-                <div class="text-danger text-xs">{{ $message }}</div>
-            @enderror
-        </div>
-    </div>
-
-    <div class="col-md-3">
-        <div class="mb-3">
-            <label for="terrace_area_range">Terrace Area (Sq.Ft)<span></span></label>
-            <input
-                type="text"
-                name="terrace_area_range"
-                class="form-control
-                @error('terrace_area_range') border border-solid border-danger  @enderror"
-                id="terrace_area_range"
-                placeholder="3,200 - 5,500"
-                value="{{$project->terrace_area}}"
-            >
-            <span class="text-muted font-size-10"><strike>Sq.Ft.</strike> &nbsp; Do not enter UNITS</span>
-            @error('terrace_area_range')
-                <div class="text-danger text-xs">{{ $message }}</div>
-            @enderror
-        </div>
-    </div>
-
-</div>

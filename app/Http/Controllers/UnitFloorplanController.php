@@ -18,17 +18,19 @@ class UnitFloorplanController extends Controller
     private $uploadPath = "uploads/units/floorplans/";
     
 
-
     public function index()
     {
         $brochures = Unit_floorplan::with('unit_floorplan_files')->get();
 
         $this->data['results'] = $brochures;
-        $this->data['units'] = Unit::select(['id', 'name', 'status'])->where('status', '1')->get();
+        
+        $this->data['units'] = $unit = Unit::with('unit_floorplan')->select(['id', 'name', 'status', 'unit_floorplan_id'])->where('status', '1')->get();
+
+        $floorplan = Unit_floorplan::with('units')->find(1);
+
+        // dd($unit[0]);
+
         $this->data['count_status'] = Unit_floorplan::count();
-
-        // dd($brochures[0]->unit_floorplan_files);
-
 
         return view('unit.floorplan.index', $this->data);
     }

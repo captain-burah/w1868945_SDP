@@ -22,7 +22,7 @@
 
 
 
-<div class="row mt-4">
+{{-- <div class="row mt-4">
 
     <div class="col-md-12">
         <div class="mb-3">
@@ -40,7 +40,7 @@
         </div>
     </div>
 
-</div>
+</div> --}}
 
 
 
@@ -49,7 +49,7 @@
 
     <div class="col-md-12">
         <div class="mb-3">
-            <label for="basicpill-title-input">Unit Size <span class="text-muted">&#40;use number formatting&#41;</span></label>
+            <label for="basicpill-title-input">Unit Size <span class="text-muted">&#40;ex: &nbsp; 5,500.00 Sq.Ft. &#41;</span></label>
             <input
                 type="text"
                 name="unit_size"

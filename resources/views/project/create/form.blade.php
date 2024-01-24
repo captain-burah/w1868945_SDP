@@ -34,6 +34,10 @@
                 </li>
 
                 <li class="nav-item" role="presentation">
+                    <button style="width: auto" class="nav-link" id="description-tab" data-toggle="tab" data-target="#description_ar" type="button" role="tab" aria-controls="contact" aria-selected="false">Description Arabic</button>
+                </li>
+
+                <li class="nav-item" role="presentation">
                     <button style="width: auto" class="nav-link" id="location-tab" data-toggle="tab" data-target="#seo" type="button" role="tab" aria-controls="contact" aria-selected="false">SEO</button>
                 </li>
             </ul>
@@ -49,6 +53,10 @@
 
                 <div class="tab-pane fade p-4" id="description" role="tabpanel" aria-labelledby="description-tab">
                     @include('project.create.form.description')
+                </div>
+
+                <div class="tab-pane fade p-4" id="description_ar" role="tabpanel" aria-labelledby="description-tab">
+                    @include('project.create.form.description_ar')
                 </div>
 
                 <div class="tab-pane fade p-4" id="seo" role="tabpanel" aria-labelledby="seo-tab">

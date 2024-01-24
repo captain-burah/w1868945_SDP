@@ -16,8 +16,13 @@ class Unit_floorplan extends Model
         return $this->hasMany(UnitFloorplanFile::class);
     }
 
-    public function unit(): BelongsTo
+    // public function unit(): BelongsTo
+    // {
+    //     return $this->belongsTo(Unit::class);
+    // }
+
+    public function units(): HasMany
     {
-        return $this->belongsTo(Unit::class);
+        return $this->hasMany(Unit::class);
     }
 }

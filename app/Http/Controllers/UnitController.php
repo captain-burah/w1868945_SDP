@@ -10,11 +10,15 @@ use App\Models\Unit_brochure;
 use App\Models\Unit_floorplan;
 use App\Models\Unit_paymentplan;
 use App\Models\UnitPaymentplanFile;
+use App\Models\UnitBrochireFile;
+use App\Models\UnitFloorplanFile;
+use App\Models\UnitImageFile;
 use App\Models\Unit_image;
 use App\Models\UnitPaymentPlanController;
 use App\Models\UnitFloorPlanController;
 use App\Models\Language;
 use Carbon\Carbon;
+use File;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Log; // send notifications via slack or any other means
@@ -31,6 +35,7 @@ class UnitController extends Controller
     // }
 
 
+    private $uploadPath = "uploads/units/images/";
 
     /**
      * OVERALL PROJECTS
@@ -38,7 +43,7 @@ class UnitController extends Controller
 
     public function index()
     {
-        $units = Unit::with('project')->with('unit_brochure')->where('status', '1')->orderBY('id', 'Desc');
+        $units = Unit::with('project')->where('status', '1')->orderBY('id', 'Desc');
 
         $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'Desc')->count();
         $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'Desc')->count();
@@ -300,7 +305,7 @@ class UnitController extends Controller
             $unit->unit_size_range = $request->area_range;
             $unit->outdoor_area = $request->outdoor_area_range;
             $unit->slug_link = '0';
-            $unit->status = '2';
+            $unit->status = '1';
             $unit->save();
 
             $payment = new Unit_paymentplan();
@@ -359,9 +364,9 @@ class UnitController extends Controller
     {
         $this->data['projects'] = $projects = Project::select(['id', 'name'])->where('status', '2')->orWhere('status', '1')->get();
         $this->data['unit'] = $unit = Unit::with('unit_paymentplan')->find($id);
-        if($unit->status == '1'){
-            return Redirect::back()->withErrors('Sorry! You cannot edit Active units. Please transfer the unit into "Drafts" to proceed.');
-        }
+        // if($unit->status == '1'){
+        //     return Redirect::back()->withErrors('Sorry! You cannot edit Active units. Please transfer the unit into "Drafts" to proceed.');
+        // }
         // dd($unit->unit_paymentplan->unit_paymentplan_files[0]->);
 
         // dd($unit);
@@ -378,119 +383,83 @@ class UnitController extends Controller
 
             'unit_name' => ['required'],
 
-            'description' => ['required'],
+            'dld_fees' => ['required'],
+            
+            'admin_fees' => ['required'],
 
             'unit_size' => ['required'],
 
             'price' => ['required'],
 
-            'oqood' => ['required'],
-
-            'dld_fees' => ['required'],
-
             'bathrooms' => ['required'],
 
             'bedrooms' => ['required'],
-
-            'area_range' => ['required'],
-
-            'floor' => ['required'],
-
-            'outdoor_area_range' => ['required'],
-
-            'terrace_area_range' => ['required'],
-
-            'meta_title' => ['required'],
-
-            'meta_description' => ['required'],
-
-            'meta_keywords' => ['required']
         ]);
 
         $bool=0;
 
-		if($bool==0)
+        if($bool==0)
 		{
-            /**
-             * UPDATE THE UNIT
-             */
             $unit = Unit::find($id);
             $unit->project_id = $request->project;
             $unit->name = $request->unit_name;
-            $unit->building_name = $request->building_name;
-            $unit->description = $request->description;
             $unit->unit_price = $request->price;
-            $unit->land_reg_fee = $request->land_reg_fee;
-            $unit->oqood_amount = $request->oqood;
+            $unit->oqood_amount = $request->admin_fees;
             $unit->dld_fees = $request->dld_fees;
             $unit->bedroom = $request->bedrooms;
             $unit->bathroom = $request->bathrooms;
             $unit->floor = $request->floor;
             $unit->unit_size_range = $request->area_range;
             $unit->outdoor_area = $request->outdoor_area_range;
-            $unit->terrace_area = $request->terrace_area_range;
-            $unit->meta_title = $request->meta_title;
-            $unit->meta_description = $request->meta_description;
-            $unit->meta_keywords = $request->meta_keywords;
             $unit->slug_link = '0';
             $unit->status = '2';
             $unit->save();
+            $inputs = $request->all();
+            $unit_id = $unit->id;
+            $unit_paymentplan = Unit_paymentplan::where('unit_id', $unit_id)->get();
 
-            // dd($request->paymentplan_id);
-            if($request->paymentplan_id == null) {
+            if((!$inputs['group_a']) && $unit_paymentplan == null){
+                return redirect()->back()->with('error', 'No Payment Plan');
+            } else{
+                $unit_paymentplan = Unit_paymentplan::where('unit_id', $unit_id)->get();
+
+                if(!$unit_paymentplan->isEmpty()){
+                    $old_milestones = UnitPaymentplanFile::where('unit_paymentplan_id', $unit_paymentplan[0]->id)->get();
+                    foreach($old_milestones as $milestones){
+                        $milestones->delete();
+                    }
+                    foreach($unit_paymentplan as $pay){
+                        $pay->delete();
+                    };
+                }
+                
+
+                // dd($unit_paymentplan);
                 $payment = new Unit_paymentplan();
-                $payment->unit_id = $unit->id;
-                $payment->name = $request->unit_name;
-                $payment->save();    
-            } else {
-                /**FETCH THE EXISTING PAYMENT PLAN AND UPDATE IT*/
-                $payment = Unit_paymentplan::with('unit_paymentplan_files')->find($request->paymentplan_id);
-                $payment->unit_id = $id;
+                $payment->unit_id = $unit_id;
                 $payment->name = $request->unit_name;
                 $payment->save();
-            }            
+                $payment_id = $payment->id;
 
-
-            /**GET ALL THE INPUTS INTO AN ARRAY
-             * BCZ WE CANNOT LOOP THROUGH INPUT
-             * NAMES WITH HYPHEN */
-            $inputs = $request->all();
-
-
-            /**
-             * NOW, WE DELETE ALL THE PAYMENT
-             * MILESTONES IN DATABASE SO WE
-             * WE CAN REMOVE ANY DELETED MILESTONES
-             * BY THE USER
-             */
-            foreach($payment->unit_paymentplan_files as $old_milestones) {
-                $file = UnitPaymentplanFile::where('id', $old_milestones->id)->first();
-                if($file) {
-                    $file->delete();
+                foreach($inputs['group_a'] as $data){
+                    if($data['amount'] != null && $data['milestone'] != null && $data['percentage'] != null){
+                        $payment_milestone = new UnitPaymentplanFile();
+                        $payment_milestone->unit_paymentplan_id = $payment_id;
+                        $payment_milestone->name = $data['milestone'];
+                        $payment_milestone->percentage = $data['percentage'];
+                        $payment_milestone->amount = $data['amount'];
+                        $payment_milestone->date = Carbon::now();
+                        $payment_milestone->save();
+                    }
                 }
             }
-
-
-            /**
-             * NOW, WE ADD NEW PAYMENT MILESTONES
-             * USING THE REQUEST ARRAY ABOVE
-             */
-            foreach($inputs['group-a'] as $data){
-                $payment_milestone = new UnitPaymentplanFile();
-                $payment_milestone->unit_paymentplan_id = $payment->id;
-                $payment_milestone->name = $data['milestone'];
-                $payment_milestone->date = $data['date'];
-                $payment_milestone->percentage = $data['percentage'];
-                $payment_milestone->amount = $data['amount'];
-                $payment_milestone->save();
-            }
-
+            
             $this->data['property_id'] = $unit->id;
 
             return $this->index();
         }
         else
-        {
+        {   dd('fail');
             return Redirect::back()->withErrors('Record is already Exist');
         }
     }
@@ -541,7 +510,6 @@ class UnitController extends Controller
 
                 //Execute the request
                 $result = curl_exec($ch);
-
             // SLACK UPDATE
 
             return Redirect::back()->withErrors(['msg' => 'Could not find project. Please contact developer.']);
@@ -702,27 +670,23 @@ class UnitController extends Controller
 
 
 
-
-
-
-
     /**
      * FLOORPLAN SETTINGS
      */
     public function unit_floorplan_connect_store(Request $request) {
+        $unit = Unit::select('id', 'project_id', 'unit_floorplan_id')->with('unit_floorplan')->find($request->project_id);
+        $unit->unit_floorplan_id = $request->floorplan_id;
+        $unit->save();
+        // dd($unit);
 
-        // dd($request->project_id);
+        // if($project->unit_floorplan != null ){
+        //     return Redirect::back()->withErrors(['The selected unit already contains a floorplan or the floorplan is assigned to another unit. Remove it first to reassign.' ]);
+        // }
 
-        $project = Unit::with('unit_floorplan')->find($request->project_id);
+        // $brochure = Unit_floorplan::find($request->floorplan_id);
+        // $brochure->unit_id = $request->project_id;
+        // $brochure->save();
 
-
-        if($project->unit_floorplan != null ){
-            return Redirect::back()->withErrors(['The selected unit already contains a floorplan or the floorplan is assigned to another unit. Remove it first to reassign.' ]);
-        }
-
-        $brochure = Unit_floorplan::find($request->floorplan_id);
-        $brochure->unit_id = $request->project_id;
-        $brochure->save();
         return Redirect::back()->with(['msg' => 'Successfully connected']);
     }
 
@@ -814,6 +778,156 @@ class UnitController extends Controller
         // $pdf = PDF::loadView('booking.reservationAgreement', $this->data);
         return view('unit.salesOffer.index', $this->data);
         // return $pdf->setPaper('a4', 'portrait')->download('reservation-agreement.pdf');
+    }
+
+
+    public function unit_duplicate($id){
+
+        // REPLICATE UNIT RECORD
+        $unitRecord = Unit::find($id);
+        $newUnitRecord = $unitRecord->replicate();
+        $newUnitRecord->created_at = Carbon::now();
+        $newUnitRecord->updated_at = Null;
+        $newUnitRecord->save();
+
+        $newUnitId = $newUnitRecord->id;
+
+        // REPLICATE PAYMENT PLAN RECORD
+        $checkPayment = Unit_paymentplan::where('unit_id', $newUnitId)->first();
+        if(!$checkPayment){
+            $paymentRecord = Unit_paymentplan::where('unit_id', $id)->first();
+            $newPaymentRecord = $paymentRecord->replicate();
+            $newPaymentRecord->unit_id = $newUnitId;
+            $newPaymentRecord->created_at = Carbon::now();
+            $newPaymentRecord->updated_at = Null;
+            $newPaymentRecord->save();
+
+            $newPaymentRecordId = $newPaymentRecord->id;
+
+            $checkPaymentFiles = UnitPaymentplanFile::where('unit_paymentplan_id', $paymentRecord->id)->get();
+            if($checkPaymentFiles != null){
+                foreach($checkPaymentFiles as $data){
+                    $newPaymentRecordFile = $data->replicate();
+                    $newPaymentRecordFile->unit_paymentplan_id = $newPaymentRecordId;
+                    $newPaymentRecordFile->created_at = Carbon::now();
+                    $newPaymentRecordFile->updated_at = Null;
+                    $newPaymentRecordFile->save();
+                }
+            }
+        }
+
+        
+
+        // REPLICATE BROCHURE
+        $unit_brochure_update = Unit::find($newUnitId);
+        $oldUnit_brochure = Unit::find($id);
+        $old_brochure_id = $oldUnit_brochure->unit_brochure_id;
+        
+        if($oldUnit_brochure != null){
+            $unit_brochure_update = Unit::find($newUnitId);
+            $unit_brochure_update->unit_brochure_id = $oldUnit_brochure->unit_brochure_id;
+            $unit_brochure_update->save();
+        }
+        // $checkBrochure = Unit_brochure::where('unit_id', $newUnitId)->first();
+        // if($checkPayment === null){
+        //     $brochureRecord = Unit_brochure::where('unit_id', $id)->first();
+        //     if($brochureRecord != null){
+        //         $newBrochureRecord = $brochureRecord->replicate();
+        //         $newBrochureRecord->unit_id = $newUnitId;
+        //         $newBrochureRecord->created_at = Carbon::now();
+        //         $newBrochureRecord->updated_at = Null;
+        //         $newBrochureRecord->save();
+
+        //         $newBrochureRecordId = $newBrochureRecord->id;
+
+        //         $checkBrochureFiles = UnitBrochureFile::where('unit_brochure_id', $brochureRecord->id)->get();
+        //         if($checkBrochureFiles != null){
+        //             foreach($checkBrochureFiles as $data){
+        //                 $newBrochureRecordFile = $data->replicate();
+        //                 $newBrochureRecordFile->unit_brochure_id = $newBrochureRecordId;
+        //                 $newBrochureRecordFile->created_at = Carbon::now();
+        //                 $newBrochureRecordFile->updated_at = Null;
+        //                 $newBrochureRecordFile->save();
+        //             }
+        //         }
+        //     }
+            
+        // }
+
+        $unit_floorplan_update = Unit::find($newUnitId);
+        $oldUnit_floorplan = Unit::find($id);
+        if($oldUnit_floorplan != null){
+            $unit_floorplan_update = Unit::find($newUnitId);
+            $unit_floorplan_update->unit_floorplan_id = $oldUnit_floorplan->unit_floorplan_id;
+            $unit_floorplan_update->save();
+        }
+
+        // $checkFloors = Unit_floorplan::where('unit_id', $newUnitId)->first();
+        // if($checkFloors === null){
+        //     $floorRecord = Unit_floorplan::where('unit_id', $id)->first();
+        //     if($floorRecord != null){
+        //         $newFloorRecord = $floorRecord->replicate();
+        //         $newFloorRecord->unit_id = $newUnitId;
+        //         $newFloorRecord->created_at = Carbon::now();
+        //         $newFloorRecord->updated_at = Null;
+        //         $newFloorRecord->save();
+
+        //         $newFloorRecordId = $newFloorRecord->id;
+
+        //         $checkFloorFiles = UnitFloorplanFile::where('unit_floorplan_id', $floorRecord->id)->get();
+        //         if($checkFloorFiles != null){
+        //             foreach($checkFloorFiles as $data){
+        //                 $newFloorRecordFile = $data->replicate();
+        //                 $newFloorRecordFile->unit_floorplan_id = $newFloorRecordId;
+        //                 $newFloorRecordFile->created_at = Carbon::now();
+        //                 $newFloorRecordFile->updated_at = Null;
+        //                 $newFloorRecordFile->save();
+
+        //                 $filename = $newFloorRecordFile->name;
+        //                 $oldRecord = Unit_floorplan::where('unit_id', $id)->first();
+        //                 // dd($oldRecord);
+        //                 $newFilenameSegmentId = $newFloorRecordFile->unit_floorplan_id;
+        //                 $oldFilenameSegmentId = $oldRecord->id;
+        //                 File::makeDirectory(public_path('uploads/units/floorplans/'.$newFilenameSegmentId));
+        //                 File::copy(public_path('uploads/units/floorplans/'.$oldFilenameSegmentId.'/'.$filename), public_path('uploads/units/floorplans/'.$newFilenameSegmentId.'/'.$filename));
+        //             }
+        //         }
+        //     }
+        // }
+
+        $checkImages = Unit_image::where('unit_id', $newUnitId)->first();
+        if($checkImages === null){
+            $imageRecord = Unit_image::where('unit_id', $id)->first();
+            if($imageRecord != null){
+                $newImageRecord = $imageRecord->replicate();
+                $newImageRecord->unit_id = $newUnitId;
+                $newImageRecord->created_at = Carbon::now();
+                $newImageRecord->updated_at = Null;
+                $newImageRecord->save();
+
+                $newImageRecordId = $newFloorRecord->id;
+
+                $checkImageFiles = UnitFloorplanFile::where('unit_image_id', $imageRecord->id)->get();
+                if($checkImageFiles != null){
+                    foreach($checkImageFiles as $data){
+                        $newImageRecordFile = $data->replicate();
+                        $newImageRecordFile->unit_image_id = $newImageRecordId;
+                        $newImageRecordFile->created_at = Carbon::now();
+                        $newImageRecordFile->updated_at = Null;
+                        $newImageRecordFile->save();
+
+                        $filename = $newImageRecordFile->name;
+                        $oldRecord = Unit_image::where('unit_id', $id)->first();
+                        $newFilenameSegmentId = $newImageRecordFile->unit_floorplan_id;
+                        $oldFilenameSegmentId = $oldRecord->id;
+                        File::makeDirectory(public_path('uploads/units/images/'.$newFilenameSegmentId));
+                        File::copy(public_path('uploads/units/images/'.$oldFilenameSegmentId.'/'.$filename), public_path('uploads/units/images/'.$newFilenameSegmentId.'/'.$filename));
+                    }
+                }
+            }
+        }
+
+        return Redirect::back()->with('message', 'Unit has been Duplicated!');
     }
 
 }

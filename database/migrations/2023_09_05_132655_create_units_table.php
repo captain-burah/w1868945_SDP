@@ -35,6 +35,9 @@ return new class extends Migration
             $table->string('outdoor_area')->nullable(true);
             $table->string('terrace_area')->nullable(true);
 
+            $table->unsignedBigInteger('unit_floorplan_id')->nullable(true);
+            $table->unsignedBigInteger('unit_brochure_id')->nullable(true);
+
             $table->string('meta_title')->nullable(true);
             $table->string('meta_description')->nullable(true);
             $table->string('meta_keywords')->nullable(true);
@@ -42,6 +45,10 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
+            
+            $table->foreign('unit_floorplan_id')->references('id')->on('unit_floorplans')->onDelete('set null');
+            $table->foreign('unit_brochure_id')->references('id')->on('unit_brochures')->onDelete('set null');
+
             $table->foreign('state')->references('id')->on('unit_states')->onDelete('restrict');
             $table->foreign('status')->references('id')->on('unit_statuses')->onDelete('restrict');
             $table->foreign('created_by')->references('id')->on('users')->onDelete('restrict');

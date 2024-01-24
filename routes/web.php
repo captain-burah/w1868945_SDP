@@ -172,7 +172,7 @@ Route::middleware('auth')->group(function () {
 
 /** PROJECTS */
 
-
+    
 
 
 
@@ -183,6 +183,7 @@ Route::middleware('auth')->group(function () {
     Route::get('units-status-change/{id}/{status}', [UnitController::class, 'status_change'])->name('units.status.change');
     Route::get('units-state-change/{id}/{status}', [UnitController::class, 'state_change'])->name('units.state.change');
     Route::get('units-sales-offer/{id}', [UnitController::class, 'sales_offer'])->name('units.sales.offer');
+    Route::get('project-units-duplicate/{id}', [UnitController::class, 'unit_duplicate'])->name('units.duplicate');
 
     Route::get('project-units-active/{id}', [UnitController::class, 'project_units_active'])->name('project.units.active');
     Route::get('project-units-draft/{id}', [UnitController::class, 'project_units_draft'])->name('project.units.draft');
