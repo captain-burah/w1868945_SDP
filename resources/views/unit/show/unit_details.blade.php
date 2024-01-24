@@ -51,7 +51,7 @@
                     <td>{{$results->floor}}</td>
                     <td></td>
                     <th>Unit Area</th>
-                    <td> {{ number_format($results->unit_size_range, 0)}} <b>sq.ft.</b></td>
+                    <td> {{ $results->unit_size_range}}</td>
                 </tr>
 
                 <tr>
