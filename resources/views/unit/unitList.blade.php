@@ -101,7 +101,7 @@
                                     </div>
 
                                     <a class="btn btn-sm btn-outline-light rounded" title="Edit Unit" href="{{ route('units.edit', ['unit' => $value->id]) }}"><i class="bx bx-edit text-dark font-size-18"></i></a>
-                                    <a class="btn btn-sm btn-outline-light rounded" title="duplicate" href="{{ route('units.duplicate', ['id' => $value->id]) }}"><i class="bx bx-duplicate text-dark font-size-18"></i></a>
+                                    {{-- <a class="btn btn-sm btn-outline-light rounded" title="duplicate" href="{{ route('units.duplicate', ['id' => $value->id]) }}"><i class="bx bx-duplicate text-dark font-size-18"></i></a> --}}
 
                                     
                                 </td>

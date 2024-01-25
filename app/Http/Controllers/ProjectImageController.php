@@ -92,7 +92,6 @@ class ProjectImageController extends Controller
                     $image_name = $image->hashName();
                     $path = $this->uploadPath;
                     $image->move($path."$project_segment_id/", $image_name);
-
                     // $image_name = $image->hashName();
                     // $image->storeAs('projects/images/'.$project_segment_id, $image_name, 'public'); //nonsecured storage - has public access
                     $project_segment_file = new Project_image_file();

@@ -157,15 +157,12 @@ class ProjectBrochureController extends Controller
                     $project_brochure_file->project_brochure_id = $request->brochure_id;
                     $project_brochure_file->name = $image_name;
                     $project_brochure_file->save();
-
                 }
             }
-
         } catch (\Exception $e) {
             // dd($e->getMessage());
             return Redirect::back()->withErrors(['message', $e->getMessage() ]);
         }
-
         return redirect()->route('project-brochures.index');
     }
 

@@ -19,7 +19,7 @@ class CreateAdminUserSeeder extends Seeder
     public function run()
     {
         //Admin Seeder
-        $user = User::create([
+        $user1 = User::create([
             'name' => 'Master Admin',
             'email' => 'webmaster@esnaad.com',
             'password' => bcrypt('edge@@2024/1315')
@@ -38,5 +38,6 @@ class CreateAdminUserSeeder extends Seeder
         $role->syncPermissions($permissions);
 
         $user->assignRole([$role->id]);
+        $user1->assignRole([$role->id]);
     }
 }
