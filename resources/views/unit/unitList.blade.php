@@ -42,7 +42,6 @@
                         <th style="width: 200px;">Price (AED)</th>
                         <th style="width: 150px;">Area</th>
                         <th style="width: 150px;">Bedrooms</th>
-                        <th style="width: 150px;">Bathrooms</th>
                         <th style="width: 150px;">Project Name</th>
                         <th style="width: 150px;">Floor Plans</th>
                         <th style="width: 150px;">Images</th>
@@ -180,8 +179,6 @@
 
                                 <td>{{ $value->bedroom }}</td>
                                 
-                                <td>{{ $value->bathroom }}</td>
-
 
                                 {{-- PROJECT --}}
                                 <td class="text-left">

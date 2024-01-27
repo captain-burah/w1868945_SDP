@@ -26,10 +26,6 @@
                 </li>
 
                 <li class="nav-item" role="presentation">
-                    <button style="width: auto" class="nav-link" id="details-tab" data-toggle="tab" data-target="#details" type="button" role="tab" aria-controls="profile" aria-selected="false">Details</button>
-                </li>
-
-                <li class="nav-item" role="presentation">
                     <button style="width: auto" class="nav-link" id="location-tab" data-toggle="tab" data-target="#paymentplan" type="button" role="tab" aria-controls="contact" aria-selected="false">Payment Plan</button>
                 </li>
 
@@ -38,10 +34,6 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active p-4" id="general" role="tabpanel" aria-labelledby="home-tab">
                     @include('unit.create.form.general')
-                </div>
-    
-                <div class="tab-pane fade p-4" id="details" role="tabpanel" aria-labelledby="details-tab">
-                    @include('unit.create.form.details')
                 </div>
 
                 <div class="tab-pane fade  p-4" id="paymentplan" role="tabpanel" aria-labelledby="paymentplan-tab">

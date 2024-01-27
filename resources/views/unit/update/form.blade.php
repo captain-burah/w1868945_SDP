@@ -25,9 +25,6 @@
                     <button style="width: auto" class="nav-link active" id="home-tab" data-toggle="tab" data-target="#general" type="button" role="tab" aria-controls="home" aria-selected="true">General</button>
                 </li>
 
-                <li class="nav-item" role="presentation">
-                    <button style="width: auto" class="nav-link" id="details-tab" data-toggle="tab" data-target="#details" type="button" role="tab" aria-controls="profile" aria-selected="false">Details</button>
-                </li>
                 
                 <li class="nav-item" role="presentation">
                     <button style="width: auto" class="nav-link" id="paymentplan-tab" data-toggle="tab" data-target="#paymentplan" type="button" role="tab" aria-controls="contact" aria-selected="false">Payment Milestones</button>
@@ -40,9 +37,6 @@
                     @include('unit.update.form.general')
                 </div>
 
-                <div class="tab-pane fade p-4" id="details" role="tabpanel" aria-labelledby="details-tab">
-                    @include('unit.update.form.details')
-                </div>
 
                 <div class="tab-pane fade p-4" id="paymentplan" role="tabpanel" aria-labelledby="seo-tab">
                     @include('unit.update.form.paymentplan')

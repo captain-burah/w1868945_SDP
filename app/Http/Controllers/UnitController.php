@@ -273,18 +273,7 @@ class UnitController extends Controller
         $validatedData = $request->validate([
 
             'unit_name' => ['required'],
-
-            'dld_fees' => ['required'],
             
-            'admin_fees' => ['required'],
-
-            'unit_size' => ['required'],
-
-            'price' => ['required'],
-
-            'bathrooms' => ['required'],
-
-            'bedrooms' => ['required'],
         ]);
 
         $bool=0;
@@ -300,9 +289,9 @@ class UnitController extends Controller
             $unit->oqood_amount = $request->admin_fees;
             $unit->dld_fees = $request->dld_fees;
             $unit->bedroom = $request->bedrooms;
-            $unit->bathroom = $request->bathrooms;
+            $unit->bathroom = null;
             $unit->floor = $request->floor;
-            $unit->unit_size_range = $request->area_range;
+            $unit->unit_size_range = $request->unit_size;
             $unit->outdoor_area = $request->outdoor_area_range;
             $unit->slug_link = '0';
             $unit->status = '1';
@@ -407,12 +396,12 @@ class UnitController extends Controller
             $unit->oqood_amount = $request->admin_fees;
             $unit->dld_fees = $request->dld_fees;
             $unit->bedroom = $request->bedrooms;
-            $unit->bathroom = $request->bathrooms;
+            $unit->bathroom = null;
             $unit->floor = $request->floor;
-            $unit->unit_size_range = $request->area_range;
+            $unit->unit_size_range = $request->unit_size;
             $unit->outdoor_area = $request->outdoor_area_range;
             $unit->slug_link = '0';
-            $unit->status = '2';
+            $unit->status = '1';
             $unit->save();
             
             $inputs = $request->all();
