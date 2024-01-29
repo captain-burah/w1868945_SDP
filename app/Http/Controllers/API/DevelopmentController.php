@@ -18,7 +18,7 @@ class DevelopmentController extends Controller
 {
     public function index()
     {
-        $resources = Community::select('id', 'title', 'address', 'slug_link', 'thumbnail')->where('status', '1')->get();
+        $resources = Project::select('id', 'name', 'name_ar', 'community', 'community_ar', 'slug_link')->where('status', '1')->get();
         return response()->json($resources,200);
     }
 

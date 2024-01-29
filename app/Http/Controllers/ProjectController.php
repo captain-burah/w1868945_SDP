@@ -21,6 +21,7 @@ use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
+    private $uploadPath = "uploads/projects/images/";
 
     function __construct()
     {
@@ -29,6 +30,7 @@ class ProjectController extends Controller
          $this->middleware('permission:project-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:project-delete', ['only' => ['destroy']]);
     }
+    
 
     public function index()
     {
@@ -198,7 +200,7 @@ class ProjectController extends Controller
                 $project->community_ar = $request->community_ar;
                 $project->category_id = $request->category;
                 $project->emirate_id = $request->emirates;
-                // $project->location_id = $request->location;
+
                 $project->longitude = $request->longitude;
                 $project->latitude = $request->latitude;
 
@@ -252,10 +254,14 @@ class ProjectController extends Controller
                 $project->meta_keywords_ar = $request->meta_keywords_ar;
 
                 $project->slug_link = '0';
+
                 $project->status = '2';
+
                 $project->save();
 
-                $this->data['property_id'] = $project->id;
+                $this->data['property_id'] = $project_id = $project->id;
+
+                
 
                 return $this->index();
             }
@@ -494,8 +500,66 @@ class ProjectController extends Controller
             }
 
 
-            $this->data['property_id'] = $project->id;
-            // return $this->index();
+            $this->data['property_id'] = $project_id = $project->id;
+
+            try {
+                if($request->hasfile('thumbnail'))
+                {
+                    $image = $request->file('thumbnail');
+                    $project_info = Project::find($project_id);
+                    $project_slug_name = Str::slug($project_info->name);
+
+                    $image_name = $project_slug_name . '-thumbnail' .  '.' . $image->getClientOriginalExtension();
+                    $path = "uploads/projects/";
+                    $image->move($path."$project_info->id/", $image_name);
+
+                    $project_info = Project::find($project_id);
+                    $project_info->thumbnail = $image_name;
+                    $project_info->save();
+                }
+            } catch (\Exception $e) {
+                return Redirect::back()->withErrors(['message', $e->getMessage() ]);
+            }
+
+            try {
+                if($request->hasfile('logo'))
+                {
+                    $image = $request->file('logo');
+                    $project_info = Project::find($project_id);
+                    $project_slug_name = Str::slug($project_info->name);
+
+                    $image_name = $project_slug_name . '-logo' .  '.' . $image->getClientOriginalExtension();
+                    $path = "uploads/projects/";
+                    $image->move($path."$project_info->id/", $image_name);
+
+                    $project_info = Project::find($project_id);
+                    $project_info->logo = $image_name;
+                    $project_info->save();
+                }
+            } catch (\Exception $e) {
+                return Redirect::back()->withErrors(['message', $e->getMessage() ]);
+            }
+
+            try {
+                if($request->hasfile('header'))
+                {
+                    $image = $request->file('header');
+                    $project_info = Project::find($project_id);
+                    $project_slug_name = Str::slug($project_info->name);
+
+                    $image_name = $project_slug_name . '-header' .  '.' . $image->getClientOriginalExtension();
+                    $path = "uploads/projects/";
+                    $image->move($path."$project_info->id/", $image_name);
+
+                    $project_info = Project::find($project_id);
+                    $project_info->header = $image_name;
+                    $project_info->save();
+                }
+            } catch (\Exception $e) {
+                return Redirect::back()->withErrors(['message', $e->getMessage() ]);
+            }
+
+            
             return redirect()->route('projects.index')->with('success', 'Project information has been updated');
         }
         else

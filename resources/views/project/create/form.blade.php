@@ -22,23 +22,27 @@
             </div>
             <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button style="width: auto" class="nav-link active" id="home-tab" data-toggle="tab" data-target="#general" type="button" role="tab" aria-controls="home" aria-selected="true">General</button>
+                    <button style="width: auto" class="nav-link ml-1 active" id="home-tab" data-toggle="tab" data-target="#general" type="button" role="tab" aria-controls="home" aria-selected="true">General</button>
                 </li>
 
                 <li class="nav-item" role="presentation">
-                    <button style="width: auto" class="nav-link" id="details-tab" data-toggle="tab" data-target="#details" type="button" role="tab" aria-controls="profile" aria-selected="false">Details</button>
+                    <button style="width: auto" class="nav-link ml-1" id="details-tab" data-toggle="tab" data-target="#details" type="button" role="tab" aria-controls="profile" aria-selected="false">Details</button>
                 </li>
 
                 <li class="nav-item" role="presentation">
-                    <button style="width: auto" class="nav-link" id="description-tab" data-toggle="tab" data-target="#description" type="button" role="tab" aria-controls="contact" aria-selected="false">Description</button>
+                    <button style="width: auto" class="nav-link ml-1" id="description-tab" data-toggle="tab" data-target="#description" type="button" role="tab" aria-controls="contact" aria-selected="false">Web Description</button>
                 </li>
 
                 <li class="nav-item" role="presentation">
-                    <button style="width: auto" class="nav-link" id="description-tab" data-toggle="tab" data-target="#description_ar" type="button" role="tab" aria-controls="contact" aria-selected="false">Description Arabic</button>
+                    <button style="width: auto" class="nav-link ml-1" id="description-tab" data-toggle="tab" data-target="#description_ar" type="button" role="tab" aria-controls="contact" aria-selected="false">Web Description Ar</button>
                 </li>
 
                 <li class="nav-item" role="presentation">
-                    <button style="width: auto" class="nav-link" id="location-tab" data-toggle="tab" data-target="#seo" type="button" role="tab" aria-controls="contact" aria-selected="false">SEO</button>
+                    <button style="width: auto" class="nav-link ml-1" id="location-tab" data-toggle="tab" data-target="#seo" type="button" role="tab" aria-controls="contact" aria-selected="false">Web SEO</button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                    <button style="width: auto" class="nav-link ml-1" id="image-tab" data-toggle="tab" data-target="#image" type="button" role="tab" aria-controls="contact" aria-selected="false">Web Images</button>
                 </li>
             </ul>
 
@@ -61,6 +65,10 @@
 
                 <div class="tab-pane fade p-4" id="seo" role="tabpanel" aria-labelledby="seo-tab">
                     @include('project.create.form.seo')
+                </div>
+
+                <div class="tab-pane fade p-4" id="image" role="tabpanel" aria-labelledby="seo-tab">
+                    @include('project.create.form.image')
                 </div>
             </div>
         </form>

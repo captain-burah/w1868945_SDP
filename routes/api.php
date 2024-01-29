@@ -39,6 +39,7 @@ Route::middleware('authkey')->prefix('v1/esnaad')->namespace('App\Http\Controlle
     Route::get('/communities-index', 'API\CommunityController@index');
     Route::get('/communities-index-admin', 'API\CommunityController@index_admin');
     Route::get('/communities-details/{slug}', 'API\CommunityController@details');
+    Route::get('/developments', 'API\DevelopmentController@index');
     Route::get('/developments-details/{slug}', 'API\DevelopmentController@details');
     Route::get('/units-details/{slug}', 'API\UnitController@details');
     Route::get('/units-paymentplan-details/{unit_id}', 'API\UnitController@paymentplan_details');
