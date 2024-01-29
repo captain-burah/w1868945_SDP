@@ -338,13 +338,10 @@
                                 <td>
                                     <div class="dropdown">
                                         <button class="btn btn-sm btn-outline-light rounded" type="button">
-                                            <a class="dropdown-item" href="{{ route('units.sales.offer', ['id' => $value->id]) }}"><i class="bx bx-spreadsheet text-dark"></i> &nbsp; Print</a>
+                                            <a class="dropdown-item" href="{{ route('units.sales.offer', ['id' => $value->id]) }}" target="_blank"><i class="bx bx-spreadsheet text-dark"></i> &nbsp; Print</a>
                                         </button>
-                                        
                                     </div>
                                 </td>
-
-
                             </tr>
                         @endforeach
 

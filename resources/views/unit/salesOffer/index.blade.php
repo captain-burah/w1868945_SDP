@@ -148,17 +148,18 @@
     <div class="mt-6 mb-7 px-0">
         <div class="row justify-content-center">
         <div class="col-lg-12 col-xl-7">
-            <div class="card border-0">
+            <div class="card border-2 m-4">
                 <div class="card-header px-5" style="background-color: #e6e6e6">
                     <div class="d-flex justify-content-between">
                         <div class="float-left my-auto">
                             <h1 style="font-size: 34px" class="m-0">SALES OFFER</h1>
                         </div>
                         <div class="">
-                            <img src="{{ asset('logo-dark.png')}}" alt="" height="100">
+                            <img src="{{ asset('logo-dark.png')}}" alt="" height="80">
                         </div>
                     </div>
                     <div class="mt-4">
+                        <p class="heading-p m-0 mt-3">{{ \Carbon\Carbon::now('Asia/Dubai')->format('d.m.Y ') }}</p>
                         <p class="heading-p m-0 mt-3">Dear Customer,</p>
                         <p class="heading-p m-0 mt-1">
                             Thank you for your interest in Esnaad Properties. We are sending here our offer based on our discussion.
@@ -178,20 +179,16 @@
                                     <span class="body-table-p font-weight-bold">Unit</span>
                                 </td>
 
-                                <td style="width: 150px; border: 1.5px #000 solid !important;" class="text-center">
-                                    <span class="body-table-p font-weight-bold">Estimated Completion</span>
-                                </td>
                             </tr>
                             <tr>
                                 <td style="width: 150px; border: 1.5px #000 solid !important;" class="text-center">
                                     <span class="body-table-p">{{ $unit->project->name }}</span>
                                 </td>
                                 <td style="width: 150px; border: 1.5px #000 solid !important;" class="text-center">
-                                    <span class="body-table-p">{{ $unit->name }}</span>
-                                </td>
-                                <td style="width: 150px; border: 1.5px #000 solid !important;" class="text-center">
-                                    <span class="body-table-p">{{ $unit->project->handover }}</span>
-                                </td>
+                                    @if($unit->project->name == "The Spark by ESNAAD")
+                                    <span class="body-table-p">D11-SPARK-{{ $unit->name }}</span>
+                                    @endif
+                                </td>   
                             </tr>
                         </table>
 
@@ -225,7 +222,6 @@
                         <div class="">
                             <p class="body-p-sub m-0" style="line-height: 2">*Applicable fees to Dubai Land Department are: 4% of the property net price + AED 3,150 (VAT inc.) oqood fee.</p>
                             <p class="body-p-sub m-0" style="line-height: 2">*Prices and availability are subject to change without notice.</p>
-                            <p class="body-p-sub m-0" style="line-height: 2">*The Estimated Completion Date is a mere estimate and subject to change from time to time.</p>
                         </div>
                     </div>
                     <div style="background-color: #e6e6e6">

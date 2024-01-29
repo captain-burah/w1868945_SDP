@@ -120,7 +120,7 @@
 
             <div class="mb-3 col-lg-3">
                 <label for="milestone">Description</label>
-                <input type="text" id="milestone_0" name="group_a[0][milestone]" class="form-control form-control-sm" value="Downpayment" disabled>
+                <input type="text" id="milestone_0" name="group_a[0][milestone]" class="form-control form-control-sm" value="Down Payment On Booking" disabled>
             </div>
 
             <div class="mb-3 col-lg-3">
@@ -142,7 +142,7 @@
 
             <div class="mb-3 col-lg-3">
                 {{-- <label for="milestone">Description</label> --}}
-                <input type="text" id="milestone_1" name="group_a[1][milestone]" class="form-control form-control-sm" value="After 02 Months" disabled>
+                <input type="text" id="milestone_1" name="group_a[1][milestone]" class="form-control form-control-sm" value="1st Installment 3 month" disabled>
             </div>
 
             <div class="mb-3 col-lg-3">
@@ -165,7 +165,7 @@
 
             <div class="mb-3 col-lg-3">
                 {{-- <label for="milestone">Description</label> --}}
-                <input type="text" id="milestone_2" name="group_a[2][milestone]" class="form-control form-control-sm" value="After 06 Months" disabled>
+                <input type="text" id="milestone_2" name="group_a[2][milestone]" class="form-control form-control-sm" value="2nd Installment 6 month" disabled>
             </div>
 
             <div class="mb-3 col-lg-3">
@@ -187,7 +187,7 @@
 
             <div class="mb-3 col-lg-3">
                 {{-- <label for="milestone">Description</label> --}}
-                <input type="text" id="milestone_3" name="group_a[3][milestone]" class="form-control form-control-sm" value="After 08 Months" disabled>
+                <input type="text" id="milestone_3" name="group_a[3][milestone]" class="form-control form-control-sm" value="3rd Installment 9 month" disabled>
             </div>
 
             <div class="mb-3 col-lg-3">
@@ -209,7 +209,7 @@
 
             <div class="mb-3 col-lg-3">
                 {{-- <label for="milestone">Description</label> --}}
-                <input type="text" id="milestone_4" name="group_a[4][milestone]" class="form-control form-control-sm" value="After 12 months" disabled>
+                <input type="text" id="milestone_4" name="group_a[4][milestone]" class="form-control form-control-sm" value="4th Installment 12 month" disabled>
             </div>
 
             <div class="mb-3 col-lg-3">
@@ -231,7 +231,7 @@
 
             <div class="mb-3 col-lg-3">
                 {{-- <label for="milestone">Description</label> --}}
-                <input type="text" id="milestone_5" name="group_a[5][milestone]" class="form-control form-control-sm" value="After 16 Months" disabled>
+                <input type="text" id="milestone_5" name="group_a[5][milestone]" class="form-control form-control-sm" value="5th Installment 15 month" disabled>
             </div>
 
             <div class="mb-3 col-lg-3">
@@ -253,7 +253,7 @@
 
             <div class="mb-3 col-lg-3">
                 {{-- <label for="milestone">Description</label> --}}
-                <input type="text" id="milestone_6" name="group_a[6][milestone]" class="form-control form-control-sm" value="After 24 Months" disabled>
+                <input type="text" id="milestone_6" name="group_a[6][milestone]" class="form-control form-control-sm" value="6th Installment 18 month" disabled>
             </div>
 
             <div class="mb-3 col-lg-3">
@@ -275,7 +275,7 @@
 
             <div class="mb-3 col-lg-3">
                 {{-- <label for="milestone">Description</label> --}}
-                <input type="text" id="milestone_7" name="group_a[7][milestone]" class="form-control form-control-sm" value="On Handover" disabled>
+                <input type="text" id="milestone_7" name="group_a[7][milestone]" class="form-control form-control-sm" value="Final Payment Completion Q3 2025" disabled>
             </div>
 
             <div class="mb-3 col-lg-3">
