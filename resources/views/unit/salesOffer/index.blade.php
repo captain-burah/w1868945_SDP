@@ -101,15 +101,15 @@
         }
 
         .heading-p{
-            font-size: 14px;
+            font-size: 18px;
         }
 
         .body-p{
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .body-table-p{
-            font-size: 14px;
+            font-size: 16px;
             text-align: center !important;
         }
         
@@ -119,7 +119,7 @@
         }
 
         .body-p-sub{
-            font-size: 14px;
+            font-size: 16px;
 
         }
 
@@ -148,11 +148,11 @@
     <div class="mt-6 mb-7 px-0">
         <div class="row justify-content-center">
         <div class="col-lg-12 col-xl-7">
-            <div class="card border-2 m-4">
+            <div class="card border-2 m-4" style="background-color: #e6e6e6">
                 <div class="card-header px-5" style="background-color: #e6e6e6">
                     <div class="d-flex justify-content-between">
                         <div class="float-left my-auto">
-                            <h1 style="font-size: 34px" class="m-0">SALES OFFER</h1>
+                            <h1 style="font-size: 38px" class="m-0">SALES OFFER</h1>
                         </div>
                         <div class="">
                             <img src="{{ asset('logo-dark.png')}}" alt="" height="80">
@@ -205,7 +205,7 @@
                             </tr>
                             <tr>
                                 <td style="width: 150px; border: 1.5px #000 solid !important;" class="text-center">
-                                    <span class="body-table-p">{{ $unit->bedroom }}</span>
+                                    <span class="body-table-p">{{ $unit->bedroom }} bedroom</span>
                                 </td>
 
                                 <td style="width: 150px; border: 1.5px #000 solid !important;" class="text-center">

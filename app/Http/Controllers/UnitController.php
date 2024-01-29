@@ -684,11 +684,10 @@ class UnitController extends Controller
 
 
     public function unit_floorplan_disconnect($id) {
-        $project = Unit::with('unit_floorplan')->find($id);
-        if($project->unit_floorplan != null) {
-            $project->unit_floorplan->unit_id = null;
-            $project->unit_floorplan->save();
-        }
+        $unit = Unit::with('unit_floorplan')->find($id);
+        $unit->unit_floorplan_id = null;
+        $unit->save();
+        
         return Redirect::back()->with(['msg' => 'Successfully connected']);
     }
 
