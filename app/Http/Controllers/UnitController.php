@@ -43,11 +43,11 @@ class UnitController extends Controller
 
     public function index()
     {
-        $units = Unit::with('project')->where('status', '1')->orderBY('id', 'Desc');
+        $units = Unit::with('project')->where('status', '1')->orderBY('id', 'ASC');
 
-        $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'Desc')->count();
-        $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'Desc')->count();
-        $this->data['count_trash'] = $count_trash = Unit::where('status', '3')->orderBY('id', 'Desc')->count();
+        $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'ASC')->count();
+        $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'ASC')->count();
+        $this->data['count_trash'] = $count_trash = Unit::where('status', '3')->orderBY('id', 'ASC')->count();
         $this->data['unit_translated'] = $unit_translated = Language::all();
         $this->data['language'] = $lang = Language::all();
 
@@ -65,7 +65,6 @@ class UnitController extends Controller
         $this->data['floorplans'] = Unit_floorplan::with('unit_floorplan_files')->get();
         $this->data['paymentplans'] = Unit_paymentplan::with('unit_paymentplan_files')->get();
         $this->data['project_unit'] = '0';
-
         return view('unitsActive', $this->data);
     }
 
@@ -75,12 +74,12 @@ class UnitController extends Controller
 
     public function index_drafts()
     {
-        $units = Unit::with('project')->where('status', '2')->orderBY('id', 'Desc');
+        $units = Unit::with('project')->where('status', '2')->orderBY('id', 'ASC');
 
 
-        $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'Desc')->count();
-        $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'Desc')->count();
-        $this->data['count_trash'] = $count_trash = Unit::where('status', '3')->orderBY('id', 'Desc')->count();
+        $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'ASC')->count();
+        $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'ASC')->count();
+        $this->data['count_trash'] = $count_trash = Unit::where('status', '3')->orderBY('id', 'ASC')->count();
         $this->data['language'] = $lang = Language::all();
 
         $check_availability = $units->get();
@@ -113,11 +112,11 @@ class UnitController extends Controller
 
     public function index_trash()
     {
-        $units = Unit::with('project    ')->where('status', '3')->orderBY('id', 'Desc');
+        $units = Unit::with('project    ')->where('status', '3')->orderBY('id', 'ASC');
 
-        $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'Desc')->count();
-        $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'Desc')->count();
-        $this->data['count_trash'] = $count_trash = Unit::where('status', '3')->orderBY('id', 'Desc')->count();
+        $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'ASC')->count();
+        $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'ASC')->count();
+        $this->data['count_trash'] = $count_trash = Unit::where('status', '3')->orderBY('id', 'ASC')->count();
         $this->data['language'] = $lang = Language::all();
 
         $check_availability = $units->get();
