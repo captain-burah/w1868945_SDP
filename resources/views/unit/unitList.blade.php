@@ -44,7 +44,7 @@
                         <th style="width: 150px;">Bedrooms</th>
                         <th style="width: 150px;">Project Name</th>
                         <th style="width: 150px;">Floor Plans</th>
-                        <th style="width: 150px;">Images</th>
+                        <th style="width: 150px;">Gallery</th>
                         <th style="width: 150px;">Sales Offer</th>
                         {{-- <th>Action</th> --}}
                     </tr>
