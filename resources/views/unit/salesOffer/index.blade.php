@@ -174,11 +174,9 @@
                                 <td style="width: 150px; border: 1.5px #000 solid !important;" class="text-center">
                                     <span class="body-table-p font-weight-bold">Project Name</span>
                                 </td>
-
                                 <td style="width: 150px; border: 1.5px #000 solid !important;" class="text-center">
                                     <span class="body-table-p font-weight-bold">Unit</span>
                                 </td>
-
                             </tr>
                             <tr>
                                 <td style="width: 150px; border: 1.5px #000 solid !important;" class="text-center">
@@ -278,7 +276,7 @@
                     @if($unit->unit_floorplan != null)
                         @foreach($unit->unit_floorplan->unit_floorplan_files as $floorplan)
                             <div style="width: 100%; text-align: center;">
-                                <img src="{{ asset('uploads/units/floorplans/'.$unit->unit_floorplan->id.'/'.$floorplan->name)}}" class="mx-auto text-center" style="width: 80%; padding: 35px; margin-bottom: 10px; height: 100%; z-index: -19;">
+                                <img src="{{ asset('uploads/units/floorplans/'.$unit->unit_floorplan->id.'/'.$floorplan->name)}}" class="mx-auto text-center" style="width: 100%; padding: 35px; margin-bottom: 10px; height: 100%; z-index: -19;">
                             </div>
                         @endforeach
                     @endif
