@@ -31,19 +31,19 @@
                 </li>
 
                 <li class="nav-item" role="presentation">
-                    <button style="width: auto" class="nav-link ml-1" id="details-tab" data-toggle="tab" data-target="#details" type="button" role="tab" aria-controls="profile" aria-selected="false">Details</button>
+                    <button style="width: auto" class="nav-link ml-1" id="details-tab" data-toggle="tab" data-target="#details" type="button" role="tab" aria-controls="profile" aria-selected="false">Web Details</button>
                 </li>
 
                 <li class="nav-item" role="presentation">
-                    <button style="width: auto" class="nav-link ml-1" id="description-tab" data-toggle="tab" data-target="#description" type="button" role="tab" aria-controls="contact" aria-selected="false">Description</button>
+                    <button style="width: auto" class="nav-link ml-1" id="description-tab" data-toggle="tab" data-target="#description" type="button" role="tab" aria-controls="contact" aria-selected="false">Web Description</button>
                 </li>
 
                 <li class="nav-item" role="presentation">
-                    <button style="width: auto" class="nav-link ml-1" id="description-tab" data-toggle="tab" data-target="#description_ar" type="button" role="tab" aria-controls="contact" aria-selected="false">Description Ar</button>
+                    <button style="width: auto" class="nav-link ml-1" id="description-tab" data-toggle="tab" data-target="#description_ar" type="button" role="tab" aria-controls="contact" aria-selected="false">Web Description Ar</button>
                 </li>
 
                 <li class="nav-item" role="presentation">
-                    <button style="width: auto" class="nav-link ml-1" id="location-tab" data-toggle="tab" data-target="#seo" type="button" role="tab" aria-controls="contact" aria-selected="false">SEO</button>
+                    <button style="width: auto" class="nav-link ml-1" id="location-tab" data-toggle="tab" data-target="#seo" type="button" role="tab" aria-controls="contact" aria-selected="false">Web SEO</button>
                 </li>
 
                 <li class="nav-item" role="presentation">
@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="tab-pane fade p-4" id="image" role="tabpanel" aria-labelledby="seo-tab">
-                    @include('project.create.form.image')
+                    @include('project.update.form.image')
                 </div>
             </div>
         </form>

@@ -11,7 +11,14 @@
             @enderror
         </div>
     </div>
+    <div class="col-md-6">
+        @if($project->thumbnail != null)
+            <img src="{{asset('uploads/projects/'.$project->id.'/'.$project->thumbnail) }}" Height="350p">
+        @endif
+    </div>
+</div>
 
+<div class="row my-3">
     <div class="col-md-6">
         <div class="fallback w-full mx-auto my-4">
             <label class="form-label">
@@ -24,10 +31,11 @@
             @enderror
         </div>
     </div>
-</div>
-
-<div class="row">
-    
+    <div class="col-md-6">
+        @if($project->logo != null)
+            <img src="{{asset('uploads/projects/'.$project->id.'/'.$project->logo) }}" Height="350p">
+        @endif
+    </div>
 </div>
 
 <div class="row">
@@ -42,5 +50,10 @@
                 <div class="text-danger font-size-10">{{ $message }}</div>
             @enderror
         </div>
+    </div>
+    <div class="col-md-6">
+        @if($project->header != null)
+            <img src="{{asset('uploads/projects/'.$project->id.'/'.$project->header) }}" Height="350p">
+        @endif
     </div>
 </div>

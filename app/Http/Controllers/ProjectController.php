@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Log; // send notifications via slack or any other means
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File; 
 
 
 class ProjectController extends Controller
@@ -508,6 +509,10 @@ class ProjectController extends Controller
                     $image = $request->file('thumbnail');
                     $project_info = Project::find($project_id);
                     $project_slug_name = Str::slug($project_info->name);
+                    if($project_info->thumbnail != null ){
+                        $old_file = "uploads/projects/".$project_info->id.'/'.$project_info->thumbnail;
+                        File::delete($old_file);
+                    }
 
                     $image_name = $project_slug_name . '-thumbnail' .  '.' . $image->getClientOriginalExtension();
                     $path = "uploads/projects/";
@@ -527,6 +532,10 @@ class ProjectController extends Controller
                     $image = $request->file('logo');
                     $project_info = Project::find($project_id);
                     $project_slug_name = Str::slug($project_info->name);
+                    if($project_info->logo != null ){
+                        $old_file = "uploads/projects/".$project_info->id.'/'.$project_info->logo;
+                        File::delete($old_file);
+                    }
 
                     $image_name = $project_slug_name . '-logo' .  '.' . $image->getClientOriginalExtension();
                     $path = "uploads/projects/";
@@ -546,6 +555,10 @@ class ProjectController extends Controller
                     $image = $request->file('header');
                     $project_info = Project::find($project_id);
                     $project_slug_name = Str::slug($project_info->name);
+                    if($project_info->header != null ){
+                        $old_file = "uploads/projects/".$project_info->id.'/'.$project_info->header;
+                        File::delete($old_file);
+                    }
 
                     $image_name = $project_slug_name . '-header' .  '.' . $image->getClientOriginalExtension();
                     $path = "uploads/projects/";
@@ -559,7 +572,6 @@ class ProjectController extends Controller
                 return Redirect::back()->withErrors(['message', $e->getMessage() ]);
             }
 
-            
             return redirect()->route('projects.index')->with('success', 'Project information has been updated');
         }
         else

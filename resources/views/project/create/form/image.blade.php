@@ -11,7 +11,10 @@
             @enderror
         </div>
     </div>
+    
+</div>
 
+<div class="row">
     <div class="col-md-6">
         <div class="fallback w-full mx-auto my-4">
             <label class="form-label">
@@ -24,10 +27,6 @@
             @enderror
         </div>
     </div>
-</div>
-
-<div class="row">
-    
 </div>
 
 <div class="row">
