@@ -31,7 +31,7 @@
                 </li>
 
                 <li class="nav-item" role="presentation">
-                    <button style="width: auto" class="nav-link ml-1" id="details-tab" data-toggle="tab" data-target="#details" type="button" role="tab" aria-controls="profile" aria-selected="false">Web Details</button>
+                    <button style="width: auto" class="nav-link ml-1" id="details-tab" data-toggle="tab" data-target="#details" type="button" role="tab" aria-controls="profile" aria-selected="false">Details</button>
                 </li>
 
                 <li class="nav-item" role="presentation">

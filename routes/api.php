@@ -32,8 +32,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/email-subscription-v3', 'API\EmailSubscriptionController@storev3');
-
-Route::middleware('authkey')->prefix('v1/esnaad')->namespace('App\Http\Controllers')->group(function () {
+// middleware('authkey')->
+Route::prefix('v1/esnaad')->namespace('App\Http\Controllers')->group(function () {
     Route::post('/booking-payment-secured', 'BookingController@booking_payment_secured');
     Route::post('/booking-payment-failed', 'BookingController@booking_payment_failed');
     Route::get('/communities-index', 'API\CommunityController@index');
