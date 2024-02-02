@@ -28,7 +28,6 @@ class DevelopmentController extends Controller
         $resources = Project::with('project_brochure', 'project_image', 'project_factsheet', 'project_video', 'project_translations', 'units')->where('status', '1')->where('slug_link', $slug)->get();
         
         $images = $resources[0]->project_image->project_image_files;
-        // dd($images);
 
         $responseData = [
             'resources' => $resources,
