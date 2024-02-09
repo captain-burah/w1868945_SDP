@@ -17,7 +17,7 @@ class CommunityController extends Controller
 {
     public function index()
     {
-        $resources = Community::select('id', 'title', 'address', 'slug_link', 'thumbnail')->where('status', '1')->get();
+        $resources = Community::select('id', 'title', 'title_ar', 'address', 'address_ar', 'slug_link', 'thumbnail')->where('status', '1')->get();
         return response()->json($resources,200);
     }
 
