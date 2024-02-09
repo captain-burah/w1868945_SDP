@@ -31,7 +31,7 @@
             <input
                 type="text"
                 name="meta_description"
-                maxlength="60"
+                maxlength="255"
                 id="meta_description"
                 value="{{ $resources->meta_description }}"
                 {{-- placeholder="Apartment for sale in Address Harbour Point By Emaar. An iconic luxury apartment located in Dubai Creek Harbour with luxurious amenities and contemporary finishes" --}}
@@ -54,7 +54,7 @@
             <input
                 type="text"
                 name="meta_keywords"
-                maxlength="60"
+                maxlength="155"
                 id="meta_keywords"
                 value="{{ $resources->meta_keywords }}"
                 {{-- placeholder="apartment for sale in address harbour point, 2 bedroom apartment for sale in dubai creek harbour" --}}
@@ -116,7 +116,7 @@
                 dir="rtl"
                 type="text"
                 name="meta_description_ar"
-                maxlength="60"
+                maxlength="255"
                 id="meta_description_ar"
                 value="{{ $resources->meta_description_ar }}"
                 {{-- placeholder="Apartment for sale in Address Harbour Point By Emaar. An iconic luxury apartment located in Dubai Creek Harbour with luxurious amenities and contemporary finishes" --}}
@@ -140,7 +140,7 @@
                 dir="rtl"
                 type="text"
                 name="meta_keywords_ar"
-                maxlength="60"
+                maxlength="155"
                 id="meta_keywords_ar"
                 value="{{ $resources->meta_keywords_ar }}"
                 {{-- placeholder="apartment for sale in address harbour point, 2 bedroom apartment for sale in dubai creek harbour" --}}
