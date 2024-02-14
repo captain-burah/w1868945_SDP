@@ -290,9 +290,9 @@ class ProjectController extends Controller
         {
             $projects = Project::findOrFail($id);
 
-            if($projects->status == '1') {
-                return Redirect::back()->withErrors(['msg' => 'Warning! You cannot edit a live project. Move the project to Draft and make further edits.']);
-            }
+            // if($projects->status == '1') {
+            //     return Redirect::back()->withErrors(['msg' => 'Warning! You cannot edit a live project. Move the project to Draft and make further edits.']);
+            // }
         }
         catch(ModelNotFoundException $e)
         {

@@ -72,15 +72,15 @@
                                             @if($value->status == '1')
                                                 <a class="dropdown-item" href="{{ url('projects-status-change/'.$value->id.'/1') }}"><i class="bx bx-check-shield "></i> &nbsp; Activate</a>
                                                 <a class="dropdown-item" href="{{ url('projects-status-change/'.$value->id.'/2') }}"><i class="bx bx-cloud-download"></i> &nbsp; Draft</a>
-                                                <a class="dropdown-item" href="{{ url('projects-status-change/'.$value->id.'/3') }}"><i class="bx bx-trash"></i> &nbsp; Trash</a>
+                                                {{-- <a class="dropdown-item" href="{{ url('projects-status-change/'.$value->id.'/3') }}"><i class="bx bx-trash"></i> &nbsp; Trash</a> --}}
                                             @elseif($value->status == 2)
                                                 <a class="dropdown-item" href="{{ url('projects-status-change/'.$value->id.'/1') }}"><i class="bx bx-check-shield "></i> &nbsp; Activate</a>
                                                 <a class="dropdown-item" href="{{ url('projects-status-change/'.$value->id.'/2') }}"><i class="bx bx-cloud-download"></i> &nbsp; Draft</a>
-                                                <a class="dropdown-item" href="{{ url('projects-status-change/'.$value->id.'/3') }}"><i class="bx bx-trash"></i> &nbsp; Trash</a>
+                                                {{-- <a class="dropdown-item" href="{{ url('projects-status-change/'.$value->id.'/3') }}"><i class="bx bx-trash"></i> &nbsp; Trash</a> --}}
                                             @else
                                                 <a class="dropdown-item" href="{{ url('projects-status-change/'.$value->id.'/1') }}"><i class="bx bx-check-shield "></i> &nbsp; Activate</a>
                                                 <a class="dropdown-item" href="{{ url('projects-status-change/'.$value->id.'/2') }}"><i class="bx bx-cloud-download"></i> &nbsp; Draft</a>
-                                                <a class="dropdown-item" href="{{ url('projects-status-change/'.$value->id.'/3') }}"><i class="bx bx-trash"></i> &nbsp; Trash</a>
+                                                {{-- <a class="dropdown-item" href="{{ url('projects-status-change/'.$value->id.'/3') }}"><i class="bx bx-trash"></i> &nbsp; Trash</a> --}}
                                             @endif
                                         </div>
                                     </div>
