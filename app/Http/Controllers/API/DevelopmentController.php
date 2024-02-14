@@ -22,7 +22,6 @@ class DevelopmentController extends Controller
         return response()->json($resources,200);
     }
 
-
     public function details(string $slug)
     {
         $resources = Project::with('project_brochure', 'project_image', 'project_factsheet', 'project_video', 'project_translations', 'units')->where('status', '1')->where('slug_link', $slug)->get();

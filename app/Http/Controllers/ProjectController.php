@@ -244,6 +244,7 @@ class ProjectController extends Controller
                 $project->unit_size_range = $request->area_range;
                 $project->outdoor_area = $request->outdoor_area_range;
                 $project->terrace_area = $request->terrace_area_range;
+                $project->brochure_link = $request->brochure_link;
 
 
                 $project->meta_title = $request->meta_title_en;
@@ -447,6 +448,7 @@ class ProjectController extends Controller
                 $project->unit_size_range = $request->area_range;
                 $project->outdoor_area = $request->outdoor_area_range;
                 $project->terrace_area = $request->terrace_area_range;
+                $project->brochure_link = $request->brochure_link;
 
 
                 $project->meta_title = $request->meta_title_en;

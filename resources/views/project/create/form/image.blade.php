@@ -1,4 +1,24 @@
 <div class="row">
+    <div class="col-md-12">
+        <div class="mb-3">
+            <label for="basicpill-title-input">Brochure Download Drive Link</label>
+            <input
+                type="text"
+                name="brochure_link"
+                placeholder="https://www.abc.com"
+                id="brochure_link"
+                maxlength="60"
+                
+                class="form-control
+                @error('brochure_link') border border-solid border-danger  @enderror"
+                value="{{ old('brochure_link') }}"
+            >
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
     <div class="col-md-6">
         <div class="fallback w-full mx-auto my-4">
             <label class="form-label">
