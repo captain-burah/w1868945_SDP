@@ -6,9 +6,7 @@
                 type="text"
                 name="brochure_link"
                 placeholder="https://www.abc.com"
-                id="brochure_link"
-                maxlength="60"
-                
+                id="brochure_link"                
                 class="form-control
                 @error('brochure_link') border border-solid border-danger  @enderror"
                 value="{{ $project->brochure_link}}"
