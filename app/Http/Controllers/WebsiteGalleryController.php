@@ -305,23 +305,23 @@ class WebsiteGalleryController extends Controller
     {
         $segment = WebsiteGalleryMedia::with('website_gallery')->where('id', $id)->get();
 
-        try {
-            foreach ($segment->website_gallery as $child)
-            {
-                Storage::deleteDirectory('projects/factsheets/'.$segment->id);
-                // Storage::delete('projects/brochures/'.$brochure->id.'/'.$child->name);  //DELETE THE ACTUAL FILE FROM STORAGE
-                $child->delete();
+        // try {
+        //     foreach ($segment->website_gallery as $child)
+        //     {
+        //         Storage::deleteDirectory('projects/factsheets/'.$segment->id);
+        //         // Storage::delete('projects/brochures/'.$brochure->id.'/'.$child->name);  //DELETE THE ACTUAL FILE FROM STORAGE
+        //         $child->delete();
 
-                $resource_id = $child->website_gallery;
-                dd($resource_id);
+        //         $resource_id = $child->website_gallery;
+        //         dd($resource_id);
 
-                File::delete($path."$resource_id/videos/", $image_name);
+        //         File::delete($path."$resource_id/videos/", $image_name);
 
-            }
-        } catch (\Exception $e) {
-            dd($e->getMessage());
-            return Redirect::back()->withErrors(['message', $e->getMessage() ]);
-        }
+        //     }
+        // } catch (\Exception $e) {
+        //     dd($e->getMessage());
+        //     return Redirect::back()->withErrors(['message', $e->getMessage() ]);
+        // }
 
         WebsiteGalleryMedia::destroy($id);
 
