@@ -58,10 +58,10 @@
 
 
     <div class="col-lg-4">
+        <a href="{{ route('website-blogs.index') }}">
         <div class="card">
             <div class="card-body">
                 <div class="row mx-auto">
-
                     <div class="d-flex">
                         <div class="flex-grow-1 align-self-center">
                             <div class="text-muted">
@@ -72,6 +72,7 @@
                 </div>
             </div>
         </div>
+        </a>
     </div>
 
 

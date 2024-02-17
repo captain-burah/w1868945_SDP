@@ -20,6 +20,7 @@ use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\SeoController;
 use App\Http\Controllers\WebsiteNewsController;
+use App\Http\Controllers\WebsiteBlogsController;
 use App\Http\Controllers\WebsiteConstructionsController;
 use App\Http\Controllers\LeadController;
 
@@ -257,6 +258,10 @@ Route::middleware('auth')->group(function () {
 
     /** NEWS */
         Route::resource('website-news', WebsiteNewsController::class);
+    /** NEWS */
+
+    /** NEWS */
+        Route::resource('website-blogs', WebsiteBlogsController::class);
     /** NEWS */
 /** WEBSITE CONTENT MANAGEMENT */
 
