@@ -21,6 +21,7 @@ use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\SeoController;
 use App\Http\Controllers\WebsiteNewsController;
 use App\Http\Controllers\WebsiteBlogsController;
+use App\Http\Controllers\WebsiteGalleryController;
 use App\Http\Controllers\WebsiteConstructionsController;
 use App\Http\Controllers\LeadController;
 
@@ -260,9 +261,16 @@ Route::middleware('auth')->group(function () {
         Route::resource('website-news', WebsiteNewsController::class);
     /** NEWS */
 
-    /** NEWS */
+    /** BLOGS */
         Route::resource('website-blogs', WebsiteBlogsController::class);
-    /** NEWS */
+    /** BLOGS */
+
+    /** GALLERY */
+    Route::resource('website-gallery', WebsiteGalleryController::class);
+    /** GALLERY */
+
+    Route::get('website-gallery-media-destroy/{id}', [WebsiteGalleryController::class, 'website_gallery_media_destroy'])->name('website-gallery-media-destroy');
+
 /** WEBSITE CONTENT MANAGEMENT */
 
 
