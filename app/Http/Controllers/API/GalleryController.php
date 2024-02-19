@@ -21,8 +21,8 @@ class GalleryController extends Controller
         return response()->json($resources,200);
     }
 
-    public function show($id){
-        $resources = WebsiteGallery::with('website_gallery_medias')->where('status', '1')->where('id', $id)->get();
+    public function show($slug){
+        $resources = WebsiteGallery::with('website_gallery_medias')->where('status', '1')->where('slug_link', $slug)->get();
         return response()->json($resources,200);
     }
 }
