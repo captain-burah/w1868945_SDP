@@ -15,7 +15,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 class BlogsController extends Controller
 {
     public function index(){
-        $resources = WebsiteBlog::select('id', 'title', 'title_ar', 'description', 'description_ar', 'slug_link', 'thumbnail')->where('status', '1')->get();
+        $resources = WebsiteBlog::select('id', 'title', 'title_ar', 'description', 'description_ar', 'slug_link', 'thumbnail', 'created_at')->where('status', '1')->get();
         return response()->json($resources,200);
     }
 
