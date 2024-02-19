@@ -17,7 +17,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 class GalleryController extends Controller
 {
     public function index(){
-        $resources = WebsiteGallery::with('website_gallery_medias')->select('id', 'title', 'title_ar', 'description', 'description_ar', 'slug_link', 'thumbnail')->where('status', '1')->get();
+        $resources = WebsiteGallery::with('website_gallery_medias')->select('id', 'title', 'title_ar', 'description', 'description_ar', 'slug_link', 'thumbnail', 'created_at')->where('status', '1')->get();
         return response()->json($resources,200);
     }
 
