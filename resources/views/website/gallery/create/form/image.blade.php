@@ -29,11 +29,172 @@
 </div>
 
 
+
+
+
 <div class="row">
+
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">
+                Video 01
+            </label>
+            <input
+                type="text"
+                name="video_link1"
+                placeholder="Video Link"
+                id="video_link1"
+
+                class="form-control
+                @error('video_link1') border border-solid border-danger  @enderror"
+                value="{{ old('video_link1') }}"
+            >
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">
+                Video 02
+            </label>
+            <input
+                type="text"
+                name="video_link2"
+                placeholder="Video Link"
+                id="video_link2"
+
+                class="form-control
+                @error('video_link2') border border-solid border-danger  @enderror"
+                value="{{ old('video_link2') }}"
+            >
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">
+                Video 03
+            </label>
+            <input
+                type="text"
+                name="video_link3"
+                placeholder="Video Link"
+                id="video_link3"
+
+                class="form-control
+                @error('video_link3') border border-solid border-danger  @enderror"
+                value="{{ old('video_link3') }}"
+            >
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">
+                Video 04
+            </label>
+            <input
+                type="text"
+                name="video_link4"
+                placeholder="Video Link"
+                id="video_link4"
+
+                class="form-control
+                @error('video_link4') border border-solid border-danger  @enderror"
+                value="{{ old('video_link4') }}"
+            >
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">
+                Video 05
+            </label>
+            <input
+                type="text"
+                name="video_link5"
+                placeholder="Video Link"
+                id="video_link5"
+
+                class="form-control
+                @error('video_link5') border border-solid border-danger  @enderror"
+                value="{{ old('video_link5') }}"
+            >
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">
+                Video 06
+            </label>
+            <input
+                type="text"
+                name="video_link6"
+                placeholder="Video Link"
+                id="video_link6"
+
+                class="form-control
+                @error('video_link6') border border-solid border-danger  @enderror"
+                value="{{ old('video_link6') }}"
+            >
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">
+                Video 07
+            </label>
+            <input
+                type="text"
+                name="video_link7"
+                placeholder="Video Link"
+                id="video_link7"
+
+                class="form-control
+                @error('video_link7') border border-solid border-danger  @enderror"
+                value="{{ old('video_link7') }}"
+            >
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">
+                Video 08
+            </label>
+            <input
+                type="text"
+                name="video_link8"
+                placeholder="Video Link"
+                id="video_link8"
+
+                class="form-control
+                @error('video_link8') border border-solid border-danger  @enderror"
+                value="{{ old('video_link8') }}"
+            >
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{{-- <div class="row">
     <div class="mb-3 col-12">
         <div class="fallback w-full mx-auto my-4">
             <label class="form-label">
-                Video
+                Video File
             </label>
             <input type="file" name="video_files[]" id="inputFile" multiple class="form-control p-1 @error('video_files') border border-solid border-danger w-100  @enderror" accept="video/mp4, video/x-m4v, video/*">
             <span class="text-muted font-size-10">Upload only one image | MP4 | < 30 MB</span>
@@ -42,7 +203,7 @@
             @enderror
         </div>
     </div>
-</div>
+</div> --}}
 
 
 <div class="row">

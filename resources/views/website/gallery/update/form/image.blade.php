@@ -38,13 +38,190 @@
 </div>
 
 
+<style>
+    iframe{
+        width: 100% !important;
+    }
+</style>
+<div class="row">
+    @foreach($resources->website_gallery_medias as $data)
+        @if($data->type == 'video')
+            <div class="col-md-6 mb-4">
+                <div class="inline-block align-baseline my-2 text-center">
+                    <a href="{{ url('website-gallery-media-destroy/'.$data->id) }}" class="btn btn-outline-dark btn-sm btn-block">
+                        Delete
+                    </a>
+                </div>
+                <div class="">
+                    {!!$data->name!!}
+                </div>
+            </div>  
+        @endif
+    @endforeach
+</div>
 
 
 <div class="row">
+
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">
+                Video Link
+            </label>
+            <input
+                type="text"
+                name="video_link1"
+                placeholder="Video Link"
+                id="video_link1"
+
+                class="form-control
+                @error('video_link1') border border-solid border-danger  @enderror"
+                value="{{ $resources->video_link1 }}"
+            >
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">
+                Video Link
+            </label>
+            <input
+                type="text"
+                name="video_link2"
+                placeholder="Video Link"
+                id="video_link2"
+
+                class="form-control
+                @error('video_link2') border border-solid border-danger  @enderror"
+                value="{{ $resources->video_link2 }}"
+            >
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">
+                Video Link
+            </label>
+            <input
+                type="text"
+                name="video_link3"
+                placeholder="Video Link"
+                id="video_link3"
+
+                class="form-control
+                @error('video_link3') border border-solid border-danger  @enderror"
+                value="{{ $resources->video_link3 }}"
+            >
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">
+                Video Link
+            </label>
+            <input
+                type="text"
+                name="video_link4"
+                placeholder="Video Link"
+                id="video_link4"
+
+                class="form-control
+                @error('video_link4') border border-solid border-danger  @enderror"
+                value="{{ $resources->video_link4 }}"
+            >
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">
+                Video Link
+            </label>
+            <input
+                type="text"
+                name="video_link5"
+                placeholder="Video Link"
+                id="video_link5"
+
+                class="form-control
+                @error('video_link5') border border-solid border-danger  @enderror"
+                value="{{ $resources->video_link5 }}"
+            >
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">
+                Video Link
+            </label>
+            <input
+                type="text"
+                name="video_link6"
+                placeholder="Video Link"
+                id="video_link6"
+
+                class="form-control
+                @error('video_link6') border border-solid border-danger  @enderror"
+                value="{{ $resources->video_link6 }}"
+            >
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">
+                Video Link
+            </label>
+            <input
+                type="text"
+                name="video_link7"
+                placeholder="Video Link"
+                id="video_link7"
+
+                class="form-control
+                @error('video_link7') border border-solid border-danger  @enderror"
+                value="{{ $resources->video_link7 }}"
+            >
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">
+                Video Link
+            </label>
+            <input
+                type="text"
+                name="video_link8"
+                placeholder="Video Link"
+                id="video_link8"
+
+                class="form-control
+                @error('video_link8') border border-solid border-danger  @enderror"
+                value="{{ $resources->video_link8 }}"
+            >
+        </div>
+    </div>
+</div>
+
+
+
+{{-- <div class="row">
     <div class="mb-3 col-12">
         <div class="fallback w-full mx-auto my-4">
             <label class="form-label">
-                Videos
+                Videos File
             </label>
             <div class="row p-4">
                 @if(isset($image))
@@ -79,7 +256,7 @@
             @enderror
         </div>
     </div>
-</div>
+</div> --}}
 
 
 <div class="row">

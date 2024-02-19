@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('website_gallery_media', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('gallery_id')->nullable(true);
-            $table->string('name')->nullable(true);
+            $table->longText('name')->nullable(true);
             $table->string('type')->nullable(true);
             $table->timestamps();
             $table->foreign('gallery_id')->references('id')->on('website_galleries')->onDelete('cascade');

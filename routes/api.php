@@ -9,6 +9,8 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\API\CommunityController;
 use App\Http\Controllers\API\ConstructionController;
 use App\Http\Controllers\API\NewsController;
+use App\Http\Controllers\API\BlogsController;
+use App\Http\Controllers\API\GalleryController;
 use App\Http\Controllers\API\UnitController;
 use App\Http\Controllers\API\Unit_paymentplan;
 use App\Http\Controllers\API\SEOController;
@@ -17,7 +19,7 @@ use App\Http\Controllers\API\FormSubmissionController;
 use App\Http\Controllers\API\EmailSubscriptionController;
 
 /*
-|--------------------------------------------------------------------------
+|-----------------------------------withErrors(['message', $e->getMessage() ]---------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
 |
@@ -48,6 +50,10 @@ Route::middleware('authkey')->prefix('v1/esnaad')->namespace('App\Http\Controlle
     Route::get('/constructions/{id}', 'API\ConstructionController@show');
     Route::get('/news', 'API\NewsController@index');
     Route::get('/news/{id}', 'API\NewsController@show');
+    Route::get('/gallery', 'API\GalleryController@index');
+    Route::get('/gallery/{id}', 'API\GalleryController@show');
+    Route::get('/blogs', 'API\BlogsController@index');
+    Route::get('/blogs/{id}', 'API\BlogsController@show');
     Route::post('/agency-registration', 'API\BrokerController@store')->middleware('api', 'cors');
     Route::post('/email-subscription', 'API\EmailSubscriptionController@store')->middleware('cors');
     Route::post('/project-brochure-download', 'API\EmailSubscriptionController@store')->middleware('cors');

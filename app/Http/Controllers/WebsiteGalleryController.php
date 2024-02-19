@@ -77,6 +77,63 @@ class WebsiteGalleryController extends Controller
 
             $resource_id = $resource->id;
 
+            if($request->video_link1 != '') {
+                $resource_segment_file = new WebsiteGalleryMedia();
+                $resource_segment_file->gallery_id = $resource_id;
+                $resource_segment_file->type = 'video';
+                $resource_segment_file->name = $request->video_link1;
+                $resource_segment_file->save();
+            }
+            if($request->video_link2 != '') {
+                $resource_segment_file = new WebsiteGalleryMedia();
+                $resource_segment_file->gallery_id = $resource_id;
+                $resource_segment_file->type = 'video';
+                $resource_segment_file->name = $request->video_link2;
+                $resource_segment_file->save();
+            }
+            if($request->video_link3 != '') {
+                $resource_segment_file = new WebsiteGalleryMedia();
+                $resource_segment_file->gallery_id = $resource_id;
+                $resource_segment_file->type = 'video';
+                $resource_segment_file->name = $request->video_link3;
+                $resource_segment_file->save();
+            }
+            if($request->video_link4 != '') {
+                $resource_segment_file = new WebsiteGalleryMedia();
+                $resource_segment_file->gallery_id = $resource_id;
+                $resource_segment_file->type = 'video';
+                $resource_segment_file->name = $request->video_link4;
+                $resource_segment_file->save();
+            }
+            if($request->video_link5 != '') {
+                $resource_segment_file = new WebsiteGalleryMedia();
+                $resource_segment_file->gallery_id = $resource_id;
+                $resource_segment_file->type = 'video';
+                $resource_segment_file->name = $request->video_link5;
+                $resource_segment_file->save();
+            }
+            if($request->video_link6 != '') {
+                $resource_segment_file = new WebsiteGalleryMedia();
+                $resource_segment_file->gallery_id = $resource_id;
+                $resource_segment_file->type = 'video';
+                $resource_segment_file->name = $request->video_link6;
+                $resource_segment_file->save();
+            }
+            if($request->video_link7 != '') {
+                $resource_segment_file = new WebsiteGalleryMedia();
+                $resource_segment_file->gallery_id = $resource_id;
+                $resource_segment_file->type = 'video';
+                $resource_segment_file->name = $request->video_link7;
+                $resource_segment_file->save();
+            }
+            if($request->video_link8 != '') {
+                $resource_segment_file = new WebsiteGalleryMedia();
+                $resource_segment_file->gallery_id = $resource_id;
+                $resource_segment_file->type = 'video';
+                $resource_segment_file->name = $request->video_link8;
+                $resource_segment_file->save();
+            }
+
             if($request->hasfile('thumbnails'))
             {
                 $files = [];
@@ -172,6 +229,7 @@ class WebsiteGalleryController extends Controller
         if(count($resources->website_gallery_medias) > 0) {
             $this->data['image'] = $image = 1;
         }
+        
 
         return view('website.gallery.update.index', $this->data);
     }
@@ -207,6 +265,63 @@ class WebsiteGalleryController extends Controller
             $resource->save();
 
             $resource_id = $resource->id;
+
+            if($request->video_link1 != '') {
+                $resource_segment_file = new WebsiteGalleryMedia();
+                $resource_segment_file->gallery_id = $resource_id;
+                $resource_segment_file->type = 'video';
+                $resource_segment_file->name = $request->video_link1;
+                $resource_segment_file->save();
+            }
+            if($request->video_link2 != '') {
+                $resource_segment_file = new WebsiteGalleryMedia();
+                $resource_segment_file->gallery_id = $resource_id;
+                $resource_segment_file->type = 'video';
+                $resource_segment_file->name = $request->video_link2;
+                $resource_segment_file->save();
+            }
+            if($request->video_link3 != '') {
+                $resource_segment_file = new WebsiteGalleryMedia();
+                $resource_segment_file->gallery_id = $resource_id;
+                $resource_segment_file->type = 'video';
+                $resource_segment_file->name = $request->video_link3;
+                $resource_segment_file->save();
+            }
+            if($request->video_link4 != '') {
+                $resource_segment_file = new WebsiteGalleryMedia();
+                $resource_segment_file->gallery_id = $resource_id;
+                $resource_segment_file->type = 'video';
+                $resource_segment_file->name = $request->video_link4;
+                $resource_segment_file->save();
+            }
+            if($request->video_link5 != '') {
+                $resource_segment_file = new WebsiteGalleryMedia();
+                $resource_segment_file->gallery_id = $resource_id;
+                $resource_segment_file->type = 'video';
+                $resource_segment_file->name = $request->video_link5;
+                $resource_segment_file->save();
+            }
+            if($request->video_link6 != '') {
+                $resource_segment_file = new WebsiteGalleryMedia();
+                $resource_segment_file->gallery_id = $resource_id;
+                $resource_segment_file->type = 'video';
+                $resource_segment_file->name = $request->video_link6;
+                $resource_segment_file->save();
+            }
+            if($request->video_link7 != '') {
+                $resource_segment_file = new WebsiteGalleryMedia();
+                $resource_segment_file->gallery_id = $resource_id;
+                $resource_segment_file->type = 'video';
+                $resource_segment_file->name = $request->video_link7;
+                $resource_segment_file->save();
+            }
+            if($request->video_link8 != '') {
+                $resource_segment_file = new WebsiteGalleryMedia();
+                $resource_segment_file->gallery_id = $resource_id;
+                $resource_segment_file->type = 'video';
+                $resource_segment_file->name = $request->video_link8;
+                $resource_segment_file->save();
+            }
 
 
             if($request->hasfile('thumbnails'))
@@ -325,6 +440,7 @@ class WebsiteGalleryController extends Controller
 
         WebsiteGalleryMedia::destroy($id);
 
-        return $this->index();
+        // return $this->index();
+        return Redirect::back();
     }
 }
