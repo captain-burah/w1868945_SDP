@@ -19,8 +19,8 @@ class BlogsController extends Controller
         return response()->json($resources,200);
     }
 
-    public function show($id){
-        $resources = WebsiteBlog::where('status', '1')->where('id', $id)->get();
+    public function show(string $slug){
+        $resources = WebsiteBlog::where('status', '1')->where('slug_link', $slug)->get();
         return response()->json($resources,200);
     }
 }

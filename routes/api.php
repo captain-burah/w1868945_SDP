@@ -51,9 +51,9 @@ Route::middleware('authkey')->prefix('v1/esnaad')->namespace('App\Http\Controlle
     Route::get('/news', 'API\NewsController@index');
     Route::get('/news/{id}', 'API\NewsController@show');
     Route::get('/gallery', 'API\GalleryController@index');
-    Route::get('/gallery/{id}', 'API\GalleryController@show');
+    Route::get('/gallery/{slug}', 'API\GalleryController@show');
     Route::get('/blogs', 'API\BlogsController@index');
-    Route::get('/blogs/{id}', 'API\BlogsController@show');
+    Route::get('/blogs/{slug}', 'API\BlogsController@show');
     Route::post('/agency-registration', 'API\BrokerController@store')->middleware('api', 'cors');
     Route::post('/email-subscription', 'API\EmailSubscriptionController@store')->middleware('cors');
     Route::post('/project-brochure-download', 'API\EmailSubscriptionController@store')->middleware('cors');

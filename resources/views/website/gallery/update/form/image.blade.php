@@ -274,7 +274,7 @@
                             </a>
                         </div> --}}
                         <div class="">
-                            <img src="{{ asset('uploads/blogs/'.$resources->id.'/thumbnail/'.$resources->thumbnail) }}" width="100%" height="200">
+                            <img src="{{ asset('uploads/gallery/'.$resources->id.'/thumbnail/'.$resources->thumbnail) }}" width="100%" height="200">
                         </div>
                     </div>
                     <div class="row justify-content-center">
