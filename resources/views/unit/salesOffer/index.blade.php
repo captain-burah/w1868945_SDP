@@ -159,9 +159,9 @@
 <body >
     <div class="mt-6 mb-7 px-0">
         <div class="row justify-content-center">
-        <div class="col-lg-12 col-xl-7" style="background-color: #d6d6d6">
+        <div class="col-lg-12 col-xl-7" style="background-color: #f4f4f4">
             <div class="shadow-none m-5" style="background-color: #f4f4f4; border: 0;">
-                <div class="card-header px-0 py-5 rounded-0 shadown-none" style="background-color: #d6d6d6; color: #000; border: 0 !important;">
+                <div class="card-header px-0 py-5 rounded-0 shadown-none" style="background-color: #f4f4f4; color: #000; border: 0 !important;">
                     <div class="d-flex justify-content-between">
                         <div class="float-left my-auto">
                             <h1 style="font-size: 38px; font-family: 'Helvetica Neu'" class="m-0">SALES OFFER</h1>
