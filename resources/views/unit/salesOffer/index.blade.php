@@ -159,15 +159,15 @@
 <body >
     <div class="mt-6 mb-7 px-0">
         <div class="row justify-content-center">
-        <div class="col-lg-12 col-xl-7" style="background-color: #000">
+        <div class="col-lg-12 col-xl-7" style="background-color: #d6d6d6">
             <div class="shadow-none m-5" style="background-color: #f4f4f4; border: 0;">
-                <div class="card-header px-0 py-5 rounded-0 shadown-none" style="background-color: #000; color: #fff; border: 0 !important;">
+                <div class="card-header px-0 py-5 rounded-0 shadown-none" style="background-color: #d6d6d6; color: #000; border: 0 !important;">
                     <div class="d-flex justify-content-between">
                         <div class="float-left my-auto">
                             <h1 style="font-size: 38px; font-family: 'Helvetica Neu'" class="m-0">SALES OFFER</h1>
                         </div>
                         <div class="">
-                            <img src="{{ asset('logo-light.png')}}" alt="" height="70">
+                            <img src="{{ asset('logo-dark.png')}}" alt="" height="70">
                         </div>
                     </div>
                     
@@ -178,30 +178,53 @@
                             <p class="heading-p m-0 " >{{ \Carbon\Carbon::now('Asia/Dubai')->format('d.m.Y ') }}</p>
                             <p class="heading-p m-0 mt-3" >Dear Customer,</p>
                             <p class="heading-p m-0 mt-1 mb-3" >
-                                Thank you for your interest in Esnaad Properties. We are sending here our offer based on our discussion.
+                                Thank you for your interest in ESNAAD Developments. We are sending here our offer based on our discussion.
                             </p>
                         </div>
-                        <table class="table" >
+                        <table class="table" style="border: 1px #000 solid">
                             <tr>
-                                <td style="width: 150px; border: 1.5px #dbdbdb solid !important;" class="text-center">
-                                    <span class="body-table-p font-weight-semibold font-italic" style="font-family: 'Times New Roman'; font-size: 18px;">Project Name</span>
+                                <td style="width: 0px !important; border: 1.5px #dbdbdb solid !important;" class="text-left">
+                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px; text-align:left">Project Name</span>
                                 </td>
-                                <td style="width: 150px; border: 1.5px #dbdbdb solid !important;" class="text-center">
-                                    <span class="body-table-p font-weight-semibold font-italic" style="font-family: 'Times New Roman'; font-size: 18px;">Unit</span>
+                                <td style="width: 300px !important; border: 1.5px #dbdbdb solid !important;" class="text-left">
+                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">{{ $unit->project->name }}</span>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 150px; border: 1.5px #dbdbdb solid !important;" class="text-center">
-                                    <span class="body-table-p">{{ $unit->project->name }}</span>
+                                <td style="width: 0px !important; border: 1.5px #dbdbdb solid !important;" class="text-left">
+                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px; text-align:left">Bedrooms</span>
                                 </td>
-                                <td style="width: 150px; border: 1.5px #dbdbdb solid !important;" class="text-center">
-                                    @if($unit->project->name == "The Spark by ESNAAD")
-                                    <span class="body-table-p">D11-SPARK-{{ $unit->name }}</span>
-                                    @endif
-                                </td>   
+                                <td style="width: 300px !important; border: 1.5px #dbdbdb solid !important;" class="text-left">
+                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">{{ $unit->project->name }}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 0px !important; border: 1.5px #dbdbdb solid !important;" class="text-left">
+                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px; text-align:left">Total Area</span>
+                                </td>
+                                <td style="width: 300px !important; border: 1.5px #dbdbdb solid !important;" class="text-left">
+                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">{{ $unit->project->name }}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 0px !important; border: 1.5px #dbdbdb solid !important;" class="text-left">
+                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px; text-align:left">Price</span>
+                                </td>
+                                <td style="width: 300px !important; border: 1.5px #dbdbdb solid !important;" class="text-left">
+                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">{{ $unit->project->name }}</span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="width: 0px !important; border: 1.5px #dbdbdb solid !important;" class="text-left">
+                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px; text-align:left">Unit</span>
+                                </td>
+                                <td style="width: 300px !important; border: 1.5px #dbdbdb solid !important;" class="text-left">
+                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">D11-SPARK-{{ $unit->name }}</span>
+                                </td>
                             </tr>
                         </table>
-
+{{-- 
                         <table class="table table-bordered" style="border-top: 4px #dbdbdb solid; ">
                             
                             <tr>
@@ -227,17 +250,17 @@
                                     <span class="body-table-p">{{ number_format($unit->unit_price) }}</span>
                                 </td>
                             </tr>
-                        </table>
+                        </table> --}}
 
                         <div class="">
-                            <p class="body-p-sub m-0" style="line-height: 2">*Applicable fees to Dubai Land Department are: 4% of the property net price + AED 3,150 (VAT inc.) oqood fee.</p>
+                            <p class="body-p-sub m-0" style="line-height: 2">*Applicable fees to Dubai Land Department are: 4% of the property net price + AED 5,150 (VAT inc.) oqood fee.</p>
                             <p class="body-p-sub m-0" style="line-height: 2">*Prices and availability are subject to change without notice.</p>
                         </div>
                     </div>
                     <div style="background-color: #f4f4f4">
                         <div class="px-5 pb-4">
                         <div class=" pt-4 pb-4" >
-                            <p class="body-heading m-0">Payment Plans</p>
+                            <p class="body-heading m-0">Payment Plan</p>
                         </div>
                         
 

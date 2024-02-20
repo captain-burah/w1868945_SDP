@@ -234,7 +234,7 @@
 
             <div class="mb-3 col-lg-3">
                 {{-- <label for="milestone">Description</label> --}}
-                <input type="text" id="milestone_7" name="group_a[7][milestone]" class="form-control form-control-sm" value="Final Payment Completion Q3 2025" disabled>
+                <input type="text" id="milestone_7" name="group_a[7][milestone]" class="form-control form-control-sm" value="Final Payment Completion Q4 2025" disabled>
             </div>
 
             <div class="mb-3 col-lg-3">
