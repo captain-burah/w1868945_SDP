@@ -195,7 +195,7 @@
                                     <span class="body-table-p font-weight-semibold" style="font-size: 16px; text-align:left">Bedrooms</span>
                                 </td>
                                 <td style="width: 300px !important; border: 1.5px #dbdbdb solid !important;" class="text-left">
-                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">{{ $unit->project->name }}</span>
+                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">{{ $unit->bedroom }} bedroom</span>
                                 </td>
                             </tr>
                             <tr>
@@ -203,7 +203,7 @@
                                     <span class="body-table-p font-weight-semibold" style="font-size: 16px; text-align:left">Total Area</span>
                                 </td>
                                 <td style="width: 300px !important; border: 1.5px #dbdbdb solid !important;" class="text-left">
-                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">{{ $unit->project->name }}</span>
+                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">{{$unit->unit_size_range }}</span>
                                 </td>
                             </tr>
                             <tr>
@@ -211,7 +211,7 @@
                                     <span class="body-table-p font-weight-semibold" style="font-size: 16px; text-align:left">Price</span>
                                 </td>
                                 <td style="width: 300px !important; border: 1.5px #dbdbdb solid !important;" class="text-left">
-                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">{{ $unit->project->name }}</span>
+                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">{{ number_format($unit->unit_price) }}</span>
                                 </td>
                             </tr>
 
