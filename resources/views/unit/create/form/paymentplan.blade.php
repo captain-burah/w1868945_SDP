@@ -377,7 +377,7 @@
 
                 var price = parseFloat($('#price').val());
                 var dldVal = parseFloat(price * 0.04);
-                var adminFeeVal = parseFloat(3150);
+                var adminFeeVal = parseFloat(5150);
                 $('#dld_fees').val(dldVal);
                 $('#admin_fees').val(adminFeeVal);
                 $('#hiddenOutstandingBalance_0').val(price);
