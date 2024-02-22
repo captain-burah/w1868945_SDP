@@ -213,19 +213,19 @@
                             </tr>
                             <tr>
                                 <td style="width: 300px !important; border-bottom: 1.5px #dbdbdb solid !important;" class="text-center">
-                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">{{ $unit->project->name }}</span>
+                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px; ">{{ $unit->project->name }}</span>
                                 </td>
                                 <td style="width: 300px !important; border-bottom: 1.5px #dbdbdb solid !important;" class="text-center">
                                     <span class="body-table-p font-weight-semibold" style="font-size: 16px;">D11-SPARK-{{ $unit->name }}</span>
                                 </td>
                                 <td style="width: 300px !important; border-bottom: 1.5px #dbdbdb solid !important;" class="text-center">
-                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">{{ $unit->bedroom }} bedroom</span>
+                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px; color: #095edb;">{{ $unit->bedroom }} bedroom</span>
                                 </td>
                                 <td style="width: 300px !important; border-bottom: 1.5px #dbdbdb solid !important;" class="text-center">
-                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">{{$unit->unit_size_range }}</span>
+                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px; color: #095edb;">{{$unit->unit_size_range }}</span>
                                 </td>
                                 <td style="width: 300px !important; border-bottom: 1.5px #dbdbdb solid !important;" class="text-center">
-                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">{{ number_format($unit->unit_price) }}</span>
+                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px; color: #095edb;">{{ number_format($unit->unit_price) }}</span>
                                 </td>
                             </tr>
                         </table>
@@ -303,7 +303,7 @@
                                         </td>
 
                                         <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                            <span class="body-table-p ">{{ number_format($data->amount, 2) }}</span>
+                                            <span class="body-table-p" style="color: #095edb;">{{ number_format($data->amount, 2) }}</span>
                                         </td>
 
                                     </tr>
@@ -318,7 +318,7 @@
                                         <span class="body-table-p ">Purchase Price</span>
                                     </td>
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important; text-align:;">
-                                        <span class="body-table-p ">{{ number_format($unit->unit_price) }}</span>
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format($unit->unit_price) }}</span>
                                     </td>
                                 </tr>
 
