@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>ESNAAD Real Estate Booking Form</title>
+    <title>ESNAAD Real Estate Development L.L.C.</title>
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -90,18 +90,18 @@
 <body >
     <div>
         <div class="offset-xl-2 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 padding" id="content">
-    <div class="invoice-box">
+        <div class="invoice-box">
             <style>
 
                 @media print 
                 {
                     @page {
                         size: A4;
-                        margin: 100;
+                        margin: 0;
                     }
                 }
 
-                @page { size: A4;  margin: 100; }
+                @page { size: A4;  margin: 0mm; }
 
                 @media print {
                     html, body {
@@ -154,6 +154,80 @@
                     </div>
 
 
+                        
+
+                    @if(isset($sellers))
+                        @foreach($sellers as $seller)
+
+                            <div class="row my-4 mx-2 d-flex justify-content-between w-full">
+                                <div class="float-left my-auto">
+                                    <h4 class=" m-0 font-weight-bold">01 - Seller Details</h4>
+                                </div>
+                                <div class  ="">
+                                    <h4 class=" m-0 font-weight-bold">01 - بيانات البائع </h4>
+                                </div>
+                            </div>
+
+                            <div class="row my-2 mx-2 d-flex justify-content-between w-full">
+                                <div class="text-center mx-auto my-auto">
+                                    <h5 class=" m-0 font-weight-bold">Seller Details - 01</h5>
+                                </div>
+                                <div class  ="">
+                                    <h5 class=" m-0 font-weight-bold">{{$loop->iteration}}معلومات البائع</h5>
+                                </div>
+                            </div>
+
+                            
+                            <div class="row">
+                                <div class="col-6 p-3 border">
+                                    <div class="d-flex">
+                                        <p class="offer-headings">Seller Entity Name: &nbsp; &nbsp;</p> <span> {{$seller->client->name}} </span>
+                                    </div>
+                                </div>
+                                <div class="col-6 p-3 border">
+                                    <div class="d-flex" dir="rtl">
+                                        <p class="offer-headings-ar">
+                                            إسم البائع
+                                        </p> 
+                                        &nbsp;:&nbsp; <span>{{$seller->client->name}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6 p-3 border">
+                                    <div class="d-flex">
+                                        <p class="offer-headings">Address: &nbsp; &nbsp;</p> <span>{{$seller->client->address1}}, {{$seller->client->address2}}, {{$seller->client->country_of_residence}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-6 p-3 border">
+                                    <div class="d-flex" dir="rtl">
+                                        <p class="offer-headings-ar">
+                                            العنوان
+                                        </p> 
+                                        &nbsp;:&nbsp; <span>{{$seller->client->address1}}, {{$seller->client->address2}}, {{$seller->client->country_of_residence}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6 p-3 border">
+                                    <div class="d-flex">
+                                        <p class="offer-headings">Contact No: &nbsp; &nbsp;</p> <span>{{$seller->client->contact1}} | {{$seller->client->contact2}} | {{$seller->client->contact3}}</span></span></span>
+                                    </div>
+                                </div>
+                                <div class="col-6 p-3 border">
+                                    <div class="d-flex" dir="rtl">
+                                        <p class="offer-headings-ar">
+                                            رقم الهاتف       
+                                        </p> 
+                                        &nbsp;:&nbsp; <span>{{$seller->client->contact1}} | {{$seller->client->contact2}} | {{$seller->client->contact3}}</span></span></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        @endforeach
+                    @else
                         <div class="row my-4 mx-2 d-flex justify-content-between w-full">
                             <div class="float-left my-auto">
                                 <h4 class=" m-0 font-weight-bold">01 - Seller Details</h4>
@@ -163,10 +237,20 @@
                             </div>
                         </div>
 
+                        <div class="row my-2 mx-2 d-flex justify-content-between w-full">
+                            <div class="text-center mx-auto my-auto">
+                                <h5 class=" m-0 font-weight-bold">Seller Details - 01</h5>
+                            </div>
+                            <div class  ="">
+                                <h5 class=" m-0 font-weight-bold">معلومات البائع</h5>
+                            </div>
+                        </div>
+
+                        
                         <div class="row">
                             <div class="col-6 p-3 border">
                                 <div class="d-flex">
-                                    <p class="offer-headings">Seller Entity Name: &nbsp; &nbsp;</p> <span>ESNAAD Real Estate Development L.L.C.</span>
+                                    <p class="offer-headings">Seller Entity Name: &nbsp; &nbsp;</p> <span>  -  </span>
                                 </div>
                             </div>
                             <div class="col-6 p-3 border">
@@ -174,7 +258,7 @@
                                     <p class="offer-headings-ar">
                                         إسم البائع
                                     </p> 
-                                    &nbsp; &nbsp;</p> <span>ESNAAD Real Estate Development L.L.C</span>
+                                    &nbsp;:&nbsp; <span> - </span>
                                 </div>
                             </div>
                         </div>
@@ -182,23 +266,7 @@
                         <div class="row">
                             <div class="col-6 p-3 border">
                                 <div class="d-flex">
-                                    <p class="offer-headings">Developer Name: &nbsp; &nbsp;</p> <span>ESNAAD Real Estate Development L.L.C.</span>
-                                </div>
-                            </div>
-                            <div class="col-6 p-3 border">
-                                <div class="d-flex" dir="rtl">
-                                    <p class="offer-headings-ar">
-                                        اسم المطور
-                                    </p> 
-                                    &nbsp; &nbsp;</p> <span>ESNAAD Real Estate Development L.L.C</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-6 p-3 border">
-                                <div class="d-flex">
-                                    <p class="offer-headings">Address: &nbsp; &nbsp;</p> <span>Unit G07, City Walk Building #1, Al Wasl, Dubai</span>
+                                    <p class="offer-headings">Address: &nbsp; &nbsp;</p> <span>Unit G07, City Walk Building #1, Al Wasl, Dubai.</span>
                                 </div>
                             </div>
                             <div class="col-6 p-3 border">
@@ -206,7 +274,7 @@
                                     <p class="offer-headings-ar">
                                         العنوان
                                     </p> 
-                                    &nbsp;:&nbsp; <span>Unit G07, City Walk Building #1, Al Wasl, Dubai</span>
+                                    &nbsp;:&nbsp; <span>Unit G07, City Walk Building #1, Al Wasl, Dubai.</span>
                                 </div>
                             </div>
                         </div>
@@ -214,18 +282,19 @@
                         <div class="row">
                             <div class="col-6 p-3 border">
                                 <div class="d-flex">
-                                    <p class="offer-headings">Contact No.: &nbsp; &nbsp;</p> <span>+971 4 287 9506</span>
+                                    <p class="offer-headings">Contact No: &nbsp; &nbsp;</p> <span>+971 4 287 9506</span>
                                 </div>
                             </div>
                             <div class="col-6 p-3 border">
                                 <div class="d-flex" dir="rtl">
                                     <p class="offer-headings-ar">
-                                        رقم الاتصال                        
+                                        رقم الهاتف       
                                     </p> 
                                     &nbsp;:&nbsp; <span>+971 4 287 9506</span>
                                 </div>
                             </div>
                         </div>
+                    @endif
 
                         
                         
@@ -717,8 +786,8 @@
                                 <div class="d-flex" dir="rtl">
                                     <p class="booking-form-para">
                                         3.1 يوافق المشتري ويقر بأن العنوان وتفاصيل االتصال الموضحة أعاله تعتبر عنوان المشتري
-                                        الرئيسي ومحل إقامته ويجب تضمينها في اتفاقية البيع والشراء الخاصة بالمشتري واستخدامها في
-                                        جميع االتصاالت/المراسالت مع المشتري.
+الرئيسي ومحل إقامته ويجب تضمينها في اتفاقية البيع والشراء الخاصة بالمشتري واستخدامها في
+جميع االتصاالت/المراسالت مع المشتري.
                                     </p>
                                 </div>
                             </div>
@@ -1069,7 +1138,7 @@
                                 </div>
                             </div>
 
-                            <div class=" col-6 p-3 border">
+                            <div class=" page-break-before mt-5 pt-5 col-6 p-3 border">
                                 <div class="d-flex">
                                     <p class="booking-form-para">
                                         5.9 The Purchaser guarantees at the Purchaser's sole responsibility that
@@ -1082,7 +1151,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-6 p-3 border">
+                            <div class="page-break-before mt-5 pt-5 col-6 p-3 border">
                                 <div class="d-flex" dir="rtl">
                                     <p class="booking-form-para-ar">
                                         5.9 يضمن المشتري على مسؤوليته المنفردة بأن جميع الدفعات من أي نوع كانت التي تتم عملاً بهذه الاتفاقية، بما في ذلك  اقساط ثمن البيع، سواء تم سدادها من قبل المشتري أو من قبل أي شخص آخر نيابة عن المشتري، يتم دفعها بواسطة أموال من مصدر شرعي، وأن هذه المبالغ ليست من عائدات أي جريمة أو نشاط غير قانوني وليست أو لا يمكن اعتبارها بشكل معقول، موضوع غسيل الأموال بأي شكل من الأشكال.

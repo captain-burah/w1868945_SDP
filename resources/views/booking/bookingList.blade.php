@@ -83,7 +83,7 @@
                             <tr>
                                 
                                 <td>{{$value->id}}</td>
-                                <td>{{$value->booking_ref}}</td>
+                                <td>{{$value->ref_no}}</td>
                                 <td>{{$value->unit->project->name}}</td>
                                 <td>{{$value->unit->name}}</td>
                                 <td>{{$value->bookingbrokers[0]->broker->company_name}}</td>

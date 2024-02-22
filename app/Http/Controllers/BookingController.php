@@ -42,6 +42,33 @@ class BookingController extends Controller
     //      $this->middleware('permission:booking-delete', ['only' => ['destroy']]);
     // }
 
+
+
+    function generateUniqueReferenceNumber() {
+        // Generate a unique reference number
+        $referenceNumber = $this->generateReferenceNumber();
+
+        // Check if the generated reference number already exists in the database
+        while (Booking::where('ref_no', $referenceNumber)->exists()) {
+            $referenceNumber = generateReferenceNumber(); // Regenerate until a unique reference number is found
+        }
+
+        return $referenceNumber;
+    }
+
+    function generateReferenceNumber() {
+        // Customize the format of your reference number as needed
+        $prefix = 'ERD';
+        $prefix2 = 'BF';
+        $randomPart = strtoupper(substr(md5(uniqid()), 0, 8));
+
+        return $prefix . '-' . $prefix2 . '-' . $randomPart;
+    }
+
+    // Example usage
+    // $uniqueReferenceNumber = generateUniqueReferenceNumber();
+
+
     public function index()
     {
         $this->data['result'] = $result = Booking::with('bookingclients', 'bookingbrokers', 'unit')->get();
@@ -120,10 +147,12 @@ class BookingController extends Controller
 
             $unit = Unit::with('unit_paymentplan')->find($unit_id);
 
-            // dd($unit);
+            $uniqueReferenceNumber = $this->generateUniqueReferenceNumber();
 
             $booking = new Booking();
             $booking->unit_id = $unit_id;
+            $booking->ref_no = $uniqueReferenceNumber;
+            $booking->status = '0';
             $booking->save();
 
             $booking_id = $booking->id;
@@ -419,10 +448,11 @@ class BookingController extends Controller
 
         public function store_form3(Request $request) {
 
-            // $clientele = Clientele::find($request->client_id);
-            // $project = Project::find($request->project_id);
-            // $unit = Unit::with('unit_paymentplan')->find($request->unit_id);
-            // $booking = Booking::find($request->booking_id);
+            $clientele = Clientele::find($request->client_id);
+            $project = Project::find($request->project_id);
+            $unit = Unit::with('unit_paymentplan')->find($request->unit_id);
+            $this->data['booking'] = $booking = Booking::find($request->booking_id);
+
 
             // PDF::loadView('booking.reservationAgreement')->save(storage_path('invoice.pdf'));
 
@@ -457,15 +487,23 @@ class BookingController extends Controller
         public function print_booking_form($booking_id){
 
             $this->data['booking'] = $booking = Booking::with('unit')->find($booking_id);
+            $booking->status = '1';
+            $booking->save();
+            
             $unit_id = $booking->unit_id;
 
-            $this->data['unit'] = $unit = Unit::with('clienteles')->find($unit_id);
-            $this->data['unit_floorplan'] = $unit_floorplan = Unit_floorplan::with('unit_floorplan_files', 'unit')->where('unit_id', $unit_id)->get();
+            $this->data['unit'] = $unit = Unit::with('clienteles', 'unit_floorplan')->find($unit_id);
+            $unit->state = '2';
+            $unit->save();
+            
+            if($unit->unit_floorplan->unit_floorplan_files->count() > 0){
+                $this->data['unit_floorplan'] = $unit_floorplan = 'true';
+            };
             $this->data['form_type'] = 'form2';
-            // dd($unit_floorplan);
 
             // $pdf = PDF::loadView('booking.reservationAgreement', $this->data);
             return view('booking.booking_form_print', $this->data);
             // return $pdf->setPaper('a4', 'portrait')->download('reservation-agreement.pdf');
         }
+    
 }

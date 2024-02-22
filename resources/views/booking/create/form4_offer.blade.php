@@ -1,4 +1,5 @@
 <style>
+    
     @media print {
         .hide-from-print {
             display: none !important;
@@ -58,8 +59,8 @@
                 
             </div>
             <div class="">
-                <a href="{{ url('print_booking/'.$request->booking_id) }}" target="__blank" class="btn btn-dark btn-block">
-                    Print Booking Form
+                <a href="{{ url('print_booking/'.$request->booking_id) }}" class="btn btn-dark btn-block">
+                    Confirm & Print Booking Form
                 </a>
             </div>
         </div>
@@ -152,7 +153,7 @@
                         <h5 class=" m-0 font-weight-bold">Seller Details - 01</h5>
                     </div>
                     <div class  ="">
-                        <h5 class=" m-0 font-weight-bold">{{$loop->iteration}}معلومات البائع</h5>
+                        <h5 class=" m-0 font-weight-bold">معلومات البائع</h5>
                     </div>
                 </div>
 
@@ -311,7 +312,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-6 p-3 border">
                     <div class="d-flex">
                         <p class="offer-headings">No. of Car Parking Spaces: &nbsp; &nbsp;</p> <span>{{$unit->carpark}}</span>
@@ -325,7 +326,7 @@
                         &nbsp;:&nbsp; <span>{{$unit->carpark}}</span>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             {{-- <div class="row">
                 <div class="col-6 p-3 border">
@@ -1151,7 +1152,7 @@
 
                     </div>
                     <div class="d-flex my-4">
-                        <p class="booking-form-para">Agency Representative's Name: {{$booking->bookingbrokers[0]->broker->authorized_p_name}}</p>
+                        <p class="booking-form-para">Agency Representative's Name: {{$booking->salesperson_name}}</p>
 
                     </div>
                     <div class="d-flex my-4">
@@ -1185,7 +1186,7 @@
                     </div>
                     <div class="d-flex my-5">
                         <p class="booking-form-para">Sales Advisor Name & Signature:: </p>
-
+                            
                     </div>
                 </div>
                 <div class="col-6 p-3 border">
