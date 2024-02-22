@@ -43,7 +43,7 @@ class UnitController extends Controller
 
     public function index()
     { 
-        $units = Unit::select('id', 'status', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id')->with('project')->where('status', '1')->orderBY('id', 'ASC');
+        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id')->with('project')->where('status', '1')->orderBY('id', 'ASC');
 
         $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'ASC')->count();
         $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'ASC')->count();

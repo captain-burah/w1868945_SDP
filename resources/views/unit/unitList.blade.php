@@ -120,15 +120,15 @@
                                     <div class="dropdown">
                                         <a class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             @if($value->state == '1')
-                                                Listed
+                                                <span class="bg-info text-white p-1">Listed</span>
                                             @elseif($value->state == '2')
-                                                Booked
+                                                <span class="bg-warning text-white p-1">Booked</span>                                                
                                             @elseif($value->state == '3')
-                                                Amortizing
+                                                <span class="bg-primary text-white p-1">Amortizing</span>                                         
                                             @elseif($value->state == '4')
-                                                Sold
+                                                <span class="bg-success text-white p-1">Sold</span>                                                                                               
                                             @elseif($value->state == '5')
-                                                Resale
+                                                <span class="bg-danger text-white p-1">Resale</span>                                                                                               
                                             @else
                                                 N/A
                                             @endif
