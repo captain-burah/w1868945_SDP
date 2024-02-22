@@ -56,7 +56,7 @@
 
                             <?php $status = $value->status; ?>
                             <tr>
-                                <td>{{$value->id}}</td>
+                                <td>{{$loop->iteration}}</td>
                                 
                                 {{-- OPERATION --}}
                                 <td class="d-inline-flex">
