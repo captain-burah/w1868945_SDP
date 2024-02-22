@@ -9,22 +9,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
     <style>
-        @font-face {
-            font-family: 'Optima LT W02 Roman';
-            font-style: normal;
-            font-weight: normal;
-            src: url("https://db.onlinewebfonts.com/t/c78d5ac2e0567f3d7abc24629e42741f.eot");
-            src: url("https://db.onlinewebfonts.com/t/c78d5ac2e0567f3d7abc24629e42741f.eot?#iefix")format("embedded-opentype"),
-            url("https://db.onlinewebfonts.com/t/c78d5ac2e0567f3d7abc24629e42741f.woff2")format("woff2"),
-            url("https://db.onlinewebfonts.com/t/c78d5ac2e0567f3d7abc24629e42741f.woff")format("woff"),
-            url("https://db.onlinewebfonts.com/t/c78d5ac2e0567f3d7abc24629e42741f.ttf")format("truetype"),
-            url("https://db.onlinewebfonts.com/t/c78d5ac2e0567f3d7abc24629e42741f.svg#Optima LT W02 Roman")format("svg");
-        }
-
         @page {
             size: A4;
         }
-
         @page:right{
             @bottom-right {
                 content: counter(page);
@@ -39,8 +26,9 @@
             margin: 0;
         }
 
+        
         body{
-            font-family: 'Optima LT W02 Roman', sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             border: 1px #eee solid;
@@ -119,18 +107,18 @@
 
         .heading-p{
             font-size: 16px;
-            color: #000
+            color: #3d3d3d
         }
 
         .body-p{
             font-size: 16px;
-            color: #000
+            color: #3d3d3d
         }
 
         .body-table-p{
             font-size: 16px;
             text-align: center !important;
-            color: #000;
+            color: #3d3d3d;
             font-weight: 100 !important;
 
         }
@@ -138,12 +126,12 @@
         .body-heading {
             font-size: 24px;
             text-align:center;
-            color: #000
+            color: #3d3d3d
         }
 
         .body-p-sub{
             font-size: 14px;
-            color: #000
+            color: #3d3d3d
 
         }
 
@@ -173,10 +161,10 @@
         <div class="row justify-content-center">
         <div class="col-lg-12 col-xl-7" style="background-color: #fff">
             <div class="shadow-none m-5" style="background-color: #fff; border: 0;">
-                <div class="card-header px-0 py-4 rounded-0 shadown-none" style="background-color: #fff; color: #000; border: 0 !important;">
+                <div class="card-header px-0 py-5 rounded-0 shadown-none" style="background-color: #fff; color: #000; border: 0 !important;">
                     <div class="d-flex justify-content-between">
                         <div class="float-left my-auto">
-                            <h1 style="font-size: 38px; font-family: 'Helvetica Neu'" class="m-0">Sales Offer</h1>
+                            <h1 style="font-size: 38px; font-family: 'Helvetica Neu'" class="m-0">SALES OFFER</h1>
                         </div>
                         <div class="">
                             <img src="{{ asset('logo-dark.png')}}" alt="" height="70">
@@ -269,59 +257,45 @@
                     <div style="background-color: #fff">
                         <div class="px-0 pb-4 my-5">
                             <div class=" pt-4 pb-4" >
-                                <p class="body-heading m-0">Standard Payment Plan</p>
+                                <p class="body-heading m-0">Payment Plan</p>
                             </div>
                             
 
-                            <table class="table "> 
+                            <table class="table table-bordered "> 
                                 <tr>
-                                    <th style="width: 0px !important; border: 1.5px #dbdbdb solid !important; background-color: #d6d6d6 !important;" class="text-center">
-                                        <span class="body-table-p font-weight-semibold" style="font-size: 16px; text-align:left">Installment</span>
-                                    </th>
-                                    <th style="width: 300px !important; border: 1.5px #dbdbdb solid !important; background-color: #d6d6d6 !important;" class="text-center">
-                                        <span class="body-table-p font-weight-semibold" style="font-size: 16px;">Milestone</span>
-                                    </th>
-                                    <th style="width: 300px !important; border: 1.5px #dbdbdb solid !important; background-color: #d6d6d6 !important;" class="text-center">
-                                        <span class="body-table-p font-weight-semibold" style="font-size: 16px;">Percentage</span>
-                                    </th>
-                                    <th style="width: 300px !important; border: 1.5px #dbdbdb solid !important; background-color: #d6d6d6 !important;" class="text-center">
-                                        <span class="body-table-p font-weight-semibold" style="font-size: 16px;">Amount (AED)</span>
-                                    </th>
+                                    <td class="text-center" style="border: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p font-weight-semibold font-italic" style="font-family: 'Times New Roman'; font-size: 18px;">Installment</span>
+                                    </td>
+                                    <td class="text-center" style="border: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p font-weight-semibold font-italic" style="font-family: 'Times New Roman'; font-size: 18px;">Milestone</span>
+                                    </td>
+                                    <td class="text-center" style="border: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p font-weight-semibold font-italic" style="font-family: 'Times New Roman'; font-size: 18px;">Percentage</span>
+                                    </td>
+                                    <td class="text-center" style="border: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p font-weight-semibold font-italic" style="font-family: 'Times New Roman'; font-size: 18px;">Amount (AED)</span>
+                                    </td>
                                 </tr>
                                 @foreach($unit_paymentplan[0]->unit_paymentplan_files as $data)
                                     <tr>
-                                        <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <td class="text-center" style="border: 1.5px #dbdbdb solid !important;">
                                             <span class="body-table-p">{{ $loop->index+1 }}</span>
                                         </td>
 
-                                        <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <td class="text-center" style="border: 1.5px #dbdbdb solid !important;">
                                             <span class="body-table-p">{{ $data->name }}</span>
                                         </td>
 
-                                        <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <td class="text-center" style="border: 1.5px #dbdbdb solid !important;">
                                             <span class="body-table-p">{{ $data->percentage }}%</span>
                                         </td>
 
-                                        <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <td class="text-center" style="border: 1.5px #dbdbdb solid !important;">
                                             <span class="body-table-p ">{{ number_format($data->amount, 2) }}</span>
                                         </td>
 
                                     </tr>
                                 @endforeach
-
-                                <tr>
-                                    <td style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                    </td>
-                                    <td style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                    </td>
-                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                        <span class="body-table-p ">Purchase Price</span>
-                                    </td>
-                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important; text-align:;">
-                                        <span class="body-table-p ">{{ number_format($unit->unit_price) }}</span>
-                                    </td>
-                                </tr>
-
                             </table>
                         </div>
 
@@ -348,7 +322,7 @@
     </div>
 
     <div class="divFooter px-0 pb-3">
-        <div class="mx-5 d-flex justify-content-between">
+        <div class="d-flex justify-content-between">
             <div class=" my-auto">
                 <p style="font-size: 10px">
                     This offer is valid for 24 hours from the date of generation and subject to availability of the unit.
