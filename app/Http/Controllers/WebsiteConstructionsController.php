@@ -96,22 +96,10 @@ class WebsiteConstructionsController extends Controller
                 foreach($request->file('thumbnails') as $key => $image)
                 {
                     $image_name = $image->hashName();
-                    $image->storeAs('website-construction/'.$resource_id.'/thumbnail/', $image_name, 'public'); //nonsecured storage - has public access
-                    $resource_segment_file = WebsiteConstruction::find($resource_id);
-                    $resource_segment_file->thumbnail = $image_name;
-                    $resource_segment_file->save();
-                }
-            }
+                    $path = $this->uploadPath;
+                    $image->move($path.'/'.$resource_id.'/thumbnail/', $image_name);
 
-
-            if($request->hasfile('map_image'))
-            {
-                $files = [];
-
-                foreach($request->file('map_image') as $key => $image)
-                {
-                    $image_name = $image->hashName();
-                    $image->storeAs('website-construction/'.$resource_id.'/map/', $image_name, 'public'); //nonsecured storage - has public access
+                    // $image->storeAs('website-construction/'.$resource_id.'/thumbnail/', $image_name, 'public'); //nonsecured storage - has public access
                     $resource_segment_file = WebsiteConstruction::find($resource_id);
                     $resource_segment_file->thumbnail = $image_name;
                     $resource_segment_file->save();
@@ -127,7 +115,10 @@ class WebsiteConstructionsController extends Controller
                     foreach($request->file('files') as $key => $image)
                     {
                         $image_name = $image->hashName();
-                        $image->storeAs('website-construction/'.$resource_id.'/images/', $image_name, 'public'); //nonsecured storage - has public access
+                        $path = $this->uploadPath;
+                        $image->move($path.'/'.$resource_id.'/images/', $image_name);
+
+                        // $image->storeAs('website-construction/'.$resource_id.'/images/', $image_name, 'public'); //nonsecured storage - has public access
                         $resource_segment_file = new WebsiteConstructionImage();
                         $resource_segment_file->news_id = $resource_id;
                         $resource_segment_file->name = $image_name;
