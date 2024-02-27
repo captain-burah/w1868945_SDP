@@ -22,7 +22,7 @@ class ConstructionController extends Controller
     }
 
     public function show($id){
-        $resources = WebsiteConstruction::with('website_construction_images')->where('status', '1')->where('id', $id)->get();
+        $resources = WebsiteConstruction::with('website_construction_images')->where('status', '1')->where('slug_link', $id)->get();
         return response()->json($resources,200);
     }
 }
