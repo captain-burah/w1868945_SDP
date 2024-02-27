@@ -25,7 +25,6 @@
 
                 <div class="flex flex-wrap h-full my-auto" >
 
-
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul class="m-0">
@@ -70,7 +69,6 @@
                                         name="segment_name"
                                         placeholder="Riveira - Arabic"
                                         class="form-control @error('segment_name') border border-solid border-danger  @enderror"
-
                                         value="{{ old('segment_name')}}"
                                     >
                                     <span class="text-muted font-size-10">Provide a name to refer the brochures you can use to link to any projects</span>

@@ -72,7 +72,7 @@ class ProjectImageController extends Controller
 
         $request->validate([
             'segment_name' => 'required',
-            'files' => 'required | max: 10 | min: 1',
+            'files' => 'required | min: 1',
             'files.*' => 'max: 400'
         ]);
 
@@ -153,7 +153,7 @@ class ProjectImageController extends Controller
         dd($request);
         $request->validate([
             'segment_name' => 'required',
-            'files' => 'required | max: 20 | min: 1',
+            'files' => 'required | min: 1',
             'files.*' => 'max: 400'
         ]);
 
