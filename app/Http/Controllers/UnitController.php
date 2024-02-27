@@ -471,8 +471,7 @@ class UnitController extends Controller
         try
         {
             $units = Unit::findOrFail($id);
-        }
-        catch(ModelNotFoundException $e)
+        } catch(ModelNotFoundException $e)
         {
             // SLACK UPDATE
 

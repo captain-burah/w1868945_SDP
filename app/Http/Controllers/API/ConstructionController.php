@@ -17,7 +17,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 class ConstructionController extends Controller
 {
     public function index(){
-        $resources = WebsiteConstruction::with('website_construction_images')->select('id', 'title', 'title_ar', 'description', 'description_ar', 'slug_link', 'thumbnail')->where('status', '1')->get();
+        $resources = WebsiteConstruction::with('website_construction_images')->select('id', 'title', 'title_ar', 'description', 'description_ar', 'growth', 'slug_link', 'thumbnail')->where('status', '1')->get();
         return response()->json($resources,200);
     }
 

@@ -1166,11 +1166,11 @@
 
                     </div>
                     <div class="d-flex my-4" dir="rtl">
-                        <p class="booking-form-para">اسم الوكالة :</p>
+                        <p class="booking-form-para">اسم الوكالة : {{$booking->bookingbrokers[0]->broker->company_name}}</p>
 
                     </div>
                     <div class="d-flex my-4" dir="rtl">
-                        <p class="booking-form-para">اسم ممثل الوكالة :</p>
+                        <p class="booking-form-para">اسم ممثل الوكالة : {{$booking->salesperson_name}}</p>
 
                     </div>
                     <div class="d-flex my-4" dir="rtl">

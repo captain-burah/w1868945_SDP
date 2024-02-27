@@ -11,7 +11,7 @@
 
 <div style="padding-top: 150px;">
 
-    @include('project.update.form')
+    @include('booking.update.form')
 
     {{-- @include('project.activeProjectsTable') --}}
 </div>

@@ -101,37 +101,44 @@
                                         */
                                     ?>
                                     
-                                    <a class="btn btn-sm btn-outline-light rounded " href="{{ route('units.show', ['unit' => $value->id]) }}"><i class="bx bx-show-alt text-dark font-size-18"></i></a>
+                                    <a class="btn btn-sm btn-outline-light rounded m-0 h-100" href="{{ route('units.show', ['unit' => $value->id]) }}"><i class="bx bx-show-alt text-dark font-size-18"></i></a>
 
                                     <div class="dropdown mx-1">
                                         <a class="dropdown-toggle btn btn-sm btn-outline-light rounded dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             @if($value->status == '1')
-                                                <i class="bx bx-check-shield text-success font-size-18" ></i>
+                                                <i class="bx bx-check-shield text-success font-size-18 m-0 h-100" ></i>
                                             @elseif($value->status == '2')
-                                                <i class="bx bx-cloud-download text-dark font-size-18" ></i>
+                                                <i class="bx bx-cloud-download text-dark font-size-18 m-0 h-100" ></i>
+                                            @elseif($value->status == '99')
+                                                <i class="bx bx-trash text-danger font-size-18 m-0 h-100" ></i>
                                             @else
-                                                <i class="bx bx-trash text-danger font-size-18" ></i>
+                                                N/A
                                             @endif
                                         </a>
+
+                                        
 
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             @if($value->status == '1')
                                                 <a class="dropdown-item" href="{{ url('units-status-change/'.$value->id.'/1') }}"><i class="bx bx-check-shield "></i> &nbsp; Activate</a>
                                                 <a class="dropdown-item" href="{{ url('units-status-change/'.$value->id.'/2') }}"><i class="bx bx-cloud-download"></i> &nbsp; Draft</a>
-                                                <a class="dropdown-item" href="{{ url('units-status-change/'.$value->id.'/3') }}"><i class="bx bx-trash"></i> &nbsp; Trash</a>
                                             @elseif($value->status == 2)
                                                 <a class="dropdown-item" href="{{ url('units-status-change/'.$value->id.'/1') }}"><i class="bx bx-check-shield "></i> &nbsp; Activate</a>
                                                 <a class="dropdown-item" href="{{ url('units-status-change/'.$value->id.'/2') }}"><i class="bx bx-cloud-download"></i> &nbsp; Draft</a>
-                                                <a class="dropdown-item" href="{{ url('units-status-change/'.$value->id.'/3') }}"><i class="bx bx-trash"></i> &nbsp; Trash</a>
                                             @else
                                                 <a class="dropdown-item" href="{{ url('units-status-change/'.$value->id.'/1') }}"><i class="bx bx-check-shield "></i> &nbsp; Activate</a>
                                                 <a class="dropdown-item" href="{{ url('units-status-change/'.$value->id.'/2') }}"><i class="bx bx-cloud-download"></i> &nbsp; Draft</a>
-                                                <a class="dropdown-item" href="{{ url('units-status-change/'.$value->id.'/3') }}"><i class="bx bx-trash"></i> &nbsp; Trash</a>
                                             @endif
                                         </div>
                                     </div>
 
-                                    <a class="btn btn-sm btn-outline-light rounded" href="{{ route('units.edit', ['unit' => $value->id]) }}"><i class="bx bx-edit text-dark font-size-18"></i></a>
+                                    <form action="{{ route('bookings.destroy', ['booking' => $value->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-outline-danger rounded-0 btn-block">Delete</button>
+                                    </form>
+
+                                    <a class="btn btn-sm btn-outline-light rounded" href="{{ route('bookings.edit', ['booking' => $value->id]) }}"><i class="bx bx-edit text-dark font-size-18"></i></a>
 
                                 </td>
                             </tr>

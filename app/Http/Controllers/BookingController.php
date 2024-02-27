@@ -71,7 +71,7 @@ class BookingController extends Controller
 
     public function index()
     {
-        $this->data['result'] = $result = Booking::with('bookingclients', 'bookingbrokers', 'unit')->get();
+        $this->data['result'] = $result = Booking::with('bookingclients', 'bookingbrokers', 'unit')->where('status', '1')->get();
         if($result->isEmpty()) {
             $this->data['count_status'] = 'No projects found. You can launch a new project above to start-off';
         }
@@ -504,6 +504,30 @@ class BookingController extends Controller
             // $pdf = PDF::loadView('booking.reservationAgreement', $this->data);
             return view('booking.booking_form_print', $this->data);
             // return $pdf->setPaper('a4', 'portrait')->download('reservation-agreement.pdf');
+        }
+
+
+
+
+
+        public function edit($id){
+            $this->data['resource'] = $resource = Booking::with('unit', 'bookingbrokers', 'bookingclients')->find($id);
+            $this->data['projects'] = $projects = Project::select('id', 'name', 'status')->with('units')->get();
+            $this->data['units'] = $units = Unit::select('id', 'name', 'status')->with('project', 'booking')->where('status', '1')->where('project_id', $resource->unit->project_id)->get();
+
+            // dd($units);
+            
+            // dd($projects);
+            return view('booking.update.index', $this->data);
+        }
+
+
+        public function destroy(string $id)
+        {
+            $resource = Booking::find($id);
+            $resource->status = '99';   //---this is the number for deleted---//
+            $resource->save();
+            return $this->index();   
         }
     
 }

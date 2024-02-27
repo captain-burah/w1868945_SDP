@@ -52,6 +52,8 @@ class WebsiteConstructionsController extends Controller
             $resource->title = $request->title;
             $resource->title_ar = $request->title_ar;
 
+            $resource->growth = $request->growth_rate;
+
             $resource->description = $request->description;
             $resource->description_ar = $request->description_ar;
 
@@ -176,6 +178,9 @@ class WebsiteConstructionsController extends Controller
             $resource->slug_link = Str::slug($request->title);
             $resource->title = $request->title;
             $resource->title_ar = $request->title_ar;
+
+            $resource->growth = $request->growth_rate;
+
 
             $resource->description = $request->description;
             $resource->description_ar = $request->description_ar;

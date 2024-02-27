@@ -187,8 +187,6 @@
                 <div class="card-body p-0 mt-2">
                     <div class="p-0">
                         <div class="">
-                            {{-- <p class="heading-p m-0 " >{{ \Carbon\Carbon::now('Asia/Dubai')->format('d.m.Y ') }}</p> --}}
-                            {{-- <p class="heading-p m-0 mt-3" >Dear Customer,</p> --}}
                             <p class="heading-p m-0 mt-1 mb-3" style="line-height: 3" >
                                 Thank you for your interest in ESNAAD Developments. We are sending here our offer based on our discussion.
                             </p>

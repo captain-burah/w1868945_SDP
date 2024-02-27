@@ -38,6 +38,29 @@
 </div>
 
 
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="mb-3">
+            <label for="basicpill-title-input">Growth Rate </label>
+            <input
+                type="number"
+                name="growth_rate"
+                placeholder="Growth Rate"
+                id="growth_rate"
+                min="0"
+                max="100"
+
+                class="form-control
+                @error('growth_rate') border border-solid border-danger  @enderror"
+                value="{{ old('growth_rate') }}"
+            >
+        </div>
+    </div>
+
+</div>
+
+
 
 <div class="row">
 
