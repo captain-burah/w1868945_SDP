@@ -77,7 +77,7 @@
                         <input
                             type="text"
                             name="description_en"
-                            maxlength="60"
+                            maxlength="255"
                             id="meta_description"
                             value="{{ old('description_en') }}"
                             {{-- placeholder="Apartment for sale in Address Harbour Point By Emaar. An iconic luxury apartment located in Dubai Creek Harbour with luxurious amenities and contemporary finishes" --}}
@@ -100,7 +100,7 @@
                         <input
                             type="text"
                             name="keywords_en"
-                            maxlength="60"
+                            maxlength="155"
                             id="meta_keywords"
                             value="{{ old('keywords_en') }}"
                             {{-- placeholder="apartment for sale in address harbour point, 2 bedroom apartment for sale in dubai creek harbour" --}}
@@ -162,7 +162,7 @@
                             dir="rtl"
                             type="text"
                             name="description_ar"
-                            maxlength="60"
+                            maxlength="255"
                             id="meta_description_ar"
                             value="{{ old('description_ar') }}"
                             {{-- placeholder="Apartment for sale in Address Harbour Point By Emaar. An iconic luxury apartment located in Dubai Creek Harbour with luxurious amenities and contemporary finishes" --}}
@@ -186,7 +186,7 @@
                             dir="rtl"
                             type="text"
                             name="keywords_ar"
-                            maxlength="60"
+                            maxlength="155"
                             id="meta_keywords_ar"
                             value="{{ old('keywords_ar') }}"
                             {{-- placeholder="apartment for sale in address harbour point, 2 bedroom apartment for sale in dubai creek harbour" --}}
