@@ -49,7 +49,7 @@ class SeoController extends Controller
         {
             $Landingpageseo = new Landingpageseo();
 
-            $Landingpageseo->page = $request->page_name;
+            $Landingpageseo->page = $request->page;
             $Landingpageseo->title_en = $request->title_en;
             $Landingpageseo->title_ar = $request->title_ar;
             $Landingpageseo->keywords_en = $request->keywords_en;

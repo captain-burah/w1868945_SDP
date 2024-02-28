@@ -27,7 +27,7 @@
 
                 <div class="col-md-12">
                     <div class="mb-3">
-                        <label for="meta_title">Page Name</label>
+                        <label for="page">Page Name</label>
                         <input
                             type="page"
                             name="page"
