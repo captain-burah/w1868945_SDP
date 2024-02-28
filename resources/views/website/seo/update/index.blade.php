@@ -62,7 +62,7 @@
         });
 
         //meta keywords
-        var meta_keywords_en_maxLenght = 255;
+        var meta_keywords_en_maxLenght = 155;
         $("#meta_keywords").keyup(function()  {
             var length = $(this).val().length;
             var length = meta_keywords_en_maxLenght-length;
@@ -71,7 +71,7 @@
 
 
         //meta description
-        var meta_description_en_maxLenght = 155;
+        var meta_description_en_maxLenght = 255;
         $("#meta_description").keyup(function()  {
             var length = $(this).val().length;
             var length = meta_description_en_maxLenght-length;
@@ -98,7 +98,7 @@
         });
 
         //meta keywords
-        var meta_keywords_en_maxLenght = 255;
+        var meta_keywords_en_maxLenght = 155;
         $("#meta_keywords_ar").keyup(function()  {
             var length = $(this).val().length;
             var length = meta_keywords_en_maxLenght-length;
@@ -107,7 +107,7 @@
 
 
         //meta description
-        var meta_description_en_maxLenght = 155;
+        var meta_description_en_maxLenght = 255;
         $("#meta_description_ar").keyup(function()  {
             var length = $(this).val().length;
             var length = meta_description_en_maxLenght-length;
