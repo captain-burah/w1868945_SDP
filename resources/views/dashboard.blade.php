@@ -37,17 +37,20 @@
                             </div>
                         </div>
     
-                        <div class="col-lg-6 align-self-center">
+                        <div class="col-lg-8 align-self-center">
                             <div class="text-lg-center mt-4 mt-lg-0">
                                 <div class="row mx-auto text-center">
-                                    <div class="col-auto">
-                                        <div>
-                                            <a
+                                    @if(Auth::user()->roles[0]->name == 'Real Estate Agent')
+                                    @else
+                                        <div class="col-auto">
+                                            <div>
+                                                <a
                                                     href="{{ route('units.index') }}"
-                                                class="btn btn-sm btn-outline-dark text-truncate mb-2">All Units</a>
-                                            <h5 class="mb-0">{{$count_active}}</h5>
+                                                    class="btn btn-sm btn-outline-dark text-truncate mb-2">All Units</a>
+                                                <h5 class="mb-0">{{$count_active}}</h5>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
                                     <div class="col-auto">
                                         <div>
                                             <a
@@ -113,33 +116,7 @@
                                 </div>
                             </div>
                         </div>
-    
-                        <div class="col-lg-2 d-none d-lg-block my-auto">
-                            <div class="clearfix mt-4 mt-lg-0 my-auto">
-                                <div class="my-auto float-right mx-1">
-                                    <a href="{{ route('units.create') }}" class="btn btn-dark">
-                                        <i class="bx bx-bookmark-plus mr-2"></i>Add Unit
-                                    </a>
-                                </div>
-                                <div class="my-auto float-right mx-1">    
-                                    <div class="dropdown-menu" id="dropdown-menu-duplicate-unit" aria-labelledby="dropdownMenuButton">
-                                        @if(!isset($count_status))
-                                            @if($units->count() > 0)
-                                                @foreach($units as $data)
-                                                    <a class="dropdown-item" href="{{ url('unit-duplicate/'.$data->id) }}"><i class="bx bx-check-shield "></i> &nbsp; Activate</a>
-                                                @endforeach
-                                            @else
-                                                <span class="px-3 text-muted">No units found</span>
-                                            @endif
-                                        @else
-                                            <span class="px-3 text-muted">No units found</span>
-                                        @endif
-    
-                                    </div>
-                                </div>
-                            </div>
-    
-                        </div>
+
                     </div>
                     <!-- end row -->
                 </div>

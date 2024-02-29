@@ -31,7 +31,7 @@
     <div class="card-body">
         <h4 class="card-title">Brokers Table</h4>
         {{-- <a class="btn btn-dark" href="{{ route('brokers.agent.create') }}">Add Agent</a> --}}
-        <a class="btn btn-dark" href="{{ url('brokers-create') }}">New Broker</a>
+        <a class="btn btn-dark" href="{{ route('clienteles.create') }}">New Client</a>
         <div class="table-responsive">
             <table class="table table-bordered border-dark mb-0">
 
@@ -39,8 +39,8 @@
                     <tr class="bg-dark text-white">
                         <th>#</th>
                         <th style="width: 100px;">Action</th>
-                        <th >Broker Name</th>
-                        <th style="width: 150px;">Authorized Person</th>
+                        <th >Name</th>
+                        <th style="width: 150px;">Contact</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,10 +61,10 @@
                                     <a class="btn btn-outline-danger" href="{{ route('brokers.delete', ['id' => $value->id]) }}"><i class="bx bx-trash"></i></a>
                                 </td>
                                 
-                                <td>{{ $value->company_name }}</td>
+                                <td>{{ $value->name }}</td>
                                 
                                 <td>
-                                    {{ $value->authorized_p_name}}    
+                                    {{ $value->contact}}    
                                 </td>
 
 

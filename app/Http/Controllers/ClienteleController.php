@@ -11,6 +11,7 @@ use App\Models\BookingReservationForm;
 use App\Models\Clientele;
 use App\Models\Clientele_document;
 use App\Models\Project;
+use App\Models\Honorifics;
 use App\Models\Unit;
 use App\Models\Project_brochure;
 use App\Models\Project_image;
@@ -34,7 +35,18 @@ class ClienteleController extends Controller
      */
     public function index()
     {
-        //
+        $resource = Clientele::select('id', 'prefix', 'name', 'email', 'contact1' )->orderBy('id', 'Desc');
+
+
+        if($resource->get()->isEmpty()) {
+            $this->data['resource_status'] = 'No client registrations found. You can launch a new project above to start-off';
+            
+        } else {
+            $this->data['resource'] = $resource->get();
+
+        }
+
+        return view('clientele', $this->data);
     }
 
     /**
@@ -42,7 +54,11 @@ class ClienteleController extends Controller
      */
     public function create()
     {
-        //
+        $this->data['honorifics'] = $honorifics = Honorific::all();
+        $this->data['country'] = $country = CountryCode::all();
+        $this->data['clients'] = $clients = Clientele::all();
+        return view('clients.create.index', $this->data);
+        
     }
 
 

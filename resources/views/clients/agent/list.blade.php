@@ -29,23 +29,25 @@
 
 <div class="card w-100" style="min-height: 100vh">
     <div class="card-body">
-        <h4 class="card-title">Brokers Table</h4>
-        {{-- <a class="btn btn-dark" href="{{ route('brokers.agent.create') }}">Add Agent</a> --}}
-        <a class="btn btn-dark" href="{{ url('brokers-create') }}">New Broker</a>
-        <div class="table-responsive">
+        <h2 class="card-title mb-2">Agents</h2>
+        <a class="btn btn-dark" href="{{ route('brokers.agent.create') }}">Add Agent</a>
+        <div class="table-responsive mt-2">
             <table class="table table-bordered border-dark mb-0">
 
                 <thead>
                     <tr class="bg-dark text-white">
                         <th>#</th>
-                        <th style="width: 100px;">Action</th>
-                        <th >Broker Name</th>
-                        <th style="width: 150px;">Authorized Person</th>
+                        <th style="width: 100px;">Status</th>
+                        <th >Agent Name</th>
+                        <th >Broker</th>
+                        <th style="width: 150px;">Primary Contact</th>
+                        <th style="width: 150px;">Secondary Contact</th>
+                        <th style="width: 150px;">Email</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    @if(!isset($resource_status))
+                    @if(!isset($count_status))
                         @foreach($resource as $key => $value)
                             <?php $status = $value->status; ?>
                             
@@ -58,15 +60,26 @@
                                 <td>{{$value->id}}</td>
 
                                 <td>
-                                    <a class="btn btn-outline-danger" href="{{ route('brokers.delete', ['id' => $value->id]) }}"><i class="bx bx-trash"></i></a>
+                                    <a class="btn btn-outline-dark" href="{{ route('brokers.agent.edit', ['id' => $value->id]) }}"><i class="bx bx-edit"></i></a>
                                 </td>
                                 
-                                <td>{{ $value->company_name }}</td>
+                                <td>{{ $value->name }}</td>
+
+                                <td>
+                                    {{ $value->broker->company_name}}    
+                                </td>
                                 
                                 <td>
-                                    {{ $value->authorized_p_name}}    
+                                    {{ $value->contact1}}    
                                 </td>
 
+                                <td>
+                                    {{ $value->contact2}}    
+                                </td>
+
+                                <td>
+                                    {{ $value->email}}    
+                                </td>
 
                             </tr>
                         @endforeach
@@ -76,7 +89,7 @@
                         </tr>
                     @else
                         <tr>
-                            <td colspan='11' class="text-muted">{{$resource_status}}</td>
+                            <td colspan='11' class="text-muted">{{$count_status}}</td>
                         </tr>
                     @endif
                 </tbody>

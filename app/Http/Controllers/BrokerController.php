@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 
 use App\Models\Broker;
 use App\Models\BrokerAgent;
+use App\Models\BrokerFile;
 use Mail;
 use App\Mail\DemoEmail;
 use App\Mail\BrokerDenial;
@@ -41,7 +42,7 @@ class BrokerController extends Controller
 
         if($resource->get()->isEmpty()) {
             $this->data['resource_status'] = 'No broker registrations found. You can launch a new project above to start-off';
-
+            
         } else {
             $this->data['resource'] = $resource->get();
 
@@ -151,7 +152,7 @@ class BrokerController extends Controller
         return $this->agent_list();
     }
 
-    public function store(Request $request) {
+    public function broker_store(Request $request) {
         $resource = new Broker();
         $resource->company_name = $request->company_name;
         $resource->company_adddress = $request->company_address;
@@ -162,21 +163,36 @@ class BrokerController extends Controller
 
         $resource_id = $resource->id;
 
-        foreach($request->file('files') as $key => $image)
-        {
-            $image_name = $image->hashName();
-            $path = $this->uploadPathNew;
-            $image->move($path."$resource/", $image_name);
+        try {
+            if($request->hasFile('files'))
+            {                
+                foreach($request->file('files') as $key => $image)
+                {
+                    $image_name = $image->hashName();
+                    $path = $this->uploadPath;
+                    $image->move($path."$resource_id/images/", $image_name);                    
 
-            // $image_name = $image->hashName();
-            // $image->storeAs('units/images/'.$project_brochure_id, $image_name, 'public'); //nonsecured storage - has public access
-
-            $resource_segment = new BrokerFile();
-            $resource_segment->broker_id = $resource_id;
-            $resource_segment->name = $image_name;
-            $resource_segment->save();
+                    // $image_name = $image->hashName();
+                    // $image->storeAs('website-news/'.$resource_id.'/images/', $image_name, 'public'); //nonsecured storage - has public access
+                    $resource_segment_file = new BrokerFile();
+                    $resource_segment_file->broker_id = $resource_id;
+                    $resource_segment_file->name = 'file';
+                    $resource_segment_file->filename = $image_name;
+                    $resource_segment_file->save();
+                }
+            }
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            // return Redirect::back()->withErrors(['message', $e->getMessage() ]);
         }
+
         
-        return $this->agent_list();
+        return $this->index();
+    }
+
+    public function broker_delete($id){
+        Broker::destroy($id);
+
+        return $this->index();
     }
 }

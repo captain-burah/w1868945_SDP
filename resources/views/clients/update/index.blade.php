@@ -7,9 +7,11 @@
 
 @section('content')
 
+@include('project.topNav')
+
 <div style="padding-top: 150px;">
 
-    @include('broker.create.form')
+    @include('project.update.form')
 
     {{-- @include('project.activeProjectsTable') --}}
 </div>
