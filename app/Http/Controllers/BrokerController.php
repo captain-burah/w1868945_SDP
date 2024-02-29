@@ -19,6 +19,7 @@ class BrokerController extends Controller
 {
 
     private $uploadPath = "uploads/construction/";
+    private $uploadPathNew = "uploads/brokers/";
 
 
 
@@ -159,24 +160,21 @@ class BrokerController extends Controller
 
         $files = [];
 
-        $resource_segment = new BrokerFile();
-        $resource_segment->name = $request->segment_name;
-        $resource_segment->save();
-        $resource_segment_id = $project_brochure->id;
+        $resource_id = $resource->id;
 
         foreach($request->file('files') as $key => $image)
         {
             $image_name = $image->hashName();
-            $path = $this->uploadPath;
-            $image->move($path."$project_brochure_id/", $image_name);
+            $path = $this->uploadPathNew;
+            $image->move($path."$resource/", $image_name);
 
             // $image_name = $image->hashName();
             // $image->storeAs('units/images/'.$project_brochure_id, $image_name, 'public'); //nonsecured storage - has public access
 
-            $project_brochure_file = new UnitImageFile();
-            $project_brochure_file->unit_image_id = $project_brochure_id;
-            $project_brochure_file->name = $image_name;
-            $project_brochure_file->save();
+            $resource_segment = new BrokerFile();
+            $resource_segment->broker_id = $resource_id;
+            $resource_segment->name = $image_name;
+            $resource_segment->save();
         }
         
         return $this->agent_list();

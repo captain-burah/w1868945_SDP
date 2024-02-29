@@ -31,7 +31,7 @@
     <div class="card-body">
         <h4 class="card-title">Brokers Table</h4>
         <a class="btn btn-dark" href="{{ route('brokers.agent.create') }}">Add Agent</a>
-        <a class="btn btn-dark" href="{{ route('brokers.create') }}">New Broker</a>
+        <a class="btn btn-dark" href="{{ url('brokers-create') }}">New Broker</a>
         <div class="table-responsive">
             <table class="table table-bordered border-dark mb-0">
 

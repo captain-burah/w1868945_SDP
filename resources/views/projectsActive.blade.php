@@ -17,10 +17,13 @@
         @include('project.ProjectList')
     </div>
 @elseif( Auth::user()->roles[0]->name == "Master Administrator")
-    @include('unit.topNav')
+    @include('project.topNav')
+
     <div style="padding-top: 150px;">
-        @include('unit.activeUnits')
-        @include('unit.unitList')
+
+        @include('project.activeProjects')
+
+        @include('project.ProjectList')
     </div>
 @endif
 
