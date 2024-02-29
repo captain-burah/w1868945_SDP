@@ -382,6 +382,7 @@
 
                         @if(!isset($count_status))
                             @foreach($units as $key => $value)
+                                @if($value->state == '1')
 
                                 <?php $status = $value->status; ?>
                                 <tr>
@@ -460,6 +461,7 @@
                                     </td>
 
                                 </tr>
+                                @endif
                             @endforeach
 
                             <tr class="bg-dark">
