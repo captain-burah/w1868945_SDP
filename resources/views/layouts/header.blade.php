@@ -28,7 +28,7 @@
                     <span class="text-white font-weight-bold  my-auto ">HOME </span>
                 </a>
                 
-                @can('project-list')
+                {{-- @can('project-list') --}}
                 <div class="dropdown d-inline-block mr-5">
                     <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-none d-xl-inline-block ml-1 text-white font-weight-bold">INVENTORY </span>
@@ -36,15 +36,19 @@
                     </button>
 
                     <div class="dropdown-menu dropdown-menu-right">
+                    @can('project-list')
                         <a href="{{ route('projects.index')}}" class="dropdown-item">
                             <span class="font-weight-bold  my-auto ">PROJECT MGT</span>
                         </a>
+                    @endcan
+                    @can('listing-list')
                         <a href="{{ route('units.index')}}" class="dropdown-item">
                             <span class="font-weight-bold  my-auto ">UNIT MGT</span>
                         </a>
+                    @endcan
                     </div>
                 </div>
-                @endcan
+                {{-- @endcan --}}
 
                 {{-- @can('project-list')
                 <a href="{{ route('projects.index')}}" class="mr-5 my-auto">
@@ -70,7 +74,7 @@
                 </a>
                 @endcan
 
-                @can('meeting-list')
+                @can('website-list')
                 <a href="{{ route('website.index')}}" class="mr-5 my-auto">
                     <span class="text-white font-weight-bold  my-auto ">WEBSITE</span>
                 </a>
@@ -89,11 +93,11 @@
                 </a>
                 @endcan
 
-                {{-- @can('agent-list') --}}
+                @can('agent-list')
                 <a href="{{ route('brokers.agent.list') }}" class="mr-5 my-auto">
                     <span class="text-white font-weight-bold  my-auto ">AGENTS</span>
                 </a>
-                {{-- @endcan --}}
+                @endcan
 
             </div>
 
