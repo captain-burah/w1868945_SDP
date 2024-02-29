@@ -221,4 +221,8 @@ class BrokerController extends Controller
 
         return ["Result"=> "Testing complete"];
     }
+
+    public function create(){
+        return view('brokers.create.index');
+    }
 }

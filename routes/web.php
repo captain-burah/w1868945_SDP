@@ -299,6 +299,8 @@ Route::middleware('auth')->group(function () {
 
 /**BROKER */
     Route::get('brokers', [BrokerController::class, 'index'])->name('brokers.index');
+    Route::get('brokers-create', [BrokerController::class, 'create'])->name('brokers.create');
+    Route::get('brokers-store', [BrokerController::class, 'store'])->name('brokers.store');
     Route::get('agents', [BrokerController::class, 'agent_list'])->name('brokers.agent.list');
     Route::get('brokers/agent-update/{id}', [BrokerController::class, 'agent_edit'])->name('brokers.agent.edit');
     Route::post('brokers/agent-update', [BrokerController::class, 'agent_update'])->name('brokers.agent.update');

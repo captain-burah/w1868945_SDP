@@ -1,16 +1,11 @@
 <div class="card">
     <div class="card-body">
-        <h3 class="mb-1">Project Launch</h3>
-        <p class="mb-0 text-justify text-muted">
-            When you embark on a new real estate project, you're not just building structures; you're creating opportunities, shaping communities, and crafting dreams into reality.
-        </p>
+        <h3 class="mb-1">Broker Registration</h3>
 
-
-
-        <form class="contact-form" id="getInTouch" method="post" action="{{ route('projects.store') }}">
+        <form class="contact-form" id="getInTouch" method="post" action="{{ route('brokers.store') }}">
             @csrf
             <div class="flex-none w-100 mt-3 ">
-                <a href="{{ route('projects.index') }}" class="btn btn-sm btn-outline-dark mt-3 my-auto">
+                <a href="{{ route('brokers.index') }}" class="btn btn-sm btn-outline-dark mt-3 my-auto">
                     <i class="bx bx-arrow-back"></i>
                     Back
                 </a>
