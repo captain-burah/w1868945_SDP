@@ -30,6 +30,7 @@ use Illuminate\Support\Facades\Redirect;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Response;
 use Carbon\Carbon;
+use Auth;
 
 class BookingController extends Controller
 {
@@ -71,7 +72,7 @@ class BookingController extends Controller
 
     public function index()
     {
-        $this->data['result'] = $result = Booking::with('bookingclients', 'bookingbrokers', 'unit')->where('status', '1')->get();
+        $this->data['result'] = $result = Booking::with('bookingclients', 'bookingbrokers', 'unit')->get();
         if($result->isEmpty()) {
             $this->data['count_status'] = 'No projects found. You can launch a new project above to start-off';
         }
@@ -485,16 +486,41 @@ class BookingController extends Controller
 
 
         public function print_booking_form($booking_id){
-
-            $this->data['booking'] = $booking = Booking::with('unit')->find($booking_id);
-            $booking->status = '1';
-            $booking->save();
+            if(Auth::user()->roles[0]->name == "Real Estate Agent") {
+                $this->data['booking'] = $booking = Booking::with('unit')->find($booking_id);
+                $booking->status = '3';
+                $booking->save();    
+            } else{
+                $this->data['booking'] = $booking = Booking::with('unit')->find($booking_id);
+                $booking->status = '1';
+                $booking->save();
+            }
             
             $unit_id = $booking->unit_id;
 
             $this->data['unit'] = $unit = Unit::with('clienteles', 'unit_floorplan')->find($unit_id);
             $unit->state = '2';
             $unit->save();
+            
+            if($unit->unit_floorplan->unit_floorplan_files->count() > 0){
+                $this->data['unit_floorplan'] = $unit_floorplan = 'true';
+            };
+            $this->data['form_type'] = 'form2';
+
+            // $pdf = PDF::loadView('booking.reservationAgreement', $this->data);
+            return view('booking.booking_form_print', $this->data);
+            // return $pdf->setPaper('a4', 'portrait')->download('reservation-agreement.pdf');
+        }
+
+
+        public function view_booking($booking_id){
+
+            $this->data['booking'] = $booking = Booking::with('unit')->find($booking_id);
+            
+            $unit_id = $booking->unit_id;
+
+            $this->data['unit'] = $unit = Unit::with('clienteles', 'unit_floorplan')->find($unit_id);
+
             
             if($unit->unit_floorplan->unit_floorplan_files->count() > 0){
                 $this->data['unit_floorplan'] = $unit_floorplan = 'true';
@@ -528,6 +554,13 @@ class BookingController extends Controller
             $resource->status = '99';   //---this is the number for deleted---//
             $resource->save();
             return $this->index();   
+        }
+
+        public function approve($id){
+            $resource = Booking::find($id);
+            $resource->status = '1';
+            $resource->save();
+            return $this->index();
         }
     
 }
