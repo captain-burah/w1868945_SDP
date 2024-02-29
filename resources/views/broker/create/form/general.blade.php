@@ -33,58 +33,22 @@
     </div>
 </div>
 
-
-
 <div class="row">
     <div class="col-md-12">
         <div class="mb-3">
-            <label for="basicpill-title-input">Company P O Box</label>
+            <label for="basicpill-title-input">Authorized Person</label>
             <input
                 type="text"
-                name="company_po_box"
-                id="company_po_box"
+                name="authorized_p_name"
+                id="authorized_p_name"
 
                 class="form-control
-                @error('company_po_box') border border-solid border-danger  @enderror"
-                value="{{ old('company_po_box') }}"
+                @error('authorized_p_name') border border-solid border-danger  @enderror"
+                value="{{ old('authorized_p_name') }}"
             >
         </div>
     </div>
 </div>
 
-
-<div class="row">
-    <div class="col-md-12">
-        <div class="mb-3">
-            <label for="basicpill-title-input">Company Email</label>
-            <input
-                type="text"
-                name="company_email"
-                id="company_email"
-
-                class="form-control
-                @error('company_email') border border-solid border-danger  @enderror"
-                value="{{ old('company_email') }}"
-            >
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-        <div class="mb-3">
-            <label for="basicpill-title-input">Company Land Line Number</label>
-            <input
-                type="text"
-                name="company_email"
-                id="company_email"
-
-                class="form-control
-                @error('company_email') border border-solid border-danger  @enderror"
-                value="{{ old('company_email') }}"
-            >
-        </div>
-    </div>
-</div>
 
 

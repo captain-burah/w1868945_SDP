@@ -16,6 +16,12 @@
     <div style="padding-top: 100px;">
         @include('project.ProjectList')
     </div>
+@elseif( Auth::user()->roles[0]->name == "Master Administrator")
+    @include('unit.topNav')
+    <div style="padding-top: 150px;">
+        @include('unit.activeUnits')
+        @include('unit.unitList')
+    </div>
 @endif
 
 @endsection

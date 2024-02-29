@@ -21,16 +21,9 @@
                 </li>
 
                 <li class="nav-item" role="presentation">
-                    <button style="width: auto" class="nav-link" id="details-tab" data-toggle="tab" data-target="#details" type="button" role="tab" aria-controls="profile" aria-selected="false">Details</button>
+                    <button style="width: auto" class="nav-link" id="details-tab" data-toggle="tab" data-target="#details" type="button" role="tab" aria-controls="profile" aria-selected="false">Files</button>
                 </li>
 
-                <li class="nav-item" role="presentation">
-                    <button style="width: auto" class="nav-link" id="description-tab" data-toggle="tab" data-target="#description" type="button" role="tab" aria-controls="contact" aria-selected="false">Description</button>
-                </li>
-
-                <li class="nav-item" role="presentation">
-                    <button style="width: auto" class="nav-link" id="location-tab" data-toggle="tab" data-target="#seo" type="button" role="tab" aria-controls="contact" aria-selected="false">SEO</button>
-                </li>
             </ul>
 
             <div class="tab-content" id="myTabContent">
@@ -42,13 +35,6 @@
                     @include('broker.create.form.details')
                 </div>
 
-                <div class="tab-pane fade p-4" id="description" role="tabpanel" aria-labelledby="description-tab">
-                    @include('broker.create.form.description')
-                </div>
-
-                <div class="tab-pane fade p-4" id="seo" role="tabpanel" aria-labelledby="seo-tab">
-                    @include('broker.create.form.seo')
-                </div>
             </div>
         </form>
 

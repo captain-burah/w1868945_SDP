@@ -149,4 +149,36 @@ class BrokerController extends Controller
         $oldSegment->save();
         return $this->agent_list();
     }
+
+    public function store(Request $request) {
+        $resource = new Broker();
+        $resource->company_name = $request->company_name;
+        $resource->company_adddress = $request->company_address;
+        $resource->authorized_p_name = $request->authorized_p_name;
+        $resource->save();
+
+        $files = [];
+
+        $resource_segment = new BrokerFile();
+        $resource_segment->name = $request->segment_name;
+        $resource_segment->save();
+        $resource_segment_id = $project_brochure->id;
+
+        foreach($request->file('files') as $key => $image)
+        {
+            $image_name = $image->hashName();
+            $path = $this->uploadPath;
+            $image->move($path."$project_brochure_id/", $image_name);
+
+            // $image_name = $image->hashName();
+            // $image->storeAs('units/images/'.$project_brochure_id, $image_name, 'public'); //nonsecured storage - has public access
+
+            $project_brochure_file = new UnitImageFile();
+            $project_brochure_file->unit_image_id = $project_brochure_id;
+            $project_brochure_file->name = $image_name;
+            $project_brochure_file->save();
+        }
+        
+        return $this->agent_list();
+    }
 }
