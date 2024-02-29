@@ -71,6 +71,35 @@ class UnitController extends Controller
 
 
 
+    public function booked_index(){
+        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id')->with('project')->where('status', '1')->where('state', '2')->orderBY('id', 'ASC');
+
+        $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'ASC')->count();
+        $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'ASC')->count();
+        $this->data['count_trash'] = $count_trash = Unit::where('status', '3')->orderBY('id', 'ASC')->count();
+        $this->data['unit_translated'] = $unit_translated = Language::all();
+        $this->data['language'] = $lang = Language::all();
+
+        $check_availability = $units->get();
+
+        if($check_availability->isEmpty()) {
+            $this->data['count_status'] = 'No units found. You can launch a new unit above to start-off';
+            $this->data['units'] = $units;
+        } else {
+            $this->data['units'] = $units->get();
+        }
+
+        $this->data['brochures'] = Unit_brochure::with('unit_brochure_files')->get();
+        $this->data['images'] = Unit_image::with('unit_image_files')->get();
+        $this->data['floorplans'] = Unit_floorplan::with('unit_floorplan_files')->get();
+        $this->data['paymentplans'] = Unit_paymentplan::with('unit_paymentplan_files')->get();
+        $this->data['project_unit'] = '0';
+        return view('unitsActive', $this->data);
+    }
+
+
+
+
 
     public function index_drafts()
     {

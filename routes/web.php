@@ -181,6 +181,7 @@ Route::middleware('auth')->group(function () {
 /** UNITS */
     /**UNIT ROUTES */
     Route::get('units-drafts', [UnitController::class, 'index_drafts'])->name('units.drafts');
+    Route::get('units-booked', [UnitController::class, 'booked_index'])->name('units.booked');
     Route::get('units-trash', [UnitController::class, 'index_trash'])->name('units.trash');
     Route::get('units-status-change/{id}/{status}', [UnitController::class, 'status_change'])->name('units.status.change');
     Route::get('units-state-change/{id}/{status}', [UnitController::class, 'state_change'])->name('units.state.change');

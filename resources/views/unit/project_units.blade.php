@@ -35,7 +35,7 @@ right: auto !important;
                     <div class="col-lg-4 align-self-center">
                         <div class="text-lg-center mt-4 mt-lg-0">
                             <div class="row mx-auto text-center">
-                                <div class="col-4">
+                                <div class="col-3">
                                     <div>
                                         <a
                                             @if($project_unit == '1')
@@ -47,7 +47,7 @@ right: auto !important;
                                         <h5 class="mb-0">{{$count_active}}</h5>
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-3">
                                     <div>
                                         <a
                                             @if($project_unit == '1')
@@ -59,7 +59,19 @@ right: auto !important;
                                         <h5 class="mb-0">{{$count_draft}}</h5>
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-3">
+                                    <div>
+                                        <a
+                                            @if($project_unit == '1')
+                                                href="{{ route('project.units.draft', ['id' => $project_id]) }}"
+                                            @elseif($project_unit == '0')
+                                                href="{{ route('units.drafts') }}"
+                                            @endif
+                                            class="btn btn-sm btn-outline-dark text-truncate mb-2">Booked Units</a>
+                                        <h5 class="mb-0">{{$count_draft}}</h5>
+                                    </div>
+                                </div>
+                                <div class="col-3">
                                     <div>
                                         <a
                                             @if($project_unit == '1')

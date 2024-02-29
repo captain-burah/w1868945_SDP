@@ -35,7 +35,7 @@
                     <div class="col-lg-4 align-self-center">
                         <div class="text-lg-center mt-4 mt-lg-0">
                             <div class="row mx-auto text-center">
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div>
                                         <a
                                             @if($project_unit == '1')
@@ -47,7 +47,7 @@
                                         <h5 class="mb-0">{{$count_active}}</h5>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-4">
                                     <div>
                                         <a
                                             @if($project_unit == '1')
@@ -57,6 +57,19 @@
                                             @endif
                                             class="btn btn-sm btn-outline-dark text-truncate mb-2">Drafts Units</a>
                                         <h5 class="mb-0">{{$count_draft}}</h5>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div>
+                                        <a
+                                            @if($project_unit == '1')
+                                                href="{{ route('project.units.booked', ['id' => $project_id]) }}"
+                                            @elseif($project_unit == '0')
+                                                href="{{ route('units.booked') }}"
+                                            @endif
+                                            class="btn btn-sm btn-outline-dark text-truncate mb-2">Booked Units</a>
+                                        
                                     </div>
                                 </div>
                                 {{-- <div class="col-4">
