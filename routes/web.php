@@ -55,9 +55,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('agency-registration', [BrokerController::class, 'create'])->name('broker.create');
 
@@ -70,6 +70,9 @@ Route::middleware('auth')->group(function () {
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout.get');
     Route::get('/website', [WebsiteController::class, 'index'])->name('website.index');
     Route::get('/website', [WebsiteController::class, 'index'])->name('website.index');
+
+    Route::get('dashboard', [UnitController::class, 'dashboard'])->name('dashboard')->middleware(['auth', 'verified']);
+
     
 
     Route::get('purchaser/remove_unit/{$id}', [ClienteleController::class, 'purchaser_remove_from_unit'])->name('clientele_disengage_unit');
@@ -182,6 +185,8 @@ Route::middleware('auth')->group(function () {
     /**UNIT ROUTES */
     Route::get('units-drafts', [UnitController::class, 'index_drafts'])->name('units.drafts');
     Route::get('units-booked', [UnitController::class, 'booked_index'])->name('units.booked');
+    Route::get('units-sold', [UnitController::class, 'sold_index'])->name('units.sold');
+    Route::get('units-active', [UnitController::class, 'active_index'])->name('units.active');
     Route::get('units-trash', [UnitController::class, 'index_trash'])->name('units.trash');
     Route::get('units-status-change/{id}/{status}', [UnitController::class, 'status_change'])->name('units.status.change');
     Route::get('units-state-change/{id}/{status}', [UnitController::class, 'state_change'])->name('units.state.change');
