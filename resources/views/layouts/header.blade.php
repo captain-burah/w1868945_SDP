@@ -68,11 +68,11 @@
                 </a>
                 @endcan
 
-                @can('meeting-list')
+                {{-- @can('meeting-list')
                 <a href="{{ route('leads.index')}}" class="mr-5 my-auto">
                     <span class="text-white font-weight-bold  my-auto ">LEADS</span>
                 </a>
-                @endcan
+                @endcan --}}
 
                 @can('website-list')
                 <a href="{{ route('website.index')}}" class="mr-5 my-auto">
@@ -81,11 +81,11 @@
                 @endcan
 
 
-                @can('clientele-list')
+                {{-- @can('clientele-list')
                 <a href="{{ route('clienteles.index')}}" class="mr-5 my-auto">
                     <span class="text-white font-weight-bold  my-auto ">CLIENTS</span>
                 </a>
-                @endcan
+                @endcan --}}
 
                 @can('broker-list')
                 <a href="{{ route('brokers.index') }}" class="mr-5 my-auto">
@@ -93,11 +93,11 @@
                 </a>
                 @endcan
 
-                @can('agent-list')
+                {{-- @can('agent-list')
                 <a href="{{ route('brokers.agent.list') }}" class="mr-5 my-auto">
                     <span class="text-white font-weight-bold  my-auto ">AGENTS</span>
                 </a>
-                @endcan
+                @endcan --}}
 
             </div>
 
