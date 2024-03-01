@@ -154,6 +154,7 @@ class BrokerController extends Controller
 
     public function broker_store(Request $request) {
         $resource = new Broker();
+        $resource->status = '1';
         $resource->company_name = $request->company_name;
         $resource->company_adddress = $request->company_address;
         $resource->authorized_p_name = $request->authorized_p_name;
