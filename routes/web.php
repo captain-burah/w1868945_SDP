@@ -294,10 +294,15 @@ Route::middleware('auth')->group(function () {
     Route::get('print_booking/{booking_id}', [BookingController::class, 'print_booking_form'])->name('bookings.form.print');
     Route::get('view_booking/{booking_id}', [BookingController::class, 'view_booking'])->name('bookings.view_booking');
     Route::get('approve/{booking_id}', [BookingController::class, 'approve'])->name('bookings.approve');
-
 /**BOOKINGS */ 
 
 
+
+/**CLIENTELE */
+    Route::post('clientele', [ClienteleController::class, 'store_clientele_only'])->name('clientele.store_only');
+    Route::get('clientele-delete/{id}', [ClienteleController::class, 'clientele_delete'])->name('clientele.delete');
+    Route::get('clientele-view/{id}', [ClienteleController::class, 'clientele_view'])->name('clientele.view');
+/**CLIENTELE */
 
 
 

@@ -2,13 +2,10 @@
     <div class="card-body">
         <h3 class="mb-1">Clientele Registration</h3>
 
-        <form class="contact-form" id="getInTouch" method="post" action="{{ route('clienteles.store') }}" enctype="multipart/form-data">
+        <form class="contact-form" id="getInTouch" method="post" action="{{ route('clientele.store_only') }}" enctype="multipart/form-data">
             @csrf
             <div class="flex-none w-100 mt-3 ">
-                <a href="{{ route('clienteles.index') }}" class="btn btn-sm btn-outline-dark mt-3 my-auto">
-                    <i class="bx bx-arrow-back"></i>
-                    Back
-                </a>
+                
                 <button
                     type="submit"
                     class="btn btn-sm btn-dark my-auto">

@@ -29,9 +29,9 @@
 
 <div class="card w-100" style="min-height: 100vh">
     <div class="card-body">
-        <h4 class="card-title">Brokers Table</h4>
+        <h4 class="card-title">Clientele</h4>
         {{-- <a class="btn btn-dark" href="{{ route('brokers.agent.create') }}">Add Agent</a> --}}
-        <a class="btn btn-dark" href="{{ route('clienteles.create') }}">New Client</a>
+        <a class="btn btn-dark my-3" href="{{ route('clienteles.create') }}">New Client</a>
         <div class="table-responsive">
             <table class="table table-bordered border-dark mb-0">
 
@@ -40,35 +40,75 @@
                         <th>#</th>
                         <th style="width: 100px;">Action</th>
                         <th >Name</th>
-                        <th style="width: 150px;">Contact</th>
+                        <th style="width: 150px;">Agent</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     @if(!isset($resource_status))
                         @foreach($resource as $key => $value)
-                            <?php $status = $value->status; ?>
-                            
-                            @if($value->status == '0')                            
-                            <tr class="bg-warning text-white">
+                            @if(Auth::user()->roles[0]->name == 'Real Estate Agent')
+
+                                @if($value->user == Auth::user()->id)
+                                    <?php $status = $value->status; ?>
+                                    
+                                    @if($value->status == '0')                            
+                                    <tr class="bg-warning text-white">
+                                    @else
+                                    <tr>
+                                    @endif
+
+                                        <td>{{$value->id}}</td>
+
+                                        <td class="d-flex d-flex-inline">
+                                            <a class="btn btn-outline-danger" href="{{ url('clientele-delete/'.$value->id) }}"><i class="bx bx-trash"></i></a>
+                                            <a class="btn btn-outline-black" href="{{ url('clientele-view/'.$value->id) }}">View</a>
+                                        </td>
+                                        
+                                        <td>{{ $value->name }}</td>
+                                        
+                                        <td>                                    
+                                            @foreach($users as $user)
+                                                @if($user->id == $value->user)
+
+                                                    {{ $user->name }}
+                                                @endif
+                                            @endforeach
+                                        </td>
+
+
+                                    </tr>
+                                @endif
                             @else
-                            <tr>
+                                <?php $status = $value->status; ?>
+                                        
+                                @if($value->status == '0')                            
+                                <tr class="bg-warning text-white">
+                                @else
+                                <tr>
+                                @endif
+
+                                    <td>{{$value->id}}</td>
+
+                                    <td class="d-flex d-flex-inline">
+                                        <a class="btn btn-outline-danger" href="{{ url('clientele-delete/'.$value->id) }}"><i class="bx bx-trash"></i></a>
+                                        <a class="btn btn-outline-black" href="{{ url('clientele-view/'.$value->id) }}">View</a>
+                                    </td>
+                                    
+                                    <td>{{ $value->name }}</td>
+                                    
+                                    <td>                                    
+                                        @foreach($users as $user)
+                                            @if($user->id == $value->user)
+
+                                                {{ $user->name }}
+                                            @endif
+                                        @endforeach
+                                    </td>
+
+
+                                </tr>
                             @endif
-
-                                <td>{{$value->id}}</td>
-
-                                <td>
-                                    <a class="btn btn-outline-danger" href="{{ route('brokers.delete', ['id' => $value->id]) }}"><i class="bx bx-trash"></i></a>
-                                </td>
-                                
-                                <td>{{ $value->name }}</td>
-                                
-                                <td>
-                                    {{ $value->contact}}    
-                                </td>
-
-
-                            </tr>
                         @endforeach
 
                         <tr>

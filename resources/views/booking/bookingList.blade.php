@@ -46,6 +46,9 @@
                 <div class="col-lg-6 d-none d-lg-block my-auto">
                     <div class="clearfix mt-4 mt-lg-0 my-auto">
                         <div class="my-auto float-right">
+                            <a href="{{ route('clienteles.create') }}" class="btn btn-dark">
+                                <i class="bx bx-user mr-2"></i>Add Clientele
+                            </a>
                             <a href="{{ route('bookings.create') }}" class="btn btn-dark">
                                 <i class="bx bx-bookmark-plus mr-2"></i>New Booking
                             </a>
@@ -64,9 +67,6 @@
                             <th style="width: 150px;">Booking_Ref</th>
                             <th style="width: 150px;">Project</th>
                             <th style="width: 150px;">Unit</th>
-                            <th style="width: 150px;">Agency</th>
-                            <th style="width: 150px;">Agent Name</th>
-                            <th style="width: 150px;">Agent Contact</th>
                             <th style="width: 150px;">Unit Price</th>
                             <th style="width: 150px;">Created At*</th>
                             <th style="width: 150px;">Action</th>
@@ -90,9 +90,6 @@
                                         <td>{{$value->ref_no}}</td>
                                         <td>{{$value->unit->project->name}}</td>
                                         <td>{{$value->unit->name}}</td>
-                                        <td>{{$value->bookingbrokers[0]->broker->company_name}}</td>
-                                        <td>{{$value->salesperson_name}}</td>
-                                        <td>{{$value->bookingbrokers[0]->broker->authorized_p_contact}}</td>
                                         <td>AED {{ number_format($value->unit->unit_price, 2)}}</td>
                                         <td>{{ $value->created_at }}</td>
                                         <td class="d-inline-flex">
@@ -135,6 +132,9 @@
                 <div class="col-lg-6 d-none d-lg-block my-auto">
                     <div class="clearfix mt-4 mt-lg-0 my-auto">
                         <div class="my-auto float-right">
+                            <a href="{{ route('clienteles.create') }}" class="btn btn-dark">
+                                <i class="bx bx-user mr-2"></i>Add Clientele
+                            </a>
                             <a href="{{ route('bookings.create') }}" class="btn btn-dark">
                                 <i class="bx bx-bookmark-plus mr-2"></i>New Booking
                             </a>
@@ -152,9 +152,6 @@
                             <th style="width: 150px;">Booking_Ref</th>
                             <th style="width: 150px;">Project</th>
                             <th style="width: 150px;">Unit</th>
-                            <th style="width: 150px;">Agency</th>
-                            <th style="width: 150px;">Agent Name</th>
-                            <th style="width: 150px;">Agent Contact</th>
                             <th style="width: 150px;">Unit Price</th>
                             <th style="width: 150px;">Created At*</th>
                             <th style="width: 150px;">Action</th>
@@ -178,9 +175,6 @@
                                         <td>{{$value->ref_no}}</td>
                                         <td>{{$value->unit->project->name}}</td>
                                         <td>{{$value->unit->name}}</td>
-                                        <td>{{$value->bookingbrokers[0]->broker->company_name}}</td>
-                                        <td>{{$value->salesperson_name}}</td>
-                                        <td>{{$value->bookingbrokers[0]->broker->authorized_p_contact}}</td>
                                         <td>AED {{ number_format($value->unit->unit_price, 2)}}</td>
                                         <td>{{ $value->created_at }}</td>
                                         <td>
@@ -228,6 +222,9 @@
                 <div class="col-lg-6 d-none d-lg-block my-auto">
                     <div class="clearfix mt-4 mt-lg-0 my-auto">
                         <div class="my-auto float-right">
+                            <a href="{{ route('clienteles.create') }}" class="btn btn-dark">
+                                <i class="bx bx-user mr-2"></i>Add Clientele
+                            </a>
                             <a href="{{ route('bookings.create') }}" class="btn btn-dark">
                                 <i class="bx bx-bookmark-plus mr-2"></i>New Booking
                             </a>
