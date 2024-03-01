@@ -188,7 +188,7 @@
                     <div class="p-0">
                         <div class="">
                             <p class="heading-p m-0 mt-1 mb-3" style="line-height: 3" >
-                                Thank you for your interest in ESNAAD Developments. We are sending here our offer based on our discussion.
+                                Thank you for your interest in ESNAAD Developments. We are pleased to share our Sales Offer for your consideration.
                             </p>
                         </div>
                         <table class="table" style="">
@@ -217,7 +217,7 @@
                                     <span class="body-table-p font-weight-semibold" style="font-size: 16px;">D11-SPARK-{{ $unit->name }}</span>
                                 </td>
                                 <td style="width: 300px !important; border-bottom: 1.5px #dbdbdb solid !important;" class="text-center">
-                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px; color: #095edb;">{{ $unit->bedroom }} bedroom</span>
+                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px; color: #095edb;">{{ $unit->bedroom }} Bedroom</span>
                                 </td>
                                 <td style="width: 300px !important; border-bottom: 1.5px #dbdbdb solid !important;" class="text-center">
                                     <span class="body-table-p font-weight-semibold" style="font-size: 16px; color: #095edb;">{{$unit->unit_size_range }}</span>
@@ -301,7 +301,7 @@
                                         </td>
 
                                         <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                            <span class="body-table-p" style="color: #095edb;">{{ number_format($data->amount, 2) }}</span>
+                                            <span class="body-table-p" style="color: #095edb;">{{ number_format($data->amount) }}</span>
                                         </td>
 
                                     </tr>
