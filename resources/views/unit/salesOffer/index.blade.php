@@ -259,7 +259,7 @@
 
                         <div class="mt-3">
                             <p class="body-p-sub m-0" style="line-height: 3">* Applicable fees to Dubai Land Department are: 4% of the property net price + AED 5,150 (VAT inc.) oqood fee.</p>
-                            <p class="body-p-sub m-0" style="line-height: 2">* Prices and availability are subject to change without notice.</p>
+                            <p class="body-p-sub m-0" style="line-height: 2">* Prices and availability are subject to change, offer valid for 48 hours.</p>
                         </div>
                     </div>
 
@@ -348,12 +348,12 @@
     <div class="divFooter px-0 pb-3">
         <div class="mx-5 d-flex justify-content-between">
             <div class=" my-auto">
-                <p style="font-size: 10px">
-                    This offer is valid for 24 hours from the date of generation and subject to availability of the unit.
+                <p style="font-size: 12px">
+                    This offer is valid for 48 hours from the date of generation and subject to availability of the unit.
                 </p>
             </div>
             <div class=" my-auto">
-                <p style="font-size: 10px">
+                <p style="font-size: 12px">
                     Issued by: {{ Auth::user()->name }} | Timestamp: {{ \Carbon\Carbon::now('Asia/Dubai')->format('d.m.Y h:i:s A') }}
 
 
