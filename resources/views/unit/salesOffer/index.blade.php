@@ -200,7 +200,7 @@
                                     <span class="body-table-p font-weight-semibold" style="font-size: 16px;">Unit</span>
                                 </th>
                                 <th style="width: 300px !important; border: 1.5px #dbdbdb solid !important; background-color: #d6d6d6 !important;" class="text-center">
-                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">Bedrooms</span>
+                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">Type</span>
                                 </th>
                                 <th style="width: 300px !important; border: 1.5px #dbdbdb solid !important; background-color: #d6d6d6 !important;" class="text-center">
                                     <span class="body-table-p font-weight-semibold" style="font-size: 16px;">Saleable Area (Sq ft)</span>
