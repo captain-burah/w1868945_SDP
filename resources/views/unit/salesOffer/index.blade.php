@@ -348,12 +348,12 @@
     <div class="divFooter px-0 pb-3">
         <div class="mx-5 d-flex justify-content-between">
             <div class=" my-auto">
-                <p style="font-size: 12px">
+                <p style="font-size: 14px">
                     This offer is valid for 48 hours from the date of generation and subject to availability of the unit.
                 </p>
             </div>
             <div class=" my-auto">
-                <p style="font-size: 12px">
+                <p style="font-size: 14px">
                     Issued by: {{ Auth::user()->name }} | Timestamp: {{ \Carbon\Carbon::now('Asia/Dubai')->format('d.m.Y h:i:s A') }}
 
 
