@@ -239,6 +239,9 @@ class UnitController extends Controller
         $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'ASC')->count();
         $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'ASC')->count();
         $this->data['count_trash'] = $count_trash = Unit::where('status', '3')->orderBY('id', 'ASC')->count();
+        $this->data['count_booked'] = $count_booked = Unit::where('state', '2')->orderBY('id', 'ASC')->count();
+        $this->data['count_sold'] = $count_sold = Unit::where('state', '4')->orderBY('id', 'ASC')->count();
+        $this->data['count_listed'] = $count_listed = Unit::where('state', '1')->orderBY('id', 'ASC')->count();
         $this->data['language'] = $lang = Language::all();
 
         $check_availability = $units->get();
@@ -276,6 +279,9 @@ class UnitController extends Controller
         $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'ASC')->count();
         $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'ASC')->count();
         $this->data['count_trash'] = $count_trash = Unit::where('status', '3')->orderBY('id', 'ASC')->count();
+        $this->data['count_booked'] = $count_booked = Unit::where('state', '2')->orderBY('id', 'ASC')->count();
+        $this->data['count_sold'] = $count_sold = Unit::where('state', '4')->orderBY('id', 'ASC')->count();
+        $this->data['count_listed'] = $count_listed = Unit::where('state', '1')->orderBY('id', 'ASC')->count();
         $this->data['language'] = $lang = Language::all();
 
         $check_availability = $units->get();
