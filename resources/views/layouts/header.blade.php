@@ -62,11 +62,11 @@
                 </a>
                 @endcan --}}
 
-                @can('booking-list')
+                {{-- @can('booking-list')
                 <a href="{{ route('bookings.index')}}" class="mr-5 my-auto">
                     <span class="text-white font-weight-bold  my-auto ">BOOKINGS </span>
                 </a>
-                @endcan
+                @endcan --}}
 
                 {{-- @can('meeting-list')
                 <a href="{{ route('leads.index')}}" class="mr-5 my-auto">
@@ -74,7 +74,7 @@
                 </a>
                 @endcan --}}
 
-                @can('website-list')
+                @can('webcontent-list')
                 <a href="{{ route('website.index')}}" class="mr-5 my-auto">
                     <span class="text-white font-weight-bold  my-auto ">WEBSITE</span>
                 </a>
