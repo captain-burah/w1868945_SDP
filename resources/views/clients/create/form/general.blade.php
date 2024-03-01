@@ -14,6 +14,7 @@
                     tabindex="-1"
                     aria-hidden="true"
                     name="title"
+                    required
                 >
                     <option selected value="">Choose ...</option>
                     @if(isset($honorifics))
@@ -43,6 +44,7 @@
                     id="name"
                     placeholder="John Carter"
                     value="{{ old('name') }}"
+                    required
                 >
                 @error('name')
                     <div class="text-danger text-xs">{{ $message }}</div>
@@ -64,6 +66,7 @@
                     id="email"
                     placeholder="someone@email.com"
                     value="{{ old('email') }}"
+                    required
                 >
                 @error('email')
                     <div class="text-danger text-xs">{{ $message }}</div>
@@ -90,6 +93,7 @@
                             tabindex="-1"
                             aria-hidden="country_code1"
                             name="country_code1"
+                            required
                         >
                             <option selected value="">Country Code</option>
                             @if(isset($country))
@@ -112,6 +116,7 @@
                             id="contact1"
                             placeholder="501234567"
                             value="{{ old('contact1') }}"
+                            required
                         >
                         @error('contact1')
                             <div class="text-danger text-xs">{{ $message }}</div>
@@ -160,6 +165,7 @@
                             id="contact2"
                             placeholder="501234567"
                             value="{{ old('contact2') }}"
+                            
                         >
                         @error('contact2')
                             <div class="text-danger text-xs">{{ $message }}</div>
@@ -234,6 +240,7 @@
                     tabindex="-1"
                     aria-hidden="country"
                     name="country"
+                    required
                 >
                     <option selected value="">Choose ...</option>
                     @if(isset($country))
@@ -261,6 +268,7 @@
                     tabindex="-1"
                     aria-hidden="nationality"
                     name="nationality"
+                    required
                 >
                     <option selected value="">Choose ...</option>
                     @if(isset($country))
@@ -292,6 +300,7 @@
                     id="name"
                     placeholder="N12345678"
                     value="{{ old('passport') }}"
+                    required
                 >
                 @error('passport')
                     <div class="text-danger text-xs">{{ $message }}</div>
@@ -312,6 +321,7 @@
                     @error('pp_expiry') border border-solid border-danger  @enderror"
                     id="pp_expiry"
                     value="{{ old('pp_expiry') }}"
+                    required
                 >
                 @error('pp_expiry')
                     <div class="text-danger text-xs">{{ $message }}</div>
@@ -336,6 +346,7 @@
                     id="name"
                     placeholder="76425, Skye Station, South Cole, Texas, USA"
                     value="{{ old('address1') }}"
+                    required
                 >
                 @error('address1')
                     <div class="text-danger text-xs">{{ $message }}</div>
@@ -381,6 +392,7 @@
                     tabindex="-1"
                     aria-hidden="source"
                     name="source"
+                    required
                 >
                     <option selected value="">Choose ..</option>
                     <option value="email">Email</option>
@@ -408,7 +420,7 @@
                 Emirates ID
             </label>
             
-            <input type="file" name="eids[]" multiple class="form-control p-1 @error('eids') border border-solid border-danger  @enderror" accept="application/pdf, image/png, image/jpeg,, image/jpg,   image/webp, image/avif">
+            <input type="file" name="eids[]" multiple class="form-control p-1 @error('eids') border border-solid border-danger  @enderror" accept="application/pdf, image/png, image/jpeg,, image/jpg,   image/webp, image/avif" required>
             
             <span class="text-muted font-size-10">You may choose multiple files if you wish to upload.</span>
             
@@ -422,7 +434,7 @@
                 Passport
             </label>
             
-            <input type="file" name="passports[]" multiple class="form-control p-1 @error('passports') border border-solid border-danger  @enderror" accept="application/pdf, image/png, image/jpeg, image/jpg, image/webp, image/avif">
+            <input type="file" name="passports[]" multiple class="form-control p-1 @error('passports') border border-solid border-danger  @enderror" accept="application/pdf, image/png, image/jpeg, image/jpg, image/webp, image/avif" required>
             
             <span class="text-muted font-size-10">You may choose multiple files if you wish to upload.</span>
             
@@ -439,7 +451,7 @@
                 VISA
             </label>
             
-            <input type="file" name="visas[]" multiple class="form-control p-1 @error('visas') border border-solid border-danger  @enderror" accept="application/pdf, image/png, image/jpeg, image/jpg, image/webp, image/avif">
+            <input type="file" name="visas[]" multiple class="form-control p-1 @error('visas') border border-solid border-danger  @enderror" accept="application/pdf, image/png, image/jpeg, image/jpg, image/webp, image/avif" required>
             
             <span class="text-muted font-size-10">You may choose multiple files if you wish to upload.</span>
             

@@ -274,12 +274,12 @@ class ClienteleController extends Controller
              * loop accessing the request helper function
              */
             $client_id = $client_id;
-            $unit_id = $unit_id;
+            // $unit_id = $unit_id;
             foreach($request->file('eids') as $key => $image)
             {
                 /**assign the name and path */
                 $image_name = $image->hashName();
-                $pathname = 'clientele/'.$client_id.'/'.$unit_id.'/eid';
+                $pathname = 'clientele/'.$client_id.'/eid';
 
                 /**
                  * file is being stored in a secured storage.
@@ -310,13 +310,13 @@ class ClienteleController extends Controller
              * loop accessing the request helper function
              */
             $client_id = $client_id;
-            $unit_id = $unit_id;
+            // $unit_id = $unit_id;
 
             foreach($request->file('passports') as $key => $image)
             {
                 /**assign the name and path */
                 $image_name = $image->hashName();
-                $pathname = 'clientele/'.$client_id.'/'.$unit_id.'/pp';
+                $pathname = 'clientele/'.$client_id.'/pp';
 
                 /**
                  * file is being stored in a secured storage.
@@ -347,13 +347,13 @@ class ClienteleController extends Controller
              * loop accessing the request helper function
              */
             $client_id = $client_id;
-            $unit_id = $unit_id;
+            // $unit_id = $unit_id;
 
             foreach($request->file('visas') as $key => $image)
             {
                 /**assign the name and path */
                 $image_name = $image->hashName();
-                $pathname = 'clientele/'.$client_id.'/'.$unit_id.'/visa';
+                $pathname = 'clientele/'.$client_id.'/visa';
 
                 /**
                  * file is being stored in a secured storage.
