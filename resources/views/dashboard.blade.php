@@ -3,7 +3,8 @@
 @section('content')
 
 {{-- @include('dashboard.topNav') --}}
-
+@if(Auth::user()->roles[0]->name == "Real Estate Agent")
+@else
 <div style="padding-top: 150px;">
     <h1>Dashboard</h1>
 
@@ -114,4 +115,5 @@
     </div>
     
 </div>
+@endif
 @endsection
