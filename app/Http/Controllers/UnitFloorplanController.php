@@ -36,9 +36,33 @@ class UnitFloorplanController extends Controller
     }
 
 
+    public function unit_secondary_floor_plan_index()
+    {
+        $brochures = Unit_floorplan::with('unit_floorplan_files')->where('type', 'secondary')->get();
+
+        $this->data['results'] = $brochures;
+        
+        $this->data['units'] = $unit = Unit::with('unit_floorplan')->select(['id', 'name', 'status', 'unit_floorplan_id'])->where('status', '1')->get();
+
+        $floorplan = Unit_floorplan::with('units')->find(1);
+
+        // dd($unit[0]);
+
+        $this->data['count_status'] = Unit_floorplan::count();
+
+        return view('unit.floorplanTwo.index', $this->data);
+    }
+
+
     public function create()
     {
         return view('unit.floorplan.create.index');
+    }
+
+
+    public function unit_secondary_floor_plan_create()
+    {
+        return view('unit.floorplanTwo.create.index');
     }
 
 
@@ -69,6 +93,7 @@ class UnitFloorplanController extends Controller
 
                 $project_brochure = new Unit_floorplan();
                 $project_brochure->name = $request->segment_name;
+                $project_brochure->type = $request->type;
                 $project_brochure->save();
 
                 $project_brochure_id = $project_brochure->id;
@@ -96,7 +121,7 @@ class UnitFloorplanController extends Controller
             return Redirect::back()->withErrors(['message', $e->getMessage() ]);
         }
 
-        return redirect()->route('unit-floor-plan.index');
+        return redirect()->route('units.index');
     }
 
     /**
@@ -256,5 +281,30 @@ class UnitFloorplanController extends Controller
         Unit_floorplan::destroy($id);
 
         return redirect()->route('unit-floor-plan.index')->with(['msg' => 'Successfully connected']);
+    }
+
+
+    public function destroy_segment_secondary($id) {
+
+        $brochure = Unit_floorplan::with('unit_floorplan_files')->where('type', 'secondary')->find($id);
+
+        if($brochure->unit_floorplan_files->count() > 0) {
+            try {
+                foreach ($brochure->unit_floorplan_files as $child)
+                {
+                    File::deleteDirectory(public_path('units/floorplans/'.$brochure->id));
+
+                    // Storage::deleteDirectory('units/floorplans/'.$brochure->id);
+                    $child->delete();
+                }
+            } catch (\Exception $e) {
+                dd($e->getMessage());
+                return Redirect::back()->withErrors(['message', $e->getMessage() ]);
+            }
+        }
+
+        Unit_floorplan::destroy($id);
+
+        return redirect()->route('unit-secondary-floor-plan.index')->with(['msg' => 'Successfully connected']);
     }
 }

@@ -75,7 +75,7 @@ class UnitController extends Controller
 
     public function index()
     { 
-        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id')->with('project')->where('status', '1')->orderBY('id', 'ASC');
+        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id', 'unit_secondary_floorplan_id')->with('project')->where('status', '1')->orderBY('id', 'ASC');
 
         $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'ASC')->count();
         $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'ASC')->count();
@@ -107,7 +107,7 @@ class UnitController extends Controller
 
 
     public function booked_index(){
-        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id')->with('project')->where('status', '1')->where('state', '2')->orderBY('id', 'ASC');
+        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id', 'unit_secondary_floorplan_id')->with('project')->where('status', '1')->where('state', '2')->orderBY('id', 'ASC');
 
         $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'ASC')->count();
         $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'ASC')->count();
@@ -138,7 +138,7 @@ class UnitController extends Controller
 
 
     public function active_index(){
-        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id')->with('project')->where('status', '1')->where('state', '1')->orderBY('id', 'ASC');
+        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id', 'unit_secondary_floorplan_id')->with('project')->where('status', '1')->where('state', '1')->orderBY('id', 'ASC');
 
         $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'ASC')->count();
         $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'ASC')->count();
@@ -168,7 +168,7 @@ class UnitController extends Controller
     }
 
     public function sold_index(){
-        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id')->with('project')->where('status', '1')->where('state', '4')->orderBY('id', 'ASC');
+        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id', 'unit_secondary_floorplan_id')->with('project')->where('status', '1')->where('state', '4')->orderBY('id', 'ASC');
 
         $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'ASC')->count();
         $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'ASC')->count();
@@ -198,7 +198,7 @@ class UnitController extends Controller
     }
 
     public function inactive_index(){
-        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id')->with('project')->where('status', '')->where('state', '4')->orderBY('id', 'ASC');
+        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id', 'unit_secondary_floorplan_id')->with('project')->where('status', '')->where('state', '4')->orderBY('id', 'ASC');
 
         $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'ASC')->count();
         $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'ASC')->count();
@@ -274,7 +274,7 @@ class UnitController extends Controller
 
     public function index_trash()
     {
-        $units = Unit::with('project    ')->where('status', '3')->orderBY('id', 'ASC');
+        $units = Unit::with('project')->where('status', '3')->orderBY('id', 'ASC');
 
         $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'ASC')->count();
         $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'ASC')->count();
@@ -829,9 +829,19 @@ class UnitController extends Controller
      * FLOORPLAN SETTINGS
      */
     public function unit_floorplan_connect_store(Request $request) {
-        $unit = Unit::select('id', 'project_id', 'unit_floorplan_id')->with('unit_floorplan')->find($request->project_id);
-        $unit->unit_floorplan_id = $request->floorplan_id;
-        $unit->save();
+
+        if($request->type == 'secondary'){
+            $unit = Unit::select('id', 'project_id', 'unit_floorplan_id')->with('unit_floorplan')->find($request->project_id);
+            $unit->unit_secondary_floorplan_id = $request->floorplan_id;
+            $unit->save();
+        } else {
+            $unit = Unit::select('id', 'project_id', 'unit_floorplan_id')->with('unit_floorplan')->find($request->project_id);
+            $unit->unit_floorplan_id = $request->floorplan_id;
+            $unit->save();
+        }
+        
+
+        
         // dd($unit);
 
         // if($project->unit_floorplan != null ){
@@ -850,6 +860,15 @@ class UnitController extends Controller
     public function unit_floorplan_disconnect($id) {
         $unit = Unit::with('unit_floorplan')->find($id);
         $unit->unit_floorplan_id = null;
+        $unit->save();
+        
+        return Redirect::back()->with(['msg' => 'Successfully connected']);
+    }
+
+
+    public function unit_secondary_floorplan_disconnect($id) {
+        $unit = Unit::with('unit_floorplan')->find($id);
+        $unit->unit_secondary_floorplan_id = null;
         $unit->save();
         
         return Redirect::back()->with(['msg' => 'Successfully connected']);

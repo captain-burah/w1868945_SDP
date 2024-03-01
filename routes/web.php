@@ -210,6 +210,9 @@ Route::middleware('auth')->group(function () {
     /**UNIT - FACTSHEET CONNECTION ROUTES */
     Route::post('unit/connect-floorplan', [UnitController::class, 'unit_floorplan_connect_store'])->name('unit.connect.floorplan');
     Route::get('unit/floorplan/disconnect/{id}', [UnitController::class, 'unit_floorplan_disconnect'])->name('unit.disconnect.floorplan');
+    Route::get('unit/secondary-floorplan/disconnect/{id}', [UnitController::class, 'unit_secondary_floorplan_disconnect'])->name('unit.disconnect.secondary.floorplan');
+    Route::post('unit/connect-secondary-floorplan', [UnitController::class, 'unit_secondary_floorplan_connect_store'])->name('unit.connect.secondary.floorplan');
+    Route::get('unit/secondary-floorplan/disconnect/{id}', [UnitController::class, 'unit_secondary_floorplan_disconnect'])->name('unit.disconnect.secondary.floorplan');
 
     /**UNIT - VIDEO CONNECTION ROUTES */
     Route::post('unit/connect-paymentplan', [UnitController::class, 'unit_paymentplan_connect_store'])->name('unit.connect.paymentplan');
@@ -237,6 +240,11 @@ Route::middleware('auth')->group(function () {
     Route::post('unit-floorplan/connect', [UnitFloorplanController::class, 'unit_connect_store'])->name('unit-floorplan.connect');
     Route::get('unit-floorplan/disconnect/{id}', [UnitFloorplanController::class, 'unit_disconnect'])->name('unit-floorplan.disconnect');
     Route::get('unit-floorplan/delete_all/{id}', [UnitFloorplanController::class, 'destroy_segment'])->name('unit-floorplan.destroy.segment');
+    Route::get('unit-secondary-floorplan/delete_all/{id}', [UnitFloorplanController::class, 'destroy_segment_secondary'])->name('unit-secondary-floorplan.destroy.segment');
+
+    Route::get('unit-secondary-floor-plan', [UnitFloorplanController::class, 'unit_secondary_floor_plan_index'])->name('unit-secondary-floor-plan.index');
+    Route::get('unit-secondary-floor-plan-create', [UnitFloorplanController::class, 'unit_secondary_floor_plan_create'])->name('unit-secondary-floor-plan.create');
+
 
     /**UNIT - PAYMENTPLAN ROUTES */
     // Route::post('unit-paymentplan/connect', [UnitPaymentplanController::class, 'unit_connect_store'])->name('unit-paymentplan.connect');

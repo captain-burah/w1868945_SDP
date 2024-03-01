@@ -33,6 +33,11 @@ class Unit extends Model
         return $this->BelongsTo(Unit_floorplan::class, 'unit_floorplan_id', 'id');
     }
 
+    public function unit_secondary_floorplan(): BelongsTo
+    {
+        return $this->BelongsTo(Unit_floorplan::class, 'unit_secondary_floorplan_id', 'id');
+    }
+
     public function unit_status(): BelongsTo
     {
         return $this->BelongsTo(Unit_status::class, 'status');

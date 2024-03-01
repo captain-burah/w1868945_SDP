@@ -25,7 +25,13 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link " href="{{ route('unit-floor-plan.index') }}" id="topnav-dashboard" aria-label="admin-dashboard" role="button">
-                            <i class="bx bx-video-recording mr-2"></i>Floor Plans
+                            <i class="bx bx-video-recording mr-2"></i>Floorplans
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link " href="{{ route('unit-secondary-floor-plan.index') }}" id="topnav-dashboard" aria-label="admin-dashboard" role="button">
+                            <i class="bx bx-video-recording mr-2"></i>Booking Form Floorplans
                         </a>
                     </li>
 

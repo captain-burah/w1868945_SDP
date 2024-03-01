@@ -23,6 +23,9 @@
                     </button>
                 </div>
 
+                <input type="hidden" value="primary" name="type" hidden>
+
+
                 <div class="flex flex-wrap h-full my-auto" >
 
 

@@ -60,78 +60,81 @@
                 <tbody>
                     @if(isset($count_status))
                         @foreach ($results as $data)
-                            <tr>
-                                <td scope="row">{{ $data->id }}</td>
-                                <td>
-                                    <div class="dropdown">
-                                        @foreach($units as $unit)
-                                            @if($unit->unit_floorplan_id == $data->id)
-                                                <span>{{$unit->name}}, </span>
-                                            @endif
-                                        @endforeach
-                                    </div>
-                                </td>
-
-                                <td>{{$data->name}}</td>
-
-                                <td>{{ $data->unit_floorplan_files()->count() }}</td>
-
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-sm btn-outline-light rounded dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="mdi mdi-dots-horizontal font-size-18"></i>
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="{{ route('unit-floor-plan.edit', ['unit_floor_plan' => $data->id]) }}"><i class="bx bx-edit text-dark"></i> &nbsp;Update</a>
-                                            <a class="dropdown-item" href="{{ route('unit-floorplan.destroy.segment', ['id' => $data->id]) }}"><i class="bx bx-trash text-danger"></i> &nbsp;Remove</a>
+                            @if($data->type == 'secondary')
+                            @else
+                                <tr>
+                                    <td scope="row">{{ $data->id }}</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            @foreach($units as $unit)
+                                                @if($unit->unit_floorplan_id == $data->id)
+                                                    <span>{{$unit->name}}, </span>
+                                                @endif
+                                            @endforeach
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
 
-                            {{-- MODAL FOR PROJECTS --}}
-                            <div class="modal fade" id="project-connect-{{$data->id}}" tabindex="-1" aria-labelledby="project-connect-modal-{{$data->id}}" style="display: none;" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalScrollableTitle">Units</h5>
-                                            <button type="button" class="btn btn-outline-secondary p-1 px-2" data-dismiss="modal" aria-label="Close">X</button>
+                                    <td>{{$data->name}}</td>
+
+                                    <td>{{ $data->unit_floorplan_files()->count() }}</td>
+
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="btn btn-sm btn-outline-light rounded dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="mdi mdi-dots-horizontal font-size-18"></i>
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" href="{{ route('unit-floor-plan.edit', ['unit_floor_plan' => $data->id]) }}"><i class="bx bx-edit text-dark"></i> &nbsp;Update</a>
+                                                <a class="dropdown-item" href="{{ route('unit-floorplan.destroy.segment', ['id' => $data->id]) }}"><i class="bx bx-trash text-danger"></i> &nbsp;Remove</a>
+                                            </div>
                                         </div>
-                                        <div class="modal-body">
-                                            <form class="contact-form" id="getInTouch" method="post" action="{{ route('unit-floorplan.connect') }}">
-                                            @csrf
-                                                <input name="floorplan_id" value="{{$data->id}}" hidden>
-                                                <select
-                                                    class="form-control select2-search-disable select2-hidden-accessible
-                                                    @error('unit_id') border border-solid border-danger  @enderror"
-                                                    data-select2-id="basicpill-status-input"
-                                                    tabindex="-1"
-                                                    aria-hidden="true"
-                                                    name="unit_id"
-                                                >
-                                                    <option selected value="">Choose ...</option>
+                                    </td>
+                                </tr>
 
-                                                    @if(isset($units))
-                                                        @foreach($units as $data)
-                                                            <option selected value="{{$data->id}}">{{ $data->name }}</option>
-                                                        @endforeach
-                                                    @endif
+                                {{-- MODAL FOR PROJECTS --}}
+                                <div class="modal fade" id="project-connect-{{$data->id}}" tabindex="-1" aria-labelledby="project-connect-modal-{{$data->id}}" style="display: none;" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalScrollableTitle">Units</h5>
+                                                <button type="button" class="btn btn-outline-secondary p-1 px-2" data-dismiss="modal" aria-label="Close">X</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="contact-form" id="getInTouch" method="post" action="{{ route('unit-floorplan.connect') }}">
+                                                @csrf
+                                                    <input name="floorplan_id" value="{{$data->id}}" hidden>
+                                                    <select
+                                                        class="form-control select2-search-disable select2-hidden-accessible
+                                                        @error('unit_id') border border-solid border-danger  @enderror"
+                                                        data-select2-id="basicpill-status-input"
+                                                        tabindex="-1"
+                                                        aria-hidden="true"
+                                                        name="unit_id"
+                                                    >
+                                                        <option selected value="">Choose ...</option>
 
-                                                </select>
+                                                        @if(isset($units))
+                                                            @foreach($units as $data)
+                                                                <option selected value="{{$data->id}}">{{ $data->name }}</option>
+                                                            @endforeach
+                                                        @endif
 
-                                                <div class="my-2 w-100 text-right">
-                                                    <button class="btn btn-outline-dark text-right  ">
-                                                        Connect
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                                                    </select>
+
+                                                    <div class="my-2 w-100 text-right">
+                                                        <button class="btn btn-outline-dark text-right  ">
+                                                            Connect
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
                         @endforeach
                     @else
 
