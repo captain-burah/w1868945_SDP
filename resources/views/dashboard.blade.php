@@ -42,7 +42,7 @@
                                 <div class="row mx-auto text-center">
                                     @if(Auth::user()->roles[0]->name == 'Real Estate Agent')
                                     @else
-                                        <div class="col-auto">
+                                        <div class="col-2">
                                             <div>
                                                 <a
                                                     href="{{ route('units.index') }}"
@@ -51,7 +51,7 @@
                                             </div>
                                         </div>
                                     @endif
-                                    <div class="col-auto">
+                                    <div class="col-2">
                                         <div>
                                             <a
                                                 @if($project_unit == '1')
@@ -63,7 +63,7 @@
                                             <h5 class="mb-0">{{$count_listed}}</h5>
                                         </div>
                                     </div>
-                                    <div class="col-auto">
+                                    <div class="col-2">
                                         <div>
                                             <a
                                                 @if($project_unit == '1')
@@ -75,7 +75,7 @@
                                             <h5 class="mb-0">{{$count_draft}}</h5>
                                         </div>
                                     </div>
-                                    <div class="col-auto">
+                                    <div class="col-2">
                                         <div>
                                             <a
                                                 @if($project_unit == '1')
@@ -88,7 +88,7 @@
                                         </div>
                                     </div>
     
-                                    <div class="col-auto">
+                                    <div class="col-2">
                                         <div>
                                             <a
                                                 @if($project_unit == '1')
