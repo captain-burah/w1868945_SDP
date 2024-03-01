@@ -63,18 +63,7 @@
                                             <h5 class="mb-0">{{$count_listed}}</h5>
                                         </div>
                                     </div>
-                                    <div class="col-2">
-                                        <div>
-                                            <a
-                                                @if($project_unit == '1')
-                                                    href="{{ route('project.units.draft', ['id' => $project_id]) }}"
-                                                @elseif($project_unit == '0')
-                                                    href="{{ route('units.drafts') }}"
-                                                @endif
-                                                class="btn btn-sm btn-outline-dark text-truncate mb-2">Drafts Units</a>
-                                            <h5 class="mb-0">{{$count_draft}}</h5>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="col-2">
                                         <div>
                                             <a
