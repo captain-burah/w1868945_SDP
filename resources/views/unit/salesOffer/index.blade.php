@@ -258,7 +258,7 @@
                         --}}
 
                         <div class="mt-3">
-                            <p class="body-p-sub m-0" style="line-height: 3">* Applicable fees to Dubai Land Department are: 4% of the property net price + AED 5,150 (VAT inc.) oqood fee.</p>
+                            <p class="body-p-sub m-0" style="line-height: 3">* Applicable fees to Dubai Land Department are: 4% of the property net price + AED 5,150 (VAT inc.) Oqood fee.</p>
                             <p class="body-p-sub m-0" style="line-height: 2">* Prices and availability are subject to change, offer valid for 48 hours.</p>
                         </div>
                     </div>
