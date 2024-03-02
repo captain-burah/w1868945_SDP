@@ -137,31 +137,37 @@
 
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                 @if($value->state == '1')
+                                                    <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/0') }}">N/A</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/2') }}">Booked</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/3') }}">Amortizing</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/4') }}">Sold</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/5') }}">Resale</a>
                                                 @elseif($value->state == '2')
+                                                    <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/0') }}">N/A</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/1') }}">Listed</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/3') }}">Amortizing</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/4') }}">Sold</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/5') }}">Resale</a>
                                                 @elseif($value->state == '3')
+                                                    <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/0') }}">N/A</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/1') }}">Listed</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/2') }}">Booked</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/4') }}">Sold</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/5') }}">Resale</a>
                                                 @elseif($value->state == '4')
+                                                    <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/0') }}">N/A</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/1') }}">Listed</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/2') }}">Booked</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/3') }}">Amortizing</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/5') }}">Resale</a>
                                                 @elseif($value->state == '5')
+                                                    <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/0') }}">N/A</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/1') }}">Listed</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/2') }}">Booked</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/3') }}">Amortizing</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/4') }}">Sold</a>
                                                 @else
+                                                    <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/0') }}">N/A</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/1') }}">Listed</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/2') }}">Booked</a>
                                                     <a class="dropdown-item border" href="{{ url('units-state-change/'.$value->id.'/3') }}">Amortizing</a>

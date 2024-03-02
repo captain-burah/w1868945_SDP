@@ -771,6 +771,11 @@ class UnitController extends Controller
             $projects->save();
             return Redirect::back()->with('message', 'Unit has been transferred to Resale');
 
+        } elseif($state == '0') {
+            $projects->state = null;
+            $projects->save();
+            return Redirect::back()->with('message', 'Unit has been transferred to N/A');
+
         } else {
             return Redirect::back()->withErrors(['msg' => 'Invalid URL. Please contact developer.']);
         }

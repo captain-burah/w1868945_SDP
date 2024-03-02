@@ -13,7 +13,6 @@
 
     @include('project.create.form')
 
-    {{-- @include('project.activeProjectsTable') --}}
 </div>
 @endsection
 
