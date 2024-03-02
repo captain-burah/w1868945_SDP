@@ -57,7 +57,6 @@ Route::middleware('authkey')->prefix('v1/esnaad')->namespace('App\Http\Controlle
     Route::post('/agency-registration', 'API\BrokerController@store')->middleware('api', 'cors');
     Route::post('/email-subscription', 'API\EmailSubscriptionController@store')->middleware('cors');
     Route::post('/project-brochure-download', 'API\EmailSubscriptionController@store')->middleware('cors');
-
 });
 
 
