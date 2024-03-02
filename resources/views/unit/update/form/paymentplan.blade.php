@@ -52,7 +52,7 @@
                 class="form-control
                 @error('oqood') border border-solid border-danger  @enderror"
                 id="admin_fees"
-                value="{{  $unit->oqood_amount }}"
+                value="5250"
                 disabled
             >
             <span class="text-muted font-weight-light pt-2">&#40;do not use any number format&#41;</span>
