@@ -286,7 +286,7 @@
                                         <span class="body-table-p font-weight-semibold" style="font-size: 16px;">Amount (AED)</span>
                                     </th>
                                 </tr>
-                                @foreach($unit_paymentplan[0]->unit_paymentplan_files as $data)
+                                {{-- @foreach($unit_paymentplan[0]->unit_paymentplan_files as $data)
                                     <tr>
                                         <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
                                             <span class="body-table-p">{{ $loop->index+1 }}</span>
@@ -305,7 +305,155 @@
                                         </td>
 
                                     </tr>
-                                @endforeach
+                                @endforeach --}}
+
+                                <tr>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">1</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">On Booking</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">20%</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">01/03/2024</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">2</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">1st Installment</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">5%</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">01/06/2024</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">3</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">2nd Installment</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">10%</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">01/09/2024</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">4</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">3rd Installment</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">10%</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">01/12/2024</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">5</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">4th Installment</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">5%</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">01/03/2025</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">6</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">5th Installment</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">10%</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">01/06/2025</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">7</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">6th Installment</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">10%</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">01/09/2025</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">8</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">Final Payment</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">30%</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">On Completion</span>
+                                    </td>
+                                </tr>
+
+
+
+
 
                                 <tr>
                                     <td style="border-bottom: 1.5px #dbdbdb solid !important;">
