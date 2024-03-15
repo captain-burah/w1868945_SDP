@@ -283,9 +283,13 @@
                                         <span class="body-table-p font-weight-semibold" style="font-size: 16px;">Percentage</span>
                                     </th>
                                     <th style="width: 300px !important; border: 1.5px #dbdbdb solid !important; background-color: #d6d6d6 !important;" class="text-center">
+                                        <span class="body-table-p font-weight-semibold" style="font-size: 16px;">Due Date</span>
+                                    </th>
+                                    <th style="width: 300px !important; border: 1.5px #dbdbdb solid !important; background-color: #d6d6d6 !important;" class="text-center">
                                         <span class="body-table-p font-weight-semibold" style="font-size: 16px;">Amount (AED)</span>
                                     </th>
                                 </tr>
+                                
                                 {{-- @foreach($unit_paymentplan[0]->unit_paymentplan_files as $data)
                                     <tr>
                                         <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
@@ -323,6 +327,10 @@
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
                                         <span class="body-table-p">On Booking</span>
                                     </td>
+                                    
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit_paymentplan[0]->unit_paymentplan_files[0]->amount) }}</span>
+                                    </td>
                                 </tr>
 
                                 <tr>
@@ -340,6 +348,9 @@
 
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
                                         <span class="body-table-p">01/06/2024</span>
+                                    </td>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit_paymentplan[0]->unit_paymentplan_files[1]->amount) }}</span>
                                     </td>
                                 </tr>
 
@@ -359,6 +370,9 @@
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
                                         <span class="body-table-p">01/09/2024</span>
                                     </td>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit_paymentplan[0]->unit_paymentplan_files[2]->amount) }}</span>
+                                    </td>
                                 </tr>
 
                                 <tr>
@@ -376,6 +390,9 @@
 
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
                                         <span class="body-table-p">01/12/2024</span>
+                                    </td>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit_paymentplan[0]->unit_paymentplan_files[3]->amount) }}</span>
                                     </td>
                                 </tr>
 
@@ -395,6 +412,9 @@
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
                                         <span class="body-table-p">01/03/2025</span>
                                     </td>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit_paymentplan[0]->unit_paymentplan_files[4]->amount) }}</span>
+                                    </td>
                                 </tr>
 
                                 <tr>
@@ -412,6 +432,9 @@
 
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
                                         <span class="body-table-p">01/06/2025</span>
+                                    </td>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit_paymentplan[0]->unit_paymentplan_files[5]->amount) }}</span>
                                     </td>
                                 </tr>
 
@@ -431,6 +454,9 @@
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
                                         <span class="body-table-p">01/09/2025</span>
                                     </td>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit_paymentplan[0]->unit_paymentplan_files[6]->amount) }}</span>
+                                    </td>
                                 </tr>
 
                                 <tr>
@@ -448,6 +474,9 @@
 
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
                                         <span class="body-table-p">On Completion</span>
+                                    </td>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit_paymentplan[0]->unit_paymentplan_files[7]->amount) }}</span>
                                     </td>
                                 </tr>
 
