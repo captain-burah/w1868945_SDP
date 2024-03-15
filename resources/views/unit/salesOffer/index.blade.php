@@ -289,7 +289,7 @@
                                         <span class="body-table-p font-weight-semibold" style="font-size: 16px;">Amount (AED)</span>
                                     </th>
                                 </tr>
-                                
+
                                 {{-- @foreach($unit_paymentplan[0]->unit_paymentplan_files as $data)
                                     <tr>
                                         <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
@@ -485,6 +485,8 @@
 
 
                                 <tr>
+                                    <td style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                    </td>
                                     <td style="border-bottom: 1.5px #dbdbdb solid !important;">
                                     </td>
                                     <td style="border-bottom: 1.5px #dbdbdb solid !important;">
