@@ -313,7 +313,7 @@
                                     </td>
 
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                        <span class="body-table-p">On Booking</span>
+                                        <span class="body-table-p">Downpayment</span>
                                     </td>
 
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
@@ -321,7 +321,7 @@
                                     </td>
 
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                        <span class="body-table-p">01/03/2024</span>
+                                        <span class="body-table-p">On Booking</span>
                                     </td>
                                 </tr>
 
