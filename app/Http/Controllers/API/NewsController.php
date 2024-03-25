@@ -22,7 +22,7 @@ class NewsController extends Controller
     }
 
     public function show($id){
-        $resources = WebsiteNew::with('website_news_images')->where('status', '1')->where('id', $id)->get();
+        $resources = WebsiteNew::with('website_news_images')->where('status', '1')->where('slug_link', $id)->get();
         return response()->json($resources,200);
     }
 }
