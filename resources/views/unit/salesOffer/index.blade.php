@@ -329,7 +329,7 @@
                                     </td>
                                     
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit_paymentplan[0]->unit_paymentplan_files[0]->amount) }}</span>
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit->unit_price * 0.2) }}</span>
                                     </td>
                                 </tr>
 
@@ -350,7 +350,7 @@
                                         <span class="body-table-p">01/06/2024</span>
                                     </td>
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit_paymentplan[0]->unit_paymentplan_files[1]->amount) }}</span>
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit->unit_price * 0.05) }}</span>
                                     </td>
                                 </tr>
 
@@ -371,7 +371,7 @@
                                         <span class="body-table-p">01/09/2024</span>
                                     </td>
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit_paymentplan[0]->unit_paymentplan_files[2]->amount) }}</span>
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit->unit_price * 0.1) }}</span>
                                     </td>
                                 </tr>
 
@@ -392,7 +392,7 @@
                                         <span class="body-table-p">01/12/2024</span>
                                     </td>
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit_paymentplan[0]->unit_paymentplan_files[3]->amount) }}</span>
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit->unit_price * 0.1) }}</span>
                                     </td>
                                 </tr>
 
@@ -413,7 +413,7 @@
                                         <span class="body-table-p">01/03/2025</span>
                                     </td>
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit_paymentplan[0]->unit_paymentplan_files[4]->amount) }}</span>
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit->unit_price * 0.05) }}</span>
                                     </td>
                                 </tr>
 
@@ -434,7 +434,7 @@
                                         <span class="body-table-p">01/06/2025</span>
                                     </td>
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit_paymentplan[0]->unit_paymentplan_files[5]->amount) }}</span>
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit->unit_price * 0.1) }}</span>
                                     </td>
                                 </tr>
 
@@ -455,7 +455,7 @@
                                         <span class="body-table-p">01/09/2025</span>
                                     </td>
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit_paymentplan[0]->unit_paymentplan_files[6]->amount) }}</span>
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit->unit_price * 0.1) }}</span>
                                     </td>
                                 </tr>
 
@@ -476,7 +476,7 @@
                                         <span class="body-table-p">On Completion</span>
                                     </td>
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit_paymentplan[0]->unit_paymentplan_files[7]->amount) }}</span>
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit->unit_price * 0.3) }}</span>
                                     </td>
                                 </tr>
 
