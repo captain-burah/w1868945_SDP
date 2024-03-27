@@ -57,7 +57,7 @@ class ProjectBrochureController extends Controller
         $request->validate([
             'segment_name' => 'required',
             'files' => 'required | max: 5 | min: 1',
-            'files.*' => 'max: 51200|mimes:pdf'
+            'files.*' => 'mimes:pdf'
         ]);
 
 
