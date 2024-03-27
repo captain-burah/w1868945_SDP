@@ -29,6 +29,7 @@ class DevelopmentController extends Controller
         $responseData = [
             'resources' => $resources,
             'images' => $images,
+            'brochures' => $brochures,
         ];
         return response()->json($responseData,200);
     }
