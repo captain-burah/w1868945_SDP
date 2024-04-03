@@ -45,7 +45,8 @@
                             <th style="width: 150px;">Project Name</th>
                             <th style="width: 150px;">Floorplans</th>
                             <th style="width: 150px;">Booking Floorplans</th>
-                            <th style="width: 150px;">Gallery</th>
+                            {{-- <th style="width: 150px;">Gallery</th> --}}
+                            <th style="width: 150px;">Payment Plan</th>
                             <th style="width: 150px;">Sales Offer</th>
                             {{-- <th>Action</th> --}}
                         </tr>
@@ -340,7 +341,7 @@
 
 
                                     {{-- IMAGES --}}
-                                    <td>
+                                    {{-- <td>
                                         <div class="dropdown">
                                             <a class="dropdown-toggle my-auto " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 @if($value->unit_image != null)
@@ -384,14 +385,319 @@
                                                 </form>
                                             </div>
                                         </div>
+                                    </td> --}}
+
+                                    {{-- PAYMENT PLAN --}}
+                                    <td>
+                                        <a class="my-auto " type="button" id="dropdownMenuButton" data-toggle="modal" data-target="#ppModal-{{$value->id}}">
+                                            @if($value->unit_paymentplan != null)
+                                                View
+                                            @else
+                                                <i class="bx bx-no-entry text-danger" style="font-size: 18px"></i>
+                                            @endif
+                                        </a>
+                                        <div id="ppModal-{{$value->id}}" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-lg"">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="myLargeModalLabel">Payment Plan: Unit {{$value->name}}</h5>
+                                                        <button type="button" class="btn btn-white" data-dismiss="modal" aria-label="Close">X</button>
+                                                    </div>
+                                                    <div class="modal-header">
+                                                        <table class="table "> 
+                                                            <tr>
+                                                                <th style="width: 0px !important; border: 1.5px #dbdbdb solid !important; background-color: #d6d6d6 !important;" class="text-center">
+                                                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px; text-align:left">Installment</span>
+                                                                </th>
+                                                                <th style="width: 300px !important; border: 1.5px #dbdbdb solid !important; background-color: #d6d6d6 !important;" class="text-center">
+                                                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">Milestone</span>
+                                                                </th>
+                                                                <th style="width: 300px !important; border: 1.5px #dbdbdb solid !important; background-color: #d6d6d6 !important;" class="text-center">
+                                                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">Percentage</span>
+                                                                </th>
+                                                                <th style="width: 300px !important; border: 1.5px #dbdbdb solid !important; background-color: #d6d6d6 !important;" class="text-center">
+                                                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">Due Date</span>
+                                                                </th>
+                                                                <th style="width: 300px !important; border: 1.5px #dbdbdb solid !important; background-color: #d6d6d6 !important;" class="text-center">
+                                                                    <span class="body-table-p font-weight-semibold" style="font-size: 16px;">Amount (AED)</span>
+                                                                </th>
+                                                            </tr>
+                            
+                                                            <tr>
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">1</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">Downpayment</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">20%</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">On Booking</span>
+                                                                </td>
+                                                                
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p" style="color: #095edb;">{{ number_format( $value->unit_price * 0.2) }}</span>
+                                                                </td>
+                                                            </tr>
+                            
+                                                            <tr>
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">2</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">1st Installment</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">5%</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">
+                                                                        @foreach($units_paymentplans as $pp)
+                                                                            @if($pp[0] == $value->id)
+                                                                                @isset($pp[1])
+                                                                                    {{$pp[1]}}
+                                                                                @endisset
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p" style="color: #095edb;">{{ number_format( $value->unit_price * 0.05) }}</span>
+                                                                </td>
+                                                            </tr>
+                            
+                                                            <tr>
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">3</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">2nd Installment</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">10%</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">
+                                                                        @foreach($units_paymentplans as $pp)
+                                                                            @if($pp[0] == $value->id)
+                                                                                @isset($pp[2])
+                                                                                    {{$pp[2]}}
+                                                                                @endisset
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p" style="color: #095edb;">{{ number_format( $value->unit_price * 0.1) }}</span>
+                                                                </td>
+                                                            </tr>
+                            
+                                                            <tr>
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">4</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">3rd Installment</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">10%</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">
+                                                                        @foreach($units_paymentplans as $pp)
+                                                                            @if($pp[0] == $value->id)
+                                                                                @isset($pp[3])
+                                                                                    {{$pp[3]}}
+                                                                                @endisset
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p" style="color: #095edb;">{{ number_format( $value->unit_price * 0.1) }}</span>
+                                                                </td>
+                                                            </tr>
+                            
+                                                            <tr>
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">5</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">4th Installment</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">5%</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">
+                                                                        @foreach($units_paymentplans as $pp)
+                                                                            @if($pp[0] == $value->id)
+                                                                                @isset($pp[4])
+                                                                                    {{$pp[4]}}
+                                                                                @endisset
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p" style="color: #095edb;">{{ number_format( $value->unit_price * 0.05) }}</span>
+                                                                </td>
+                                                            </tr>
+                            
+                                                            <tr>
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">6</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">5th Installment</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">10%</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">
+                                                                        @foreach($units_paymentplans as $pp)
+                                                                            @if($pp[0] == $value->id)
+                                                                                @isset($pp[5])
+                                                                                    {{$pp[5]}}
+                                                                                @endisset
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p" style="color: #095edb;">{{ number_format( $value->unit_price * 0.1) }}</span>
+                                                                </td>
+                                                            </tr>
+                            
+                                                            <tr>
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">7</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">6th Installment</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">10%</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">
+                                                                        @foreach($units_paymentplans as $pp)
+                                                                            @if($pp[0] == $value->id)
+                                                                                @isset($pp[6])
+                                                                                    {{$pp[6]}}
+                                                                                @endisset
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p" style="color: #095edb;">{{ number_format( $value->unit_price * 0.1) }}</span>
+                                                                </td>
+                                                            </tr>
+                            
+                                                            <tr>
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">8</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">Final Payment</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">30%</span>
+                                                                </td>
+                            
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p">On Completion</span>
+                                                                </td>
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p" style="color: #095edb;">{{ number_format( $value->unit_price * 0.3) }}</span>
+                                                                </td>
+                                                            </tr>
+                            
+                            
+                            
+                            
+                            
+                                                            <tr>
+                                                                <td style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                </td>
+                                                                <td style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                </td>
+                                                                <td style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                </td>
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                                                    <span class="body-table-p ">Purchase Price</span>
+                                                                </td>
+                                                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important; text-align:;">
+                                                                    <span class="body-table-p" style="color: #095edb;">{{ number_format($value->unit_price) }}</span>
+                                                                </td>
+                                                            </tr>
+                            
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
 
                                     {{-- ACTION --}}
                                     <td>
-                                        <div class="dropdown">
+                                        {{-- <div class="dropdown">
                                             <button class="btn btn-sm btn-outline-light rounded" type="button">
                                                 <a class="dropdown-item" href="{{ route('units.sales.offer', ['id' => $value->id]) }}" target="_blank"><i class="bx bx-spreadsheet text-dark"></i> &nbsp; Print</a>
                                             </button>
+                                        </div> --}}
+                                        <div>
+                                            <button type="button" class="btn btn-sm btn-white rounded-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal-{{$value->id}}"><i class="bx bx-spreadsheet text-dark"></i> &nbsp; Print</button>
+                                            <div id="myModal-{{$value->id}}" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <form action="{{ url('/sales-offer-print')}}" method="POST">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="myModalLabel">Date of Sales Offer</h5>
+                                                                <button type="button" class="btn btn-white " data-dismiss="modal" aria-label="Close">X</button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                @csrf
+                                                                <p>Please enter start date for Booking</p>
+                                                                <input class="form-control" name="date" type="date" value="2024-03-01" min="2024-03-01" id="example-date-input">
+                                                                <input type="hidden" name="unit" value="{{$value->id}}">
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary waves-effect waves-light">Proceed</button>
+                                                            </div>
+                                                        </form>
+
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>
@@ -505,10 +811,36 @@
 
                                     {{-- ACTION --}}
                                     <td>
-                                        <div class="dropdown">
+                                        {{-- <div class="dropdown">
                                             <button class="btn btn-sm btn-outline-light rounded" type="button">
                                                 <a class="dropdown-item" href="{{ route('units.sales.offer', ['id' => $value->id]) }}" target="_blank"><i class="bx bx-spreadsheet text-dark"></i> &nbsp; Print</a>
                                             </button>
+                                        </div> --}}
+                                        <div>
+                                            <button type="button" class="btn btn-sm btn-white rounded-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal-{{$value->id}}"><i class="bx bx-spreadsheet text-dark"></i> &nbsp; Print</button>
+                                            <div id="myModal-{{$value->id}}" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <form action="{{ url('/sales-offer-print')}}" method="POST">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="myModalLabel">Date of Sales Offer</h5>
+                                                                <button type="button" class="btn btn-white " data-dismiss="modal" aria-label="Close">X</button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                @csrf
+                                                                <p>Please enter start date for Booking</p>
+                                                                <input class="form-control" name="date" type="date" value="2024-03-01" min="2024-03-01" id="example-date-input">
+                                                                <input type="hidden" name="unit" value="{{$value->id}}">
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary waves-effect waves-light">Proceed</button>
+                                                            </div>
+                                                        </form>
+
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </td>
 
@@ -848,10 +1180,36 @@
 
                                 {{-- ACTION --}}
                                 <td>
-                                    <div class="dropdown">
+                                    {{-- <div class="dropdown">
                                         <button class="btn btn-sm btn-outline-light rounded" type="button">
                                             <a class="dropdown-item" href="{{ route('units.sales.offer', ['id' => $value->id]) }}" target="_blank"><i class="bx bx-spreadsheet text-dark"></i> &nbsp; Print</a>
                                         </button>
+                                    </div> --}}
+                                    <div>
+                                        <button type="button" class="btn btn-sm btn-white rounded-0 waves-effect waves-light" data-toggle="modal" data-target="#myModal-{{$value->id}}"><i class="bx bx-spreadsheet text-dark"></i> &nbsp; Print</button>
+                                        <div id="myModal-{{$value->id}}" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <form action="{{ url('/sales-offer-print')}}" method="POST">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="myModalLabel">Date of Sales Offer</h5>
+                                                            <button type="button" class="btn btn-white " data-dismiss="modal" aria-label="Close">X</button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @csrf
+                                                            <p>Please enter start date for Booking</p>
+                                                            <input class="form-control" name="date" type="date" value="2024-03-01" min="2024-03-01" id="example-date-input">
+                                                            <input type="hidden" name="unit" value="{{$value->id}}">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary waves-effect waves-light">Proceed</button>
+                                                        </div>
+                                                    </form>
+
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>

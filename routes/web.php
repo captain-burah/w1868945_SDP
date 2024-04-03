@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PDFController;
 
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectBrochureController;
@@ -245,6 +246,9 @@ Route::middleware('auth')->group(function () {
     Route::get('unit-secondary-floor-plan', [UnitFloorplanController::class, 'unit_secondary_floor_plan_index'])->name('unit-secondary-floor-plan.index');
     Route::get('unit-secondary-floor-plan-create', [UnitFloorplanController::class, 'unit_secondary_floor_plan_create'])->name('unit-secondary-floor-plan.create');
 
+    Route::post('sales-offer-print', [UnitController::class, 'sales_offer_print'])->name('unit.sales_offer_print');
+    
+    Route::get('/generate-pdf/{date}/{unit}', [PDFController::class, 'generatePDF']);
 
     /**UNIT - PAYMENTPLAN ROUTES */
     // Route::post('unit-paymentplan/connect', [UnitPaymentplanController::class, 'unit_connect_store'])->name('unit-paymentplan.connect');

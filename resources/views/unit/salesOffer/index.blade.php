@@ -164,6 +164,23 @@
                 bottom: 0;
                 width: 100vw;
             }
+            .cssr-print {
+                display: block;
+                visibility: visible;
+                margin-top: 0px !important;
+                margin-bottom: 0px !important;
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                margin: auto;
+                background-color: @white;
+                padding: 50px 0 0;
+                max-width: 100%;
+                text-align: center;
+                width: 100%;
+            }
             
         }
     </style>

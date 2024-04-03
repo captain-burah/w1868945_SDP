@@ -75,7 +75,7 @@ class UnitController extends Controller
 
     public function index()
     { 
-        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id', 'unit_secondary_floorplan_id')->with('project')->where('status', '1')->orderBY('id', 'ASC');
+        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id', 'unit_secondary_floorplan_id')->with('project', 'unit_paymentplan')->where('status', '1')->orderBY('id', 'ASC');
 
         $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'ASC')->count();
         $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'ASC')->count();
@@ -101,13 +101,49 @@ class UnitController extends Controller
         $this->data['floorplans'] = Unit_floorplan::with('unit_floorplan_files')->get();
         $this->data['paymentplans'] = Unit_paymentplan::with('unit_paymentplan_files')->get();
         $this->data['project_unit'] = '0';
+
+        //Get all payment plans
+        $units_paymentplans = [];
+
+        foreach($units as $unit) {
+            $new_date_array = [];
+            $new_data_set = [];
+            foreach($unit->unit_paymentplan->unit_paymentplan_files as $data_sets){
+                $data_set_value = $data_sets->name;
+                if($data_set_value != 'Down Payment On Booking') {
+                    preg_match('/^\d+/', $data_set_value, $matches);
+                    if (!empty($matches)) {
+                        $new_data_set[] = $matches[0];
+                    }
+                }
+            }
+            $int_array = array_map('intval', $new_data_set);
+            $selected_date = Carbon::now();
+            try {
+                $base_date = Carbon::parse($selected_date);
+            } catch (Exception $e) {
+                return back()->withErrors(['base_date' => 'Please enter a valid date in the format YYYY-MM-DD.']);
+            }
+            $new_date_array = [];
+            $new_date_array[] = $unit->id;
+            // $new_date_array[] = $selected_date;
+            foreach ($int_array as $month_to_add) {
+                $new_date = clone $base_date;  // Clone to avoid modifying the original object
+                $new_date->modify("+$month_to_add month");  // Add the month value
+                $new_date_array[] = $new_date->format('d/m/Y');  // Format the date string (YYYY-MM-DD)
+            }
+            $units_paymentplans[] = $new_date_array;
+        }
+        // dd($units_paymentplans);
+        $this->data['units_paymentplans'] = $units_paymentplans;
+        
         return view('unitsActive', $this->data);
     }
 
 
 
     public function booked_index(){
-        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id', 'unit_secondary_floorplan_id')->with('project')->where('status', '1')->where('state', '2')->orderBY('id', 'ASC');
+        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id', 'unit_secondary_floorplan_id')->with('project', 'unit_paymentplan')->where('status', '1')->where('state', '2')->orderBY('id', 'ASC');
 
         $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'ASC')->count();
         $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'ASC')->count();
@@ -133,12 +169,48 @@ class UnitController extends Controller
         $this->data['floorplans'] = Unit_floorplan::with('unit_floorplan_files')->get();
         $this->data['paymentplans'] = Unit_paymentplan::with('unit_paymentplan_files')->get();
         $this->data['project_unit'] = '0';
+
+        //Get all payment plans
+        $units_paymentplans = [];
+
+        foreach($units as $unit) {
+            $new_date_array = [];
+            $new_data_set = [];
+            foreach($unit->unit_paymentplan->unit_paymentplan_files as $data_sets){
+                $data_set_value = $data_sets->name;
+                if($data_set_value != 'Down Payment On Booking') {
+                    preg_match('/^\d+/', $data_set_value, $matches);
+                    if (!empty($matches)) {
+                        $new_data_set[] = $matches[0];
+                    }
+                }
+            }
+            $int_array = array_map('intval', $new_data_set);
+            $selected_date = Carbon::now();
+            try {
+                $base_date = Carbon::parse($selected_date);
+            } catch (Exception $e) {
+                return back()->withErrors(['base_date' => 'Please enter a valid date in the format YYYY-MM-DD.']);
+            }
+            $new_date_array = [];
+            $new_date_array[] = $unit->id;
+            // $new_date_array[] = $selected_date;
+            foreach ($int_array as $month_to_add) {
+                $new_date = clone $base_date;  // Clone to avoid modifying the original object
+                $new_date->modify("+$month_to_add month");  // Add the month value
+                $new_date_array[] = $new_date->format('d/m/Y');  // Format the date string (YYYY-MM-DD)
+            }
+            $units_paymentplans[] = $new_date_array;
+        }
+        // dd($units_paymentplans);
+        $this->data['units_paymentplans'] = $units_paymentplans;
+
         return view('unitsActive', $this->data);
     }
 
 
     public function active_index(){
-        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id', 'unit_secondary_floorplan_id')->with('project')->where('status', '1')->where('state', '1')->orderBY('id', 'ASC');
+        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id', 'unit_secondary_floorplan_id')->with('project', 'unit_paymentplan')->where('status', '1')->where('state', '1')->orderBY('id', 'ASC');
 
         $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'ASC')->count();
         $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'ASC')->count();
@@ -156,7 +228,7 @@ class UnitController extends Controller
             $this->data['count_status'] = 'No units found. You can launch a new unit above to start-off';
             $this->data['units'] = $units;
         } else {
-            $this->data['units'] = $units->get();
+            $this->data['units'] = $units =  $units->get();
         }
 
         $this->data['brochures'] = Unit_brochure::with('unit_brochure_files')->get();
@@ -164,11 +236,50 @@ class UnitController extends Controller
         $this->data['floorplans'] = Unit_floorplan::with('unit_floorplan_files')->get();
         $this->data['paymentplans'] = Unit_paymentplan::with('unit_paymentplan_files')->get();
         $this->data['project_unit'] = '0';
+
+
+
+        //Get all payment plans
+        $units_paymentplans = [];
+
+        foreach($units as $unit) {
+            $new_date_array = [];
+            $new_data_set = [];
+            foreach($unit->unit_paymentplan->unit_paymentplan_files as $data_sets){
+                $data_set_value = $data_sets->name;
+                if($data_set_value != 'Down Payment On Booking') {
+                    preg_match('/^\d+/', $data_set_value, $matches);
+                    if (!empty($matches)) {
+                        $new_data_set[] = $matches[0];
+                    }
+                }
+            }
+            $int_array = array_map('intval', $new_data_set);
+            $selected_date = Carbon::now();
+            try {
+                $base_date = Carbon::parse($selected_date);
+            } catch (Exception $e) {
+                return back()->withErrors(['base_date' => 'Please enter a valid date in the format YYYY-MM-DD.']);
+            }
+            $new_date_array = [];
+            $new_date_array[] = $unit->id;
+            // $new_date_array[] = $selected_date;
+            foreach ($int_array as $month_to_add) {
+                $new_date = clone $base_date;  // Clone to avoid modifying the original object
+                $new_date->modify("+$month_to_add month");  // Add the month value
+                $new_date_array[] = $new_date->format('d/m/Y');  // Format the date string (YYYY-MM-DD)
+            }
+            $units_paymentplans[] = $new_date_array;
+        }
+        // dd($units_paymentplans);
+        $this->data['units_paymentplans'] = $units_paymentplans;
+
+
         return view('unitsActive', $this->data);
     }
 
     public function sold_index(){
-        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id', 'unit_secondary_floorplan_id')->with('project')->where('status', '1')->where('state', '4')->orderBY('id', 'ASC');
+        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id', 'unit_secondary_floorplan_id')->with('project', 'unit_paymentplan')->where('status', '1')->where('state', '4')->orderBY('id', 'ASC');
 
         $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'ASC')->count();
         $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'ASC')->count();
@@ -194,11 +305,47 @@ class UnitController extends Controller
         $this->data['floorplans'] = Unit_floorplan::with('unit_floorplan_files')->get();
         $this->data['paymentplans'] = Unit_paymentplan::with('unit_paymentplan_files')->get();
         $this->data['project_unit'] = '0';
+
+        //Get all payment plans
+        $units_paymentplans = [];
+
+        foreach($units as $unit) {
+            $new_date_array = [];
+            $new_data_set = [];
+            foreach($unit->unit_paymentplan->unit_paymentplan_files as $data_sets){
+                $data_set_value = $data_sets->name;
+                if($data_set_value != 'Down Payment On Booking') {
+                    preg_match('/^\d+/', $data_set_value, $matches);
+                    if (!empty($matches)) {
+                        $new_data_set[] = $matches[0];
+                    }
+                }
+            }
+            $int_array = array_map('intval', $new_data_set);
+            $selected_date = Carbon::now();
+            try {
+                $base_date = Carbon::parse($selected_date);
+            } catch (Exception $e) {
+                return back()->withErrors(['base_date' => 'Please enter a valid date in the format YYYY-MM-DD.']);
+            }
+            $new_date_array = [];
+            $new_date_array[] = $unit->id;
+            // $new_date_array[] = $selected_date;
+            foreach ($int_array as $month_to_add) {
+                $new_date = clone $base_date;  // Clone to avoid modifying the original object
+                $new_date->modify("+$month_to_add month");  // Add the month value
+                $new_date_array[] = $new_date->format('d/m/Y');  // Format the date string (YYYY-MM-DD)
+            }
+            $units_paymentplans[] = $new_date_array;
+        }
+        // dd($units_paymentplans);
+        $this->data['units_paymentplans'] = $units_paymentplans;
+
         return view('unitsActive', $this->data);
     }
 
     public function inactive_index(){
-        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id', 'unit_secondary_floorplan_id')->with('project')->where('status', '')->where('state', '4')->orderBY('id', 'ASC');
+        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id', 'unit_secondary_floorplan_id')->with('project', 'unit_paymentplan')->where('status', '')->where('state', '4')->orderBY('id', 'ASC');
 
         $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'ASC')->count();
         $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'ASC')->count();
@@ -224,6 +371,42 @@ class UnitController extends Controller
         $this->data['floorplans'] = Unit_floorplan::with('unit_floorplan_files')->get();
         $this->data['paymentplans'] = Unit_paymentplan::with('unit_paymentplan_files')->get();
         $this->data['project_unit'] = '0';
+
+        //Get all payment plans
+        $units_paymentplans = [];
+
+        foreach($units as $unit) {
+            $new_date_array = [];
+            $new_data_set = [];
+            foreach($unit->unit_paymentplan->unit_paymentplan_files as $data_sets){
+                $data_set_value = $data_sets->name;
+                if($data_set_value != 'Down Payment On Booking') {
+                    preg_match('/^\d+/', $data_set_value, $matches);
+                    if (!empty($matches)) {
+                        $new_data_set[] = $matches[0];
+                    }
+                }
+            }
+            $int_array = array_map('intval', $new_data_set);
+            $selected_date = Carbon::now();
+            try {
+                $base_date = Carbon::parse($selected_date);
+            } catch (Exception $e) {
+                return back()->withErrors(['base_date' => 'Please enter a valid date in the format YYYY-MM-DD.']);
+            }
+            $new_date_array = [];
+            $new_date_array[] = $unit->id;
+            // $new_date_array[] = $selected_date;
+            foreach ($int_array as $month_to_add) {
+                $new_date = clone $base_date;  // Clone to avoid modifying the original object
+                $new_date->modify("+$month_to_add month");  // Add the month value
+                $new_date_array[] = $new_date->format('d/m/Y');  // Format the date string (YYYY-MM-DD)
+            }
+            $units_paymentplans[] = $new_date_array;
+        }
+        // dd($units_paymentplans);
+        $this->data['units_paymentplans'] = $units_paymentplans;
+
         return view('unitsActive', $this->data);
     }
 
@@ -266,6 +449,41 @@ class UnitController extends Controller
         $this->data['paymentplans'] = Unit_paymentplan::with('unit_paymentplan_files')->get();
         $this->data['project_unit'] = '0';
 
+        //Get all payment plans
+        $units_paymentplans = [];
+
+        foreach($units as $unit) {
+            $new_date_array = [];
+            $new_data_set = [];
+            foreach($unit->unit_paymentplan->unit_paymentplan_files as $data_sets){
+                $data_set_value = $data_sets->name;
+                if($data_set_value != 'Down Payment On Booking') {
+                    preg_match('/^\d+/', $data_set_value, $matches);
+                    if (!empty($matches)) {
+                        $new_data_set[] = $matches[0];
+                    }
+                }
+            }
+            $int_array = array_map('intval', $new_data_set);
+            $selected_date = Carbon::now();
+            try {
+                $base_date = Carbon::parse($selected_date);
+            } catch (Exception $e) {
+                return back()->withErrors(['base_date' => 'Please enter a valid date in the format YYYY-MM-DD.']);
+            }
+            $new_date_array = [];
+            $new_date_array[] = $unit->id;
+            // $new_date_array[] = $selected_date;
+            foreach ($int_array as $month_to_add) {
+                $new_date = clone $base_date;  // Clone to avoid modifying the original object
+                $new_date->modify("+$month_to_add month");  // Add the month value
+                $new_date_array[] = $new_date->format('d/m/Y');  // Format the date string (YYYY-MM-DD)
+            }
+            $units_paymentplans[] = $new_date_array;
+        }
+        // dd($units_paymentplans);
+        $this->data['units_paymentplans'] = $units_paymentplans;
+
         return view('unitsActive', $this->data);
     }
 
@@ -299,6 +517,41 @@ class UnitController extends Controller
         $this->data['floorplans'] = Unit_floorplan::with('unit_floorplan_files')->get();
         $this->data['paymentplans'] = Unit_paymentplan::with('unit_paymentplan_files')->get();
         $this->data['project_unit'] = '0';
+
+        //Get all payment plans
+        $units_paymentplans = [];
+
+        foreach($units as $unit) {
+            $new_date_array = [];
+            $new_data_set = [];
+            foreach($unit->unit_paymentplan->unit_paymentplan_files as $data_sets){
+                $data_set_value = $data_sets->name;
+                if($data_set_value != 'Down Payment On Booking') {
+                    preg_match('/^\d+/', $data_set_value, $matches);
+                    if (!empty($matches)) {
+                        $new_data_set[] = $matches[0];
+                    }
+                }
+            }
+            $int_array = array_map('intval', $new_data_set);
+            $selected_date = Carbon::now();
+            try {
+                $base_date = Carbon::parse($selected_date);
+            } catch (Exception $e) {
+                return back()->withErrors(['base_date' => 'Please enter a valid date in the format YYYY-MM-DD.']);
+            }
+            $new_date_array = [];
+            $new_date_array[] = $unit->id;
+            // $new_date_array[] = $selected_date;
+            foreach ($int_array as $month_to_add) {
+                $new_date = clone $base_date;  // Clone to avoid modifying the original object
+                $new_date->modify("+$month_to_add month");  // Add the month value
+                $new_date_array[] = $new_date->format('d/m/Y');  // Format the date string (YYYY-MM-DD)
+            }
+            $units_paymentplans[] = $new_date_array;
+        }
+        // dd($units_paymentplans);
+        $this->data['units_paymentplans'] = $units_paymentplans;
 
         return view('unitsActive', $this->data);
     }
@@ -926,7 +1179,6 @@ class UnitController extends Controller
             return Redirect::back()->withErrors(['The selected project already contains a unit or the unit is assigned to another project. Remove it first to reassign.' ]);
         }
 
-
         $brochure = Unit::with('project')->find($request->unit_id);
         $brochure->project_id = $request->project_id;
         $brochure->save();
@@ -936,6 +1188,7 @@ class UnitController extends Controller
 
 
     public function unit_project_disconnect($id) {
+        
         $unit = Unit::with('project')->find($id);
 
         if($unit != null) {
@@ -949,13 +1202,52 @@ class UnitController extends Controller
 
     public function sales_offer($id) {
         $this->data['unit'] = $unit = Unit::with('unit_floorplan', 'unit_image', 'unit_paymentplan', 'unit_floorplan', 'unit_status', 'unit_state', 'booking', 'project' )->find($id);
-        // dd($unit);
+
         $this->data['unit_paymentplan'] = $unit_paymentplan = Unit_paymentplan::with('unit_paymentplan_files', 'unit')->where('unit_id', $unit->id)->get();
         
 
         // $pdf = PDF::loadView('booking.reservationAgreement', $this->data);
         return view('unit.salesOffer.index', $this->data);
         // return $pdf->setPaper('a4', 'portrait')->download('reservation-agreement.pdf');
+    }
+
+
+    public function sales_offer_print(Request $request) {
+
+        $this->data['unit'] =  $unit = Unit::with('unit_floorplan', 'unit_image', 'unit_paymentplan', 'unit_floorplan', 'unit_status', 'unit_state', 'booking', 'project' )->find($request->unit);
+        // dd($unit->project->name);
+        $new_data_set = [];
+        foreach($unit->unit_paymentplan->unit_paymentplan_files as $data_sets){
+            $data_set_value = $data_sets->name;
+            if($data_set_value != 'Down Payment On Booking') {
+                preg_match('/^\d+/', $data_set_value, $matches);
+                if (!empty($matches)) {
+                    $new_data_set[] = $matches[0];
+                }
+            }
+        }
+        $int_array = array_map('intval', $new_data_set);
+        $new_date_array = [];
+        $selected_date = $request->date;
+        try {
+            $base_date = Carbon::parse($selected_date);
+        } catch (Exception $e) {
+            return back()->withErrors(['base_date' => 'Please enter a valid date in the format YYYY-MM-DD.']);
+        }
+        $new_date_array = [];
+        // $new_date_array[] = $selected_date;
+        foreach ($int_array as $month_to_add) {
+            $new_date = clone $base_date;  // Clone to avoid modifying the original object
+            $new_date->modify("+$month_to_add month");  // Add the month value
+            $new_date_array[] = $new_date->format('d/m/Y');  // Format the date string (YYYY-MM-DD)
+        }
+
+        // dd($new_date_array);
+        $this->data['unit_paymentplan'] = $unit_paymentplan = Unit_paymentplan::with('unit_paymentplan_files', 'unit')->where('unit_id', $unit->id)->get();
+        $this->data['new_date_array'] = $new_date_array;
+        $this->data['date'] = $request->date;
+        return view('unit.salesOffer.index', $this->data);
+
     }
 
 

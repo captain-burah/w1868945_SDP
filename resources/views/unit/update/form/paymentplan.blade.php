@@ -120,7 +120,9 @@
 
             <div class="mb-3 col-lg-3">
                 <label for="milestone">Description</label>
-                <input type="text" id="milestone_0" name="group_a[0][milestone]" class="form-control form-control-sm" value="Down Payment On Booking" disabled>
+                <div class="d-flex justify-content-start">
+                    <input type="text" id="milestone_1" name="group_a[1][milestone]" class="form-control form-control-sm" value="Down Payment on Booking" disabled>
+                </div>
             </div>
 
             <div class="mb-3 col-lg-3">
@@ -142,7 +144,10 @@
 
             <div class="mb-3 col-lg-3">
                 {{-- <label for="milestone">Description</label> --}}
-                <input type="text" id="milestone_1" name="group_a[1][milestone]" class="form-control form-control-sm" value="1st Installment 3 month" disabled>
+                <div class="d-flex justify-content-start">
+                    <input type="text" id="milestone_1" name="group_a[1][milestone]" class="form-control form-control-sm" value="3" disabled>
+                    <span class="text-nowrap my-auto h-full" style="font-size: 12px;">&nbsp; 03 Months from Booking</span>
+                </div>
             </div>
 
             <div class="mb-3 col-lg-3">
@@ -165,7 +170,10 @@
 
             <div class="mb-3 col-lg-3">
                 {{-- <label for="milestone">Description</label> --}}
-                <input type="text" id="milestone_2" name="group_a[2][milestone]" class="form-control form-control-sm" value="2nd Installment 6 month" disabled>
+                <div class="d-flex justify-content-start">
+                    <input type="text" id="milestone_2" name="group_a[2][milestone]" class="form-control form-control-sm" value="6" disabled>
+                    <span class="text-nowrap my-auto h-full" style="font-size: 12px;">&nbsp; 06 Months from Booking</span>
+                </div>
             </div>
 
             <div class="mb-3 col-lg-3">
@@ -187,7 +195,10 @@
 
             <div class="mb-3 col-lg-3">
                 {{-- <label for="milestone">Description</label> --}}
-                <input type="text" id="milestone_3" name="group_a[3][milestone]" class="form-control form-control-sm" value="3rd Installment 9 month" disabled>
+                <div class="d-flex justify-content-start">
+                    <input type="text" id="milestone_3" name="group_a[3][milestone]" class="form-control form-control-sm" value="9" disabled>
+                    <span class="text-nowrap my-auto h-full" style="font-size: 12px;">&nbsp; 09 Months from Booking</span>
+                </div>
             </div>
 
             <div class="mb-3 col-lg-3">
@@ -209,7 +220,11 @@
 
             <div class="mb-3 col-lg-3">
                 {{-- <label for="milestone">Description</label> --}}
-                <input type="text" id="milestone_4" name="group_a[4][milestone]" class="form-control form-control-sm" value="4th Installment 12 month" disabled>
+
+                <div class="d-flex justify-content-start">
+                    <input type="text" id="milestone_4" name="group_a[4][milestone]" class="form-control form-control-sm" value="12" disabled>
+                    <span class="text-nowrap my-auto h-full" style="font-size: 12px;">&nbsp; 12 Months from Booking</span>
+                </div>
             </div>
 
             <div class="mb-3 col-lg-3">
@@ -231,7 +246,10 @@
 
             <div class="mb-3 col-lg-3">
                 {{-- <label for="milestone">Description</label> --}}
-                <input type="text" id="milestone_5" name="group_a[5][milestone]" class="form-control form-control-sm" value="5th Installment 15 month" disabled>
+                <div class="d-flex justify-content-start">
+                    <input type="text" id="milestone_5" name="group_a[5][milestone]" class="form-control form-control-sm" value="15" disabled>
+                    <span class="text-nowrap my-auto h-full" style="font-size: 12px;">&nbsp; 15 Months from Booking</span>
+                </div>
             </div>
 
             <div class="mb-3 col-lg-3">
@@ -253,7 +271,10 @@
 
             <div class="mb-3 col-lg-3">
                 {{-- <label for="milestone">Description</label> --}}
-                <input type="text" id="milestone_6" name="group_a[6][milestone]" class="form-control form-control-sm" value="6th Installment 18 month" disabled>
+                <div class="d-flex justify-content-start">
+                    <input type="text" id="milestone_6" name="group_a[6][milestone]" class="form-control form-control-sm" value="18" disabled>
+                    <span class="text-nowrap my-auto h-full" style="font-size: 12px;">&nbsp; 18 Months from Booking</span>
+                </div>
             </div>
 
             <div class="mb-3 col-lg-3">
@@ -286,95 +307,6 @@
             <div class="mb-3 col-lg-3">
                 {{-- <label for="amount" id="amnt">Amount</label> --}}
                 <input type="number" id="amount_7" name="group_a[7][amount]" value="" class="form-control form-control-sm"  min=0 disabled step="0.01">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="mb-3 col-lg-3">
-                {{-- <label for="milestone">Remaining Balance</label> --}}
-                <input type="text" id="hiddenOutstandingBalance_8" name="hiddenOutstandingBalance_8" class="form-control form-control-sm" value="0" style="opacity: 0.6; pointer-events: none; ">
-            </div>
-
-            <div class="mb-3 col-lg-3">
-                {{-- <label for="milestone">Description</label> --}}
-                <input type="text" id="milestone_8" name="group_a[8][milestone]" class="form-control form-control-sm" value="" disabled>
-            </div>
-
-            <div class="mb-3 col-lg-3">
-                {{-- <label for="percentage">Percentage (%)</label> --}}
-                <input type="number" id="percentage_8" name="group_a[8][percentage]" class="form-control form-control-sm" min=0 disabled step="0.01">
-            </div>
-
-            <div class="mb-3 col-lg-3">
-                {{-- <label for="amount" id="amnt">Amount</label> --}}
-                <input type="number" id="amount_8" name="group_a[8][amount]" value="" class="form-control form-control-sm" min=0 disabled step="0.01">
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="mb-3 col-lg-3">
-                {{-- <label for="milestone">Remaining Balance</label> --}}
-                <input type="text" id="hiddenOutstandingBalance_9" name="hiddenOutstandingBalance_9" class="form-control form-control-sm" value="0" style="opacity: 0.6; pointer-events: none; ">
-            </div>
-
-            <div class="mb-3 col-lg-3">
-                {{-- <label for="milestone">Description</label> --}}
-                <input type="text" id="milestone_9" name="group_a[9][milestone]" class="form-control form-control-sm" value="" disabled>
-            </div>
-
-            <div class="mb-3 col-lg-3">
-                {{-- <label for="percentage">Percentage (%)</label> --}}
-                <input type="number" id="percentage_9" name="group_a[9][percentage]" class="form-control form-control-sm"  min=0 disabled step="0.01">
-            </div>
-
-            <div class="mb-3 col-lg-3">
-                {{-- <label for="amount" id="amnt">Amount</label> --}}
-                <input type="number" id="amount_9" name="group_a[9][amount]" value="" class="form-control form-control-sm"  min=0 disabled step="0.01">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="mb-3 col-lg-3">
-                {{-- <label for="milestone">Remaining Balance</label> --}}
-                <input type="text" id="hiddenOutstandingBalance_10" name="hiddenOutstandingBalance_10" class="form-control form-control-sm" value="0" style="opacity: 0.6; pointer-events: none; ">
-            </div>
-
-            <div class="mb-3 col-lg-3">
-                {{-- <label for="milestone">Description</label> --}}
-                <input type="text" id="milestone_10" name="group_a[10][milestone]" class="form-control form-control-sm" value="" disabled>
-            </div>
-
-            <div class="mb-3 col-lg-3">
-                {{-- <label for="percentage">Percentage (%)</label> --}}
-                <input type="number" id="percentage_10" name="group_a[10][percentage]" class="form-control form-control-sm" min=0 disabled step="0.01">
-            </div>
-
-            <div class="mb-3 col-lg-3">
-                {{-- <label for="amount" id="amnt">Amount</label> --}}
-                <input type="number" id="amount_10" name="group_a[10][amount]" value="" class="form-control form-control-sm"  min=0 disabled step="0.01">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="mb-3 col-lg-3">
-                {{-- <label for="milestone">Remaining Balance</label> --}}
-                <input type="text" id="hiddenOutstandingBalance_11" name="hiddenOutstandingBalance_11" class="form-control form-control-sm" value="0" style="opacity: 0.6; pointer-events: none; ">
-            </div>
-
-            <div class="mb-3 col-lg-3">
-                {{-- <label for="milestone">Description</label> --}}
-                <input type="text" id="milestone_11" name="group_a[11][milestone]" class="form-control form-control-sm" value="" disabled>
-            </div>
-
-            <div class="mb-3 col-lg-3">
-                {{-- <label for="percentage">Percentage (%)</label> --}}
-                <input type="number" id="percentage_11" name="group_a[11][percentage]" class="form-control form-control-sm" min=0 disabled step="0.01">
-            </div>
-
-            <div class="mb-3 col-lg-3">
-                {{-- <label for="amount" id="amnt">Amount</label> --}}
-                <input type="number" id="amount_11" name="group_a[11][amount]" value="" class="form-control form-control-sm"  min=0 disabled step="0.01">
             </div>
         </div>
 
