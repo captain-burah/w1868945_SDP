@@ -77,14 +77,14 @@ class UnitController extends Controller
 
     public function index()
     { 
-        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id', 'unit_secondary_floorplan_id')->with('project', 'unit_paymentplan')->where('status', '1')->orderBY('id', 'ASC');
+        $units = Unit::select('id', 'status', 'state', 'project_id', 'slug_link', 'unit_price', 'unit_size_range', 'bedroom', 'name', 'project_id', 'unit_floorplan_id', 'unit_secondary_floorplan_id')->with('project', 'unit_paymentplan')->where('status', '1')->where('state', '1')->orderBY('id', 'ASC');
 
         $this->data['count_draft'] = $count_draft = Unit::where('status', '2')->orderBY('id', 'ASC')->count();
         $this->data['count_active'] = $count_active = Unit::where('status', '1')->orderBY('id', 'ASC')->count();
+        $this->data['count_trash'] = $count_trash = Unit::where('status', '3')->orderBY('id', 'ASC')->count();
         $this->data['count_booked'] = $count_booked = Unit::where('state', '2')->orderBY('id', 'ASC')->count();
         $this->data['count_sold'] = $count_sold = Unit::where('state', '4')->orderBY('id', 'ASC')->count();
         $this->data['count_listed'] = $count_listed = Unit::where('state', '1')->orderBY('id', 'ASC')->count();
-        $this->data['count_trash'] = $count_trash = Unit::where('status', '3')->orderBY('id', 'ASC')->count();
 
         $this->data['unit_translated'] = $unit_translated = Language::all();
         $this->data['language'] = $lang = Language::all();
@@ -102,8 +102,6 @@ class UnitController extends Controller
         $this->data['images'] = Unit_image::with('unit_image_files')->get();
         $this->data['floorplans'] = Unit_floorplan::with('unit_floorplan_files')->get();
         $this->data['paymentplans'] = Unit_paymentplan::with('unit_paymentplan_files')->get();
-        $this->data['clienteles'] = $clienteles = Clientele::select('id', 'name', 'status')->where('status', '1')->get();
-        $this->data['agencies'] = $agencies = Broker::select('id', 'company_name', 'status')->where('status', '1')->get();
         $this->data['project_unit'] = '0';
 
         //Get all payment plans
@@ -140,7 +138,7 @@ class UnitController extends Controller
         }
         // dd($units_paymentplans);
         $this->data['units_paymentplans'] = $units_paymentplans;
-        
+
         return view('unitsActive', $this->data);
     }
 
