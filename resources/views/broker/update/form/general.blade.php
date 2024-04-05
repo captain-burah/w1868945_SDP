@@ -1,159 +1,102 @@
+<div class="row m-3">
+    <div class="col-md-12">
+        <div class="mb-3">
+            <label for="basicpill-title-input">Company Name</label>
+            <input
+                type="text"
+                name="company_name"
+                id="company_name"
 
-<div class="row">
-
-    <div class="col-md-6">
-        <div data-select2-id="15">
-            <label class="form-label">Emirate</label>
-
-
-            <select
-                class="form-control select2-search-disable select2-hidden-accessible
-                @error('emirates') border border-solid border-danger @enderror"
-                data-select2-id="basicpill-status-input"
-                tabindex="-1"
-                aria-hidden="true"
-                name="emirates"
+                class="form-control
+                @error('company_name') border border-solid border-danger  @enderror"
+                value="{{ $resource->company_name }}"
             >
-                <option selected value="">Choose ...</option>
-                @if(isset($emirates))
-                    @foreach($emirates as $data)
-                        @if($project->emirate_id == $data->id)
-                            <option selected value="{{$data->id}}">{{ $data->city_name_en }} ({{$data->city_name_ar}})</option>
-                        @else
-                            <option value="{{$data->id}}">{{ $data->city_name_en }} ({{$data->city_name_ar}})</option>
-                        @endif
-                    @endforeach
-                @endif
-            </select>
-            @error('emirates')
-                <div class="text-danger text-xs">{{ $message }}</div>
-            @enderror
-
-        </div>
-    </div>
-
-    
-    <div class="col-md-6">
-        <div data-select2-id="15">
-            <label class="form-label">Off Plan / Ready</label>
-
-
-            <select
-                class="form-control select2-search-disable select2-hidden-accessible
-                @error('property_release_id') border border-solid border-danger  @enderror"
-                data-select2-id="basicpill-status-input"
-                tabindex="-1"
-                aria-hidden="true"
-                name="property_release_id"
-            >
-                <option selected value="">Choose ...</option>
-                <option selected value="1">Off-plan</option>
-                <option selected value="2">Ready</option>
-
-            </select>
-            @error('property_release_id')
-                <div class="text-danger text-xs">{{ $message }}</div>
-            @enderror
-
         </div>
     </div>
 </div>
 
-{{-- <hr class="my-5 "> --}}
 
-<div class="row mt-5">
+<div class="row m-3">
     <div class="col-md-6">
-        <div data-select2-id="15">
-            <label class="form-label">Community</label>
-
+        <div class="mb-3">
+            <label for="basicpill-title-input">Company Email</label>
             <input
                 type="text"
-                name="community"
-                class="form-control
-                @error('community') border border-solid border-danger  @enderror"
-                id="community"
-                placeholder=""
-                value="{{ $project->community }}"
-            >
-            @error('community')
-                <div class="text-danger text-xs">{{ $message }}</div>
-            @enderror
+                name="company_email"
+                id="company_email"
 
+                class="form-control
+                @error('company_email') border border-solid border-danger  @enderror"
+                value="{{ $resource->company_email }}"
+            >
         </div>
     </div>
 
     <div class="col-md-6">
-        <div data-select2-id="15">
-            <label class="form-label">Category</label>
+        <div class="mb-3">
+            <label for="basicpill-title-input">Company Contact</label>
+            <input
+                type="text"
+                name="company_land_line"
+                id="company_land_line"
 
-            <select
-                class="form-control select2-search-disable select2-hidden-accessible
-                @error('category') border border-solid border-danger  @enderror"
-                data-select2-id="basicpill-status-input"
-                tabindex="-1"
-                aria-hidden="true"
-                name="category"
+                class="form-control
+                @error('company_land_line') border border-solid border-danger  @enderror"
+                value="{{ $resource->company_land_line }}"
             >
-
-                <option selected value="">Choose ...</option>
-                @if(isset($categories))
-                    @foreach($categories as $data)
-                        @if($project->category_id == $data->id)
-                            <option selected value="{{$data->id}}">{{ $data->name_en }} ({{$data->name_ar}})</option>
-                        @else
-                            <option value="{{$data->id}}">{{ $data->name_en }} ({{$data->name_ar}})</option>
-                        @endif
-                    @endforeach
-                @endif
-            </select>
-            @error('category')
-                <div class="text-danger text-xs">{{ $message }}</div>
-            @enderror
-
         </div>
     </div>
 </div>
 
 
 
-{{-- <hr class="my-5 "> --}}
-
-<div class="row mt-5">
+<div class="row m-3">
     <div class="col-md-6">
-        <div data-select2-id="15">
-            <label class="form-label">Longitude</label>
+        <div class="mb-3">
+            <label for="basicpill-title-input">Company Address</label>
             <input
                 type="text"
-                name="longitude"
-                class="form-control
-                @error('longitude') border border-solid border-danger  @enderror"
-                id="longitude"
-                placeholder="55.**"
-                value="{{$project->longitude}}"
-            >
-            @error('longitude')
-                <div class="text-danger text-xs">{{ $message }}</div>
-            @enderror
+                name="company_address"
+                id="company_address"
 
+                class="form-control
+                @error('company_address') border border-solid border-danger  @enderror"
+                value="{{ $resource->company_address }}"
+            >
         </div>
     </div>
 
     <div class="col-md-6">
-        <div data-select2-id="15">
-            <label class="form-label">Latitude</label>
+        <div class="mb-3">
+            <label for="basicpill-title-input">Authorized Person</label>
             <input
                 type="text"
-                name="latitude"
+                name="authorized_p_name"
+                id="authorized_p_name"
+            
                 class="form-control
-                @error('latitude') border border-solid border-danger  @enderror"
-                id="latitude"
-                placeholder="24.**"
-                value="{{$project->latitude}}"
+                @error('authorized_p_name') border border-solid border-danger  @enderror"
+                value="{{ $resource->authorized_p_name }}"
             >
-            @error('latitude')
-                <div class="text-danger text-xs">{{ $message }}</div>
-            @enderror
-
         </div>
     </div>
 </div>
+
+
+<div class="row m-3">
+    <div class="col-md-12">
+        <div class="mb-3">
+            <label for="basicpill-title-input">Company Website</label>
+            <input
+                type="text"
+                name="company_website"
+                id="company_website"
+
+                class="form-control
+                @error('company_website') border border-solid border-danger  @enderror"
+                value="{{ $resource->company_website }}"
+            >
+        </div>
+    </div>
+</div>
+

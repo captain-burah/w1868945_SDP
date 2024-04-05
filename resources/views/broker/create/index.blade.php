@@ -7,6 +7,8 @@
 
 @section('content')
 
+@include('broker.topNav')
+
 <div style="padding-top: 150px;">
 
     @include('broker.create.form')

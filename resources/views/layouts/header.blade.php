@@ -81,17 +81,34 @@
                 @endcan
 
 
-                {{-- @can('clientele-list')
-                <a href="{{ route('clienteles.index')}}" class="mr-5 my-auto">
-                    <span class="text-white font-weight-bold  my-auto ">CLIENTS</span>
-                </a>
-                @endcan
+                
 
-                @can('broker-list')
-                <a href="{{ route('brokers.index') }}" class="mr-5 my-auto">
-                    <span class="text-white font-weight-bold  my-auto ">BROKERS</span>
-                </a>
-                @endcan --}}
+                @if( Auth::user()->roles[0]->name == "Developer")
+                    @can('clientele-list')
+                        <a href="{{ route('clienteles.index')}}" class="mr-5 my-auto">
+                            <span class="text-white font-weight-bold  my-auto ">CLIENTS</span>
+                        </a>
+                    @endcan
+                    
+                    @can('broker-list')
+                        <a href="{{ route('brokers.index') }}" class="mr-5 my-auto">
+                            <span class="text-white font-weight-bold  my-auto ">AGENCIES</span>
+                        </a>
+                    @endcan
+                @elseif(Auth::user()->roles[0]->name == "Master Administrator")
+                    {{-- @can('clientele-list')
+                        <a href="{{ route('clienteles.index')}}" class="mr-5 my-auto">
+                            <span class="text-white font-weight-bold  my-auto ">CLIENTS</span>
+                        </a>
+                    @endcan
+                    
+                    @can('broker-list')
+                        <a href="{{ route('brokers.index') }}" class="mr-5 my-auto">
+                            <span class="text-white font-weight-bold  my-auto ">AGENCIES</span>
+                        </a>
+                    @endcan --}}
+                @endif
+                
 
                 {{-- @can('agent-list')
                 <a href="{{ route('brokers.agent.list') }}" class="mr-5 my-auto">

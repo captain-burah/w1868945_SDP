@@ -12,7 +12,7 @@
             >
                 @csrf
                 <div class="flex-none w-100 my-4 ">
-                    <a href="{{ route('brokers.index') }}" class="btn btn-sm btn-outline-dark mt-3 my-auto">
+                    <a href="{{ route('brokers.agents.index') }}" class="btn btn-sm btn-outline-dark mt-3 my-auto">
                         <i class="bx bx-arrow-back"></i>
                         Back
                     </a>

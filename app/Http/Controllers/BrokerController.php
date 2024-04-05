@@ -19,8 +19,8 @@ use App\Mail\BrokerAccepted;
 class BrokerController extends Controller
 {
 
-    private $uploadPath = "uploads/construction/";
-    private $uploadPathNew = "uploads/brokers/";
+    private $uploadPathBroker = "uploads/brokers/";
+    private $uploadPathNew = "uploads/agents/";
 
 
 
@@ -57,6 +57,9 @@ class BrokerController extends Controller
 
         return view('broker.show.index', $this->data);
     }
+
+
+    
 
 
     public function verification_denied(Request $request) {
@@ -125,8 +128,9 @@ class BrokerController extends Controller
         $newSegment->contact2 = $request->contact2;
         $newSegment->email = $request->email;
         $newSegment->broker_id = $request->broker_id;
+        $newSegment->status = '1';
         $newSegment->save();
-        return $this->index();
+        return $this->broker_agents_index();
     }
 
     public function agent_list() {
@@ -170,8 +174,8 @@ class BrokerController extends Controller
                 foreach($request->file('files') as $key => $image)
                 {
                     $image_name = $image->hashName();
-                    $path = $this->uploadPath;
-                    $image->move($path."$resource_id/images/", $image_name);                    
+                    $path = $this->uploadPathBroker;
+                    $image->move($path."$resource_id/", $image_name);               
 
                     // $image_name = $image->hashName();
                     // $image->storeAs('website-news/'.$resource_id.'/images/', $image_name, 'public'); //nonsecured storage - has public access
@@ -186,14 +190,50 @@ class BrokerController extends Controller
             dd($e->getMessage());
             // return Redirect::back()->withErrors(['message', $e->getMessage() ]);
         }
-
-        
         return $this->index();
     }
 
     public function broker_delete($id){
         Broker::destroy($id);
-
         return $this->index();
+    }
+
+
+
+
+
+    public function broker_agents_index(){
+        $this->data['broker_agents'] = $broker_agents = BrokerAgent::where('status', '1');
+        if($broker_agents->get()->isEmpty()) {
+            $this->data['count_status'] = 'No broker registrations found. You can launch a new project above to start-off';
+            
+        } else {
+            $this->data['resource'] = $broker_agents->get();
+        }
+        return view('broker_agent', $this->data);
+    }
+
+    public function broker_agents_status_change($status_id, $agent_id){
+        $this->data['broker_agents'] = $broker_agents = BrokerAgent::find($agent_id);
+        if($broker_agents->isEmpty()) {
+            $this->data['count_status'] = 'No broker registrations found. You can launch a new project above to start-off';
+        } else {
+            $this->data['resource'] = $broker_agents->get();
+            $broker_agents->status == $status_id;
+            $broker_agents->save();
+        }
+        return view('broker_agent', $this->data);
+    }
+
+
+
+    public function edit($id){
+        $this->data['resource'] = $resource = Broker::with('broker_files')->find($id);
+        if($resource->broker_files->count() > 0){
+            $this->data['files'] = 'true';
+        } else {
+            $this->data['files'] = 'false';
+        }
+        return view('broker.update.index', $this->data);
     }
 }

@@ -222,7 +222,7 @@
                                     <p class="offer-headings-ar">
                                         رقم الاتصال                        
                                     </p> 
-                                    &nbsp;:&nbsp; <span>+971 4 287 9506</span>
+                                    &nbsp;:&nbsp; <span dir="ltr">+971 4 287 9506</span>
                                 </div>
                             </div>
                         </div>
@@ -243,7 +243,7 @@
                         <div class="row">
                             <div class="col-6 p-3 border">
                                 <div class="d-flex">
-                                    <p class="offer-headings">Date: &nbsp; &nbsp;</p> <span>{{ date('d M Y') }}</span>
+                                    <p class="offer-headings">Date: &nbsp; &nbsp;</p> <span>{{ \Carbon\Carbon::now()->format('jS \of F Y') }}</span>
                                 </div>
                             </div>
                             <div class="col-6 p-3 border">
@@ -251,7 +251,7 @@
                                     <p class="offer-headings-ar">
                                         التاريخ
                                     </p> 
-                                    &nbsp; &nbsp;</p> <span>{{ date('d M Y') }}</span>
+                                    &nbsp; &nbsp;</p> <span>{{ \Carbon\Carbon::now()->format('jS \of F Y') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -403,7 +403,7 @@
                         <div class="row">
                             <div class="col-6 p-3 border">
                                 <div class="d-flex">
-                                    <p class="offer-headings">Registration Fees: &nbsp; &nbsp;</p> <span>{{number_format($unit->oqood_amount, 2)}}</span>
+                                    <p class="offer-headings">Registration Fees: &nbsp; &nbsp;</p> <span>AED {{number_format($unit->oqood_amount, 2)}}</span>
                                 </div>
                             </div>
                             <div class="col-6 p-3 border">
@@ -411,7 +411,7 @@
                                     <p class="offer-headings-ar">
                                         مصاريف التسجيل
                                     </p> 
-                                    &nbsp;:&nbsp; <span>{{number_format($unit->oqood_amount, 2)}}</span>
+                                    &nbsp;:&nbsp; <span>AED {{number_format($unit->oqood_amount, 2)}}</span>
                                 </div>
                             </div>
                         </div>
@@ -731,7 +731,7 @@
 
 
 
-                        <div class="page-break-before mt-5 pt-5 row my-0 mx-2 d-flex justify-content-between w-full">
+                        <div class=" mt-5 pt-5 row my-0 mx-2 d-flex justify-content-between w-full">
                             <div class="float-left my-auto">
                                 <h4 class=" m-0 font-weight-bold">04 - Payment Schedule</h4>
                             </div>
@@ -766,20 +766,117 @@
                             <table class="table table-bordered">
                                 <tr>
                                     <th>Serial No.<br>رقم القسط</th>
-                                    <th>Installment Date <br>تاريخ القسط </th>
                                     <th>Milestone<br>مرحلة الدفع</th>
                                     <th>Payment Percentage<br>نسبة الدفع </th>
+                                    <th>Due Date<br>تاريخ الاستحقاق</th>
                                     <th>Amount<br>المبلغ</th>
                                 </tr>
-                                @foreach($unit->unit_paymentplan->unit_paymentplan_files as $payment_plan)
-                                    <tr>
-                                        <td>{{$loop->iteration}}</td>
-                                        <td>{{ \Carbon\Carbon::parse($payment_plan->date)->format('j F, Y')  }}</td>
-                                        <td>{{$payment_plan->name}}</td>
-                                        <td>{{$payment_plan->percentage}} %</td>
-                                        <td>AED {{ number_format($payment_plan->amount) }}</td>
-                                    </tr>
-                                @endforeach
+                                <tr>
+                                    <td>1</td>
+                                    <td>Downpayment</td>
+                                    <td>20%</td>
+                                    <td>On Booking</td>
+                                    <td>{{ number_format( $unit->unit_price * 0.2) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>1st Installment</td>
+                                    <td>5%</td>
+                                    <td>
+                                        @foreach($units_paymentplans as $pp)
+                                            @if($pp[0] == $unit->id)
+                                                @isset($pp[1])
+                                                    {{$pp[1]}}
+                                                @endisset
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <td>{{ number_format( $unit->unit_price * 0.05) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>2nd Installment</td>
+                                    <td>10%</td>
+                                    <td>
+                                        @foreach($units_paymentplans as $pp)
+                                            @if($pp[0] == $unit->id)
+                                                @isset($pp[2])
+                                                    {{$pp[2]}}
+                                                @endisset
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <td>{{ number_format( $unit->unit_price * 0.10) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>3rd Installment</td>
+                                    <td>10%</td>
+                                    <td>
+                                        @foreach($units_paymentplans as $pp)
+                                            @if($pp[0] == $unit->id)
+                                                @isset($pp[3])
+                                                    {{$pp[3]}}
+                                                @endisset
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <td>{{ number_format( $unit->unit_price * 0.10) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>4th Installment</td>
+                                    <td>5%</td>
+                                    <td>
+                                        @foreach($units_paymentplans as $pp)
+                                            @if($pp[0] == $unit->id)
+                                                @isset($pp[4])
+                                                    {{$pp[4]}}
+                                                @endisset
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <td>{{ number_format( $unit->unit_price * 0.05) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>5th Installment</td>
+                                    <td>10%</td>
+                                    <td>
+                                        @foreach($units_paymentplans as $pp)
+                                            @if($pp[0] == $unit->id)
+                                                @isset($pp[5])
+                                                    {{$pp[5]}}
+                                                @endisset
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <td>{{ number_format( $unit->unit_price * 0.10) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>6th Installment</td>
+                                    <td>10%</td>
+                                    <td>
+                                        @foreach($units_paymentplans as $pp)
+                                            @if($pp[0] == $unit->id)
+                                                @isset($pp[6])
+                                                    {{$pp[6]}}
+                                                @endisset
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <td>{{ number_format( $unit->unit_price * 0.10) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Final Payment</td>
+                                    <td>30%</td>
+                                    <td>
+                                        On Completion
+                                    </td>
+                                    <td>{{ number_format( $unit->unit_price * 0.30) }}</td>
+                                </tr>
                             </table>
                         </div>
 
@@ -1297,13 +1394,9 @@
                     {{-- {{$unit_floorplan[0]->unit_floorplan_files}} --}}
 
                     @if(isset($unit_floorplan))
-                        @if($unit->unit_floorplan->unit_floorplan_files->count() > 0)
-                            @foreach($unit->unit_floorplan->unit_floorplan_files as $file)
-                            <div style="width: 100%; text-align: center;" class="border">
-                                <img src="{{ asset('uploads/units/floorplans/'.$unit->unit_floorplan->id.'/'.$file->name)}}" class="mx-auto text-center" style="width: 80%; padding: 35px; margin-bottom: 10px">
-                            </div>
-                            @endforeach
-                        @endif
+                        <div style="width: 100%; text-align: center;" class="border">
+                            <img src="{{ asset('uploads/units/floorplans/'.$unit_secondary_floorplan_id.'/'.$unit_floorplan_booking->unit_floorplan_files[0]->name)}}" class="mx-auto text-center" style="width: 80%; padding: 35px; margin-bottom: 10px">
+                        </div>
                     @endif
 
 
@@ -1333,4 +1426,19 @@ var doc = new jsPDF();
         doc.save('sample-file.pdf');
     });
 </script>
+
+
+<script>
+    // Function to trigger print after a delay
+    function delayedPrint() {
+      setTimeout(function() {
+        window.print();
+      }, 2000); // Adjust delay time in milliseconds (2000 milliseconds = 2 seconds)
+    }
+
+    // Call the delayedPrint function when the page loads
+    window.onload = function() {
+      delayedPrint();
+    };
+  </script>
 </html>

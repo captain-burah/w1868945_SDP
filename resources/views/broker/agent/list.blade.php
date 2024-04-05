@@ -29,20 +29,24 @@
 
 <div class="card w-100" style="min-height: 100vh">
     <div class="card-body">
-        <h2 class="card-title mb-2">Agents</h2>
-        <a class="btn btn-dark" href="{{ route('brokers.agent.create') }}">Add Agent</a>
+        <h2 class="card-title mb-2">REAL ESTATE AGENT MANAGEMENT</h2>
+        <p>
+            Real estate agents are the architects of possibilities, the conduits of aspirations, and the custodians of dreams. They navigate the labyrinthine corridors of the property market with an expert blend of market knowledge, negotiation finesse, and unwavering dedication to their clients' needs. Beyond mere transactions, they serve as trusted advisors, guiding individuals and families through one of the most significant decisions of their lives – finding a place to call home.
+        </p>
+
+        <a class="btn btn-outline-dark w-25 my-3" href="{{ route('brokers.agent.create') }}">Add a New Real Estate Agent</a>
         <div class="table-responsive mt-2">
             <table class="table table-bordered border-dark mb-0">
 
                 <thead>
                     <tr class="bg-dark text-white">
                         <th>#</th>
-                        <th style="width: 100px;">Status</th>
                         <th >Agent Name</th>
-                        <th >Broker</th>
+                        <th >Authorized Broker Company</th>
                         <th style="width: 150px;">Primary Contact</th>
                         <th style="width: 150px;">Secondary Contact</th>
                         <th style="width: 150px;">Email</th>
+                        <th style="width: 150px;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,16 +56,12 @@
                             <?php $status = $value->status; ?>
                             
                             @if($value->status == '0')                            
-                            <tr class="bg-warning text-white">
+                                <tr class="bg-warning text-white">
                             @else
-                            <tr>
+                                <tr>
                             @endif
 
                                 <td>{{$value->id}}</td>
-
-                                <td>
-                                    <a class="btn btn-outline-dark" href="{{ route('brokers.agent.edit', ['id' => $value->id]) }}"><i class="bx bx-edit"></i></a>
-                                </td>
                                 
                                 <td>{{ $value->name }}</td>
 
@@ -79,6 +79,17 @@
 
                                 <td>
                                     {{ $value->email}}    
+                                </td>
+
+                                <td>
+                                    <div class="d-flex inline">
+                                        <a title="Update" class="btn btn-sm btn-outline-dark mr-1" href="{{ route('brokers.agent.edit', ['id' => $value->id]) }}"><i class="bx bx-edit"></i></a>
+                                        @if($value->status == '1')
+                                            <a title="Deactivate Agent" class="btn btn-sm btn-outline-dark mr-1" href="{{ route('brokers.agents.status', ['status_id' => '0', 'agent_id' => $value->id]) }}"><i class="bx bx-no-entry"></i></a>
+                                        @else
+                                            <a title="Activate Agent" class="btn btn-sm btn-outline-dark mr-1" href="{{ route('brokers.agents.status', ['status_id' => '1', 'agent_id' => $value->id]) }}"><i class="bx bx-check"></i></a>
+                                        @endif
+                                    </div>
                                 </td>
 
                             </tr>

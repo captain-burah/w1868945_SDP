@@ -29,9 +29,10 @@
 
 <div class="card w-100" style="min-height: 100vh">
     <div class="card-body">
-        <h4 class="card-title">Clientele</h4>
-        {{-- <a class="btn btn-dark" href="{{ route('brokers.agent.create') }}">Add Agent</a> --}}
-        <a class="btn btn-dark my-3" href="{{ route('clienteles.create') }}">New Client</a>
+        <h4 class="card-title display-2">CLIENTELE MANAGEMENT</h4>
+        <p>By truly listening, empathizing, and customizing your approach, you can turn clients into partners, and partners into advocates. Treat your clients not just as customers, but as collaborators in a journey towards mutual success. In the end, it's not just about what you sell, but how you serve, and the lasting impact you create for your clients and their businesses.</p>
+
+        <a class="btn btn-outline-dark w-25 my-3 " href="{{ route('clienteles.create') }}">Add a New Client</a>
         <div class="table-responsive">
             <table class="table table-bordered border-dark mb-0">
 
@@ -40,7 +41,8 @@
                         <th>#</th>
                         <th style="width: 100px;">Action</th>
                         <th >Name</th>
-                        <th style="width: 150px;">Agent</th>
+                        <th >Contact</th>
+                        <th >Email</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -98,12 +100,11 @@
                                     <td>{{ $value->name }}</td>
                                     
                                     <td>                                    
-                                        @foreach($users as $user)
-                                            @if($user->id == $value->user)
+                                        {{ $value->contact1 }}
+                                    </td>
 
-                                                {{ $user->name }}
-                                            @endif
-                                        @endforeach
+                                    <td>                                    
+                                        {{ $value->email }}
                                     </td>
 
 

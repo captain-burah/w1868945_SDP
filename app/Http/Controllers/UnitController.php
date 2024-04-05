@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Unit;
+use App\Models\Clientele;
+use App\Models\Broker;
 use App\Models\Unit_brochure;
 use App\Models\Unit_floorplan;
 use App\Models\Unit_paymentplan;
@@ -100,6 +102,8 @@ class UnitController extends Controller
         $this->data['images'] = Unit_image::with('unit_image_files')->get();
         $this->data['floorplans'] = Unit_floorplan::with('unit_floorplan_files')->get();
         $this->data['paymentplans'] = Unit_paymentplan::with('unit_paymentplan_files')->get();
+        $this->data['clienteles'] = $clienteles = Clientele::select('id', 'name', 'status')->where('status', '1')->get();
+        $this->data['agencies'] = $agencies = Broker::select('id', 'company_name', 'status')->where('status', '1')->get();
         $this->data['project_unit'] = '0';
 
         //Get all payment plans
@@ -1250,6 +1254,8 @@ class UnitController extends Controller
 
     }
 
+    
+
 
     public function unit_duplicate($id){
 
@@ -1399,5 +1405,13 @@ class UnitController extends Controller
 
         return Redirect::back()->with('message', 'Unit has been Duplicated!');
     }
+
+
+
+
+
+
+
+    
 
 }

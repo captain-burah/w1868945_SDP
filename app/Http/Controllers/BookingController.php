@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Booking;
+use App\Models\BrokerAgent;
 use App\Models\BookingClient;
 use App\Models\BookingPaymentPlan;
 use App\Models\BookingPaymentSlips;
 use App\Models\BookingReservationForm;
 use App\Models\Clientele;
 use App\Models\Clientele_document;
+use App\Models\Unit_paymentplan;
 use App\Models\Project;
 use App\Models\Unit_floorplan;
 use App\Models\Unit;
@@ -502,10 +504,56 @@ class BookingController extends Controller
             $unit->state = '2';
             $unit->save();
             
-            if($unit->unit_floorplan->unit_floorplan_files->count() > 0){
-                $this->data['unit_floorplan'] = $unit_floorplan = 'true';
-            };
             $this->data['form_type'] = 'form2';
+
+
+
+            if($unit->unit_secondary_floorplan_id != null){
+                $this->data['unit_floorplan'] = $unit_floorplan = 'true';
+                $this->data['unit_secondary_floorplan_id'] = $unit_secondary_floorplan_id = $unit->unit_secondary_floorplan_id;
+
+                $this->data['unit_floorplan_booking'] = $unit_floorplan_booking = Unit_floorplan::with('unit_floorplan_files')->find($unit_secondary_floorplan_id);
+                // dd($unit_floorplan_booking->unit_floorplan_files[0]->name);
+            }
+
+
+            /**
+             * Get payment plan with dates
+            */
+            $units_paymentplans = [];
+
+            $new_date_array = [];
+            $new_data_set = [];
+            foreach($unit->unit_paymentplan->unit_paymentplan_files as $data_sets){
+                $data_set_value = $data_sets->name;
+                if($data_set_value != 'Down Payment On Booking') {
+                    preg_match('/^\d+/', $data_set_value, $matches);
+                    if (!empty($matches)) {
+                        $new_data_set[] = $matches[0];
+                    }
+                }
+            }
+            $int_array = array_map('intval', $new_data_set);
+            $selected_date = Carbon::now();
+            try {
+                $base_date = Carbon::parse($selected_date);
+            } catch (Exception $e) {
+                return back()->withErrors(['base_date' => 'Please enter a valid date in the format YYYY-MM-DD.']);
+            }
+            $new_date_array = [];
+            $new_date_array[] = $unit->id;
+            // $new_date_array[] = $selected_date;
+            foreach ($int_array as $month_to_add) {
+                $new_date = clone $base_date;  // Clone to avoid modifying the original object
+                $new_date->modify("+$month_to_add month");  // Add the month value
+                $new_date_array[] = $new_date->format('d/m/Y');  // Format the date string (YYYY-MM-DD)
+            }
+            $units_paymentplans[] = $new_date_array;
+            
+            // dd($units_paymentplans);
+            $this->data['units_paymentplans'] = $units_paymentplans;
+
+
 
             // $pdf = PDF::loadView('booking.reservationAgreement', $this->data);
             return view('booking.booking_form_print', $this->data);
@@ -561,6 +609,145 @@ class BookingController extends Controller
             $resource->status = '1';
             $resource->save();
             return $this->index();
+        }
+
+        public function booking_agency_agents(Request $request){
+            
+            $agencyId = $request->input('agency_id');
+            
+            // Retrieve options based on the selected client ID
+            $options = BrokerAgent::where('broker_id', $agencyId)->pluck('name', 'id');
+
+            // Return the options as HTML
+            $html = '<option value="">Choose ...</option>';
+            foreach ($options as $id => $name) {
+                $html .= '<option value="' . $id . '">' . $name . '</option>';
+            }
+
+            return $html;
+        }
+
+
+
+
+
+        public function unit_booking(Request $request){
+            $unit_id = intval($request->unit_id);
+
+            $client = Clientele::find($request->client);
+            $client->unit_id = $request->unit_id;
+            $client->save();
+
+            $uniqueReferenceNumber = $this->generateUniqueReferenceNumber();
+
+            $booking = new Booking();
+            $booking->unit_id = $unit_id;
+            $booking->ref_no = $uniqueReferenceNumber;
+            $booking->save();
+            $booking_id = $booking->id;
+            
+
+            if(Auth::user()->roles[0]->name == "Real Estate Agent") {
+                $this->data['booking'] = $booking = Booking::with('unit')->find($booking_id);
+                $booking->status = '3';
+                $booking->save();    
+            } else{
+                $this->data['booking'] = $booking = Booking::with('unit')->find($booking_id);
+                $booking->status = '1';
+                $booking->save();
+            }
+
+            $unit_id = $request->unit_id;
+            $client_id = $client->id;                    
+
+            $unit_broker = new BookingBroker();
+            $unit_broker->booking_id = $booking->id;
+            $unit_broker->broker_id = $request->agency;
+            $unit_broker->save();
+
+
+            
+
+            $this->data['unit'] = $unit = Unit::with('clienteles', 'unit_floorplan')->find($unit_id);
+            $unit->state = '2';
+            $unit->save();
+
+            if($unit->unit_secondary_floorplan_id != null){
+                $this->data['unit_floorplan'] = $unit_floorplan = 'true';
+                $this->data['unit_secondary_floorplan_id'] = $unit_secondary_floorplan_id = $unit->unit_secondary_floorplan_id;
+
+                $this->data['unit_floorplan_booking'] = $unit_floorplan_booking = Unit_floorplan::with('unit_floorplan_files')->find($unit_secondary_floorplan_id);
+                // dd($unit_floorplan_booking->unit_floorplan_files[0]->name);
+            }
+        
+
+            $this->data['booking'] = $booking = Booking::with('unit', 'bookingclients', 'bookingbrokers')->find($booking_id);
+            $this->data['results'] = $bookings = Booking::select(['id'])->get();
+            $this->data['honorifics'] = $honorifics = Honorific::all();
+            $this->data['country'] = $country = CountryCode::all();
+            $this->data['clients'] = $clients = Clientele::all();
+            $this->data['booking_id'] = $booking->id;
+            $owners = BookingClient::with('booking', 'client')->where('client_id', $client_id)->get();
+            if($owners->isNotEmpty()) {
+                $this->data['sellers'] = $owners;
+            } else {
+                $booking_client = new BookingClient();
+                $booking_client->client_id = $client_id;
+                $booking_client->booking_id = $booking_id;
+                $booking_client->save();
+            }
+
+
+
+            
+
+
+
+            /**
+             * Get payment plan with dates
+            */
+            $units_paymentplans = [];
+
+            $new_date_array = [];
+            $new_data_set = [];
+            foreach($unit->unit_paymentplan->unit_paymentplan_files as $data_sets){
+                $data_set_value = $data_sets->name;
+                if($data_set_value != 'Down Payment On Booking') {
+                    preg_match('/^\d+/', $data_set_value, $matches);
+                    if (!empty($matches)) {
+                        $new_data_set[] = $matches[0];
+                    }
+                }
+            }
+            $int_array = array_map('intval', $new_data_set);
+            $selected_date = Carbon::now();
+            try {
+                $base_date = Carbon::parse($selected_date);
+            } catch (Exception $e) {
+                return back()->withErrors(['base_date' => 'Please enter a valid date in the format YYYY-MM-DD.']);
+            }
+            $new_date_array = [];
+            $new_date_array[] = $unit->id;
+            // $new_date_array[] = $selected_date;
+            foreach ($int_array as $month_to_add) {
+                $new_date = clone $base_date;  // Clone to avoid modifying the original object
+                $new_date->modify("+$month_to_add month");  // Add the month value
+                $new_date_array[] = $new_date->format('d/m/Y');  // Format the date string (YYYY-MM-DD)
+            }
+            $units_paymentplans[] = $new_date_array;
+            
+            // dd($units_paymentplans);
+            $this->data['units_paymentplans'] = $units_paymentplans;
+
+
+            // dd($booking->bookingbrokers[0]->broker->broker_agents[0]);
+
+            $this->data['request'] = $request;
+
+            // dd($booking);
+
+            //REDIRECT TO CLIENT INFORMATION
+            return view('booking_form', $this->data );
         }
     
 }

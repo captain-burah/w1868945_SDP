@@ -1,10 +1,19 @@
+
 <div class="row my-2">
+
+    <div class="row mb-3 ml-3 w-100">
+        <div class="col-md-12">
+            <h2>General Details</h2>
+        </div>
+    </div>
+
+    
     <div class="row m-3 w-100">
 
         {{-- PREFIX TITLE --}}
         <div class="col-md-2">
             <div data-select2-id="15">
-                <label class="form-label">Prefix Title</label>
+                <label class="form-label">Prefix Title  <span class="text-danger">*</span></label>
 
 
                 <select
@@ -35,7 +44,7 @@
         {{-- NAME --}}
         <div class="col-md-6">
             <div data-select2-id="15">
-                <label class="form-label">Full Name</label>
+                <label class="form-label">Full Name  <span class="text-danger">*</span></label>
                 <input
                     type="text"
                     name="name"
@@ -57,7 +66,7 @@
         {{-- EMAIL --}}
         <div class="col-md-4">
             <div data-select2-id="15">
-                <label class="form-label">Email</label>
+                <label class="form-label">Email  <span class="text-danger">*</span></label>
                 <input
                     type="email"
                     name="email"
@@ -82,7 +91,7 @@
         {{-- DIAL CODES 01 --}}
         <div class="col-md-4">
             <div data-select2-id="15">
-                <label class="form-label">Primary Contact </label>
+                <label class="form-label">Primary Contact  <span class="text-danger">*</span></label>
 
                 <div class="row">
                     <div class="col-md-4">
@@ -231,7 +240,7 @@
         {{-- COUNTRY OF RESIDENCE --}}
         <div class="col-md-6">
             <div data-select2-id="15">
-                <label class="form-label">Country of Residence</label>
+                <label class="form-label">Country of Residence  <span class="text-danger">*</span></label>
 
                 <select
                     class="form-control form-control-sm select2-search-disable select2-hidden-accessible
@@ -259,7 +268,7 @@
         {{-- NATIONALITY --}}
         <div class="col-md-6">
             <div data-select2-id="15">
-                <label class="form-label">Nationality</label>
+                <label class="form-label">Nationality  <span class="text-danger">*</span></label>
 
                 <select
                     class="form-control form-control-sm select2-search-disable select2-hidden-accessible
@@ -291,7 +300,7 @@
         {{-- PASSPORT NUMBER --}}
         <div class="col-md-6">
             <div data-select2-id="15">
-                <label class="form-label">Passport Number</label>
+                <label class="form-label">Passport Number  <span class="text-danger">*</span></label>
                 <input
                     type="text"
                     name="passport"
@@ -313,7 +322,7 @@
         {{-- PASSPORT EXIRY --}}
         <div class="col-md-6">
             <div data-select2-id="15">
-                <label class="form-label">Passport Expiry</label>
+                <label class="form-label">Passport Expiry  <span class="text-danger">*</span></label>
                 <input
                     type="date"
                     name="pp_expiry"
@@ -337,7 +346,7 @@
         {{-- ADDRESS 1 --}}
         <div class="col-md-6">
             <div data-select2-id="15">
-                <label class="form-label">Residential Address 01</label>
+                <label class="form-label">Residential Address 01  <span class="text-danger">*</span></label>
                 <input
                     type="text"
                     name="address1"
@@ -377,47 +386,19 @@
         </div>
     </div>
 
-
     <div class="row m-3 w-100">
-        
-        {{-- SOURCE --}}
-        <div class="col-md-6">
-            <div data-select2-id="15">
-                <label class="form-label">Source of Information </label>
-
-                <select
-                    class="form-control form-control-sm select2-search-disable select2-hidden-accessible
-                    @error('source') border border-solid border-danger  @enderror"
-                    data-select2-id="basicpill-status-input"
-                    tabindex="-1"
-                    aria-hidden="source"
-                    name="source"
-                    required
-                >
-                    <option selected value="">Choose ..</option>
-                    <option value="email">Email</option>
-                    <option value="fb">Facebook</option>
-                    <option value="in">LinkedIn</option>
-                    <option value="ig">Instagram</option>
-                    <option value="snapchat">Snap Chat</option>
-                    <option value="re_broker">Real Estate Broker</option>
-                    <option value="developer_agent">Developer Agent</option>
-                    <option value="other">Other</option>
-
-                </select>
-                @error('source')
-                    <div class="text-danger text-xs">{{ $message }}</div>
-                @enderror
-            </div>
+        <div class="col-md-12">
+            <hr class="border w-full">
+            <h2>File Uploads</h2>
         </div>
-
     </div>
+
 
     <div class="row m-3 w-100">
             
         <div class="col-md-6 fallback w-100 ">
             <label class="form-label">
-                Emirates ID
+                Emirates ID <span class="text-danger">*</span>
             </label>
             
             <input type="file" name="eids[]" multiple class="form-control p-1 @error('eids') border border-solid border-danger  @enderror" accept="application/pdf, image/png, image/jpeg,, image/jpg,   image/webp, image/avif" required>
@@ -431,7 +412,7 @@
 
         <div class="col-md-6 fallback w-100 ">
             <label class="form-label">
-                Passport
+                Passport  <span class="text-danger">*</span>
             </label>
             
             <input type="file" name="passports[]" multiple class="form-control p-1 @error('passports') border border-solid border-danger  @enderror" accept="application/pdf, image/png, image/jpeg, image/jpg, image/webp, image/avif" required>
@@ -448,7 +429,7 @@
             
         <div class="col-md-6 fallback w-100 ">
             <label class="form-label">
-                VISA
+                VISA  <span class="text-danger">*</span>
             </label>
             
             <input type="file" name="visas[]" multiple class="form-control p-1 @error('visas') border border-solid border-danger  @enderror" accept="application/pdf, image/png, image/jpeg, image/jpg, image/webp, image/avif" required>

@@ -247,8 +247,12 @@ Route::middleware('auth')->group(function () {
     Route::get('unit-secondary-floor-plan-create', [UnitFloorplanController::class, 'unit_secondary_floor_plan_create'])->name('unit-secondary-floor-plan.create');
 
     Route::post('sales-offer-print', [UnitController::class, 'sales_offer_print'])->name('unit.sales_offer_print');
+
+    Route::post('unit-booking', [BookingController::class, 'unit_booking'])->name('unit.booking');
     
     Route::get('/generate-pdf/{date}/{unit}', [PDFController::class, 'generatePDF']);
+
+
 
     /**UNIT - PAYMENTPLAN ROUTES */
     // Route::post('unit-paymentplan/connect', [UnitPaymentplanController::class, 'unit_connect_store'])->name('unit-paymentplan.connect');
@@ -306,6 +310,9 @@ Route::middleware('auth')->group(function () {
     Route::get('print_booking/{booking_id}', [BookingController::class, 'print_booking_form'])->name('bookings.form.print');
     Route::get('view_booking/{booking_id}', [BookingController::class, 'view_booking'])->name('bookings.view_booking');
     Route::get('approve/{booking_id}', [BookingController::class, 'approve'])->name('bookings.approve');
+
+    Route::get('booking/agency/agents', [BookingController::class, 'booking_agency_agents'])->name('bookings.agency.agents');
+
 /**BOOKINGS */ 
 
 
@@ -323,8 +330,13 @@ Route::middleware('auth')->group(function () {
 /**BROKER */
     Route::get('brokers', [BrokerController::class, 'index'])->name('brokers.index');
     Route::get('brokers-create', [BrokerController::class, 'create'])->name('brokers.create');
+    Route::get('brokers-update/{id}', [BrokerController::class, 'edit'])->name('brokers.update');
     Route::post('brokers-store', [BrokerController::class, 'broker_store'])->name('brokers.store');
     Route::get('brokers-delete/{id}', [BrokerController::class, 'broker_delete'])->name('brokers.delete');
+    Route::get('broker/agents', [BrokerController::class, 'broker_agents_index'])->name('brokers.agents.index');
+    Route::get('broker/agents/status/{status_id}/{agent_id}', [BrokerController::class, 'broker_agents_status_change'])->name('brokers.agents.status');
+
+
     Route::get('agents', [BrokerController::class, 'agent_list'])->name('brokers.agent.list');
     Route::get('brokers/agent-update/{id}', [BrokerController::class, 'agent_edit'])->name('brokers.agent.edit');
     Route::post('brokers/agent-update', [BrokerController::class, 'agent_update'])->name('brokers.agent.update');

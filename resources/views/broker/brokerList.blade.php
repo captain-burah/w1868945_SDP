@@ -29,18 +29,23 @@
 
 <div class="card w-100" style="min-height: 100vh">
     <div class="card-body">
-        <h4 class="card-title">Brokers Table</h4>
-        {{-- <a class="btn btn-dark" href="{{ route('brokers.agent.create') }}">Add Agent</a> --}}
-        <a class="btn btn-dark" href="{{ url('brokers-create') }}">New Broker</a>
+        <h4 class="card-title">BROKER MANAGEMENT</h4>
+        <p>
+            Real estate brokers are the architects of dreams, the facilitators of aspirations, and the guardians of investments. They navigate the intricate landscapes of property markets, bridging the chasm between buyers and sellers with expertise, integrity, and unwavering dedication. 
+        </p>
+        
+        <a class="btn btn-outline-dark w-25 my-3" href="{{ url('brokers-create') }}">Add a New Broker Company</a>
         <div class="table-responsive">
             <table class="table table-bordered border-dark mb-0">
 
                 <thead>
                     <tr class="bg-dark text-white">
                         <th>#</th>
-                        <th style="width: 100px;">Action</th>
-                        <th >Broker Name</th>
+                        <th >Company Name</th>
                         <th style="width: 150px;">Authorized Person</th>
+                        <th style="width: 150px;">Contact</th>
+                        <th style="width: 150px;">Email</th>
+                        <th style="width: 100px;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,10 +61,6 @@
                             @endif
 
                                 <td>{{$value->id}}</td>
-
-                                <td>
-                                    <a class="btn btn-outline-danger" href="{{ route('brokers.delete', ['id' => $value->id]) }}"><i class="bx bx-trash"></i></a>
-                                </td>
                                 
                                 <td>{{ $value->company_name }}</td>
                                 
@@ -67,6 +68,20 @@
                                     {{ $value->authorized_p_name}}    
                                 </td>
 
+                                <td>
+                                    {{ $value->authorized_p_contact}}    
+                                </td>
+
+                                <td>
+                                    {{ $value->authorized_p_email}}    
+                                </td>
+
+                                <td>
+                                    <div class="d-flex justify-contents-start">
+                                        <a title="Delete Record" class="btn btn-outline-dark mr-1" href="{{ route('brokers.delete', ['id' => $value->id]) }}"><i class="bx bx-trash"></i></a>
+                                        <a title="Update Record" class="btn btn-outline-dark mr-1" href="{{ route('brokers.update', ['id' => $value->id]) }}"><i class="bx bx-pencil"></i></a>
+                                    </div>                                    
+                                </td>
 
                             </tr>
                         @endforeach

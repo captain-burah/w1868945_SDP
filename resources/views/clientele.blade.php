@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- @include('broker.topNav') --}}
+@include('clients.topNav')
 
 <div style="padding-top: 150px;">
 
