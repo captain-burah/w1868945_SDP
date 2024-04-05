@@ -391,7 +391,7 @@
                                     <td>
                                         <div class="d-flex inline p-">
                                             {{-- PAYMENT PLAN --}}
-                                            <div class="my-1 mr-1">
+                                            {{-- <div class="my-1 mr-1">
                                                 @if($value->unit_paymentplan != null)
                                                     <button class="my-auto btn btn-sm btn-outline-dark btn-block rounded-0 waves-effect waves-light" title="View Payment Plan" type="button" id="dropdownMenuButton" data-toggle="modal" data-target="#ppModal-{{$value->id}}">
                                                         <i class="bx bx-dollar-circle" style="font-size: 18px"></i>
@@ -668,7 +668,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
 
                                             {{-- BOOKING --}}
