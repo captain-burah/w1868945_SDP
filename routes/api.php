@@ -17,6 +17,7 @@ use App\Http\Controllers\API\SEOController;
 use App\Http\Controllers\API\BrokerController;
 use App\Http\Controllers\API\FormSubmissionController;
 use App\Http\Controllers\API\EmailSubscriptionController;
+use App\Http\Controllers\API\LeadController;
 
 /*
 |-----------------------------------withErrors(['message', $e->getMessage() ]---------------------------------------
@@ -57,13 +58,13 @@ Route::middleware('authkey')->prefix('v1/esnaad')->namespace('App\Http\Controlle
     Route::post('/agency-registration', 'API\BrokerController@store')->middleware('api', 'cors');
     Route::post('/email-subscription', 'API\EmailSubscriptionController@store')->middleware('cors');
     Route::post('/project-brochure-download', 'API\EmailSubscriptionController@store')->middleware('cors');
+    // Route::get('/leads/{name}/{email}/{phone}/{country_code}/{url}/{ip}', 'API\LeadController@store')->middleware('cors');
 });
 
 
+Route::post('/leads', '\App\Http\Controllers\API\LeadController@store');
 
 // Route::post('/agency-registration', 'YourController@yourMethod')->middleware('web');
-
-
 
 
 Route::group([
