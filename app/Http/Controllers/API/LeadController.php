@@ -25,8 +25,10 @@ class LeadController extends Controller
                 $resources->country_code = $request->country_code;
                 $resources->url = $request->url;
                 $resources->ip = $request->ip;
+                $resources->bedrooms = $request->bedrooms;
+                $resources->question1 = $request->question1;
                 $resources->save();
-                // return ["Result"=> "Complete"];    
+
                 $resources = 'success';
                 return response()->json($resources,200);               
             } catch (\Exception $e) {
