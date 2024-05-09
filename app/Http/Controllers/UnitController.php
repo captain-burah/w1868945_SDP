@@ -1285,7 +1285,79 @@ class UnitController extends Controller
         // // dd($new_date_array);
         // $this->data['unit_paymentplan'] = $unit_paymentplan = Unit_paymentplan::with('unit_paymentplan_files', 'unit')->where('unit_id', $unit->id)->get();
         $this->data['new_date_array'] = $new_date_array;
-        $this->data['date'] = $request->date;
+
+        $date = Carbon::createFromFormat('Y-m-d', $request->date);
+
+        // Format the date as "01/06/2024"
+        $formattedDate = $date->format('d F Y');
+
+        // Store the formatted date in $this->data['date']
+        $this->data['date'] = $formattedDate;
+
+//////////////////////////////////////////////////////////////////////////
+
+                $filteredInstallments=[];
+                $installments = [
+                    (object) ['number' => 1, 'name' => 'Downpayment', 'percentage' => '20%', 'due_date' => 'On Booking', 'amount' => number_format($unit->unit_price * 0.2)],
+                    (object) ['number' => 2, 'name' => '1st Installment', 'percentage' => '5%', 'due_date' => '01/06/2024', 'amount' => number_format($unit->unit_price * 0.05)],
+                    (object) ['number' => 3, 'name' => '2nd Installment', 'percentage' => '10%', 'due_date' => '01/09/2024', 'amount' => number_format($unit->unit_price * 0.1)],
+                    (object) ['number' => 4, 'name' => '3rd Installment', 'percentage' => '10%', 'due_date' => '01/12/2024', 'amount' => number_format($unit->unit_price * 0.1)],
+                    (object) ['number' => 5, 'name' => '4th Installment', 'percentage' => '5%', 'due_date' => '01/03/2025', 'amount' => number_format($unit->unit_price * 0.05)],
+                    (object) ['number' => 6, 'name' => '5th Installment', 'percentage' => '10%', 'due_date' => '01/06/2025', 'amount' => number_format($unit->unit_price * 0.1)],
+                    (object) ['number' => 7, 'name' => '6th Installment', 'percentage' => '10%', 'due_date' => '01/09/2025', 'amount' => number_format($unit->unit_price * 0.1)],
+                   (object) ['number' => 8, 'name' => 'Final Payment', 'percentage' => '30%', 'due_date' => 'On Completion', 'amount' => number_format($unit->unit_price * 0.3)]
+                ];
+
+              // Save Downpayment and Final Payment
+                    $downpayment = $installments[0];
+                    $finalPayment = $installments[count($installments) - 1]; // Assuming final payment is always at the end
+
+                    $selectedDate = $formattedDate; // Assuming you're getting selected date from a form field named 'selected_date'
+                    if ($selectedDate) {
+
+                        $lastDate = Carbon::parse($formattedDate)->format('d F Y');
+
+                        $filteredInstallments = $installments;
+                        // Adjust installment numbers according to the filtered installments
+                        $installmentNumber = 1;
+                        foreach ($filteredInstallments as $key => $installment) {
+                            if($installmentNumber == 1){
+                                $lastDate1 =  'On Booking';
+                            }
+                            elseif($installmentNumber == 8){
+                                $lastDate1 =  'On Completion';
+                            }
+                            else{
+                                $lastDate1 = $lastDate;
+                            }
+                            $filteredInstallments[$key] = (object)[
+                                'number' => $installmentNumber,
+                                'name' => $installment->name,
+                                'percentage' => $installment->percentage,
+                                'due_date' => $lastDate1, // Assigning adjusted due date
+                                'amount' => $installment->amount
+                            ];
+
+
+                            $lastDate = Carbon::parse($lastDate)->addMonths(3)->format('d F Y');
+
+                            $installmentNumber++;
+                        }
+
+
+
+                    }
+
+                    // Now $filteredInstallments array contains Downpayment, filtered installments, and Final Payment
+
+                     $this->data['filteredInstallments'] = $filteredInstallments;
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+
+        
         return view('unit.salesOffer.index', $this->data);
 
     }

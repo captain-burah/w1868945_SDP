@@ -63,7 +63,7 @@
             letter-spacing: 2px!important;
             font-size: .85rem!important;
         }
-
+        
         .justify-content-center {
             justify-content: center!important;
         }
@@ -134,7 +134,7 @@
             font-weight: 100 !important;
 
         }
-
+        
         .body-heading {
             font-size: 24px;
             text-align:center;
@@ -181,53 +181,11 @@
                 text-align: center;
                 width: 100%;
             }
-
+            
         }
     </style>
 </head>
 <body >
-
-   {{--  @php
-    // Define the object array
-    $installments = [
-        (object) ['number' => 1, 'name' => 'Downpayment', 'percentage' => '20%', 'due_date' => 'On Booking', 'amount' => number_format($unit->unit_price * 0.2)],
-        (object) ['number' => 2, 'name' => '1st Installment', 'percentage' => '5%', 'due_date' => '01/06/2024', 'amount' => number_format($unit->unit_price * 0.05)],
-        (object) ['number' => 3, 'name' => '2nd Installment', 'percentage' => '10%', 'due_date' => '01/09/2024', 'amount' => number_format($unit->unit_price * 0.1)],
-        (object) ['number' => 4, 'name' => '3rd Installment', 'percentage' => '10%', 'due_date' => '01/12/2024', 'amount' => number_format($unit->unit_price * 0.1)],
-        (object) ['number' => 5, 'name' => '4th Installment', 'percentage' => '5%', 'due_date' => '01/03/2025', 'amount' => number_format($unit->unit_price * 0.05)],
-        (object) ['number' => 6, 'name' => '5th Installment', 'percentage' => '10%', 'due_date' => '01/06/2025', 'amount' => number_format($unit->unit_price * 0.1)],
-        (object) ['number' => 7, 'name' => '6th Installment', 'percentage' => '10%', 'due_date' => '01/09/2025', 'amount' => number_format($unit->unit_price * 0.1)],
-        (object) ['number' => 8, 'name' => 'Final Payment', 'percentage' => '30%', 'due_date' => 'On Completion', 'amount' => number_format($unit->unit_price * 0.3)]
-    ];
-
-    // Save Downpayment and Final Payment
-    $downpayment = $installments[0];
-    $finalPayment = $installments[7];
-
-    $selectedDate = $date;
-    if ($selectedDate) {
-        // Filter installments based on the selected date
-        $filteredInstallments = array_filter($installments, function($installment) use ($selectedDate) {
-            // Implement your logic to filter based on the date
-            // For example, compare the due date of the installment with the selected date
-            return strtotime($installment->due_date) >= strtotime($selectedDate);
-        });
-
-        // Calculate the new due dates dynamically with a 3-month gap
-        $newDate = date('d/m/Y', strtotime($selectedDate));
-        $lastDate = date('d/m/Y', strtotime("+3 months", strtotime($selectedDate)));
-
-        foreach ($filteredInstallments as $key => $installment) {
-            $installments[$key]->due_date = $lastDate;
-            $lastDate = date('d/m/Y', strtotime("+3 months", strtotime($lastDate)));
-        }
-
-        // Restore Downpayment and Final Payment
-        $installments[0] = $downpayment;
-        $installments[7] = $finalPayment;
-    }
-@endphp
- --}}
     <div class="mt-6 mb-7 px-0">
         <div class="row justify-content-center">
         <div class="col-lg-12 col-xl-7" style="background-color: #fff">
@@ -241,7 +199,7 @@
                             <img src="{{ asset('logo-dark.png')}}" alt="" height="70">
                         </div>
                     </div>
-
+                    
                 </div>
                 <div class="card-body p-0 mt-2">
                     <div class="p-0">
@@ -286,10 +244,10 @@
                                 </td>
                             </tr>
                         </table>
-
-                        {{--
+                        
+                        {{-- 
                             <table class="table table-bordered" style="border-top: 4px #dbdbdb solid; ">
-
+                                
                                 <tr>
                                     <td style="width: 150px; border: 1.5px #dbdbdb solid !important;" class="text-center">
                                         <span class="body-table-p font-weight-semibold font-italic" style="font-family: 'Times New Roman'; font-size: 16px;">Bedrooms</span>
@@ -313,7 +271,7 @@
                                         <span class="body-table-p">{{ number_format($unit->unit_price) }}</span>
                                     </td>
                                 </tr>
-                            </table>
+                            </table> 
                         --}}
 
                         <div class="mt-3">
@@ -328,9 +286,9 @@
                             <div class=" pt-4 pb-4" >
                                 <p class="body-heading m-0">Standard Payment Plan</p>
                             </div>
+                            
 
-
-                            <table class="table ">
+                            <table class="table "> 
                                 <tr>
                                     <th style="width: 0px !important; border: 1.5px #dbdbdb solid !important; background-color: #d6d6d6 !important;" class="text-center">
                                         <span class="body-table-p font-weight-semibold" style="font-size: 16px; text-align:left">Installment</span>
@@ -370,41 +328,193 @@
                                     </tr>
                                 @endforeach --}}
 
-                                @foreach($filteredInstallments as $installment)
                                 <tr>
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                        <span class="body-table-p">{{ $installment->number }}</span>
+                                        <span class="body-table-p">1</span>
                                     </td>
 
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                        <span class="body-table-p">{{ $installment->name }}</span>
+                                        <span class="body-table-p">Downpayment</span>
                                     </td>
 
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                        <span class="body-table-p">{{ $installment->percentage }}</span>
+                                        <span class="body-table-p">20%</span>
                                     </td>
 
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                        <span class="body-table-p">{{ $installment->due_date }}</span>
+                                        <span class="body-table-p">On Booking</span>
                                     </td>
-
+                                    
                                     <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                        <span class="body-table-p" style="color: #095edb;">{{ $installment->amount }}</span>
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit->unit_price * 0.2) }}</span>
                                     </td>
                                 </tr>
-                            @endforeach
 
-                            <tr>
-                                <td style="border-bottom: 1.5px #dbdbdb solid !important;"></td>
-                                <td style="border-bottom: 1.5px #dbdbdb solid !important;"></td>
-                                <td style="border-bottom: 1.5px #dbdbdb solid !important;"></td>
-                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
-                                    <span class="body-table-p">Purchase Price</span>
-                                </td>
-                                <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important; text-align:;">
-                                    <span class="body-table-p" style="color: #095edb;">{{ number_format($unit->unit_price) }}</span>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">2</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">1st Installment</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">5%</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">01/06/2024</span>
+                                    </td>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit->unit_price * 0.05) }}</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">3</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">2nd Installment</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">10%</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">01/09/2024</span>
+                                    </td>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit->unit_price * 0.1) }}</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">4</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">3rd Installment</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">10%</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">01/12/2024</span>
+                                    </td>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit->unit_price * 0.1) }}</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">5</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">4th Installment</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">5%</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">01/03/2025</span>
+                                    </td>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit->unit_price * 0.05) }}</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">6</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">5th Installment</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">10%</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">01/06/2025</span>
+                                    </td>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit->unit_price * 0.1) }}</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">7</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">6th Installment</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">10%</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">01/09/2025</span>
+                                    </td>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit->unit_price * 0.1) }}</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">8</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">Final Payment</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">30%</span>
+                                    </td>
+
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p">On Completion</span>
+                                    </td>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format( $unit->unit_price * 0.3) }}</span>
+                                    </td>
+                                </tr>
+
+
+
+
+
+                                <tr>
+                                    <td style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                    </td>
+                                    <td style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                    </td>
+                                    <td style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                    </td>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important;">
+                                        <span class="body-table-p ">Purchase Price</span>
+                                    </td>
+                                    <td class="text-center" style="border-bottom: 1.5px #dbdbdb solid !important; text-align:;">
+                                        <span class="body-table-p" style="color: #095edb;">{{ number_format($unit->unit_price) }}</span>
+                                    </td>
+                                </tr>
 
                             </table>
                         </div>
@@ -422,10 +532,10 @@
                             </div>
                         @endforeach
                     @endif
+                    
+                    
 
-
-
-
+                    
                 </div>
             </div>
         </div>
