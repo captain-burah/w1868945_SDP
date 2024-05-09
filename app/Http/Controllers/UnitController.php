@@ -1328,7 +1328,8 @@ class UnitController extends Controller
                                 $lastDate1 =  'On Completion';
                             }
                             else{
-                                $lastDate1 = $lastDate;
+                                // $lastDate1 = $lastDate;
+                                $lastDate1 = Carbon::parse($lastDate)->format('d/m/Y');
                             }
                             $filteredInstallments[$key] = (object)[
                                 'number' => $installmentNumber,
@@ -1337,7 +1338,6 @@ class UnitController extends Controller
                                 'due_date' => $lastDate1, // Assigning adjusted due date
                                 'amount' => $installment->amount
                             ];
-
 
                             $lastDate = Carbon::parse($lastDate)->addMonths(3)->format('d F Y');
 
