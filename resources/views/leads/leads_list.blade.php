@@ -56,19 +56,17 @@
    <div class="card-body">
         <table class="table table-bordered">
             <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Email</th>
+                <th width="280px">Name</th>
+                <th width="280px">Email</th>
                 <th width="280px">Phone Number</th>
                 <th width="280px">Bedrooms</th>
                 <th width="280px">URL</th>
                 <th width="280px">Domain</th>
-                <th width="280px">Question</th>
+                {{-- <th width="280px">Question</th> --}}
                 <th width="280px">Created At</th>
             </tr>
             @foreach ($leds as $lead)
             <tr>
-                <td>{{ $loop->iteration}}</td>
                 <td>{{ $lead->name}}</td>
                 <td>{{ $lead->email}}</td>
                 <td>{{ $lead->country_code}}{{$lead->phone}}</td>
@@ -90,7 +88,7 @@
                     @endphp
                 </td>
 
-                <td>{{ $lead->question1}}</td>
+                {{-- <td>{{ $lead->question1}}</td> --}}
                 <td>{{ $lead->created_at->format('j F, Y H:i:s') }}</td>
 
             </tr>
