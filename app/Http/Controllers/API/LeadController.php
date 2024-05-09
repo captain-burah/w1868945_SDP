@@ -26,13 +26,17 @@ class LeadController extends Controller
                 $resources->url = $request->url;
                 $resources->ip = $request->ip;
                 $resources->save();
-                return ["Result"=> "Complete"];                
+                // return ["Result"=> "Complete"];    
+                $resources = 'success';
+                return response()->json($resources,200);               
             } catch (\Exception $e) {
-                return ["Result"=> "Error Storing Data: ".$e->getMessage()];                
+                $resources = $e->getMessage();
+                return response()->json($resources,200);           
             }
         } else {
-            return ["Result"=> "verification failed"];
+            $resources = 'failed';
+            return response()->json($resources,403);    
         }
         
-    }
+    } 
 }
