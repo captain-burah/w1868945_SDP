@@ -89,10 +89,15 @@
                             <span class="text-white font-weight-bold  my-auto ">CLIENTS</span>
                         </a>
                     @endcan
-                    
+
                     @can('broker-list')
                         <a href="{{ route('brokers.index') }}" class="mr-5 my-auto">
                             <span class="text-white font-weight-bold  my-auto ">AGENCIES</span>
+                        </a>
+                    @endcan
+                    @can('lead-list')
+                        <a href="{{ route('leads_list.index') }}" class="mr-5 my-auto">
+                            <span class="text-white font-weight-bold  my-auto ">LEADS</span>
                         </a>
                     @endcan
                 @elseif(Auth::user()->roles[0]->name == "Master Administrator")
@@ -101,12 +106,17 @@
                             <span class="text-white font-weight-bold  my-auto ">CLIENTS</span>
                         </a>
                     @endcan
-                    
+
                     @can('broker-list')
                         <a href="{{ route('brokers.index') }}" class="mr-5 my-auto">
                             <span class="text-white font-weight-bold  my-auto ">AGENCIES</span>
                         </a>
                     @endcan --}}
+                    @can('lead-list')
+                        <a href="{{ route('leads_list.index') }}" class="mr-5 my-auto">
+                            <span class="text-white font-weight-bold  my-auto ">LEADS</span>
+                        </a>
+                    @endcan
                 @endif
                 
 

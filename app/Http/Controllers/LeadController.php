@@ -108,4 +108,37 @@ class LeadController extends Controller
     {
         //
     }
+
+
+
+    public function leads_listings()
+    {
+        $result = Lead::orderby('created_at', 'asc')->get();
+
+        $domain_list=Lead::whereNotNull('url')->select('url')->groupby('url')->get();
+
+        $this->data['domain_lists'] =  $domain_list ;
+        $this->data['leds'] =  $result ;
+        return view('leads.leads_list', $this->data);
+    }
+
+    public function domain_filter(Request $request)
+    {
+        if($request->domain == 'All Domains')
+        {
+            $result = Lead::orderby('created_at', 'asc')->get();
+
+        }
+        else{
+            $result = Lead::where('url', 'like', '%' . $request->domain . '%')
+            ->orderBy('created_at', 'asc')
+            ->get();
+        }
+
+        $domain_list=Lead::whereNotNull('url')->select('url')->groupby('url')->get();
+        $this->data['domain_lists'] =  $domain_list ;
+        $this->data['leds'] =  $result ;
+
+        return view('leads.leads_list', $this->data);
+    }
 }

@@ -353,6 +353,12 @@ Route::middleware('auth')->group(function () {
 /**EMAIL SUBSCRIPTION */
 
 
+//////////////////////////////////////////**********LEADS**************///////////////////////////////////////
+
+Route::get('/leads_list', [LeadController::class, 'leads_listings'])->name('leads_list.index');
+Route::post('/domain_filter', [LeadController::class, 'domain_filter'])->name('leads.domain_filter');
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
 });
 
