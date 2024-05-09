@@ -13,6 +13,7 @@ use App\Models\Project_image;
 use App\Models\Project_factsheet;
 use App\Models\Project_video;
 use App\Models\Language;
+use App\Models\Lead;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Log; // send notifications via slack or any other means
