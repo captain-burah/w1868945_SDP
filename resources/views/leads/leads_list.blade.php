@@ -2,6 +2,7 @@
 @extends('layouts.appIn')
 @section('content')
 
+    
     <div class="row" style="padding-top: 100px;">
         <div class="col-lg-12 margin-tb mt-10">
             <div class="pull-left">
@@ -52,27 +53,32 @@
             </form>
 
         </div>
-
-   <div class="card-body">
-        <table class="table table-bordered">
+   <div class="card-body fixed">
+        <style>
+            table {
+    table-layout: fixed;
+    width: 100%; /* width property required */
+}
+        </style>
+        <table class="table table-bordered fixed">
             <tr>
-                <th width="280px">Name</th>
-                <th width="280px">Email</th>
-                <th width="280px">Phone Number</th>
-                <th width="280px">Bedrooms</th>
-                <th width="280px">URL</th>
-                <th width="280px">Domain</th>
+                <th width="100px">Name</th>
+                <th width="100px">Email</th>
+                <th width="100px">Phone Number</th>
+                <th width="100px">Bedrooms</th>
+                <th width="100px">URL</th>
+                <th width="100px">Domain</th>
                 {{-- <th width="280px">Question</th> --}}
-                <th width="280px">Created At</th>
+                <th width="100px">Created At</th>
             </tr>
             @foreach ($leds as $lead)
             <tr>
-                <td>{{ $lead->name}}</td>
-                <td>{{ $lead->email}}</td>
-                <td>{{ $lead->country_code}}{{$lead->phone}}</td>
-                <td>{{ $lead->bedrooms}}</td>
-                <td>{{ $lead->url}}</td>
-                <td>
+                <td style="width: 100px;">{{ $lead->name}}</td>
+                <td style="width: 100px;">{{ $lead->email}}</td>
+                <td style="width: 100px;">{{ $lead->country_code}}{{$lead->phone}}</td>
+                <td style="width: 100px;">{{ $lead->bedrooms}}</td>
+                <td style="width: 100px;">{{ $lead->url}}</td>
+                <td style="width: 100px;">
                     @php
                     $url = $lead->url;
                     $parsedUrl = parse_url($url);
@@ -89,7 +95,7 @@
                 </td>
 
                 {{-- <td>{{ $lead->question1}}</td> --}}
-                <td>{{ $lead->created_at->format('j F, Y H:i:s') }}</td>
+                <td style="width: 100px;">{{ $lead->created_at->format('j F, Y H:i:s') }}</td>
 
             </tr>
             @endforeach
