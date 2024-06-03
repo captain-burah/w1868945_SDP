@@ -95,10 +95,10 @@
                         <th >Project Name</th>
                         <th style="width: 150px;">Number of Units</th>
                         <th style="width: 150px;">Brochures</th>
-                        <th style="width: 150px;">Factsheets</th>
+                        {{-- <th style="width: 150px;">Factsheets</th> --}}
                         <th style="width: 150px;">Images</th>
                         <th style="width: 150px;">Videos</th>
-                        <th style="width: 150px;">Translation</th>
+                        {{-- <th style="width: 150px;">Translation</th> --}}
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -202,7 +202,7 @@
                                 </td>
 
                                 {{-- factsheet --}}
-                                <td>
+                                {{-- <td>
                                     <div class="dropdown">
                                         <a class="dropdown-toggle my-auto @if($status != '2') disabled @endif" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             @if($value->project_factsheet != null)
@@ -246,7 +246,7 @@
                                             </form>
                                         </div>
                                     </div>
-                                </td>
+                                </td> --}}
 
                                 {{-- images --}}
                                 <td>
@@ -343,7 +343,7 @@
                                 </td>
 
                                 {{-- TRANSLATION --}}
-                                <td>
+                                {{-- <td>
                                     <div class="dropdown">
                                         <a class="dropdown-toggle my-auto @if($status != '2') disabled @endif" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             @if($value->language != null)
@@ -387,7 +387,7 @@
                                             </form>
                                         </div>
                                     </div>
-                                </td>
+                                </td> --}}
 
                                 <td>
                                     <div class="dropdown">

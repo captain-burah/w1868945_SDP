@@ -44,7 +44,7 @@
                             <th style="width: 150px;">Bedrooms</th>
                             <th style="width: 150px;">Project Name</th>
                             <th style="width: 150px;">Floorplans</th>
-                            <th style="width: 150px;">Booking Floorplans</th>
+                            {{-- <th style="width: 150px;">Booking Floorplans</th> --}}
                             {{-- <th style="width: 150px;">Gallery</th> --}}
                             <th style="width: 150px;">Actions</th>
                             {{-- <th>Action</th> --}}
@@ -292,7 +292,7 @@
 
 
                                     {{-- BOOKING FLOOR PLANS --}}
-                                    <td>
+                                    {{-- <td>
                                         <div class="dropdown">
                                             <a class="dropdown-toggle my-auto" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 @if($value->unit_secondary_floorplan_id != null)
@@ -335,7 +335,7 @@
                                                 </form>
                                             </div>
                                         </div>
-                                    </td>
+                                    </td> --}}
 
 
 
@@ -672,7 +672,7 @@
 
 
                                             {{-- BOOKING --}}
-                                            <div class="my-1 mr-1">
+                                            {{-- <div class="my-1 mr-1">
                                                 @if($value->unit_paymentplan != null)
                                                     <button class="my-auto btn btn-sm btn-outline-dark btn-block rounded-0 waves-effect waves-light" title="View Payment Plan" type="button" id="dropdownMenuButton" data-toggle="modal" data-target="#bookingModal-{{$value->id}}" disabled>
                                                         <i class="bx bx-calendar" style="font-size: 18px"></i>
@@ -784,7 +784,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             {{-- SALES OFFER --}}
                                             <div class="my-1 mr-1">
@@ -853,7 +853,7 @@
                             <th style="width: 150px;">Bedrooms</th>
                             <th style="width: 150px;">Project Name</th>
                             <th style="width: 150px;">Floorplans</th>
-                            <th style="width: 150px;">Booking Floorplans</th>
+                            {{-- <th style="width: 150px;">Booking Floorplans</th> --}}
                             {{-- <th style="width: 150px;">Gallery</th> --}}
                             <th style="width: 150px;">Actions</th>
                             {{-- <th>Action</th> --}}
@@ -918,13 +918,13 @@
 
 
                                     {{-- BOOKING FLOOR PLANS --}}
-                                    <td>
+                                    {{-- <td>
                                         @if($value->unit_secondary_floorplan_id != null)
                                             <i class="bx bx-check-circle text-success " style="font-size: 18px"></i> {{ $value->unit_secondary_floorplan->name }}
                                         @else
                                             <i class="bx bx-no-entry text-danger" style="font-size: 18px"></i>
                                         @endif
-                                    </td>
+                                    </td> --}}
 
 
 
@@ -1049,7 +1049,7 @@
                         <th style="width: 150px;">Bedrooms</th>
                         <th style="width: 150px;">Project Name</th>
                         <th style="width: 150px;">Floorplans</th>
-                        <th style="width: 150px;">Booking Floorplans</th>
+                        {{-- <th style="width: 150px;">Booking Floorplans</th> --}}
                         {{-- <th style="width: 150px;">Gallery</th> --}}
                         <th style="width: 150px;">Actions</th>
                         {{-- <th>Action</th> --}}
@@ -1297,7 +1297,7 @@
 
 
                                 {{-- BOOKING FLOOR PLANS --}}
-                                <td>
+                                {{-- <td>
                                     <div class="dropdown">
                                         <a class="dropdown-toggle my-auto" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             @if($value->unit_secondary_floorplan_id != null)
@@ -1340,7 +1340,7 @@
                                             </form>
                                         </div>
                                     </div>
-                                </td>
+                                </td> --}}
 
 
 
@@ -1395,8 +1395,6 @@
                                 {{-- ACTION --}}
                                 <td>
                                     <div class="d-flex inline p-">
-                                        
-
                                         {{-- SALES OFFER --}}
                                         <div class="my-1 mr-1">
                                             <button type="button" class="btn btn-sm btn-outline-dark btn-block rounded-0 waves-effect waves-light" title="Sales Offer" data-toggle="modal" data-target="#myModal-{{$value->id}}">
