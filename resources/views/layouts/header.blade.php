@@ -156,7 +156,7 @@
                 </div>
             </div> --}}
 
-            @if(Auth::user()->id == '1' || Auth::user()->id == '2')
+            @if(Auth::user()->id == '1' || Auth::user()->id == '2' || Auth::user()->id == '3')
             <div class="dropdown d-none d-lg-inline-block ml-1">
                 <button type="button" class="btn header-item noti-icon waves-effect"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
